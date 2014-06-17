@@ -1,7 +1,7 @@
 {
   "name": "lists",
-  "version": "0.0.1",
-  "description": "Higher-order functions translated from Haskell's Data.List module",
+  "version": "0.0.2",
+  "description": "A library of higher-order functions translated from Haskell's Data.List module",
   "main": "lists.js",
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
     "recursive",
     "haskell",
     "util",
-    "utility"
+    "utility",
+    "array",
+    "collection"
   ],
   "author": "Kurt Medley <kurtdmedley@gmail.com>",
   "license": "MIT",
