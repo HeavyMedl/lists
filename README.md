@@ -11,7 +11,7 @@ Lists is an open source project and is not meant to be paid for, ever.  So now t
 
 > This module has not yet been relased
 
-> The beta release of this module will not implement [tail call optimization](http://en.wikipedia.org/wiki/Tail_recursion) on its functions, but latter releases will.
+> The beta release of this module will not implement [tail call optimization](http://en.wikipedia.org/wiki/Tail_recursion) on its functions, but the full release will.
 
 -----
 api(here)
