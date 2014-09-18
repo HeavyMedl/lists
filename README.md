@@ -10,9 +10,9 @@ Use the unorthodox style of passing functions to functions to functions to solve
 ### Table of Contents
 
 **Basic Functions**
-* append :: [a] -> [a] -> [a]
-* head :: [a] -> a
-* last :: [a] -> a
-* init :: [a] -> [a]
-* tail :: [a] -> [a]
-* nil :: [a] -> Bool
+1. append :: [a] -> [a] -> [a]
+2. head :: [a] -> a
+3. last :: [a] -> a
+4. init :: [a] -> [a]
+5. tail :: [a] -> [a]
+6. nil :: [a] -> Bool
