@@ -10,6 +10,7 @@ Use the unorthodox style of passing functions to functions to functions to solve
 ### Table of Contents
 
 **Basic Functions**
+
 1. append :: [a] -> [a] -> [a]
 2. head :: [a] -> a
 3. last :: [a] -> a
