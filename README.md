@@ -71,4 +71,17 @@ Use the unorthodox style of passing functions to functions to functions to solve
 43. break :: (a -> Bool) -> [a] -> ([a], [a])
 44. stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
 45. group :: Eq a => [a] -> [[a]]
-46. 
+46. inits :: [a] -> [[a]]
+47. tails :: [a] -> [[a]]
+
+**Predicates**
+48. isPrefixOf :: Eq a => [a] -> [a] -> Bool
+49. isSuffixOf :: Eq a => [a] -> [a] -> Bool
+50. isInfixOf :: Eq a => [a] -> [a] -> Bool
+
+**Searching Lists**
+51. elem :: Eq a => a -> [a] -> Bool
+52. notElem :: Eq a => a -> [a] -> Bool
+53. lookup :: Eq a => a -> [(a, b)] -> Maybe b
+
+
