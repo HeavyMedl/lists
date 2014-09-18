@@ -61,4 +61,14 @@ Use the unorthodox style of passing functions to functions to functions to solve
 36. unfold || unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 
 **Sublists**
-37. 
+
+37. take :: Int -> [a] -> [a]
+38. drop :: Int -> [a] -> [a]
+39. splitAt :: Int -> [a] -> ([a], [a])
+40. takeWhile :: (a -> Bool) -> [a] -> [a]
+41. dropWhile :: (a -> Bool) -> [a] -> [a]
+42. span :: (a -> Bool) -> [a] -> ([a], [a])
+43. break :: (a -> Bool) -> [a] -> ([a], [a])
+44. stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+45. group :: Eq a => [a] -> [[a]]
+46. 
