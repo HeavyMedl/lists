@@ -36,14 +36,14 @@ map ([x], f) -> [x]
 * 3. [`last`](#last) (arr|str) -> x
 * 4. [`init`](#init) (arr|str) -> [x]
 * 5. [`tail`](#tail) (arr|str) -> [x]
-* 6. nil (arr|str) -> boolean
+* 6. [`nil`](#nil) (arr|str) -> boolean
 
 -----
 
 **List Transformations**
 
-* 7. map ([x], f) -> [x]
-* 8. rev :: [a] -> [a]
+* 7. [`map`](#map) ([x], f) -> [x]
+* 8. [`rev`](#rev) ([x]) -> [x]
 * 9. intersperse :: a -> [a] -> [a]
 * 10. intercalate :: [a] -> [[a]] -> [a]
 * 11. transpose :: [[a]] -> [[a]]
@@ -177,7 +177,7 @@ lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append
 ------
 **Description**: Retreive the first element of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable;
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable.
 
 **Example Usage**:
 
@@ -190,7 +190,7 @@ lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('a
 ------
 **Description**: Retreive the last element of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable;
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable.
 
 **Example Usage**:
 
@@ -203,7 +203,7 @@ lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('a
 ------
 **Description**: Retreive all elements except the last of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables;
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -218,7 +218,7 @@ lists.init('abc'); /* ['a','b'] */
 ------
 **Description**: Retreive all elements except the first of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables;
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -226,6 +226,52 @@ lists.init('abc'); /* ['a','b'] */
 lists.tail([1,2,3]); /* [2,3] */ 
 lists.tail([[1,2],[3,4],[5,6]]); /* [[3,4],[5,6]]  */ 
 lists.tail('abc'); /* ['b','c'] */
+```
+------
+<a name='nil'/>
+####nil (arr|str) -> boolean
+------
+**Description**: Test if an Array or String is empty.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.nil(null); /* true */ lists.nil([]); /* true */ lists.nil(''); /* true */ 
+lists.nil('a'); /* false */ lists.nil([1]); /* false */
+```
+------
+<a name='map'/>
+####map ([x], f) -> [x]
+------
+**Description**: Array obtained by applying f to each element of [x]
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.map([1,2,3], function(x) { return x*2 }); /* [2,4,6] */
+lists.map('abc', function(str) { return str.toUpperCase() }); /* ["A","B","C"] */
+lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
+  return lists.flatten(lists.keys(obj))
+}); /* ["S", "u", "p"] */
+```
+------
+<a name='rev'/>
+####rev ([x]) -> [x]
+------
+**Description**: Array obtained by reversing the order of each element.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.rev([1,2,3]); /* [3,2,1] */
+lists.rev('abc'); /* ['c','b','a'] */
+lists.rev([[2],[3]]) /* [[3],[2]] */
 ```
 ------
 
