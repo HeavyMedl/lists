@@ -21,6 +21,8 @@ A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
 map ([x], f) -> [x]
 map takes an array of variables and a function and produces an array of variables
 
+-----
+
 **Basic Functions**
 
 * 1. append (arr1|str, arr2|str|num) -> [x]
@@ -29,6 +31,8 @@ map takes an array of variables and a function and produces an array of variable
 * 4. init (arr|str) -> [x]
 * 5. tail (arr|str) -> [x]
 * 6. nil (arr|str) -> boolean
+
+-----
 
 **List Transformations**
 
