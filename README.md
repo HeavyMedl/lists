@@ -154,5 +154,5 @@ map ([x], f) -> [x]
 
 ------
 <a name='append'/>
-#append (arr1|str, arr2|str|num) -> [x]
+#### append (arr1|str, arr2|str|num) -> [x]
 
