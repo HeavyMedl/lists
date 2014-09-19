@@ -31,7 +31,7 @@ map ([x], f) -> [x]
 
 **Basic Functions**
 
-* 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]
+* 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]|str
 * 2. head (arr|str) -> x
 * 3. last (arr|str) -> [x]
 * 4. init (arr|str) -> [x]
@@ -160,11 +160,11 @@ map ([x], f) -> [x]
 
 ------
 <a name='append'/>
-####append (arr1|str, arr2|str|num) -> [x]
+####append (arr1|str, arr2|str|num) -> [x]|str
 ------
 **Description**: A prefix-style `Array.prototype.concat` wrapper.
 
-**Pseudo Type Signature**: Give argument 1 an Array or a String; Give argument 2 an Array or a String or a Number; Get an Array of variables.
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.
 
 **Example Usage**:
 
