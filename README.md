@@ -173,7 +173,7 @@ lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append
 ```
 ------
 <a name='head'/>
-####head (arr|str) -> x <div style="float:right">top</div>
+<div style="float: left; width: 50%;">####head (arr|str) -> x </div><div style="float:right; width: 50%">top</div>
 ------
 **Description**: Retreive the first element of an Array or a String.
 
