@@ -9,18 +9,21 @@ Use the unorthodox style of passing functions to functions to functions to solve
 -----
 ### Contents
 
-Legend - arr,[] : Array, str : String, f : function, x : variable;
+Legend - **arr | []** : Array, **obj | {}** : Object, **str** : String, **num** : Number, **f** : Function, **x** : variable;
 
 A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
 * A. Function number
 * B. Function name
 * C. Pseudo type signature
  * Argument options (arr|str): tail takes an Array or a String
- * -> [x] tail produces an Array of variables (corresponding with input)
+ * (arr|str) -> [x] : tail produces an array of variables ([x])
+
+map ([x], f) -> [x]
+map takes an array of variables and a function and produces an array of variables
 
 **Basic Functions**
 
-* 1. append (arr1|str,arr2|str) -> [x]
+* 1. append (arr1|str, arr2|str|num) -> [x]
 * 2. head (arr|str) -> x
 * 3. last (arr|str) -> [x]
 * 4. init (arr|str) -> [x]
@@ -29,7 +32,7 @@ A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
 
 **List Transformations**
 
-* 7. map :: (a -> b) -> [a] -> [b]
+* 7. map ([x], f) -> [x]
 * 8. rev :: [a] -> [a]
 * 9. intersperse :: a -> [a] -> [a]
 * 10. intercalate :: [a] -> [[a]] -> [a]
