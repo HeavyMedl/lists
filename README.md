@@ -32,7 +32,7 @@ map ([x], f) -> [x]
 **Basic Functions**
 
 * 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]|str
-* 2. head (arr|str) -> x
+* 2. [`head`](#head) (arr|str) -> x
 * 3. last (arr|str) -> [x]
 * 4. init (arr|str) -> [x]
 * 5. tail (arr|str) -> [x]
@@ -170,6 +170,19 @@ map ([x], f) -> [x]
 
 ```js
 lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append('a','b'); /* 'ab' */
+```
+------
+<a name='head'/>
+####head (arr|str) -> x
+------
+**Description**: Retreive the first element of an Array or a String.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable;
+
+**Example Usage**:
+
+```js
+lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('ab'); /* 'a' */
 ```
 ------
 
