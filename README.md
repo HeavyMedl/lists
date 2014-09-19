@@ -8,7 +8,15 @@ Use the unorthodox style of passing functions to functions to functions to solve
 
 -----
 ### Contents
-read
+
+Legend - arr,[] : Array, str : String, f : function, x : variable;
+
+A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
+* A. Function number
+* B. Function name
+* C. Pseudo type signature
+ * Argument options (arr|str): tail takes an Array or a String
+ * -> [x] tail produces an Array of variables (corresponding with input)
 
 **Basic Functions**
 
