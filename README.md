@@ -8,15 +8,16 @@ Use the unorthodox style of passing functions to functions to functions to solve
 
 -----
 ### Contents
+read
 
 **Basic Functions**
 
-* 1. append :: [a] -> [a] -> [a]
-* 2. head :: [a] -> a
-* 3. last :: [a] -> a
-* 4. init :: [a] -> [a]
-* 5. tail :: [a] -> [a]
-* 6. nil :: [a] -> Bool
+* 1. append (arr1|str,arr2|str) -> [x]
+* 2. head (arr|str) -> x
+* 3. last (arr|str) -> [x]
+* 4. init (arr|str) -> [x]
+* 5. tail (arr|str) -> [x]
+* 6. nil (arr|str) -> boolean
 
 **List Transformations**
 
