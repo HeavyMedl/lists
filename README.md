@@ -19,8 +19,7 @@ A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
  * (arr|str) -> [x] : tail produces an array of variables ([x])
 
 map ([x], f) -> [x]
-
-map takes an array of variables and a function and produces an array of variables
+* map takes an array of variables and a function and produces an array of variables
 
 -----
 
