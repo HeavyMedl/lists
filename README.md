@@ -163,10 +163,15 @@ map ([x], f) -> [x]
 ####append (arr1|str, arr2|str|num) -> [x]
 ------
 **Description**:
+
 A prefix-style `Array.prototype.concat` wrapper.
+
 **Pseudo Type Signature**: 
+
 Give argument 1 an Array or a String; Give argument 2 an Array or a String or a Number; Get an Array of variables.
+
 **Example Usage**:
+
 ```js
 lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append('a','b'); /* 'ab' */
 ```
