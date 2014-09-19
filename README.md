@@ -2,7 +2,7 @@
 
 Lists is a library of higher-order functions for working with collections (arrays/objects/strings). The library was inspired directly from Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
 
-Use the unorthodox style of passing functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming, which means "retaining no information about previous events".
+Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming, which means "retaining no information about previous events".
 
 **Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity, that is, this library provides an alternative toolbox by which to solve computational problems. This library should be sufficient for most projects but I recommend using UnderscoreJS for problems that require ~1 million iterations until ListsJS provides iterative definitions of its functions.
 
@@ -33,7 +33,7 @@ map ([x], f) -> [x]
 
 * 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]|str
 * 2. [`head`](#head) (arr|str) -> x
-* 3. last (arr|str) -> [x]
+* 3. [`last`](#last) (arr|str) -> x
 * 4. init (arr|str) -> [x]
 * 5. tail (arr|str) -> [x]
 * 6. nil (arr|str) -> boolean
@@ -183,6 +183,19 @@ lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append
 
 ```js
 lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('ab'); /* 'a' */
+```
+------
+<a name='last'/>
+####last (arr|str) -> x
+------
+**Description**: Retreive the last element of an Array or a String.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable;
+
+**Example Usage**:
+
+```js
+lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('ab'); /* 'b' */
 ```
 ------
 
