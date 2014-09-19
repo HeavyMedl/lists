@@ -10,7 +10,7 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 ##Install
 
 -----
-##Submodules
+##Components
 
 -----
 #Contents
@@ -44,7 +44,7 @@ map ([x], f) -> [x]
 
 * 7. [`map`](#map) ([x], f) -> [x]
 * 8. [`rev`](#rev) ([x]) -> [x]
-* 9. intersperse :: a -> [a] -> [a]
+* 9. [`intersperse`](#intersperse) (x,[x]) -> arr|str
 * 10. intercalate :: [a] -> [[a]] -> [a]
 * 11. transpose :: [[a]] -> [[a]]
 * 12. subsequences :: [a] -> [[a]]
@@ -274,4 +274,19 @@ lists.rev('abc'); /* ['c','b','a'] */
 lists.rev([[2],[3]]) /* [[3],[2]] */
 ```
 ------
+<a name='intersperse'/>
+####intersperse (x,[x]) -> arr|str
+------
+**Description**: Array obtained by interspersing a given separator between elements of a given Array.
 
+**Pseudo Type Signature**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.intersperse(1,[5,5,5]); /* [5,1,5,1,5] */
+lists.intersperse([1,2],[[6],[6]]) /* [[6],[1,2],[6]] */
+lists.rev('b','ac') /* 'abc' */
+lists.intersperse({b:2},[{a:1},{b:3}]) /* [{a:1},{b:2},{c:3}] */
+```
+------
