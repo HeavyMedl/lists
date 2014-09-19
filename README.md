@@ -20,7 +20,7 @@ Use the unorthodox style of passing functions to functions to functions to solve
 
 **List Transformations**
 
-* 7. map :: (a -> b) [a] -> [b]
+* 7. map :: (a -> b) -> [a] -> [b]
 * 8. rev :: [a] -> [a]
 * 9. intersperse :: a -> [a] -> [a]
 * 10. intercalate :: [a] -> [[a]] -> [a]
