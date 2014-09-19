@@ -7,6 +7,12 @@ Use the unorthodox style of passing functions to functions to functions to solve
 **Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity, that is, this library provides an alternative toolbox by which to solve computational problems. This library should be sufficient for most projects but I recommend using UnderscoreJS for problems that require ~1 million iterations until ListsJS provides iterative definitions of its functions.
 
 -----
+##Install
+
+-----
+##Submodules
+
+-----
 #Contents
 
 Legend - **arr | []** : Array, **obj | {}** : Object, **str** : String, **num** : Number, **f** : Function, **x** : variable;
@@ -155,4 +161,11 @@ map ([x], f) -> [x]
 ------
 <a name='append'/>
 ####append (arr1|str, arr2|str|num) -> [x]
+------
+**Pseudo Type Signature**: Give argument 1 an Array or a String; Give argument 2 an Array or a String or a Number; Get an Array of variables.
+
+**Example Usage**:
+```js
+lists.append([1],[2])
+```
 
