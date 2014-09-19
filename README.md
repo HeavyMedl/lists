@@ -34,8 +34,8 @@ map ([x], f) -> [x]
 * 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]|str
 * 2. [`head`](#head) (arr|str) -> x
 * 3. [`last`](#last) (arr|str) -> x
-* 4. init (arr|str) -> [x]
-* 5. tail (arr|str) -> [x]
+* 4. [`init`](#init) (arr|str) -> [x]
+* 5. [`tail`](#tail) (arr|str) -> [x]
 * 6. nil (arr|str) -> boolean
 
 -----
@@ -196,6 +196,32 @@ lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('a
 
 ```js
 lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('ab'); /* 'b' */
+```
+------
+<a name='init'/>
+####init (arr|str) -> [x]
+------
+**Description**: Retreive all elements except the last of an Array or a String.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables;
+
+**Example Usage**:
+
+```js
+lists.init([1,2,3]); /* [1,2] */ lists.init([[1,2],[3,4],[5,6]]); /* [[1,2],[3,4]]  */ lists.init('abc'); /* ['a','b'] */
+```
+------
+<a name='tail'/>
+####tail (arr|str) -> [x]
+------
+**Description**: Retreive all elements except the first of an Array or a String.
+
+**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables;
+
+**Example Usage**:
+
+```js
+lists.tail([1,2,3]); /* [2,3] */ lists.init([[1,2],[3,4],[5,6]]); /* [[3,4],[5,6]]  */ lists.init('abc'); /* ['b','c'] */
 ```
 ------
 
