@@ -23,7 +23,7 @@ map ([x], f) -> [x]
 
 -----
 
-**Basic Functions**
+[####Basic Functions](#contents)
 
 * 1. [`append`](#contents) (arr1|str, arr2|str|num) -> [x]
 * 2. head (arr|str) -> x
