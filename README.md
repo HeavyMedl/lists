@@ -25,7 +25,7 @@ map ([x], f) -> [x]
 
 **Basic Functions**
 
-* 1. [`append`](#Contents) (arr1|str, arr2|str|num) -> [x]
+* 1. [`append`](#contents) (arr1|str, arr2|str|num) -> [x]
 * 2. head (arr|str) -> x
 * 3. last (arr|str) -> [x]
 * 4. init (arr|str) -> [x]
