@@ -160,7 +160,7 @@ map ([x], f) -> [x]
 
 ------
 <a name='append'/>
-####append (arr1|str, arr2|str|num) -> [x]|str
+###append (arr1|str, arr2|str|num) -> [x]|str
 ------
 **Description**: A prefix-style `Array.prototype.concat` wrapper.
 
@@ -173,7 +173,7 @@ lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append
 ```
 ------
 <a name='head'/>
-####head (arr|str) -> x
+###head (arr|str) -> x
 ------
 **Description**: Retreive the first element of an Array or a String.
 
@@ -186,7 +186,7 @@ lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('a
 ```
 ------
 <a name='last'/>
-####last (arr|str) -> x
+###last (arr|str) -> x
 ------
 **Description**: Retreive the last element of an Array or a String.
 
@@ -199,7 +199,7 @@ lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('a
 ```
 ------
 <a name='init'/>
-####init (arr|str) -> [x]
+###init (arr|str) -> [x]
 ------
 **Description**: Retreive all elements except the last of an Array or a String.
 
@@ -214,7 +214,7 @@ lists.init('abc'); /* ['a','b'] */
 ```
 ------
 <a name='tail'/>
-####tail (arr|str) -> [x]
+###tail (arr|str) -> [x]
 ------
 **Description**: Retreive all elements except the first of an Array or a String.
 
@@ -229,7 +229,7 @@ lists.tail('abc'); /* ['b','c'] */
 ```
 ------
 <a name='nil'/>
-####nil (arr|str) -> boolean
+###nil (arr|str) -> boolean
 ------
 **Description**: Test if an Array or String is empty.
 
@@ -243,7 +243,7 @@ lists.nil('a'); /* false */ lists.nil([1]); /* false */
 ```
 ------
 <a name='map'/>
-####map ([x], f) -> [x]
+###map ([x], f) -> [x]
 ------
 **Description**: Array obtained by applying f to each element of [x]
 
@@ -260,7 +260,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ```
 ------
 <a name='rev'/>
-####rev ([x]) -> [x]
+###rev ([x]) -> [x]
 ------
 **Description**: Array obtained by reversing the order of each element.
 
@@ -275,7 +275,7 @@ lists.rev([[2],[3]]) /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
-####intersperse (x,[x]) -> arr|str
+###intersperse (x,[x]) -> arr|str
 ------
 **Description**: Array obtained by interspersing a given separator between elements of a given Array.
 
@@ -291,7 +291,7 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ```
 ------
 <a name='intercalate'/>
-####intercalate ([x],[[x]]) -> [x]
+###intercalate ([x],[[x]]) -> [x]
 ------
 **Description**: Array obtained by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
 
@@ -306,7 +306,7 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```
 ------
 <a name='transpose'/>
-####transpose ([[x]]) -> [[x]]
+###transpose ([[x]]) -> [[x]]
 ------
 **Description**: Array obtained by transposing rows and columns of given arguments.
 
