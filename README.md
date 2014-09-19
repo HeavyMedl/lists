@@ -208,7 +208,9 @@ lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('a
 **Example Usage**:
 
 ```js
-lists.init([1,2,3]); /* [1,2] */ lists.init([[1,2],[3,4],[5,6]]); /* [[1,2],[3,4]]  */ lists.init('abc'); /* ['a','b'] */
+lists.init([1,2,3]); /* [1,2] */ 
+lists.init([[1,2],[3,4],[5,6]]); /* [[1,2],[3,4]]  */ 
+lists.init('abc'); /* ['a','b'] */
 ```
 ------
 <a name='tail'/>
@@ -221,7 +223,9 @@ lists.init([1,2,3]); /* [1,2] */ lists.init([[1,2],[3,4],[5,6]]); /* [[1,2],[3,4
 **Example Usage**:
 
 ```js
-lists.tail([1,2,3]); /* [2,3] */ lists.init([[1,2],[3,4],[5,6]]); /* [[3,4],[5,6]]  */ lists.init('abc'); /* ['b','c'] */
+lists.tail([1,2,3]); /* [2,3] */ 
+lists.init([[1,2],[3,4],[5,6]]); /* [[3,4],[5,6]]  */ 
+lists.init('abc'); /* ['b','c'] */
 ```
 ------
 
