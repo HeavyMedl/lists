@@ -157,6 +157,7 @@ map ([x], f) -> [x]
 * 92. flip
 * 93. compare
 * 94. GT,LT,EQ
+* 95. bubbleSort
 
 ------
 <a name='append'/>
