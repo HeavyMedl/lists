@@ -169,7 +169,9 @@ map ([x], f) -> [x]
 **Example Usage**:
 
 ```js
-lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append('a','b'); /* 'ab' */
+lists.append([1],[2]); /* [1,2] */ 
+lists.append([1],2); /* [1,2] */ 
+lists.append('a','b'); /* 'ab' */
 ```
 ------
 <a name='head'/>
@@ -182,7 +184,9 @@ lists.append([1],[2]); /* [1,2] */ lists.append([1],2); /* [1,2] */ lists.append
 **Example Usage**:
 
 ```js
-lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('ab'); /* 'a' */
+lists.head([1,2]); /* 1 */ 
+lists.head([[1,2],[3,4]]); /* [1,2]  */ 
+lists.head('ab'); /* 'a' */
 ```
 ------
 <a name='last'/>
@@ -195,7 +199,9 @@ lists.head([1,2]); /* 1 */ lists.head([[1,2],[3,4]]); /* [1,2]  */ lists.head('a
 **Example Usage**:
 
 ```js
-lists.last([1,2]); /* 2 */ lists.last([[1,2],[3,4]]); /* [3,4]  */ lists.last('ab'); /* 'b' */
+lists.last([1,2]); /* 2 */ 
+lists.last([[1,2],[3,4]]); /* [3,4] */ 
+lists.last('ab'); /* 'b' */
 ```
 ------
 <a name='init'/>
@@ -238,8 +244,11 @@ lists.tail('abc'); /* ['b','c'] */
 **Example Usage**:
 
 ```js
-lists.nil(null); /* true */ lists.nil([]); /* true */ lists.nil(''); /* true */ 
-lists.nil('a'); /* false */ lists.nil([1]); /* false */
+lists.nil(null); /* true */ 
+lists.nil([]); /* true */ 
+lists.nil(''); /* true */ 
+lists.nil('a'); /* false */ 
+lists.nil([1]); /* false */
 ```
 ------
 <a name='map'/>
