@@ -58,7 +58,7 @@ map ([x], f) -> [x]
 * 15. [`foldl1`](#foldl1) ([x]|str,f) -> x
 * 16. [`foldr`](#foldr) (x,[x]|str,f) -> x
 * 17. [`foldr1`](#foldr1) ([x]|str,f) -> x
-* 18. [`flatten`](#flatten) || [`flatten`](#flatten)concat ([[x]]|[str]) -> [x]|str
+* 18. [`flatten`](#flatten) || [`concat`](#flatten) ([[x]]|[str]) -> [x]|str
 * 19. concatMap :: (a -> [b]) -> [a] -> [b]
 * 20. and :: [Bool] -> Bool
 * 21. or :: [Bool] -> Bool
