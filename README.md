@@ -476,6 +476,6 @@ lists.and([5>1,false,5>3]) /* false */
 
 ```js
 lists.or([5<1,5<2,5>3]) /* true */
-lists.and([5<1,5<2,5<3]) /* false */
+lists.or([5<1,5<2,5<3]) /* false */
 ```
 ------
