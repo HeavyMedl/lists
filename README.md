@@ -62,7 +62,7 @@ map ([x], f) -> [x]
 * 19. [`concatMap`](#concatMap) ([x]|str,f) -> [x]|str
 * 20. [`and`](#and) ([boolean]) -> boolean
 * 21. [`or`](#or) ([boolean]) -> boolean
-* 22. any :: (a -> Bool) -> [a] -> Bool
+* 22. [`any`](#any) ([x]|str,f) -> boolean
 * 23. all :: (a -> Bool) -> [a] -> Bool
 * 24. sum :: Num a => [a] -> a
 * 25. product :: Num a => [a] -> a
@@ -477,5 +477,19 @@ lists.and([5>1,false,5>3]) /* false */
 ```js
 lists.or([5<1,5<2,5>3]) /* true */
 lists.or([5<1,5<2,5<3]) /* false */
+```
+------
+<a name='any'/>
+###any ([x]|str,f) -> boolean
+------
+**Description**: Boolean obtained by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.
+
+**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.any([1,2,3],function(x) { return x < .5}) /* false */
+lists.any('abc',function(x) { return x == 'b'}) /* true */
 ```
 ------
