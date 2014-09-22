@@ -54,10 +54,10 @@ map ([x], f) -> [x]
 
 **Reducing Lists (folds)**
 
-* 14. [`foldl`](#foldl) :: (b -> a -> b) -> b -> [a] -> b
-* 15. foldl1 :: (a -> a -> a) -> [a] -> a
-* 16. foldr :: (a -> b -> b) -> b -> [a] -> b
-* 17. foldr1 :: (a -> a -> a) -> [a] -> a
+* 14. [`foldl`](#foldl) (x,[x]|str,f) -> x
+* 15. [`foldl1`](#foldl1) ([x]|str,f) -> x
+* 16. [`foldr`](#foldr) (x,[x]|str,f) -> x
+* 17. [`foldr1`](#foldr1) ([x]|str,f) -> x
 * 18. flatten || concat :: [[a]] -> [a]
 * 19. concatMap :: (a -> [b]) -> [a] -> [b]
 * 20. and :: [Bool] -> Bool
@@ -373,5 +373,49 @@ lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 reverse = lists.foldl('','abc',function(x,y){ return y.concat(x); }); /* "cba" */
 sum = lists.foldl(0,[1,2,3],function(x,y){ return x+y; }); /* 6 */
 lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4] */
+```
+------
+<a name='foldl1'/>
+###foldl1 ([x]|str,f) -> x
+------
+**Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
+
+**Signature Definition**:  Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.
+
+**Example Usage**:
+
+```js
+lists.foldl1('abc',function(x,y){ return x.concat(y).toUpperCase() }) /* "ABC" */
+lists.foldl1([1,2,3],function(x,y){ return x+y }) /* 6 */
+```
+------
+<a name='foldr'/>
+###foldr (x,[x]|str,f) -> x
+------
+**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
+
+**Signature Definition**: Give arg 1 a starting variable (usually a right identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.
+
+**Example Usage**:
+
+```js
+lists.foldr(0,[1,2,3,4],function(x,y){ return x-y; }) /* -2 */
+lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){ 
+  return lists.rev(x).concat(y); 
+}); /* [4,3,1,2,5,6] */
+```
+------
+<a name='foldr1'/>
+###foldr1 ([x]|str,f) -> x
+------
+**Description**: Variant of foldr without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
+
+**Signature Definition**: Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.
+
+**Example Usage**:
+
+```js
+lists.foldr1([1,2,3],function(x,y){ return x - y }) /* 3 */
+lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc" */
 ```
 ------
