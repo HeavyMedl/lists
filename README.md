@@ -47,8 +47,10 @@ map ([x], f) -> [x]
 * 9. [`intersperse`](#intersperse) (x,[x]) -> arr|str
 * 10. [`intercalate`](#intercalate) ([x],[[x]]) -> [x]
 * 11. [`transpose`](#transpose) ([[x]]) -> [[x]]
-* 12. [`subsequences`](#subsequences) :: [a] -> [[a]]
-* 13. permutations :: [a] -> [[a]]
+* 12. [`subsequences`](#subsequences) ([x]) -> [[x]]
+* 13. [`permutations`](#permutations) ([x]|str) -> [[x]]|[str]
+
+-----
 
 **Reducing Lists (folds)**
 
@@ -166,7 +168,7 @@ map ([x], f) -> [x]
 ------
 **Description**: A prefix-style `Array.prototype.concat` wrapper.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.
+**Signature Definition**: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.
 
 **Example Usage**:
 
@@ -181,7 +183,7 @@ lists.append('a','b'); /* 'ab' */
 ------
 **Description**: Retreive the first element of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable.
+**Signature Definition**: Give arg 1 an Array or a String; Get a variable.
 
 **Example Usage**:
 
@@ -196,7 +198,7 @@ lists.head('ab'); /* 'a' */
 ------
 **Description**: Retreive the last element of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a variable.
+**Signature Definition**: Give arg 1 an Array or a String; Get a variable.
 
 **Example Usage**:
 
@@ -211,7 +213,7 @@ lists.last('ab'); /* 'b' */
 ------
 **Description**: Retreive all elements except the last of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -226,7 +228,7 @@ lists.init('abc'); /* ['a','b'] */
 ------
 **Description**: Retreive all elements except the first of an Array or a String.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -241,7 +243,7 @@ lists.tail('abc'); /* ['b','c'] */
 ------
 **Description**: Test if an Array or String is empty.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get a boolean.
+**Signature Definition**: Give arg 1 an Array or a String; Get a boolean.
 
 **Example Usage**:
 
@@ -258,7 +260,7 @@ lists.nil([1]); /* false */
 ------
 **Description**: Array obtained by applying f to each element of [x]
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.
 
 **Example Usage**:
 
@@ -275,7 +277,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ------
 **Description**: Array obtained by reversing the order of each element.
 
-**Pseudo Type Signature**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -290,7 +292,7 @@ lists.rev([[2],[3]]) /* [[3],[2]] */
 ------
 **Description**: Array obtained by interspersing a given separator between elements of a given Array.
 
-**Pseudo Type Signature**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
 
 **Example Usage**:
 
@@ -306,7 +308,7 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ------
 **Description**: Array obtained by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
 
-**Pseudo Type Signature**: Give arg 1 an Array of variables; Give arg 2 an Array of Arrays of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of variables; Give arg 2 an Array of Arrays of variables; Get an Array of variables.
 
 **Example Usage**:
 
@@ -321,7 +323,7 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ------
 **Description**: Array obtained by transposing rows and columns of given arguments.
 
-**Pseudo Type Signature**: Give arg 1 an Array of Arrays of variables; Get an Array of Arrays of variables.
+**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of Arrays of variables.
 
 **Example Usage**:
 
@@ -335,12 +337,26 @@ lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]
 ------
 **Description**: Array of Arrays of all subsequences of a given arguement.
 
-**Pseudo Type Signature**: Give arg 1 an Array of variables; Get an Array of Arrays of variables.
+**Signature Definition**: Give arg 1 an Array of variables; Get an Array of Arrays of variables.
 
 **Example Usage**:
 
 ```js
 lists.subsequences('ab') /* [[],['a'],['b'],['ab']] */
 lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
+```
+------
+<a name='permutations'/>
+###permutations ([x]|str) -> [[x]]|[str]
+------
+**Description**: Array of Arrays or Array of Strings obtained by getting all permutations of a given arguement.
+
+**Signature Definition**: Give arg 1 an Array of variables or a String; Get an Array of Arrays of variables or an Array of Strings respectively.
+
+**Example Usage**:
+
+```js
+lists.permutations('abc') /* ["abc","acb","bac","bca","cab","cba"] */
+lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */
 ```
 ------
