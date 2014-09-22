@@ -54,7 +54,7 @@ map ([x], f) -> [x]
 
 **Reducing Lists (folds)**
 
-* 14. foldl :: (b -> a -> b) -> b -> [a] -> b
+* 14. [`foldl`](#foldl) :: (b -> a -> b) -> b -> [a] -> b
 * 15. foldl1 :: (a -> a -> a) -> [a] -> a
 * 16. foldr :: (a -> b -> b) -> b -> [a] -> b
 * 17. foldr1 :: (a -> a -> a) -> [a] -> a
@@ -358,5 +358,20 @@ lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```js
 lists.permutations('abc') /* ["abc","acb","bac","bca","cab","cba"] */
 lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */
+```
+------
+<a name='foldl'/>
+###foldl (x,[x]|str,f) -> x
+------
+**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
+
+**Signature Definition**: Give arg 1 a starting variable (usually a left identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.
+
+**Example Usage**:
+
+```js
+reverse = lists.foldl('','abc',function(x,y){ return y.concat(x); }); /* "cba" */
+sum = lists.foldl(0,[1,2,3],function(x,y){ return x+y; }); /* 6 */
+lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4] */
 ```
 ------
