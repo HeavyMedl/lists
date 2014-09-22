@@ -59,7 +59,7 @@ map ([x], f) -> [x]
 * 16. [`foldr`](#foldr) (x,[x]|str,f) -> x
 * 17. [`foldr1`](#foldr1) ([x]|str,f) -> x
 * 18. [`flatten`](#flatten) || [`concat`](#flatten) ([[x]]|[str]) -> [x]|str
-* 19. concatMap :: (a -> [b]) -> [a] -> [b]
+* 19. [`concatMap`](#concatMap) (a -> [b]) -> [a] -> [b]
 * 20. and :: [Bool] -> Bool
 * 21. or :: [Bool] -> Bool
 * 22. any :: (a -> Bool) -> [a] -> Bool
@@ -431,5 +431,23 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc
 ```js
 lists.flatten(['abc']); /* 'abc' */
 lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
+```
+------
+<a name='concatMap'/>
+###concatMap ([x]|str,f) -> [x]|str
+------
+**Description**: Array of variables or String obtained by mapping a function over an Array of variables or String and flattening the result
+
+**Signature Definition**: Give arg 1 an Array of variables or a String; Give arg 2 a function that produces an Array of variables or String; Get an Array of variables or a String
+
+**Example Usage**:
+
+```js
+lists.concatMap(['bang','bang'], function(x){ return x+'!'}) /* "bang!bang!" */
+lists.concatMap([1,2,3],function(x){ return [[x*2,x/2]] }) /* [[2,0.5],[4,1],[6,1.5]] */
+lists.concatMap([{a:1},{b:2}], function(x){
+  x.prop = 'hi';  
+  return [x]
+}); /* [{a:1,prop:"hi"},{b:2,prop:"hi"}]*/
 ```
 ------
