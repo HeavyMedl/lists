@@ -58,7 +58,7 @@ map ([x], f) -> [x]
 * 15. [`foldl1`](#foldl1) ([x]|str,f) -> x
 * 16. [`foldr`](#foldr) (x,[x]|str,f) -> x
 * 17. [`foldr1`](#foldr1) ([x]|str,f) -> x
-* 18. flatten || concat :: [[a]] -> [a]
+* 18. [`flatten`](#flatten) || [`flatten`](#flatten)concat ([[x]]|[str]) -> [x]|str
 * 19. concatMap :: (a -> [b]) -> [a] -> [b]
 * 20. and :: [Bool] -> Bool
 * 21. or :: [Bool] -> Bool
@@ -417,5 +417,19 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 ```js
 lists.foldr1([1,2,3],function(x,y){ return x - y }) /* 3 */
 lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc" */
+```
+------
+<a name='flatten'/>
+###flatten || concat ([[x]]|[str]) -> [x]|str
+------
+**Description**: Flatten an Array of Arrays or an Array of String into an Array of variables or String respectively.
+
+**Signature Definition**: Give arg 1 an Array of Arrays of variables or a String; Get an Array of variables or a String
+
+**Example Usage**:
+
+```js
+lists.flatten(['abc']); /* 'abc' */
+lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
 ```
 ------
