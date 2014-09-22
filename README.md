@@ -60,8 +60,8 @@ map ([x], f) -> [x]
 * 17. [`foldr1`](#foldr1) ([x]|str,f) -> x
 * 18. [`flatten`](#flatten) || [`concat`](#flatten) ([[x]]|[str]) -> [x]|str
 * 19. [`concatMap`](#concatMap) ([x]|str,f) -> [x]|str
-* 20. and :: [Bool] -> Bool
-* 21. or :: [Bool] -> Bool
+* 20. [`and`](#and) ([boolean]) -> boolean
+* 21. [`or`](#or) ([boolean]) -> boolean
 * 22. any :: (a -> Bool) -> [a] -> Bool
 * 23. all :: (a -> Bool) -> [a] -> Bool
 * 24. sum :: Num a => [a] -> a
@@ -449,5 +449,33 @@ lists.concatMap([{a:1},{b:2}], function(x){
   x.prop = 'hi';  
   return [x]
 }); /* [{a:1,prop:"hi"},{b:2,prop:"hi"}]*/
+```
+------
+<a name='and'/>
+###and ([boolean]) -> boolean
+------
+**Description**: Boolean obtained by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
+
+**Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.and([5>1,5>2,5>3]) /* true */
+lists.and([5>1,false,5>3]) /* false */
+```
+------
+<a name='or'/>
+###or ([boolean]) -> boolean
+------
+**Description**: Boolean obtained by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
+
+**Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.or([5<1,5<2,5>3]) /* true */
+lists.and([5<1,5<2,5<3]) /* false */
 ```
 ------
