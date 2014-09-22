@@ -47,7 +47,7 @@ map ([x], f) -> [x]
 * 9. [`intersperse`](#intersperse) (x,[x]) -> arr|str
 * 10. [`intercalate`](#intercalate) ([x],[[x]]) -> [x]
 * 11. [`transpose`](#transpose) ([[x]]) -> [[x]]
-* 12. subsequences :: [a] -> [[a]]
+* 12. [`subsequences`](#subsequences) :: [a] -> [[a]]
 * 13. permutations :: [a] -> [[a]]
 
 **Reducing Lists (folds)**
@@ -158,6 +158,7 @@ map ([x], f) -> [x]
 * 93. compare
 * 94. GT,LT,EQ
 * 95. bubbleSort
+* 96. mergeSort
 
 ------
 <a name='append'/>
@@ -327,5 +328,19 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```js
 lists.transpose([[1,2,4],[3,4,4]]) /* [[1,3],[2,4],[4,4]] */
 lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]] */
+```
+------
+<a name='subsequences'/>
+###subsequences ([x]) -> [[x]]
+------
+**Description**: Array of Arrays of all subsequences of a given arguement.
+
+**Pseudo Type Signature**: Give arg 1 an Array of variables; Get an Array of Arrays of variables.
+
+**Example Usage**:
+
+```js
+lists.subsequences('ab') /* [[],['a'],['b'],['ab']] */
+lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```
 ------
