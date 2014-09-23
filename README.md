@@ -79,10 +79,10 @@ map ([x], f) -> [x]
 * 31. [`scanr`](#scanr) (x,[x]|str,f) -> [x]
 * 32. [`mapAccumL`](#mapAccumL) (x,[x]|str,f) -> [x, [x]]
 * 33. [`mapAccumR`](#mapAccumR) (x,[x]|str,f) -> [x, [x]]
-* 34. [`iterate`](#iterate) 
-* 35. replicate :: Int -> a -> [a]
-* 36. cycle :: [a] -> [a]
-* 37. unfold || unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
+* 34. [`iterate`](#iterate) (x,num,f) -> [x] 
+* 35. [`replicate`](#replicate) (x,num) -> [x]
+* 36. [`cycle`](#cycle) ([x]|str,num) -> [x]|str
+* 37. [`unfold`](#unfold) (f,f,f,x) -> [x]|str
 
 **Sublists**
 
@@ -626,7 +626,7 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 <a name='mapAccumL'/>
 ###mapAccumL (x,[x]|str,f) -> [x, [x]]
 ------
-**Description**: Builds a Array containing an accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.
+**Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.
 
 **Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
 
@@ -641,7 +641,7 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 <a name='mapAccumR'/>
 ###mapAccumR (x,[x]|str,f) -> [x, [x]]
 ------
-**Description**: Builds a Array containing an accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
+**Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
 
 **Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
 
@@ -654,17 +654,66 @@ lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ```
 ------
 <a name='iterate'/>
-###iterate (x,x,f) -> [x]
+###iterate (x,num,f) -> [x]
 ------
-**Description**: Builds a Array containing the 
+**Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
+**Signature Definition**: Give arg 1 a variable; Give arg 2 a number; Give arg 3 a function; Get an Array of variables.
 
 **Example Usage**:
 
 ```js
-lists.mapAccumR(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [34,52,40]]*/
-lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}) /* [2, [2,4,8]] */
-lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
+lists.iterate('a',3,function(ch){return ch+'b'}) /* ["a","ab","abb"] */
+lists.iterate([1,2],3,function(xs){return lists.intersperse(6,xs)}) /* [[1,2],[1,6,2],[1,6,6,6,2]] */
+lists.iterate(2,4,function(x){ return x*x }) /* [2,4,16,256] */
+```
+------
+<a name='replicate'/>
+###replicate (x,num) -> [x]
+------
+**Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
+
+**Signature Definition**: Give arg 1 a variable; Give arg 2 a number; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.replicate(5,5) /* [5,5,5,5,5] */
+lists.replicate([1,2],2) /* [[1,2],[1,2]] */
+lists.replicate({a:1},2) /* [{a:1},{a:2}] */
+```
+------
+<a name='cycle'/>
+###cycle ([x]|str,num) -> [x]|str
+------
+**Description**: Builds an Array containing replications of flattened [x] until the stop (num) reaches 0.
+
+**Signature Definition**: Give arg 1 an Array of variables; Give arg 2 a number; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.cycle('abc',3) /* "abcabcabc" */
+lists.cycle([1,2],2) /* [1,2,1,2] */
+```
+------
+<a name='unfold'/>
+###unfold (f,f,f,x) -> [x]|str
+------
+**Description**: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 [x] to the recursive call of unfold calling Arg 3 (f) to Arg 4 [x]. This is a corecursive anamorphism.
+
+**Signature Definition**: Give arg 1 an function (predicate); Give arg 2 a function; Give arg 3 a function; Give arg 4 a variable (seed).
+
+**Example Usage**:
+
+```js
+function chop8(xs){ 
+  return l.unfold(l.nil,l.part(l.take,8,_),l.part(l.drop,8,_),xs) 
+}
+chop8([1,2,3,4,5,6,7,8,9]) /* [[1,2,3,4,5,6,7,8],[9]] */
+function unfoldMap(xs,f) { 
+  return lists.unfold(lists.nil, lists.part(lists.pipe(f,lists.head),_), lists.part(lists.tail,_), xs)
+}
+unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 ```
 ------
