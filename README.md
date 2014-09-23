@@ -1,6 +1,6 @@
 # [ l [ i [ s ] t ] s ] -- ***pending release***
 
-Lists is a library of higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
+Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
 
 Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming, which means "retaining no information about previous events".
 
@@ -79,7 +79,7 @@ map ([x], f) -> [x]
 * 31. [`scanr`](#scanr) (x,[x]|str,f) -> [x]
 * 32. [`mapAccumL`](#mapAccumL) (x,[x]|str,f) -> [x, [x]]
 * 33. [`mapAccumR`](#mapAccumR) (x,[x]|str,f) -> [x, [x]]
-* 34. iterate :: (a -> a) -> a -> [a]
+* 34. [`iterate`](#iterate) 
 * 35. replicate :: Int -> a -> [a]
 * 36. cycle :: [a] -> [a]
 * 37. unfold || unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
@@ -642,6 +642,21 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ###mapAccumR (x,[x]|str,f) -> [x, [x]]
 ------
 **Description**: Builds a Array containing an accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
+
+**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
+
+**Example Usage**:
+
+```js
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [34,52,40]]*/
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}) /* [2, [2,4,8]] */
+lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
+```
+------
+<a name='iterate'/>
+###iterate (x,x,f) -> [x]
+------
+**Description**: Builds a Array containing the 
 
 **Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
 
