@@ -66,14 +66,16 @@ map ([x], f) -> [x]
 * 23. [`all`](#all) ([x]|str,f) -> boolean
 * 24. [`sum`](#sum) ([num]) -> num
 * 25. [`product`](#product) ([num]) -> num
-* 26. maximum :: Ord a => [a] -> a
-* 27. minimum :: Ord a => [a] -> a
-* 28. maxList :: Ord a => [a] -> a
-* 29. minList :: Ord a => [a] -> a
+* 26. [`maximum`](#maximum) ([num]) -> num
+* 27. [`minimum`](#minimum) ([num]) -> num
+* 28. [`maxList`](#maxList) ([[x]]) -> [x]
+* 29. [`minList`](#minList) ([[x]]) -> [x]
+
+-----
 
 **Building Lists**
 
-* 30. scanl :: (b -> a -> b) -> b -> [a] -> [b]
+* 30. [`scanl`](#scanl) :: (b -> a -> b) -> b -> [a] -> [b]
 * 31. scanr :: (a -> b -> b) -> b -> [a] -> [b]
 * 32. mapAccumL :: (acc -> x -> (acc,y)) -> acc -> [x] -> (acc, [y])
 * 33. iterate :: (a -> a) -> a -> [a]
@@ -258,7 +260,7 @@ lists.nil([1]); /* false */
 <a name='map'/>
 ###map ([x], f) -> [x]
 ------
-**Description**: Array obtained by applying f to each element of [x]
+**Description**: Array returned by applying f to each element of [x]
 
 **Signature Definition**: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.
 
@@ -275,7 +277,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 <a name='rev'/>
 ###rev ([x]) -> [x]
 ------
-**Description**: Array obtained by reversing the order of each element.
+**Description**: Array returned by reversing the order of each element.
 
 **Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
 
@@ -290,7 +292,7 @@ lists.rev([[2],[3]]) /* [[3],[2]] */
 <a name='intersperse'/>
 ###intersperse (x,[x]) -> arr|str
 ------
-**Description**: Array obtained by interspersing a given separator between elements of a given Array.
+**Description**: Array returned by interspersing a given separator between elements of a given Array.
 
 **Signature Definition**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
 
@@ -306,7 +308,7 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 <a name='intercalate'/>
 ###intercalate ([x],[[x]]) -> [x]
 ------
-**Description**: Array obtained by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
+**Description**: Array returned by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
 
 **Signature Definition**: Give arg 1 an Array of variables; Give arg 2 an Array of Arrays of variables; Get an Array of variables.
 
@@ -321,7 +323,7 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 <a name='transpose'/>
 ###transpose ([[x]]) -> [[x]]
 ------
-**Description**: Array obtained by transposing rows and columns of given arguments.
+**Description**: Array returned by transposing rows and columns of given arguments.
 
 **Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of Arrays of variables.
 
@@ -349,7 +351,7 @@ lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 <a name='permutations'/>
 ###permutations ([x]|str) -> [[x]]|[str]
 ------
-**Description**: Array of Arrays or Array of Strings obtained by getting all permutations of a given arguement.
+**Description**: Array of Arrays or Array of Strings returned by getting all permutations of a given arguement.
 
 **Signature Definition**: Give arg 1 an Array of variables or a String; Get an Array of Arrays of variables or an Array of Strings respectively.
 
@@ -436,7 +438,7 @@ lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
 <a name='concatMap'/>
 ###concatMap ([x]|str,f) -> [x]|str
 ------
-**Description**: Array of variables or String obtained by mapping a function over an Array of variables or String and flattening the result
+**Description**: Array of variables or String returned by mapping a function over an Array of variables or String and flattening the result
 
 **Signature Definition**: Give arg 1 an Array of variables or a String; Give arg 2 a function that produces an Array of variables or String; Get an Array of variables or a String
 
@@ -454,7 +456,7 @@ lists.concatMap([{a:1},{b:2}], function(x){
 <a name='and'/>
 ###and ([boolean]) -> boolean
 ------
-**Description**: Boolean obtained by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
+**Description**: Boolean returned by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
 
 **Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
 
@@ -468,7 +470,7 @@ lists.and([5>1,false,5>3]) /* false */
 <a name='or'/>
 ###or ([boolean]) -> boolean
 ------
-**Description**: Boolean obtained by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
+**Description**: Boolean returned by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
 
 **Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
 
@@ -482,7 +484,7 @@ lists.or([5<1,5<2,5<3]) /* false */
 <a name='any'/>
 ###any ([x]|str,f) -> boolean
 ------
-**Description**: Boolean obtained by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.
+**Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.
 
 **Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
 
@@ -496,7 +498,7 @@ lists.any('abc',function(x) { return x == 'b'}) /* true */
 <a name='all'/>
 ###all ([x]|str,f) -> boolean
 ------
-**Description**: Boolean obtained by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.
+**Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.
 
 **Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
 
@@ -511,7 +513,7 @@ lists.all([2,4], function(x) { return x%2==0 }) /* true */
 <a name='sum'/>
 ###sum ([num]) -> num
 ------
-**Description**: Number obtained by summing the numbers of an Array together.
+**Description**: Number returned by summing the numbers of an Array together.
 
 **Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
 
@@ -525,7 +527,7 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 <a name='product'/>
 ###product ([num]) -> num
 ------
-**Description**: Number obtained by computing the product of the numbers of an Array.
+**Description**: Number returned by computing the product of the numbers of an Array.
 
 **Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
 
@@ -534,5 +536,75 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 ```js
 lists.product([2,4,6]) /* 48 */
 lists.product([.2,.4,.6]) /* 0.04800000000000001 */
+```
+------
+<a name='maximum'/>
+###maximum ([num]) -> num
+------
+**Description**: Maximum number returned from numbers of an Array.
+
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+
+**Example Usage**:
+
+```js
+lists.maximum([2,4,6]) /* 6 */
+lists.maximum([.2,.4,.6]) /* .6 */
+```
+------
+<a name='minimum'/>
+###minimum ([num]) -> num
+------
+**Description**: Minimum number returned from numbers of an Array.
+
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+
+**Example Usage**:
+
+```js
+lists.minimum([2,4,6]) /* 2 */
+lists.minimum([.2,.4,.6]) /* .2 */
+```
+------
+<a name='maxList'/>
+###maxList ([[x]]) -> [x]
+------
+**Description**: Array of variables with the maximum length returned from an Array of Arrays of variables.
+
+**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.maxList([[1],[2,3]]) /* [2,3] */
+lists.maxList([[1,2],[3]]) /* [1,2] */
+```
+------
+<a name='minList'/>
+###minList ([[x]]) -> [x]
+------
+**Description**: Array of variables with the minimum length returned from an Array of Arrays of variables.
+
+**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.minList([[],[1]]) /* [] */
+lists.minList([[1,2],[3]]) /* [3] */
+```
+------
+<a name='scanl'/>
+###scanl ([[x]]) -> [x]
+------
+**Description**: Array of variables with the minimum length returned from an Array of Arrays of variables.
+
+**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.minList([[],[1]]) /* [] */
+lists.minList([[1,2],[3]]) /* [3] */
 ```
 ------
