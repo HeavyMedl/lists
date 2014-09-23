@@ -711,8 +711,13 @@ function chop8(xs){
   return l.unfold(l.nil,l.part(l.take,8,_),l.part(l.drop,8,_),xs) 
 }
 chop8([1,2,3,4,5,6,7,8,9]) /* [[1,2,3,4,5,6,7,8],[9]] */
+
 function unfoldMap(xs,f) { 
-  return lists.unfold(lists.nil, lists.part(lists.pipe(f,lists.head),_), lists.part(lists.tail,_), xs)
+  return lists.unfold(
+    lists.nil, 
+    lists.part(lists.pipe(f,lists.head),_), 
+    lists.part(lists.tail,_), 
+    xs)
 }
 unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 ```
