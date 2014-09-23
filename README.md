@@ -63,9 +63,9 @@ map ([x], f) -> [x]
 * 20. [`and`](#and) ([boolean]) -> boolean
 * 21. [`or`](#or) ([boolean]) -> boolean
 * 22. [`any`](#any) ([x]|str,f) -> boolean
-* 23. all :: (a -> Bool) -> [a] -> Bool
-* 24. sum :: Num a => [a] -> a
-* 25. product :: Num a => [a] -> a
+* 23. [`all`](#all) ([x]|str,f) -> boolean
+* 24. [`sum`](#sum) ([num]) -> num
+* 25. [`product`](#product) ([num]) -> num
 * 26. maximum :: Ord a => [a] -> a
 * 27. minimum :: Ord a => [a] -> a
 * 28. maxList :: Ord a => [a] -> a
@@ -491,5 +491,48 @@ lists.or([5<1,5<2,5<3]) /* false */
 ```js
 lists.any([1,2,3],function(x) { return x < .5}) /* false */
 lists.any('abc',function(x) { return x == 'b'}) /* true */
+```
+------
+<a name='all'/>
+###all ([x]|str,f) -> boolean
+------
+**Description**: Boolean obtained by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.
+
+**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.all('abc', function(x){ return x==x.toUpperCase() }) /* false */
+lists.all([2,4], function(x) { return x > 3 }) /* false */
+lists.all([2,4], function(x) { return x%2==0 }) /* true */
+```
+------
+<a name='sum'/>
+###sum ([num]) -> num
+------
+**Description**: Number obtained by summing the numbers of an Array together.
+
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+
+**Example Usage**:
+
+```js
+lists.sum([2,4,6]) /* 12 */
+lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
+```
+------
+<a name='product'/>
+###sum ([num]) -> num
+------
+**Description**: Number obtained by computing the product of the numbers of an Array.
+
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+
+**Example Usage**:
+
+```js
+lists.product([2,4,6]) /* 48 */
+lists.product([.2,.4,.6]) /* 0.04800000000000001 */
 ```
 ------
