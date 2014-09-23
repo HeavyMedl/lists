@@ -75,94 +75,95 @@ map ([x], f) -> [x]
 
 **Building Lists**
 
-* 30. [`scanl`](#scanl) :: (b -> a -> b) -> b -> [a] -> [b]
-* 31. scanr :: (a -> b -> b) -> b -> [a] -> [b]
+* 30. [`scanl`](#scanl) (x,[x]|str,f) -> [x]
+* 31. [`scanr`](#scanr) (x,[x]|str,f) -> [x]
 * 32. mapAccumL :: (acc -> x -> (acc,y)) -> acc -> [x] -> (acc, [y])
-* 33. iterate :: (a -> a) -> a -> [a]
-* 34. replicate :: Int -> a -> [a]
-* 35. cycle :: [a] -> [a]
-* 36. unfold || unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
+* 33. mapAccumR :: (acc -> x -> (acc,y)) -> acc -> [x] -> (acc, [y])
+* 34. iterate :: (a -> a) -> a -> [a]
+* 35. replicate :: Int -> a -> [a]
+* 36. cycle :: [a] -> [a]
+* 37. unfold || unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 
 **Sublists**
 
-* 37. take :: Int -> [a] -> [a]
-* 38. drop :: Int -> [a] -> [a]
-* 39. splitAt :: Int -> [a] -> ([a], [a])
-* 40. takeWhile :: (a -> Bool) -> [a] -> [a]
-* 41. dropWhile :: (a -> Bool) -> [a] -> [a]
-* 42. span :: (a -> Bool) -> [a] -> ([a], [a])
-* 43. break :: (a -> Bool) -> [a] -> ([a], [a])
-* 44. stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
-* 45. group :: Eq a => [a] -> [[a]]
-* 46. inits :: [a] -> [[a]]
-* 47. tails :: [a] -> [[a]]
-* 48. isPrefixOf :: Eq a => [a] -> [a] -> Bool
-* 49. isSuffixOf :: Eq a => [a] -> [a] -> Bool
-* 50. isInfixOf :: Eq a => [a] -> [a] -> Bool
+* 38. take :: Int -> [a] -> [a]
+* 39. drop :: Int -> [a] -> [a]
+* 40. splitAt :: Int -> [a] -> ([a], [a])
+* 41. takeWhile :: (a -> Bool) -> [a] -> [a]
+* 42. dropWhile :: (a -> Bool) -> [a] -> [a]
+* 43. span :: (a -> Bool) -> [a] -> ([a], [a])
+* 44. break :: (a -> Bool) -> [a] -> ([a], [a])
+* 45. stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+* 46. group :: Eq a => [a] -> [[a]]
+* 47. inits :: [a] -> [[a]]
+* 48. tails :: [a] -> [[a]]
+* 49. isPrefixOf :: Eq a => [a] -> [a] -> Bool
+* 50. isSuffixOf :: Eq a => [a] -> [a] -> Bool
+* 51. isInfixOf :: Eq a => [a] -> [a] -> Bool
 
 **Searching Lists**
 
-* 51. elem :: Eq a => a -> [a] -> Bool
-* 52. notElem :: Eq a => a -> [a] -> Bool
-* 53. lookup :: Eq a => a -> [(a, b)] -> Maybe b
-* 54. find :: (a -> Bool) -> [a] -> Maybe a
-* 55. filter :: (a -> Bool) -> [a] -> [a]
-* 56. partition :: (a -> Bool) -> [a] -> ([a], [a])
+* 52. elem :: Eq a => a -> [a] -> Bool
+* 53. notElem :: Eq a => a -> [a] -> Bool
+* 54. lookup :: Eq a => a -> [(a, b)] -> Maybe b
+* 55. find :: (a -> Bool) -> [a] -> Maybe a
+* 56. filter :: (a -> Bool) -> [a] -> [a]
+* 57. partition :: (a -> Bool) -> [a] -> ([a], [a])
 
 **Indexing Lists**
 
-* 57. bang :: [a] -> Int -> a
-* 58. elemIndex :: Eq a => a -> [a] -> Maybe Int
-* 59. elemIndices :: Eq a => a -> [a] -> [Int]
-* 60. findIndex :: (a -> Bool) -> [a] -> Maybe Int
-* 61. findIndices :: (a -> Bool) -> [a] -> [Int]
+* 58. bang :: [a] -> Int -> a
+* 59. elemIndex :: Eq a => a -> [a] -> Maybe Int
+* 60. elemIndices :: Eq a => a -> [a] -> [Int]
+* 61. findIndex :: (a -> Bool) -> [a] -> Maybe Int
+* 62. findIndices :: (a -> Bool) -> [a] -> [Int]
 
 **Zipping and Unzipping Lists**
 
-* 62. zip || unzip :: [[a],[b],..,[n]] -> [[a,b,..,n]]
-* 63. zipWith :: (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
+* 63. zip || unzip :: [[a],[b],..,[n]] -> [[a,b,..,n]]
+* 64. zipWith :: (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
 
 **Special Lists**
 
-* 64. lines :: String -> [String]
-* 65. words :: String -> [String]
-* 66. unlines :: [String] -> String
-* 67. unwords :: [String] -> String
-* 68. nub :: Eq a => [a] -> [a]
-* 69. delete :: Eq a => a -> [a] -> [a]
-* 70. difference || diff :: Eq a => [a] -> [a] -> [a]
-* 71. union :: Eq a => [a] -> [a] -> [a]
-* 72. intersect :: Eq a => [a] -> [a] -> [a]
-* 73. sort :: Ord a => [a] -> [a]
-* 74. insert :: Ord a => a -> [a] -> [a]
+* 65. lines :: String -> [String]
+* 66. words :: String -> [String]
+* 67. unlines :: [String] -> String
+* 68. unwords :: [String] -> String
+* 69. nub :: Eq a => [a] -> [a]
+* 70. delete :: Eq a => a -> [a] -> [a]
+* 71. difference || diff :: Eq a => [a] -> [a] -> [a]
+* 72. union :: Eq a => [a] -> [a] -> [a]
+* 73. intersect :: Eq a => [a] -> [a] -> [a]
+* 74. sort :: Ord a => [a] -> [a]
+* 75. insert :: Ord a => a -> [a] -> [a]
 
 **Generalized Functions**
 
-* 75. nubBy :: (a -> a -> Bool) -> [a] -> [a]
-* 76. deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
-* 77. deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
-* 78. unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
-* 79. intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
-* 80. groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
-* 81. sortBy :: (a -> a -> Ordering) -> [a] -> [a]
-* 82. insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
-* 83. maximumBy :: (a -> a -> Ordering) -> [a] -> a
-* 84. minimumBy :: (a -> a -> Ordering) -> [a] -> a
+* 76. nubBy :: (a -> a -> Bool) -> [a] -> [a]
+* 77. deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+* 78. deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+* 79. unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+* 80. intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+* 81. groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+* 82. sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+* 83. insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+* 84. maximumBy :: (a -> a -> Ordering) -> [a] -> a
+* 85. minimumBy :: (a -> a -> Ordering) -> [a] -> a
 
 **Extra Functional Utilities**
 
-* 85. genericExcludeChar
-* 86. forEach || each
-* 87. keys
-* 88. enumeration || enum
-* 89. composeL || pipe
-* 90. composeR || sequence
-* 91. partial || part
-* 92. flip
-* 93. compare
-* 94. GT,LT,EQ
-* 95. bubbleSort
-* 96. mergeSort
+* 86. genericExcludeChar
+* 87. forEach || each
+* 88. keys
+* 89. enumeration || enum
+* 90. composeL || pipe
+* 91. composeR || sequence
+* 92. partial || part
+* 93. flip
+* 94. compare
+* 95. GT,LT,EQ
+* 96. bubbleSort
+* 97. mergeSort
 
 ------
 <a name='append'/>
@@ -595,16 +596,58 @@ lists.minList([[1,2],[3]]) /* [3] */
 ```
 ------
 <a name='scanl'/>
-###scanl ([[x]]) -> [x]
+###scanl (x,[x]|str,f) -> [x]
 ------
-**Description**: Array of variables with the minimum length returned from an Array of Arrays of variables.
+**Description**: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
 
-**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
 
 **Example Usage**:
 
 ```js
-lists.minList([[],[1]]) /* [] */
-lists.minList([[1,2],[3]]) /* [3] */
+lists.scanl('.','abc',function(x,y){return x + y}) /* [".",".a",".ab",".abc"] */
+lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
+```
+------
+<a name='scanl'/>
+###scanl (x,[x]|str,f) -> [x]
+------
+**Description**: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+
+**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.scanl('.','abc',function(x,y){return x + y }) /* [".",".a",".ab",".abc"] */
+lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
+```
+------
+<a name='scanr'/>
+###scanl (x,[x]|str,f) -> [x]
+------
+**Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+
+**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.scanr('.','abc',function(x,y){return x + y}) /* ["abc.","bc.","c.","."] */
+lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
+```
+------
+<a name='mapAccumL'/>
+###scanl (x,[x]|str,f) -> [x]
+------
+**Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+
+**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.scanr('.','abc',function(x,y){return x + y}) /* ["abc.","bc.","c.","."] */
+lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 ```
 ------
