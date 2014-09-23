@@ -609,22 +609,8 @@ lists.scanl('.','abc',function(x,y){return x + y}) /* [".",".a",".ab",".abc"] */
 lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
 ```
 ------
-<a name='scanl'/>
-###scanl (x,[x]|str,f) -> [x]
-------
-**Description**: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
-
-**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
-
-**Example Usage**:
-
-```js
-lists.scanl('.','abc',function(x,y){return x + y }) /* [".",".a",".ab",".abc"] */
-lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
-```
-------
 <a name='scanr'/>
-###scanl (x,[x]|str,f) -> [x]
+###scanr (x,[x]|str,f) -> [x]
 ------
 **Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
 
@@ -638,7 +624,7 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 ```
 ------
 <a name='mapAccumL'/>
-###scanl (x,[x]|str,f) -> [x]
+###mapAccumL (x,[x]|str,f) -> [x]
 ------
 **Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
 
