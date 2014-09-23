@@ -523,7 +523,7 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 ```
 ------
 <a name='product'/>
-###sum ([num]) -> num
+###product ([num]) -> num
 ------
 **Description**: Number obtained by computing the product of the numbers of an Array.
 
