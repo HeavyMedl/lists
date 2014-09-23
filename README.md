@@ -77,8 +77,8 @@ map ([x], f) -> [x]
 
 * 30. [`scanl`](#scanl) (x,[x]|str,f) -> [x]
 * 31. [`scanr`](#scanr) (x,[x]|str,f) -> [x]
-* 32. mapAccumL :: (acc -> x -> (acc,y)) -> acc -> [x] -> (acc, [y])
-* 33. mapAccumR :: (acc -> x -> (acc,y)) -> acc -> [x] -> (acc, [y])
+* 32. [`mapAccumL`](#mapAccumL) (x,[x]|str,f) -> [x, [x]]
+* 33. [`mapAccumR`](#mapAccumR) (x,[x]|str,f) -> [x, [x]]
 * 34. iterate :: (a -> a) -> a -> [a]
 * 35. replicate :: Int -> a -> [a]
 * 36. cycle :: [a] -> [a]
@@ -624,16 +624,32 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 ```
 ------
 <a name='mapAccumL'/>
-###mapAccumL (x,[x]|str,f) -> [x]
+###mapAccumL (x,[x]|str,f) -> [x, [x]]
 ------
-**Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+**Description**: Builds a Array containing an accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.
 
-**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
 
 **Example Usage**:
 
 ```js
-lists.scanr('.','abc',function(x,y){return x + y}) /* ["abc.","bc.","c.","."] */
-lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
+lists.mapAccumL(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [10,28,88]]*/
+lists.mapAccumL(5, [2,4,8], function(x,y){ return [y,y]}) /* [8, [2,4,8]] */
+lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
+```
+------
+<a name='mapAccumR'/>
+###mapAccumR (x,[x]|str,f) -> [x, [x]]
+------
+**Description**: Builds a Array containing an accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
+
+**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
+
+**Example Usage**:
+
+```js
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [34,52,40]]*/
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}) /* [2, [2,4,8]] */
+lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ```
 ------
