@@ -784,7 +784,7 @@ lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 ------
 **Description**: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
 
-**Signature Definition**: Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.
+**Signature Definition**: <span class='sig-def'>Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.</span>
 
 **Example Usage**:
 
