@@ -89,8 +89,8 @@ map ([x], f) -> [x]
 * 38. [`take`](#take) (num,[x]|str) -> [x]
 * 39. [`drop`](#drop) (num,[x]|str) -> [x]
 * 40. [`splitAt`](#splitAt) (num,[x]|str) -> [[x],[x]]
-* 41. takeWhile :: (a -> Bool) -> [a] -> [a]
-* 42. dropWhile :: (a -> Bool) -> [a] -> [a]
+* 41. [`takeWhile`](#takeWhile) (f,[x]|str) -> [x]
+* 42. [`dropWhile`](#dropWhile) (f,[x]|str) -> [x]
 * 43. span :: (a -> Bool) -> [a] -> ([a], [a])
 * 44. break :: (a -> Bool) -> [a] -> ([a], [a])
 * 45. stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
@@ -686,7 +686,7 @@ lists.replicate({a:1},2) /* [{a:1},{a:2}] */
 <a name='cycle'/>
 ###cycle ([x]|str,num) -> [x]|str
 ------
-**Description**: Builds an Array containing replications of flattened [x] until the stop (num) reaches 0.
+**Description**: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.
 
 **Signature Definition**: Give arg 1 an Array of variables; Give arg 2 a number; Get an Array of variables.
 
@@ -700,7 +700,7 @@ lists.cycle([1,2],2) /* [1,2,1,2] */
 <a name='unfold'/>
 ###unfold (f,f,f,x) -> [x]|str
 ------
-**Description**: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 [x] to the recursive call of unfold calling Arg 3 (f) to Arg 4 [x]. This is a corecursive anamorphism.
+**Description**: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
 
 **Signature Definition**: Give arg 1 an function (predicate); Give arg 2 a function; Give arg 3 a function; Give arg 4 a variable (seed).
 
@@ -725,9 +725,9 @@ unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 <a name='take'/>
 ###take (num,[x]|str) -> [x]
 ------
-**Description**: Array of variables returned by taking the first n (num) elements from [x].
+**Description**: Array of variables returned by taking the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -739,9 +739,9 @@ lists.take(2,'abc') /* ["a","b"] */
 <a name='drop'/>
 ###drop (num,[x]|str) -> [x]
 ------
-**Description**: Array of variables returned by dropping the first n (num) elements from [x].
+**Description**: Array of variables returned by dropping the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -753,14 +753,44 @@ lists.drop(2,'abc') /* ["c"] */
 <a name='splitAt'/>
 ###splitAt (num,[x]|str) -> [[x],[x]]
 ------
-**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables. The second contains the rest.
+**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables or String. The second contains the rest.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of two Arrays of variables.
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of two Arrays of variables.
 
 **Example Usage**:
 
 ```js
 lists.splitAt(2,'abc') /* [['a','b'],['c']] */
 lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
+```
+------
+<a name='takeWhile'/>
+###takeWhile (f,[x]|str) -> [x]
+------
+**Description**: Array of variables returned by taking elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
+
+**Signature Definition**: Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.takeWhile([1,2,3,1], function(x){ return x < 3 }) /* [1,2] */
+lists.takeWhile([1], function(x){ return x < 2 }) /* [1] */
+lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
+```
+------
+<a name='dropWhile'/>
+###dropWhile (f,[x]|str) -> [x]
+------
+**Description**: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
+
+**Signature Definition**: <p class='sig-def'>Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.</p>
+
+**Example Usage**:
+
+```js
+lists.dropWhile([1,2,3,4], function(x){ return x < 3 }) /* [3,4] */
+lists.dropWhile([1], function(x){ return x < 2 }) /* [2] */
+lists.dropWhile('aabc', function(x){ return x =='a' }) /* ["b","c"] */
 ```
 ------
