@@ -31,12 +31,12 @@ map ([x], f) -> [x]
 
 **Basic Functions**
 
-* 1. [`append`](#append) (arr1|str, arr2|str|num) -> [x]|str
-* 2. [`head`](#head) (arr|str) -> x
-* 3. [`last`](#last) (arr|str) -> x
-* 4. [`init`](#init) (arr|str) -> [x]
-* 5. [`tail`](#tail) (arr|str) -> [x]
-* 6. [`nil`](#nil) (arr|str) -> boolean
+* 1. [`append`](#append) - (arr1|str, arr2|str|num) -> [x]|str
+* 2. [`head`](#head) - (arr|str) -> x
+* 3. [`last`](#last) - (arr|str) -> x
+* 4. [`init`](#init) - (arr|str) -> [x]
+* 5. [`tail`](#tail) - (arr|str) -> [x]
+* 6. [`nil`](#nil) - (arr|str) -> boolean
 
 -----
 
