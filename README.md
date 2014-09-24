@@ -169,7 +169,7 @@ map ([x], f) -> [x]
 <a name='append'/>
 ###append (arr1|str, arr2|str|num) -> [x]|str
 ------
-**Description**: A prefix-style `Array.prototype.concat` wrapper.
+**Description**: A prefix-style Array.prototype.concat wrapper.
 
 **Signature Definition**: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.
 
