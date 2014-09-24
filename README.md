@@ -86,9 +86,9 @@ map ([x], f) -> [x]
 
 **Sublists**
 
-* 38. take :: Int -> [a] -> [a]
-* 39. drop :: Int -> [a] -> [a]
-* 40. splitAt :: Int -> [a] -> ([a], [a])
+* 38. [`take`](#take) (num,[x]|str) -> [x]
+* 39. [`drop`](#drop) (num,[x]|str) -> [x]
+* 40. [`splitAt`](#splitAt) (num,[x]|str) -> [[x],[x]]
 * 41. takeWhile :: (a -> Bool) -> [a] -> [a]
 * 42. dropWhile :: (a -> Bool) -> [a] -> [a]
 * 43. span :: (a -> Bool) -> [a] -> ([a], [a])
@@ -720,5 +720,47 @@ function unfoldMap(xs,f) {
     xs)
 }
 unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
+```
+------
+<a name='take'/>
+###take (num,[x]|str) -> [x]
+------
+**Description**: Array of variables returned by taking the first n (num) elements from [x].
+
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.take(2,[1,2,3]) /* [1,2] */
+lists.take(2,'abc') /* ["a","b"] */
+```
+------
+<a name='drop'/>
+###drop (num,[x]|str) -> [x]
+------
+**Description**: Array of variables returned by dropping the first n (num) elements from [x].
+
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of variables.
+
+**Example Usage**:
+
+```js
+lists.drop(2,[1,2,3]) /* [3] */
+lists.drop(2,'abc') /* ["c"] */
+```
+------
+<a name='splitAt'/>
+###splitAt (num,[x]|str) -> [[x],[x]]
+------
+**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables. The second contains the rest.
+
+**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables; Get an Array of two Arrays of variables.
+
+**Example Usage**:
+
+```js
+lists.splitAt(2,'abc') /* [['a','b'],['c']] */
+lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 ```
 ------
