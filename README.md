@@ -779,7 +779,7 @@ lists.takeWhile([1], function(x){ return x < 2 }) /* [1] */
 lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 ```
 ------
-<a name='dropWhile'/><span class='drp'></span>
+<a name='dropWhile'/><span class='drp'>drp</span>
 ###dropWhile (f,[x]|str) -> [x]
 ------
 **Description**: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
