@@ -84,6 +84,8 @@ map : [x] -> f -> [x]
 * 36. [`cycle`](#cycle) : [x]|str -> num -> [x]|str
 * 37. [`unfold`](#unfold) : f -> f -> f -> x -> [x]|str
 
+-----
+
 **Sublists**
 
 * 38. [`take`](#take) : num -> [x]|str -> [x]
