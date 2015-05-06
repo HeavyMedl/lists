@@ -4,7 +4,7 @@ Lists is a library of JavaScript higher-order functions for working with arrays 
 
 Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming, which means "retaining no information about previous events".
 
-**Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity, that is, this library provides an alternative toolbox by which to solve problems. This library should be sufficient for most projects but I recommend using UnderscoreJS for problems that require ~1 million iterations until ListsJS provides iterative definitions of its functions.
+**Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity. This library provides an alternative toolbox by which to solve problems. This library should be sufficient for most projects but remember to monitor your heap memory in the case of excessive iterations.
 
 -----
 ##Install
@@ -17,80 +17,80 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 
 Legend - **arr | []** : Array, **obj | {}** : Object, **str** : String, **num** : Number, **f** : Function, **x** : variable;
 
-A{ **1.** } B{ **tail** } C{ **(arr|str) -> [x]** }
+A{ **1.** } B{ **tail** } C{ **arr|str -> [x]** }
 * A. Function number
 * B. Function name
 * C. Pseudo type signature
- * Argument options (arr|str): tail takes an Array or a String
- * (arr|str) -> [x] : tail produces an array of variables ([x])
+ * Arguments **arr|str**: The function **tail** takes an Array or a String. The output of a function will always be the last variable in the function's type signature.
+ * arr|str -> [x] : tail produces an array of variables ([x])
 
-map ([x], f) -> [x]
+map : [x] -> f -> [x]
 * map takes an array of variables and a function and produces an array of variables
 
 -----
 
 **Basic Functions**
 
-* 1. [`append`](#append) : (arr1|str, arr2|str|num) -> [x]|str
-* 2. [`head`](#head) : (arr|str) -> x
-* 3. [`last`](#last) : (arr|str) -> x
-* 4. [`init`](#init) : (arr|str) -> [x]
-* 5. [`tail`](#tail) : (arr|str) -> [x]
-* 6. [`nil`](#nil) : (arr|str) -> boolean
+* 1. [`append`](#append) : arr|str -> arr|str|num -> [x]|str
+* 2. [`head`](#head) : arr|str -> x
+* 3. [`last`](#last) : arr|str -> x
+* 4. [`init`](#init) : arr|str -> [x]
+* 5. [`tail`](#tail) : arr|str -> [x]
+* 6. [`nil`](#nil) : arr|str -> boolean
 
 -----
 
 **List Transformations**
 
-* 7. [`map`](#map) : ([x], f) -> [x]
-* 8. [`rev`](#rev) : ([x]) -> [x]
-* 9. [`intersperse`](#intersperse) : (x,[x]) -> arr|str
-* 10. [`intercalate`](#intercalate) : ([x],[[x]]) -> [x]
-* 11. [`transpose`](#transpose) : ([[x]]) -> [[x]]
-* 12. [`subsequences`](#subsequences) : ([x]) -> [[x]]
-* 13. [`permutations`](#permutations) : ([x]|str) -> [[x]]|[str]
+* 7. [`map`](#map) : [x] -> f -> [x]
+* 8. [`rev`](#rev) : [x] -> [x]
+* 9. [`intersperse`](#intersperse) : x -> [x] -> arr|str
+* 10. [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
+* 11. [`transpose`](#transpose) : [[x]] -> [[x]]
+* 12. [`subsequences`](#subsequences) : [x] -> [[x]]
+* 13. [`permutations`](#permutations) : [x]|str -> [[x]]|[str]
 
 -----
 
 **Reducing Lists (folds)**
 
-* 14. [`foldl`](#foldl) : (x,[x]|str,f) -> x
-* 15. [`foldl1`](#foldl1) : ([x]|str,f) -> x
-* 16. [`foldr`](#foldr) : (x,[x]|str,f) -> x
-* 17. [`foldr1`](#foldr1) : ([x]|str,f) -> x
-* 18. [`flatten`](#flatten) || [`concat`](#flatten) : ([[x]]|[str]) -> [x]|str
-* 19. [`concatMap`](#concatMap) : ([x]|str,f) -> [x]|str
-* 20. [`and`](#and) : ([boolean]) -> boolean
-* 21. [`or`](#or) : ([boolean]) -> boolean
-* 22. [`any`](#any) : ([x]|str,f) -> boolean
-* 23. [`all`](#all) : ([x]|str,f) -> boolean
-* 24. [`sum`](#sum) : ([num]) -> num
-* 25. [`product`](#product) : ([num]) -> num
-* 26. [`maximum`](#maximum) : ([num]) -> num
-* 27. [`minimum`](#minimum) : ([num]) -> num
-* 28. [`maxList`](#maxList) : ([[x]]) -> [x]
-* 29. [`minList`](#minList) : ([[x]]) -> [x]
+* 14. [`foldl`](#foldl) : x -> [x]|str -> f -> x
+* 15. [`foldl1`](#foldl1) : [x]|str -> f -> x
+* 16. [`foldr`](#foldr) : x -> [x]|str -> f -> x
+* 17. [`foldr1`](#foldr1) : [x]|str -> f -> x
+* 18. [`flatten`](#flatten) || [`concat`](#flatten) : [[x]]|[str] -> [x]|str
+* 19. [`concatMap`](#concatMap) : [x]|str -> f -> [x]|str
+* 20. [`and`](#and) : [boolean] -> boolean
+* 21. [`or`](#or) : [boolean] -> boolean
+* 22. [`any`](#any) : [x]|str -> f -> boolean
+* 23. [`all`](#all) : [x]|str -> f -> boolean
+* 24. [`sum`](#sum) : [num] -> num
+* 25. [`product`](#product) : [num] -> num
+* 26. [`maximum`](#maximum) : [num] -> num
+* 27. [`minimum`](#minimum) : [num] -> num
+* 28. [`maxList`](#maxList) : [[x]] -> [x]
+* 29. [`minList`](#minList) : [[x]] -> [x]
 
 -----
 
 **Building Lists**
 
-* 30. [`scanl`](#scanl) : (x,[x]|str,f) -> [x]
-* 31. [`scanr`](#scanr) : (x,[x]|str,f) -> [x]
-* 32. [`mapAccumL`](#mapAccumL) : (x,[x]|str,f) -> [x, [x]]
-* 33. [`mapAccumR`](#mapAccumR) : (x,[x]|str,f) -> [x, [x]]
-* 34. [`iterate`](#iterate) : (x,num,f) -> [x] 
-* 35. [`replicate`](#replicate) : (x,num) -> [x]
-* 36. [`cycle`](#cycle) : ([x]|str,num) -> [x]|str
-* 37. [`unfold`](#unfold) : (f,f,f,x) -> [x]|str
+* 30. [`scanl`](#scanl) : x -> [x]|str -> f -> [x]
+* 31. [`scanr`](#scanr) : x -> [x]|str -> f -> [x]
+* 32. [`mapAccumL`](#mapAccumL) : x -> [x]|str -> f -> [x, [x]]
+* 33. [`mapAccumR`](#mapAccumR) : x -> [x]|str -> f -> [x, [x]]
+* 34. [`iterate`](#iterate) : x -> num -> f -> [x] 
+* 35. [`replicate`](#replicate) : x -> num -> [x]
+* 36. [`cycle`](#cycle) : [x]|str -> num -> [x]|str
+* 37. [`unfold`](#unfold) : f -> f -> f -> x -> [x]|str
 
 **Sublists**
 
-* 38. [`take`](#take) : (num,[x]|str) -> [x]
-* 39. [`drop`](#drop) : (num,[x]|str) -> [x]
-* 40. [`splitAt`](#splitAt) : (num,[x]|str) -> [[x],[x]]
-* 41. [`takeWhile`](#takeWhile) : (f,[x]|str) -> [x]
-* 42. [`dropWhile`](#dropWhile) : (f,[x]|str) -> [x]
+* 38. [`take`](#take) : num -> [x]|str -> [x]
+* 39. [`drop`](#drop) : num -> [x]|str -> [x]
+* 40. [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
+* 41. [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
+* 42. [`dropWhile`](#dropWhile) : f -> [x]|str -> [x]
 * 43. span : (a -> Bool) -> [a] -> ([a], [a])
 * 44. break : (a -> Bool) -> [a] -> ([a], [a])
 * 45. stripPrefix : Eq a => [a] -> [a] -> Maybe [a]
@@ -167,7 +167,7 @@ map ([x], f) -> [x]
 
 ------
 <a name='append'/>
-###append : (arr1|str, arr2|str|num) -> [x]|str
+###append : arr|str -> arr|str|num -> [x]|str
 ------
 **Description**: A prefix-style Array.prototype.concat wrapper.
 
@@ -182,7 +182,7 @@ lists.append('a','b'); /* 'ab' */
 ```
 ------
 <a name='head'/>
-###head : (arr|str) -> x
+###head : arr|str -> x
 ------
 **Description**: Retreive the first element of an Array or a String.
 
@@ -197,7 +197,7 @@ lists.head('ab'); /* 'a' */
 ```
 ------
 <a name='last'/>
-###last : (arr|str) -> x
+###last : arr|str -> x
 ------
 **Description**: Retreive the last element of an Array or a String.
 
@@ -212,7 +212,7 @@ lists.last('ab'); /* 'b' */
 ```
 ------
 <a name='init'/>
-###init : (arr|str) -> [x]
+###init : arr|str -> [x]
 ------
 **Description**: Retreive all elements except the last of an Array or a String.
 
