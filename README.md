@@ -93,9 +93,9 @@ map : [x] -> f -> [x]
 * 40. [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
 * 41. [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
 * 42. [`dropWhile`](#dropWhile) : f -> [x]|str -> [x]
-* 43. span : (a -> Bool) -> [a] -> ([a], [a])
-* 44. break : (a -> Bool) -> [a] -> ([a], [a])
-* 45. stripPrefix : Eq a => [a] -> [a] -> Maybe [a]
+* 43. [`span`](#span) : arr|str -> f -> [[x], [x]|str]
+* 44. [`break`](#break) : arr|str -> f -> [[x], [x]|str]
+* 45. [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
 * 46. group : Eq a => [a] -> [[a]]
 * 47. inits : [a] -> [[a]]
 * 48. tails : [a] -> [[a]]
@@ -794,5 +794,49 @@ lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 lists.dropWhile([1,2,3,4], function(x){ return x < 3 }) /* [3,4] */
 lists.dropWhile([1], function(x){ return x < 2 }) /* [2] */
 lists.dropWhile('aabc', function(x){ return x =='a' }) /* ["b","c"] */
+```
+------
+<a name='span'/>
+###span : arr|str -> f -> [[x], [x]|str]
+------
+**Description**: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that satisfy a predicate function f. The second element is the rest of the list.
+
+**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).
+
+**Example Usage**:
+
+```js
+lists.span([1,2,3,4], function(x){return x < 3}) /* [[1,2],[3,4]] */
+lists.span("abcde", function(x){return x == "a"}) /* [["a"],["b","c","d","e"]] */
+lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[{a:2},{a:2}],[{b:2}]] */
+```
+------
+<a name='break'/>
+###break : arr|str -> f -> [[x], [x]|str]
+------
+**Description**: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that do not satisfy a predicate function f. The second element is the rest of the list.
+
+**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).
+
+**Example Usage**:
+
+```js
+lists.break([1,2,3,4], function(x){return x < 3}) /* [[],[1,2,3,4]] */
+lists.break("abcde", function(x){return x == "a"}) /* [[],"abcde"] */
+lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[],[{a:2},{a:2},{b:2}]] */
+```
+------
+<a name='stripPrefix'/>
+###stripPrefix : [num]|str -> [num]|str -> [num]|[str]
+------
+**Description**: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or String; Give arg 2 an Array of Numbers or String; Get an Array of Numbers or an Array of Strings.
+
+**Example Usage**:
+
+```js
+lists.stripPrefix("abc","abcabce") /* ["a","b","c","e"] */
+lists.stripPrefix([1,2],[1,2,3,4]) /* [3,4] */
 ```
 ------
