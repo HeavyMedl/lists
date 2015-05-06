@@ -2,7 +2,7 @@
 
 Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
 
-Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming, which means "retaining no information about previous events".
+Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming.
 
 **Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity. This library provides an alternative toolbox by which to solve problems. This library should be sufficient for most projects but remember to monitor your heap memory in the case of excessive iterations.
 
@@ -227,7 +227,7 @@ lists.init('abc'); /* ['a','b'] */
 ```
 ------
 <a name='tail'/>
-###tail : (arr|str) -> [x]
+###tail : arr|str -> [x]
 ------
 **Description**: Retreive all elements except the first of an Array or a String.
 
@@ -242,7 +242,7 @@ lists.tail('abc'); /* ['b','c'] */
 ```
 ------
 <a name='nil'/>
-###nil : (arr|str) -> boolean
+###nil : arr|str -> boolean
 ------
 **Description**: Test if an Array or String is empty.
 
@@ -259,7 +259,7 @@ lists.nil([1]); /* false */
 ```
 ------
 <a name='map'/>
-###map : ([x], f) -> [x]
+###map : [x] -> f -> [x]
 ------
 **Description**: Array returned by applying f to each element of [x]
 
@@ -276,7 +276,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ```
 ------
 <a name='rev'/>
-###rev : ([x]) -> [x]
+###rev : [x] -> [x]
 ------
 **Description**: Array returned by reversing the order of each element.
 
@@ -291,9 +291,9 @@ lists.rev([[2],[3]]) /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
-###intersperse : (x,[x]) -> arr|str
+###intersperse : x -> [x] -> arr|str
 ------
-**Description**: Array returned by interspersing a given separator between elements of a given Array.
+**Description**: Array or String returned by interspersing a given separator between elements of a given Array.
 
 **Signature Definition**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
 
@@ -307,7 +307,7 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ```
 ------
 <a name='intercalate'/>
-###intercalate : ([x],[[x]]) -> [x]
+###intercalate : [x] -> [[x]] -> [x]
 ------
 **Description**: Array returned by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
 
@@ -322,7 +322,7 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```
 ------
 <a name='transpose'/>
-###transpose : ([[x]]) -> [[x]]
+###transpose : [[x]] -> [[x]]
 ------
 **Description**: Array returned by transposing rows and columns of given arguments.
 
@@ -336,7 +336,7 @@ lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]
 ```
 ------
 <a name='subsequences'/>
-###subsequences : ([x]) -> [[x]]
+###subsequences : [x] -> [[x]]
 ------
 **Description**: Array of Arrays of all subsequences of a given arguement.
 
@@ -350,7 +350,7 @@ lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```
 ------
 <a name='permutations'/>
-###permutations : ([x]|str) -> [[x]]|[str]
+###permutations : [x]|str -> [[x]]|[str]
 ------
 **Description**: Array of Arrays or Array of Strings returned by getting all permutations of a given arguement.
 
@@ -364,7 +364,7 @@ lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
 ------
 <a name='foldl'/>
-###foldl : (x,[x]|str,f) -> x
+###foldl : x -> [x]|str -> f -> x
 ------
 **Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
 
@@ -379,7 +379,7 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4]
 ```
 ------
 <a name='foldl1'/>
-###foldl1 : ([x]|str,f) -> x
+###foldl1 : [x]|str -> f -> x
 ------
 **Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
 
@@ -393,7 +393,7 @@ lists.foldl1([1,2,3],function(x,y){ return x+y }) /* 6 */
 ```
 ------
 <a name='foldr'/>
-###foldr : (x,[x]|str,f) -> x
+###foldr : x -> [x]|str -> f -> x
 ------
 **Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
 
@@ -409,7 +409,7 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 ```
 ------
 <a name='foldr1'/>
-###foldr1 : ([x]|str,f) -> x
+###foldr1 : [x]|str -> f -> x
 ------
 **Description**: Variant of foldr without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
 
@@ -423,7 +423,7 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc
 ```
 ------
 <a name='flatten'/>
-###flatten || concat : ([[x]]|[str]) -> [x]|str
+###flatten || concat : [[x]]|[str] -> [x]|str
 ------
 **Description**: Flatten an Array of Arrays or an Array of String into an Array of variables or String respectively.
 
@@ -437,7 +437,7 @@ lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
 ```
 ------
 <a name='concatMap'/>
-###concatMap : ([x]|str,f) -> [x]|str
+###concatMap : [x]|str -> f -> [x]|str
 ------
 **Description**: Array of variables or String returned by mapping a function over an Array of variables or String and flattening the result
 
@@ -455,7 +455,7 @@ lists.concatMap([{a:1},{b:2}], function(x){
 ```
 ------
 <a name='and'/>
-###and : ([boolean]) -> boolean
+###and : [boolean] -> boolean
 ------
 **Description**: Boolean returned by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
 
@@ -469,7 +469,7 @@ lists.and([5>1,false,5>3]) /* false */
 ```
 ------
 <a name='or'/>
-###or : ([boolean]) -> boolean
+###or : [boolean] -> boolean
 ------
 **Description**: Boolean returned by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
 
@@ -483,7 +483,7 @@ lists.or([5<1,5<2,5<3]) /* false */
 ```
 ------
 <a name='any'/>
-###any : ([x]|str,f) -> boolean
+###any : [x]|str -> f -> boolean
 ------
 **Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.
 
@@ -497,7 +497,7 @@ lists.any('abc',function(x) { return x == 'b'}) /* true */
 ```
 ------
 <a name='all'/>
-###all : ([x]|str,f) -> boolean
+###all : [x]|str -> f -> boolean
 ------
 **Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.
 
@@ -512,7 +512,7 @@ lists.all([2,4], function(x) { return x%2==0 }) /* true */
 ```
 ------
 <a name='sum'/>
-###sum : ([num]) -> num
+###sum : [num] -> num
 ------
 **Description**: Number returned by summing the numbers of an Array together.
 
@@ -526,7 +526,7 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 ```
 ------
 <a name='product'/>
-###product : ([num]) -> num
+###product : [num] -> num
 ------
 **Description**: Number returned by computing the product of the numbers of an Array.
 
@@ -540,7 +540,7 @@ lists.product([.2,.4,.6]) /* 0.04800000000000001 */
 ```
 ------
 <a name='maximum'/>
-###maximum : ([num]) -> num
+###maximum : [num] -> num
 ------
 **Description**: Maximum number returned from numbers of an Array.
 
@@ -554,7 +554,7 @@ lists.maximum([.2,.4,.6]) /* .6 */
 ```
 ------
 <a name='minimum'/>
-###minimum : ([num]) -> num
+###minimum : [num] -> num
 ------
 **Description**: Minimum number returned from numbers of an Array.
 
@@ -568,7 +568,7 @@ lists.minimum([.2,.4,.6]) /* .2 */
 ```
 ------
 <a name='maxList'/>
-###maxList : ([[x]]) -> [x]
+###maxList : [[x]] -> [x]
 ------
 **Description**: Array of variables with the maximum length returned from an Array of Arrays of variables.
 
@@ -582,7 +582,7 @@ lists.maxList([[1,2],[3]]) /* [1,2] */
 ```
 ------
 <a name='minList'/>
-###minList : ([[x]]) -> [x]
+###minList : [[x]] -> [x]
 ------
 **Description**: Array of variables with the minimum length returned from an Array of Arrays of variables.
 
@@ -596,7 +596,7 @@ lists.minList([[1,2],[3]]) /* [3] */
 ```
 ------
 <a name='scanl'/>
-###scanl : (x,[x]|str,f) -> [x]
+###scanl : x -> [x]|str -> f -> [x]
 ------
 **Description**: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
 
@@ -610,7 +610,7 @@ lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
 ```
 ------
 <a name='scanr'/>
-###scanr : (x,[x]|str,f) -> [x]
+###scanr : x -> [x]|str -> f -> [x]
 ------
 **Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
 
@@ -624,7 +624,7 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 ```
 ------
 <a name='mapAccumL'/>
-###mapAccumL : (x,[x]|str,f) -> [x, [x]]
+###mapAccumL : x -> [x]|str -> f -> [x, [x]]
 ------
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.
 
@@ -639,7 +639,7 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ```
 ------
 <a name='mapAccumR'/>
-###mapAccumR : (x,[x]|str,f) -> [x, [x]]
+###mapAccumR : x -> [x]|str -> f -> [x, [x]]
 ------
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
 
@@ -654,7 +654,7 @@ lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ```
 ------
 <a name='iterate'/>
-###iterate : (x,num,f) -> [x]
+###iterate : x -> num -> f -> [x]
 ------
 **Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
 
@@ -669,7 +669,7 @@ lists.iterate(2,4,function(x){ return x*x }) /* [2,4,16,256] */
 ```
 ------
 <a name='replicate'/>
-###replicate : (x,num) -> [x]
+###replicate : x -> num -> [x]
 ------
 **Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
 
@@ -684,7 +684,7 @@ lists.replicate({a:1},2) /* [{a:1},{a:2}] */
 ```
 ------
 <a name='cycle'/>
-###cycle : ([x]|str,num) -> [x]|str
+###cycle : [x]|str -> num -> [x]|str
 ------
 **Description**: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.
 
@@ -698,7 +698,7 @@ lists.cycle([1,2],2) /* [1,2,1,2] */
 ```
 ------
 <a name='unfold'/>
-###unfold : (f,f,f,x) -> [x]|str
+###unfold : f -> f -> f -> x -> [x]|str
 ------
 **Description**: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
 
@@ -723,7 +723,7 @@ unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 ```
 ------
 <a name='take'/>
-###take : (num,[x]|str) -> [x]
+###take : num -> [x]|str -> [x]
 ------
 **Description**: Array of variables returned by taking the first n (num) elements from [x] or String.
 
@@ -737,7 +737,7 @@ lists.take(2,'abc') /* ["a","b"] */
 ```
 ------
 <a name='drop'/>
-###drop : (num,[x]|str) -> [x]
+###drop : num -> [x]|str -> [x]
 ------
 **Description**: Array of variables returned by dropping the first n (num) elements from [x] or String.
 
@@ -751,7 +751,7 @@ lists.drop(2,'abc') /* ["c"] */
 ```
 ------
 <a name='splitAt'/>
-###splitAt : (num,[x]|str) -> [[x],[x]]
+###splitAt : num -> [x]|str -> [[x],[x]]
 ------
 **Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables or String. The second contains the rest.
 
@@ -765,7 +765,7 @@ lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 ```
 ------
 <a name='takeWhile'/>
-###takeWhile : (f,[x]|str) -> [x]
+###takeWhile : f -> [x]|str -> [x]
 ------
 **Description**: Array of variables returned by taking elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
 
@@ -780,7 +780,7 @@ lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 ```
 ------
 <a name='dropWhile'/>
-###dropWhile : (f,[x]|str) -> [x]
+###dropWhile : f -> [x]|str -> [x]
 ------
 **Description**: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
 
