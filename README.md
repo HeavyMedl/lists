@@ -39,140 +39,140 @@ map : [x] -> f -> [x]
 **Basic Functions**
 
 * [`append`](#append) : arr|str -> arr|str|num -> [x]|str
-2. [`head`](#head) : arr|str -> x
-3. [`last`](#last) : arr|str -> x
-4. [`init`](#init) : arr|str -> [x]
-5. [`tail`](#tail) : arr|str -> [x]
-6. [`nil`](#nil) : arr|str -> boolean
+* [`head`](#head) : arr|str -> x
+* [`last`](#last) : arr|str -> x
+* [`init`](#init) : arr|str -> [x]
+* [`tail`](#tail) : arr|str -> [x]
+* [`nil`](#nil) : arr|str -> boolean
 
 -----
 
 **List Transformations**
 
 * [`map`](#map) : [x] -> f -> [x]
-8. [`rev`](#rev) : [x] -> [x]
-9. [`intersperse`](#intersperse) : x -> [x] -> arr|str
-10. [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
-11. [`transpose`](#transpose) : [[x]] -> [[x]]
-12. [`subsequences`](#subsequences) : [x] -> [[x]]
-13. [`permutations`](#permutations) : [x]|str -> [[x]]|[str]
+* [`rev`](#rev) : [x] -> [x]
+* [`intersperse`](#intersperse) : x -> [x] -> arr|str
+* [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
+* [`transpose`](#transpose) : [[x]] -> [[x]]
+* [`subsequences`](#subsequences) : [x] -> [[x]]
+* [`permutations`](#permutations) : [x]|str -> [[x]]|[str]
 
 -----
 
 **Reducing Lists (folds)**
 
 * [`foldl`](#foldl) : x -> [x]|str -> f -> x
-15. [`foldl1`](#foldl1) : [x]|str -> f -> x
-16. [`foldr`](#foldr) : x -> [x]|str -> f -> x
-17. [`foldr1`](#foldr1) : [x]|str -> f -> x
-18. [`flatten`](#flatten) || [`concat`](#flatten) : [[x]]|[str] -> [x]|str
-19. [`concatMap`](#concatMap) : [x]|str -> f -> [x]|str
-20. [`and`](#and) : [boolean] -> boolean
-21. [`or`](#or) : [boolean] -> boolean
-22. [`any`](#any) : [x]|str -> f -> boolean
-23. [`all`](#all) : [x]|str -> f -> boolean
-24. [`sum`](#sum) : [num] -> num
-25. [`product`](#product) : [num] -> num
-26. [`maximum`](#maximum) : [num] -> num
-27. [`minimum`](#minimum) : [num] -> num
-28. [`maxList`](#maxList) : [[x]] -> [x]
-29. [`minList`](#minList) : [[x]] -> [x]
+* [`foldl1`](#foldl1) : [x]|str -> f -> x
+* [`foldr`](#foldr) : x -> [x]|str -> f -> x
+* [`foldr1`](#foldr1) : [x]|str -> f -> x
+* [`flatten`](#flatten) || [`concat`](#flatten) : [[x]]|[str] -> [x]|str
+* [`concatMap`](#concatMap) : [x]|str -> f -> [x]|str
+* [`and`](#and) : [boolean] -> boolean
+* [`or`](#or) : [boolean] -> boolean
+* [`any`](#any) : [x]|str -> f -> boolean
+* [`all`](#all) : [x]|str -> f -> boolean
+* [`sum`](#sum) : [num] -> num
+* [`product`](#product) : [num] -> num
+* [`maximum`](#maximum) : [num] -> num
+* [`minimum`](#minimum) : [num] -> num
+* [`maxList`](#maxList) : [[x]] -> [x]
+* [`minList`](#minList) : [[x]] -> [x]
 
 -----
 
 **Building Lists**
 
 * [`scanl`](#scanl) : x -> [x]|str -> f -> [x]
-31. [`scanr`](#scanr) : x -> [x]|str -> f -> [x]
-32. [`mapAccumL`](#mapAccumL) : x -> [x]|str -> f -> [x, [x]]
-33. [`mapAccumR`](#mapAccumR) : x -> [x]|str -> f -> [x, [x]]
-34. [`iterate`](#iterate) : x -> num -> f -> [x] 
-35. [`replicate`](#replicate) : x -> num -> [x]
-36. [`cycle`](#cycle) : [x]|str -> num -> [x]|str
-37. [`unfold`](#unfold) : f -> f -> f -> x -> [x]|str
+* [`scanr`](#scanr) : x -> [x]|str -> f -> [x]
+* [`mapAccumL`](#mapAccumL) : x -> [x]|str -> f -> [x, [x]]
+* [`mapAccumR`](#mapAccumR) : x -> [x]|str -> f -> [x, [x]]
+* [`iterate`](#iterate) : x -> num -> f -> [x] 
+* [`replicate`](#replicate) : x -> num -> [x]
+* [`cycle`](#cycle) : [x]|str -> num -> [x]|str
+* [`unfold`](#unfold) : f -> f -> f -> x -> [x]|str
 
 -----
 
 **Sublists**
 
 * [`take`](#take) : num -> [x]|str -> [x]
-39. [`drop`](#drop) : num -> [x]|str -> [x]
-40. [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
-41. [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
-42. [`dropWhile`](#dropWhile) : f -> [x]|str -> [x]
-43. [`span`](#span) : arr|str -> f -> [[x], [x]|str]
-44. [`break`](#break) : arr|str -> f -> [[x], [x]|str]
-45. [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
-46. group : Eq a => [a] -> [[a]]
-47. inits : [a] -> [[a]]
-48. tails : [a] -> [[a]]
-49. isPrefixOf : Eq a => [a] -> [a] -> Bool
-50. isSuffixOf : Eq a => [a] -> [a] -> Bool
-51. isInfixOf : Eq a => [a] -> [a] -> Bool
+* [`drop`](#drop) : num -> [x]|str -> [x]
+* [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
+* [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
+* [`dropWhile`](#dropWhile) : f -> [x]|str -> [x]
+* [`span`](#span) : arr|str -> f -> [[x], [x]|str]
+* [`break`](#break) : arr|str -> f -> [[x], [x]|str]
+* [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
+* group : Eq a => [a] -> [[a]]
+* inits : [a] -> [[a]]
+* tails : [a] -> [[a]]
+* isPrefixOf : Eq a => [a] -> [a] -> Bool
+* isSuffixOf : Eq a => [a] -> [a] -> Bool
+* isInfixOf : Eq a => [a] -> [a] -> Bool
 
 **Searching Lists**
 
 * elem : Eq a => a -> [a] -> Bool
-53. notElem : Eq a => a -> [a] -> Bool
-54. lookup : Eq a => a -> [(a, b)] -> Maybe b
-55. find : (a -> Bool) -> [a] -> Maybe a
-56. filter : (a -> Bool) -> [a] -> [a]
-57. partition : (a -> Bool) -> [a] -> ([a], [a])
+* notElem : Eq a => a -> [a] -> Bool
+* lookup : Eq a => a -> [(a, b)] -> Maybe b
+* find : (a -> Bool) -> [a] -> Maybe a
+* filter : (a -> Bool) -> [a] -> [a]
+* partition : (a -> Bool) -> [a] -> ([a], [a])
 
 **Indexing Lists**
 
 * bang : [a] -> Int -> a
-59. elemIndex : Eq a => a -> [a] -> Maybe Int
-60. elemIndices : Eq a => a -> [a] -> [Int]
-61. findIndex : (a -> Bool) -> [a] -> Maybe Int
-62. findIndices : (a -> Bool) -> [a] -> [Int]
+* elemIndex : Eq a => a -> [a] -> Maybe Int
+* elemIndices : Eq a => a -> [a] -> [Int]
+* findIndex : (a -> Bool) -> [a] -> Maybe Int
+* findIndices : (a -> Bool) -> [a] -> [Int]
 
 **Zipping and Unzipping Lists**
 
 * zip || unzip : [[a],[b],..,[n]] -> [[a,b,..,n]]
-64. zipWith : (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
+* zipWith : (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
 
 **Special Lists**
 
 * lines : String -> [String]
-66. words : String -> [String]
-67. unlines : [String] -> String
-68. unwords : [String] -> String
-69. nub : Eq a => [a] -> [a]
-70. delete : Eq a => a -> [a] -> [a]
-71. difference || diff : Eq a => [a] -> [a] -> [a]
-72. union : Eq a => [a] -> [a] -> [a]
-73. intersect : Eq a => [a] -> [a] -> [a]
-74. sort : Ord a => [a] -> [a]
-75. insert : Ord a => a -> [a] -> [a]
+* words : String -> [String]
+* unlines : [String] -> String
+* unwords : [String] -> String
+* nub : Eq a => [a] -> [a]
+* delete : Eq a => a -> [a] -> [a]
+* difference || diff : Eq a => [a] -> [a] -> [a]
+* union : Eq a => [a] -> [a] -> [a]
+* intersect : Eq a => [a] -> [a] -> [a]
+* sort : Ord a => [a] -> [a]
+* insert : Ord a => a -> [a] -> [a]
 
 **Generalized Functions**
 
 * nubBy : (a -> a -> Bool) -> [a] -> [a]
-77. deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
-78. deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-79. unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-80. intersectBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-81. groupBy : (a -> a -> Bool) -> [a] -> [[a]]
-82. sortBy : (a -> a -> Ordering) -> [a] -> [a]
-83. insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
-84. maximumBy : (a -> a -> Ordering) -> [a] -> a
-85. minimumBy : (a -> a -> Ordering) -> [a] -> a
+* deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
+* deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
+* unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
+* intersectBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
+* groupBy : (a -> a -> Bool) -> [a] -> [[a]]
+* sortBy : (a -> a -> Ordering) -> [a] -> [a]
+* insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
+* maximumBy : (a -> a -> Ordering) -> [a] -> a
+* minimumBy : (a -> a -> Ordering) -> [a] -> a
 
 **Extra Functional Utilities**
 
 * genericExcludeChar : 
-87. forEach || each :
-88. keys :
-89. enumeration || enum : 
-90. composeL || pipe : 
-91. composeR || sequence : 
-92. partial || part : 
-93. flip : 
-94. compare : 
-95. GT,LT,EQ : 
-96. bubbleSort : 
-97. mergeSort : 
+* forEach || each :
+* keys :
+* enumeration || enum : 
+* composeL || pipe : 
+* composeR || sequence : 
+* partial || part : 
+* flip : 
+* compare : 
+* GT,LT,EQ : 
+* bubbleSort : 
+* mergeSort : 
 
 ------
 <a name='append'/>
