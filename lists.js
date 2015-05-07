@@ -558,7 +558,8 @@
 	l.EQ = function(val) { return val == 'EQ'}
 	
 	// platform boilerplate
-	typeof module !== 'undefined' ? module.exports = exports : root.lists = lists;
+	typeof module !== 'undefined' && module.exports
+		? module.exports = lists : root.lists = lists;
 	if (typeof define === 'function' && define.amd) {
 		define('lists', [], function() {
 			return lists;
