@@ -24,15 +24,19 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 * **f** : Function
 * **x** : variable
 
-A{ **1.** } B{ **tail** } C{ **arr|str -> [x]** }
-* A. Function number
-* B. Function name
-* C. Pseudo type signature
- * Arguments **arr|str**: The function **tail** takes an Array or a String. The output of a function will always be the last variable in the function's type signature.
- * arr|str -> [x] : **tail** produces an array of variables ([x])
+A{ **1.** } Function number
+
+B{ **tail** } Function name
+
+C{ **arr|str -> [x]** } Pseudo type signature
+
+Arguments **arr|str**: The function **tail** takes an Array or a String. The output of a function will always be the last variable in the function's type signature.
+
+tail : arr|str -> [x] 
+- produces an array of variables ([x])
 
 map : [x] -> f -> [x]
-* **map** takes an array of variables and a function and produces an array of variables
+- takes an array of variables and a function and produces an array of variables
 
 -----
 
