@@ -33,7 +33,7 @@ map : [x] -> f -> [x]
 
 **Basic Functions**
 
-1. [`append`](#append) : arr|str -> arr|str|num -> [x]|str
+* [`append`](#append) : arr|str -> arr|str|num -> [x]|str
 2. [`head`](#head) : arr|str -> x
 3. [`last`](#last) : arr|str -> x
 4. [`init`](#init) : arr|str -> [x]
@@ -44,7 +44,7 @@ map : [x] -> f -> [x]
 
 **List Transformations**
 
-7. [`map`](#map) : [x] -> f -> [x]
+* [`map`](#map) : [x] -> f -> [x]
 8. [`rev`](#rev) : [x] -> [x]
 9. [`intersperse`](#intersperse) : x -> [x] -> arr|str
 10. [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
@@ -56,7 +56,7 @@ map : [x] -> f -> [x]
 
 **Reducing Lists (folds)**
 
-14. [`foldl`](#foldl) : x -> [x]|str -> f -> x
+* [`foldl`](#foldl) : x -> [x]|str -> f -> x
 15. [`foldl1`](#foldl1) : [x]|str -> f -> x
 16. [`foldr`](#foldr) : x -> [x]|str -> f -> x
 17. [`foldr1`](#foldr1) : [x]|str -> f -> x
@@ -77,7 +77,7 @@ map : [x] -> f -> [x]
 
 **Building Lists**
 
-30. [`scanl`](#scanl) : x -> [x]|str -> f -> [x]
+* [`scanl`](#scanl) : x -> [x]|str -> f -> [x]
 31. [`scanr`](#scanr) : x -> [x]|str -> f -> [x]
 32. [`mapAccumL`](#mapAccumL) : x -> [x]|str -> f -> [x, [x]]
 33. [`mapAccumR`](#mapAccumR) : x -> [x]|str -> f -> [x, [x]]
@@ -90,7 +90,7 @@ map : [x] -> f -> [x]
 
 **Sublists**
 
-38. [`take`](#take) : num -> [x]|str -> [x]
+* [`take`](#take) : num -> [x]|str -> [x]
 39. [`drop`](#drop) : num -> [x]|str -> [x]
 40. [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
 41. [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
@@ -107,7 +107,7 @@ map : [x] -> f -> [x]
 
 **Searching Lists**
 
-52. elem : Eq a => a -> [a] -> Bool
+* elem : Eq a => a -> [a] -> Bool
 53. notElem : Eq a => a -> [a] -> Bool
 54. lookup : Eq a => a -> [(a, b)] -> Maybe b
 55. find : (a -> Bool) -> [a] -> Maybe a
@@ -116,7 +116,7 @@ map : [x] -> f -> [x]
 
 **Indexing Lists**
 
-58. bang : [a] -> Int -> a
+* bang : [a] -> Int -> a
 59. elemIndex : Eq a => a -> [a] -> Maybe Int
 60. elemIndices : Eq a => a -> [a] -> [Int]
 61. findIndex : (a -> Bool) -> [a] -> Maybe Int
@@ -124,12 +124,12 @@ map : [x] -> f -> [x]
 
 **Zipping and Unzipping Lists**
 
-63. zip || unzip : [[a],[b],..,[n]] -> [[a,b,..,n]]
+* zip || unzip : [[a],[b],..,[n]] -> [[a,b,..,n]]
 64. zipWith : (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
 
 **Special Lists**
 
-65. lines : String -> [String]
+* lines : String -> [String]
 66. words : String -> [String]
 67. unlines : [String] -> String
 68. unwords : [String] -> String
@@ -143,7 +143,7 @@ map : [x] -> f -> [x]
 
 **Generalized Functions**
 
-76. nubBy : (a -> a -> Bool) -> [a] -> [a]
+* nubBy : (a -> a -> Bool) -> [a] -> [a]
 77. deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
 78. deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
 79. unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
@@ -156,7 +156,7 @@ map : [x] -> f -> [x]
 
 **Extra Functional Utilities**
 
-86. genericExcludeChar : 
+* genericExcludeChar : 
 87. forEach || each :
 88. keys :
 89. enumeration || enum : 
