@@ -1,6 +1,6 @@
 # [ l [ i [ s ] t ] s ]
 
-**Full Version** | **[Homepage](http://www.blenddit.com/lists)**
+**Full Version** | **[Homepage](http://kurtlocker.github.io/kurtlocker/lists)**
 
 Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
 
@@ -15,9 +15,14 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 ## Components
 
 -----
-## Contents
+## Type Signature Legend
 
-Legend - **arr | []** : Array, **obj | {}** : Object, **str** : String, **num** : Number, **f** : Function, **x** : variable;
+* **arr | []** : Array 
+* **obj | {}** : Object
+* **str** : String 
+* **num** : Number
+* **f** : Function
+* **x** : variable
 
 A{ **1.** } B{ **tail** } C{ **arr|str -> [x]** }
 * A. Function number
