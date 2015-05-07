@@ -30,13 +30,11 @@ B{ **tail** } Function name
 
 C{ **arr|str -> [x]** } Pseudo type signature
 
-Arguments **arr|str**: The function **tail** takes an Array or a String. The output of a function will always be the last variable in the function's type signature.
-
 tail : arr|str -> [x] 
-- produces an array of variables ([x])
+- Takes an Array of variables or String and produces an array of variables ([x]).
 
 map : [x] -> f -> [x]
-- takes an array of variables and a function and produces an array of variables
+- Takes an Array of variables and a function and produces an array of variables.
 
 -----
 
