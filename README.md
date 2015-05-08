@@ -134,7 +134,7 @@ map : [x] -> f -> [x]
 
 **Indexing Lists**
 
-* bang : [a] -> Int -> a
+* [`bang`](#bang) : num -> [x] -> x
 * elemIndex : Eq a => a -> [a] -> Maybe Int
 * elemIndices : Eq a => a -> [a] -> [Int]
 * findIndex : (a -> Bool) -> [a] -> Maybe Int
@@ -1058,5 +1058,20 @@ lists.filter([[1],[1,2]], function(arr) { return arr.length > 1 }); /* [[1,2]] *
 lists.partition("Abc", function(char) { return char.startsWith("b") }); /* [["b"],["A","c"]] */
 lists.partition([1,2,3,4], function(num) { return num % 2 == 0 }); /* [[2,4],[1,3]] */
 lists.partition([{a:1},{b:2,a:2}], function(obj) { return obj.a == 2 }); /* [[{b:2,a:2}],[{a:1}]] */
+```
+------
+<a name='bang'/>
+### bang : num -> [x] -> x
+------
+**Description**: Variable returned by fetching the Variable at the given index (Number).
+
+**Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables. Get a Variable.
+
+**Example Usage**:
+
+```js
+lists.bang(1,[0,{a:2},1]); /* {a:2} */
+lists.bang(0,[[1,2],4]); /* [1,2] */
+lists.bang(3,[1,2]) /* -1 */
 ```
 ------
