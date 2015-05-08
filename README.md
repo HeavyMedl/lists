@@ -201,7 +201,7 @@ map : [x] -> f -> [x]
 ------
 **Description**: A prefix-style Array.prototype.concat wrapper.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 an Array of Variables or a String or a Number; Get an Array of Variables or String.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String or a Number. Get an Array of Variables or a String.
 
 **Example Usage**:
 
@@ -216,7 +216,7 @@ lists.append('a','b'); /* 'ab' */
 ------
 **Description**: Retreive the first element of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get a Variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get a Variable.
 
 **Example Usage**:
 
@@ -231,7 +231,7 @@ lists.head('ab'); /* 'a' */
 ------
 **Description**: Retreive the last element of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get a Variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get a Variable.
 
 **Example Usage**:
 
@@ -246,7 +246,7 @@ lists.last('ab'); /* 'b' */
 ------
 **Description**: Retreive all elements except the last of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -261,7 +261,7 @@ lists.init('abc'); /* ['a','b'] */
 ------
 **Description**: Retreive all elements except the first of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -291,9 +291,9 @@ lists.nil([1]); /* false */
 <a name='map'/>
 ### map : [x] -> f -> [x]
 ------
-**Description**: Array of Variables returned by applying f to each element of [x]
+**Description**: Array of Variables returned by applying f to each element of [x].
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -310,22 +310,22 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ------
 **Description**: Array of Variables returned by reversing the order of each element.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
 lists.rev([1,2,3]); /* [3,2,1] */
 lists.rev('abc'); /* ['c','b','a'] */
-lists.rev([[2],[3]]) /* [[3],[2]] */
+lists.rev([[2],[3]]); /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
 ### intersperse : x -> [x] -> [x]|str
 ------
-**Description**: Array of Variables or String returned by interspersing a given separator between elements of a given Array.
+**Description**: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.
 
-**Signature Definition**: Give arg 1 a Variable; Give arg 2 an Array of Variables; Get an Array of Variables or String.
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables or a String.
 
 **Example Usage**:
 
@@ -341,13 +341,13 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ------
 **Description**: Array of Variables returned by flattening the result of interspersing an Array of Variables into an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of Variables; Give arg 2 an Array of an Array of Variables; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of an Array of Variables. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
 lists.intercalate([1],[[5],[5],[5]]); /* = lists.flatten(lists.intersperse([1],[[5],[5],[5]])) // [5,1,5,1,5] */
-lists.intercalate(["abc"],[["efg"],["qrs"]]) /* ["efg", "abc", "qrs"] */
+lists.intercalate(["abc"],[["efg"],["qrs"]]); /* ["efg", "abc", "qrs"] */
 lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```
 ------
@@ -356,13 +356,13 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ------
 **Description**: Array of an Array of Variables returned by transposing rows and columns of given arguments.
 
-**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.transpose([[1,2,4],[3,4,4]]) /* [[1,3],[2,4],[4,4]] */
-lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]] */
+lists.transpose([[1,2,4],[3,4,4]]); /* [[1,3],[2,4],[4,4]] */
+lists.transpose([["a","b","c"],["a","b","c"]]); /* [["a","a"],["b","b"],["c","c"]] */
 ```
 ------
 <a name='subsequences'/>
@@ -370,13 +370,13 @@ lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]
 ------
 **Description**: Array of an Array of Variables of all subsequences of a given arguement.
 
-**Signature Definition**: Give arg 1 an Array of Variables; Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.subsequences('ab') /* [[],['a'],['b'],['ab']] */
-lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
+lists.subsequences('ab'); /* [[],['a'],['b'],['ab']] */
+lists.subsequences([1,2,3]); /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```
 ------
 <a name='permutations'/>
@@ -384,28 +384,28 @@ lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ------
 **Description**: Array of an Array of Variables or Array of Strings returned by getting all permutations of a given arguement.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of an Array of Variables or an Array of Strings respectively.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables or an Array of Strings respectively.
 
 **Example Usage**:
 
 ```js
-lists.permutations('abc') /* ["abc","acb","bac","bca","cab","cba"] */
-lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */
+lists.permutations('abc'); /* ["abc","acb","bac","bca","cab","cba"] */
+lists.permutations([1,2,3]); /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */
 ```
 ------
 <a name='foldl'/>
 ### foldl : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of Variables or String  
+**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of Variables or String.  
 
-**Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator); Give arg 2 an Array of Variables or a String; Give arg 3 a function (binary operator); Get a Variable.
+**Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a function (binary operator). Get a Variable.
 
 **Example Usage**:
 
 ```js
 reverse = lists.foldl('','abc',function(x,y){ return y.concat(x); }); /* "cba" */
 sum = lists.foldl(0,[1,2,3],function(x,y){ return x+y; }); /* 6 */
-lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4] */
+lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }); /* [1,2,3,4] */
 ```
 ------
 <a name='foldl1'/>
@@ -413,26 +413,26 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4]
 ------
 **Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.
 
-**Signature Definition**:  Give arg 1 an Array of Variables or a String; Give arg 2 a function (binary operator); Get a Variable.
+**Signature Definition**:  Give arg 1 an Array of Variables or a String. Give arg 2 a function (binary operator). Get a Variable.
 
 **Example Usage**:
 
 ```js
-lists.foldl1('abc',function(x,y){ return x.concat(y).toUpperCase() }) /* "ABC" */
-lists.foldl1([1,2,3],function(x,y){ return x+y }) /* 6 */
+lists.foldl1('abc',function(x,y){ return x.concat(y).toUpperCase() }); /* "ABC" */
+lists.foldl1([1,2,3],function(x,y){ return x+y }); /* 6 */
 ```
 ------
 <a name='foldr'/>
 ### foldr : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String  
+**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
 
-**Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get a Variable.
+**Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
 
 **Example Usage**:
 
 ```js
-lists.foldr(0,[1,2,3,4],function(x,y){ return x-y; }) /* -2 */
+lists.foldr(0,[1,2,3,4],function(x,y){ return x-y; }); /* -2 */
 lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){ 
   return lists.rev(x).concat(y); 
 }); /* [4,3,1,2,5,6] */
@@ -443,13 +443,13 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 ------
 **Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function (binary operator); Get a Variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
 
 **Example Usage**:
 
 ```js
-lists.foldr1([1,2,3],function(x,y){ return x - y }) /* 3 */
-lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc" */
+lists.foldr1([1,2,3],function(x,y){ return x - y }); /* 3 */
+lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}); /* "bbcc" */
 ```
 ------
 <a name='flatten'/>
@@ -457,27 +457,27 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc
 ------
 **Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or String respectively.
 
-**Signature Definition**: Give arg 1 an Array of an Array of Variables or an Array of Strings; Get an Array of Variables or a String.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables or an Array of Strings. Get an Array of Variables or a String.
 
 **Example Usage**:
 
 ```js
 lists.flatten(['abc']); /* 'abc' */
-lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
+lists.flatten([[1,2],[3,4]]); /* [1,2,3,4] */
 ```
 ------
 <a name='concatMap'/>
 ### concatMap : [x]|str -> f -> [x]|str
 ------
-**Description**: Array of Variables or String returned by mapping a Function over an Array of variables or String and flattening the result
+**Description**: Array of Variables or String returned by mapping a Function over an Array of variables or String and flattening the result.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function that produces an Array of Variables or String; Get an Array of Variables or a String
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or String. Get an Array of Variables or a String.
 
 **Example Usage**:
 
 ```js
-lists.concatMap(['bang','bang'], function(x){ return x+'!'}) /* "bang!bang!" */
-lists.concatMap([1,2,3],function(x){ return [[x*2,x/2]] }) /* [[2,0.5],[4,1],[6,1.5]] */
+lists.concatMap(['bang','bang'], function(x){ return x+'!'}); /* "bang!bang!" */
+lists.concatMap([1,2,3],function(x){ return [[x*2,x/2]] }); /* [[2,0.5],[4,1],[6,1.5]] */
 lists.concatMap([{a:1},{b:2}], function(x){
   x.prop = 'hi';  
   return [x]
@@ -494,8 +494,8 @@ lists.concatMap([{a:1},{b:2}], function(x){
 **Example Usage**:
 
 ```js
-lists.and([5>1,5>2,5>3]) /* true */
-lists.and([5>1,false,5>3]) /* false */
+lists.and([5>1,5>2,5>3]); /* true */
+lists.and([5>1,false,5>3]); /* false */
 ```
 ------
 <a name='or'/>
@@ -508,8 +508,8 @@ lists.and([5>1,false,5>3]) /* false */
 **Example Usage**:
 
 ```js
-lists.or([5<1,5<2,5>3]) /* true */
-lists.or([5<1,5<2,5<3]) /* false */
+lists.or([5<1,5<2,5>3]); /* true */
+lists.or([5<1,5<2,5<3]); /* false */
 ```
 ------
 <a name='any'/>
@@ -517,13 +517,13 @@ lists.or([5<1,5<2,5<3]) /* false */
 ------
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if at least one f(x) is true. False if all f(x) are false.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a predicate Function to be applied to each element of arg 1; Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.
 
 **Example Usage**:
 
 ```js
-lists.any([1,2,3],function(x) { return x < .5}) /* false */
-lists.any('abc',function(x) { return x == 'b'}) /* true */
+lists.any([1,2,3],function(x) { return x < .5}); /* false */
+lists.any('abc',function(x) { return x == 'b'}); /* true */
 ```
 ------
 <a name='all'/>
@@ -531,14 +531,14 @@ lists.any('abc',function(x) { return x == 'b'}) /* true */
 ------
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or String. True if all f(x) are true. False if any f(x) are false.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a predicate Function to be applied to each element of arg 1; Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.
 
 **Example Usage**:
 
 ```js
-lists.all('abc', function(x){ return x==x.toUpperCase() }) /* false */
-lists.all([2,4], function(x) { return x > 3 }) /* false */
-lists.all([2,4], function(x) { return x%2==0 }) /* true */
+lists.all('abc', function(x){ return x==x.toUpperCase() }); /* false */
+lists.all([2,4], function(x) { return x > 3 }); /* false */
+lists.all([2,4], function(x) { return x%2==0 }); /* true */
 ```
 ------
 <a name='sum'/>
@@ -546,13 +546,13 @@ lists.all([2,4], function(x) { return x%2==0 }) /* true */
 ------
 **Description**: Number returned by summing the numbers of an Array together.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
+**Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
 
 **Example Usage**:
 
 ```js
-lists.sum([2,4,6]) /* 12 */
-lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
+lists.sum([2,4,6]); /* 12 */
+lists.sum([.2,.4,.6]); /* 1.2000000000000002 */
 ```
 ------
 <a name='product'/>
@@ -560,13 +560,13 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 ------
 **Description**: Number returned by computing the product of the numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
+**Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
 
 **Example Usage**:
 
 ```js
-lists.product([2,4,6]) /* 48 */
-lists.product([.2,.4,.6]) /* 0.04800000000000001 */
+lists.product([2,4,6]); /* 48 */
+lists.product([.2,.4,.6]); /* 0.04800000000000001 */
 ```
 ------
 <a name='maximum'/>
@@ -574,13 +574,13 @@ lists.product([.2,.4,.6]) /* 0.04800000000000001 */
 ------
 **Description**: Maximum Number returned from numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
+**Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
 
 **Example Usage**:
 
 ```js
-lists.maximum([2,4,6]) /* 6 */
-lists.maximum([.2,.4,.6]) /* .6 */
+lists.maximum([2,4,6]); /* 6 */
+lists.maximum([.2,.4,.6]); /* .6 */
 ```
 ------
 <a name='minimum'/>
@@ -588,13 +588,13 @@ lists.maximum([.2,.4,.6]) /* .6 */
 ------
 **Description**: Minimum Number returned from numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
+**Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
 
 **Example Usage**:
 
 ```js
-lists.minimum([2,4,6]) /* 2 */
-lists.minimum([.2,.4,.6]) /* .2 */
+lists.minimum([2,4,6]); /* 2 */
+lists.minimum([.2,.4,.6]); /* .2 */
 ```
 ------
 <a name='maxList'/>
@@ -602,13 +602,13 @@ lists.minimum([.2,.4,.6]) /* .2 */
 ------
 **Description**: Array of Variables with the maximum length returned from an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.maxList([[1],[2,3]]) /* [2,3] */
-lists.maxList([[1,2],[3]]) /* [1,2] */
+lists.maxList([[1],[2,3]]); /* [2,3] */
+lists.maxList([[1,2],[3]]); /* [1,2] */
 ```
 ------
 <a name='minList'/>
@@ -616,41 +616,41 @@ lists.maxList([[1,2],[3]]) /* [1,2] */
 ------
 **Description**: Array of Variables with the minimum length returned from an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.minList([[],[1]]) /* [] */
-lists.minList([[1,2],[3]]) /* [3] */
+lists.minList([[],[1]]); /* [] */
+lists.minList([[1,2],[3]]); /* [3] */
 ```
 ------
 <a name='scanl'/>
 ### scanl : x -> [x]|str -> f -> [x]
 ------
-**Description**: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String 
+**Description**: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
 
-**Signature Definition**: Give arg 1 a starting Variable; Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get an Array of Variables.
+**Signature Definition**: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.scanl('.','abc',function(x,y){return x + y}) /* [".",".a",".ab",".abc"] */
-lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
+lists.scanl('.','abc',function(x,y){return x + y}); /* [".",".a",".ab",".abc"] */
+lists.scanl(0,[1,2,3],function(x,y){return x + y}); /* [0,1,3,6] */
 ```
 ------
 <a name='scanr'/>
 ### scanr : x -> [x]|str -> f -> [x]
 ------
-**Description**: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String 
+**Description**: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
 
-**Signature Definition**: Give arg 1 a starting Variable; Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get an Array of Variables.
+**Signature Definition**: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.scanr('.','abc',function(x,y){return x + y}) /* ["abc.","bc.","c.","."] */
-lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
+lists.scanr('.','abc',function(x,y){return x + y}); /* ["abc.","bc.","c.","."] */
+lists.scanr(0,[1,2,3],function(x,y){return x + y}); /* [6,5,3,0] */
 ```
 ------
 <a name='mapAccumL'/>
@@ -658,14 +658,14 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 ------
 **Description**: Builds an Array containing a accumulator (x) and the result of applying F to the supplied accumulator and each element of the supplied Array from left to right.
 
-**Signature Definition**: Give arg 1 a starting Variable (accumulator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function; Get an Array of Variable followed by Array of Variables.
+**Signature Definition**: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.mapAccumL(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [10,28,88]]*/
-lists.mapAccumL(5, [2,4,8], function(x,y){ return [y,y]}) /* [8, [2,4,8]] */
-lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
+lists.mapAccumL(5, [2,4,8], function(x,y){ return [x+y,x*y]}); /* [19, [10,28,88]]*/
+lists.mapAccumL(5, [2,4,8], function(x,y){ return [y,y]}); /* [8, [2,4,8]] */
+lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
 <a name='mapAccumR'/>
@@ -673,14 +673,14 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ------
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
 
-**Signature Definition**: Give arg 1 a starting Variable (accumulator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function; Get an Array of Variable followed by Array of Variables.
+**Signature Definition**: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.mapAccumR(5, [2,4,8], function(x,y){ return [x+y,x*y]}) /* [19, [34,52,40]]*/
-lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}) /* [2, [2,4,8]] */
-lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [x+y,x*y]}); /* [19, [34,52,40]]*/
+lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}); /* [2, [2,4,8]] */
+lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
 <a name='iterate'/>
@@ -688,14 +688,14 @@ lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ------
 **Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 a Variable; Give arg 2 a Number; Give arg 3 a Function; Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 a Number. Give arg 3 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.iterate('a',3,function(ch){return ch+'b'}) /* ["a","ab","abb"] */
-lists.iterate([1,2],3,function(xs){return lists.intersperse(6,xs)}) /* [[1,2],[1,6,2],[1,6,6,6,2]] */
-lists.iterate(2,4,function(x){ return x*x }) /* [2,4,16,256] */
+lists.iterate('a',3,function(ch){return ch+'b'}); /* ["a","ab","abb"] */
+lists.iterate([1,2],3,function(xs){return lists.intersperse(6,xs)}); /* [[1,2],[1,6,2],[1,6,6,6,2]] */
+lists.iterate(2,4,function(x){ return x*x }); /* [2,4,16,256] */
 ```
 ------
 <a name='replicate'/>
@@ -703,14 +703,14 @@ lists.iterate(2,4,function(x){ return x*x }) /* [2,4,16,256] */
 ------
 **Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 a Variable; Give arg 2 a Number; Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 a Number. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.replicate(5,5) /* [5,5,5,5,5] */
-lists.replicate([1,2],2) /* [[1,2],[1,2]] */
-lists.replicate({a:1},2) /* [{a:1},{a:2}] */
+lists.replicate(5,5); /* [5,5,5,5,5] */
+lists.replicate([1,2],2); /* [[1,2],[1,2]] */
+lists.replicate({a:1},2); /* [{a:1},{a:2}] */
 ```
 ------
 <a name='cycle'/>
@@ -718,13 +718,13 @@ lists.replicate({a:1},2) /* [{a:1},{a:2}] */
 ------
 **Description**: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 an Array of Variables; Give arg 2 a Number; Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Number. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.cycle('abc',3) /* "abcabcabc" */
-lists.cycle([1,2],2) /* [1,2,1,2] */
+lists.cycle('abc',3); /* "abcabcabc" */
+lists.cycle([1,2],2); /* [1,2,1,2] */
 ```
 ------
 <a name='unfold'/>
@@ -732,7 +732,7 @@ lists.cycle([1,2],2) /* [1,2,1,2] */
 ------
 **Description**: Builds an Array from a seed value. Arg 1 is the predicate Function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
 
-**Signature Definition**: Give arg 1 an Function (predicate); Give arg 2 a Function; Give arg 3 a Function; Give arg 4 a Variable (seed).
+**Signature Definition**: Give arg 1 an Function (predicate). Give arg 2 a Function. Give arg 3 a Function. Give arg 4 a Variable (seed).
 
 **Example Usage**:
 
@@ -740,7 +740,7 @@ lists.cycle([1,2],2) /* [1,2,1,2] */
 function chop8(xs){ 
   return l.unfold(l.nil,l.part(l.take,8,_),l.part(l.drop,8,_),xs) 
 }
-chop8([1,2,3,4,5,6,7,8,9]) /* [[1,2,3,4,5,6,7,8],[9]] */
+chop8([1,2,3,4,5,6,7,8,9]); /* [[1,2,3,4,5,6,7,8],[9]] */
 
 function unfoldMap(xs,f) { 
   return lists.unfold(
@@ -749,7 +749,7 @@ function unfoldMap(xs,f) {
     lists.part(lists.tail,_), 
     xs)
 }
-unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
+unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
 ```
 ------
 <a name='take'/>
@@ -757,13 +757,13 @@ unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 ------
 **Description**: Array of Variables returned by taking the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.take(2,[1,2,3]) /* [1,2] */
-lists.take(2,'abc') /* ["a","b"] */
+lists.take(2,[1,2,3]); /* [1,2] */
+lists.take(2,'abc'); /* ["a","b"] */
 ```
 ------
 <a name='drop'/>
@@ -771,13 +771,13 @@ lists.take(2,'abc') /* ["a","b"] */
 ------
 **Description**: Array of Variables returned by dropping the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.drop(2,[1,2,3]) /* [3] */
-lists.drop(2,'abc') /* ["c"] */
+lists.drop(2,[1,2,3]); /* [3] */
+lists.drop(2,'abc'); /* ["c"] */
 ```
 ------
 <a name='splitAt'/>
@@ -785,7 +785,7 @@ lists.drop(2,'abc') /* ["c"] */
 ------
 **Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or String. The second contains the rest.
 
-**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of two Arrays of Variables.
+**Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of two Arrays of Variables.
 
 **Example Usage**:
 
@@ -799,14 +799,14 @@ lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 ------
 **Description**: Array of Variables returned by taking elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
-**Signature Definition**: Give arg 1 a Function; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
 ```js
-lists.takeWhile([1,2,3,1], function(x){ return x < 3 }) /* [1,2] */
-lists.takeWhile([1], function(x){ return x < 2 }) /* [1] */
-lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
+lists.takeWhile([1,2,3,1], function(x){ return x < 3 }); /* [1,2] */
+lists.takeWhile([1], function(x){ return x < 2 }); /* [1] */
+lists.takeWhile('aabc', function(x){ return x =='a' }); /* ["a","a"] */
 ```
 ------
 <a name='dropWhile'/>
@@ -814,14 +814,14 @@ lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 ------
 **Description**: Array of Variables returned by dropping elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
-**Signature Definition**: <span class='sig-def'>Give arg 1 a Function; Give arg 2 an Array of Variables or a String; Get an Array of Variables.</span>
+**Signature Definition**: <span class='sig-def'>Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</span>
 
 **Example Usage**:
 
 ```js
-lists.dropWhile([1,2,3,4], function(x){ return x < 3 }) /* [3,4] */
-lists.dropWhile([1], function(x){ return x < 2 }) /* [2] */
-lists.dropWhile('aabc', function(x){ return x =='a' }) /* ["b","c"] */
+lists.dropWhile([1,2,3,4], function(x){ return x < 3 }); /* [3,4] */
+lists.dropWhile([1], function(x){ return x < 2 }); /* [2] */
+lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ```
 ------
 <a name='span'/>
@@ -829,14 +829,14 @@ lists.dropWhile('aabc', function(x){ return x =='a' }) /* ["b","c"] */
 ------
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
 
-**Signature Definition**: Give arg 1 an Array of Variables or String; Give arg 2 a Function; Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
+**Signature Definition**: Give arg 1 an Array of Variables or String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
 
 **Example Usage**:
 
 ```js
-lists.span([1,2,3,4], function(x){return x < 3}) /* [[1,2],[3,4]] */
-lists.span("abcde", function(x){return x == "a"}) /* [["a"],["b","c","d","e"]] */
-lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[{a:2},{a:2}],[{b:2}]] */
+lists.span([1,2,3,4], function(x){return x < 3}); /* [[1,2],[3,4]] */
+lists.span("abcde", function(x){return x == "a"}); /* [["a"],["b","c","d","e"]] */
+lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[{a:2},{a:2}],[{b:2}]] */
 ```
 ------
 <a name='break'/>
@@ -844,14 +844,14 @@ lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[{a:2},{a:2}],[{
 ------
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function; Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
 
 **Example Usage**:
 
 ```js
-lists.break([1,2,3,4], function(x){return x < 3}) /* [[],[1,2,3,4]] */
-lists.break("abcde", function(x){return x == "a"}) /* [[],"abcde"] */
-lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[],[{a:2},{a:2},{b:2}]] */
+lists.break([1,2,3,4], function(x){return x < 3}); /* [[],[1,2,3,4]] */
+lists.break("abcde", function(x){return x == "a"}); /* [[],"abcde"] */
+lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[],[{a:2},{a:2},{b:2}]] */
 ```
 ------
 <a name='stripPrefix'/>
@@ -859,13 +859,13 @@ lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[],[{a:2},{a:2}
 ------
 **Description**: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String; Give arg 2 an Array of Numbers or String; Get an Array of Numbers or an Array of Strings.
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get an Array of Numbers or an Array of Strings.
 
 **Example Usage**:
 
 ```js
-lists.stripPrefix("abc","abcabce") /* ["a","b","c","e"] */
-lists.stripPrefix([1,2],[1,2,3,4]) /* [3,4] */
+lists.stripPrefix("abc","abcabce"); /* ["a","b","c","e"] */
+lists.stripPrefix([1,2],[1,2,3,4]); /* [3,4] */
 ```
 ------
 <a name='group'/>
@@ -878,8 +878,8 @@ lists.stripPrefix([1,2],[1,2,3,4]) /* [3,4] */
 **Example Usage**:
 
 ```js
-lists.group([1,1,2,3,3]) /* [[1,1],[2],[3,3]] */
-lists.group("mississippi") /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p","p"],["i"]] */
+lists.group([1,1,2,3,3]); /* [[1,1],[2],[3,3]] */
+lists.group("mississippi"); /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p","p"],["i"]] */
 ```
 ------
 <a name='inits'/>
@@ -892,9 +892,9 @@ lists.group("mississippi") /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p",
 **Example Usage**:
 
 ```js
-lists.inits([1,2,3]) /* [[],[1],[1,2],[1,2,3]] */
-lists.inits("abc") /* [[],["a"],["a","b"],["a","b","c"]] */
-lists.inits([{a:2},{b:3}]) /* [[],[{a:2}],[{a:2},{b:3}]] */
+lists.inits([1,2,3]); /* [[],[1],[1,2],[1,2,3]] */
+lists.inits("abc"); /* [[],["a"],["a","b"],["a","b","c"]] */
+lists.inits([{a:2},{b:3}]); /* [[],[{a:2}],[{a:2},{b:3}]] */
 ```
 ------
 <a name='tails'/>
@@ -907,9 +907,9 @@ lists.inits([{a:2},{b:3}]) /* [[],[{a:2}],[{a:2},{b:3}]] */
 **Example Usage**:
 
 ```js
-lists.tails([1,2,3]) /* [[1,2,3],[1,2],[1],[]] */
-lists.tails("abc") /* [["a","b","c"],["a","b"],["a"],[]] */
-lists.tails([{a:2},{b:3}]) /* [[{a:2},{b:3}],[{a:2}],[]] */
+lists.tails([1,2,3]); /* [[1,2,3],[1,2],[1],[]] */
+lists.tails("abc"); /* [["a","b","c"],["a","b"],["a"],[]] */
+lists.tails([{a:2},{b:3}]); /* [[{a:2},{b:3}],[{a:2}],[]] */
 ```
 ------
 <a name='isPrefixOf'/>
@@ -922,9 +922,9 @@ lists.tails([{a:2},{b:3}]) /* [[{a:2},{b:3}],[{a:2}],[]] */
 **Example Usage**:
 
 ```js
-lists.isPrefixOf([1,2],[1,2,3]) /* true */
-lists.isPrefixOf("abc","acd") /* false */
-lists.isPrefixOf("ab","abcd") /* true */
+lists.isPrefixOf([1,2],[1,2,3]); /* true */
+lists.isPrefixOf("abc","acd"); /* false */
+lists.isPrefixOf("ab","abcd"); /* true */
 ```
 ------
 <a name='isSuffixOf'/>
@@ -937,9 +937,9 @@ lists.isPrefixOf("ab","abcd") /* true */
 **Example Usage**:
 
 ```js
-lists.isSuffixOf([1,2],[1,2,3]) /* false */
-lists.isSuffixOf("cd","acd") /* true */
-lists.isSuffixOf("d","abcd") /* true */
+lists.isSuffixOf([1,2],[1,2,3]); /* false */
+lists.isSuffixOf("cd","acd"); /* true */
+lists.isSuffixOf("d","abcd"); /* true */
 ```
 ------
 <a name='isInfixOf'/>
@@ -952,9 +952,9 @@ lists.isSuffixOf("d","abcd") /* true */
 **Example Usage**:
 
 ```js
-lists.isInfixOf([1,2],[1,3,2]) /* false */
-lists.isInfixOf("cd","acde") /* true */
-lists.isInfixOf("a","abcd") /* true */
+lists.isInfixOf([1,2],[1,3,2]); /* false */
+lists.isInfixOf("cd","acde"); /* true */
+lists.isInfixOf("a","abcd"); /* true */
 ```
 ------
 <a name='isSubsequenceOf'/>
@@ -967,9 +967,9 @@ lists.isInfixOf("a","abcd") /* true */
 **Example Usage**:
 
 ```js
-lists.isSubsequenceOf([1,2],[1,3,2]) /* true */
-lists.isSubsequenceOf("abc","123 abc") /* true */
-lists.isSubsequenceOf("Lol","Laugh out loud") /* true */
+lists.isSubsequenceOf([1,2],[1,3,2]); /* true */
+lists.isSubsequenceOf("abc","123 abc"); /* true */
+lists.isSubsequenceOf("Lol","Laugh out loud"); /* true */
 ```
 ------
 <a name='elem'/>
@@ -982,8 +982,8 @@ lists.isSubsequenceOf("Lol","Laugh out loud") /* true */
 **Example Usage**:
 
 ```js
-lists.elem(2,[1,3,2]) /* true */
-lists.elem("2","123 abc") /* true */
+lists.elem(2,[1,3,2]); /* true */
+lists.elem("2","123 abc"); /* true */
 ```
 ------
 <a name='notElem'/>
@@ -996,8 +996,8 @@ lists.elem("2","123 abc") /* true */
 **Example Usage**:
 
 ```js
-lists.notElem(0,[1,3,2]) /* true */
-lists.notElem("a","abc") /* false */
+lists.notElem(0,[1,3,2]); /* true */
+lists.notElem("a","abc"); /* false */
 ```
 ------
 <a name='lookup'/>
@@ -1010,8 +1010,8 @@ lists.notElem("a","abc") /* false */
 **Example Usage**:
 
 ```js
-lists.lookup("a",[["a",2],["b",3]]) /* 2 */
-lists.lookup("ab",[["ab",2],["b",3]]) /* 2 */
-lists.lookup(1,[[1,{a:2}],["b",3]]) /* {a:2} */
+lists.lookup("a",[["a",2],["b",3]]); /* 2 */
+lists.lookup("ab",[["ab",2],["b",3]]); /* 2 */
+lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
 ```
 ------
