@@ -321,10 +321,10 @@
 	}
 	// Data.List Indexing Lists
 	l.bang = function(i, xs) {
-		return i < 0 ? "Negative Index"
-		: l.nil(xs) ? "Index too large"
+		return i < 0 ? -1
+		: l.nil(xs) ? -1
 			: i === 0 ? l.head(xs)
-				: l.bang(l.tail(xs),i-1)
+				: l.bang(i-1, l.tail(xs))
 	}
 	l.elemIndex = l.indexOf = function(x, xs) { // tail recursive
 		function tailrec(x,xs,acc) {
