@@ -22,7 +22,8 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 * **str** : String 
 * **num** : Number
 * **f** : Function
-* **x** : variable
+* **x** : Variable
+* **boolean** : boolean
 
 A{ **1.** } Function number
 
@@ -40,12 +41,12 @@ map : [x] -> f -> [x]
 
 **Basic Functions**
 
-* [`append`](#append) : arr|str -> arr|str|num -> [x]|str
-* [`head`](#head) : arr|str -> x
-* [`last`](#last) : arr|str -> x
-* [`init`](#init) : arr|str -> [x]
-* [`tail`](#tail) : arr|str -> [x]
-* [`nil`](#nil) : arr|str -> boolean
+* [`append`](#append) : [x]|str -> [x]|str|num -> [x]|str
+* [`head`](#head) : [x]|str -> x
+* [`last`](#last) : [x]|str -> x
+* [`init`](#init) : [x]|str -> [x]
+* [`tail`](#tail) : [x]|str -> [x]
+* [`nil`](#nil) : [x]|str -> boolean
 
 -----
 
@@ -53,7 +54,7 @@ map : [x] -> f -> [x]
 
 * [`map`](#map) : [x] -> f -> [x]
 * [`rev`](#rev) : [x] -> [x]
-* [`intersperse`](#intersperse) : x -> [x] -> arr|str
+* [`intersperse`](#intersperse) : x -> [x] -> [x]|str
 * [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
 * [`transpose`](#transpose) : [[x]] -> [[x]]
 * [`subsequences`](#subsequences) : [x] -> [[x]]
@@ -196,11 +197,11 @@ map : [x] -> f -> [x]
 
 ------
 <a name='append'/>
-### append : arr|str -> arr|str|num -> [x]|str
+### append : [x]|str -> [x]|str|num -> [x]|str
 ------
 **Description**: A prefix-style Array.prototype.concat wrapper.
 
-**Signature Definition**: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 an Array of Variables or a String or a Number; Get an Array of Variables or String.
 
 **Example Usage**:
 
@@ -211,11 +212,11 @@ lists.append('a','b'); /* 'ab' */
 ```
 ------
 <a name='head'/>
-### head : arr|str -> x
+### head : [x]|str -> x
 ------
-**Description**: Retreive the first element of an Array or a String.
+**Description**: Retreive the first element of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get a variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get a Variable.
 
 **Example Usage**:
 
@@ -226,11 +227,11 @@ lists.head('ab'); /* 'a' */
 ```
 ------
 <a name='last'/>
-### last : arr|str -> x
+### last : [x]|str -> x
 ------
-**Description**: Retreive the last element of an Array or a String.
+**Description**: Retreive the last element of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get a variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get a Variable.
 
 **Example Usage**:
 
@@ -241,11 +242,11 @@ lists.last('ab'); /* 'b' */
 ```
 ------
 <a name='init'/>
-### init : arr|str -> [x]
+### init : [x]|str -> [x]
 ------
-**Description**: Retreive all elements except the last of an Array or a String.
+**Description**: Retreive all elements except the last of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -256,11 +257,11 @@ lists.init('abc'); /* ['a','b'] */
 ```
 ------
 <a name='tail'/>
-### tail : arr|str -> [x]
+### tail : [x]|str -> [x]
 ------
-**Description**: Retreive all elements except the first of an Array or a String.
+**Description**: Retreive all elements except the first of an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of variables.
 
 **Example Usage**:
 
@@ -271,11 +272,11 @@ lists.tail('abc'); /* ['b','c'] */
 ```
 ------
 <a name='nil'/>
-### nil : arr|str -> boolean
+### nil : [x]|str -> boolean
 ------
-**Description**: Test if an Array or String is empty.
+**Description**: Test if an Array of Variables or String is empty.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get a boolean.
 
 **Example Usage**:
 
@@ -290,9 +291,9 @@ lists.nil([1]); /* false */
 <a name='map'/>
 ### map : [x] -> f -> [x]
 ------
-**Description**: Array returned by applying f to each element of [x]
+**Description**: Array of Variables returned by applying f to each element of [x]
 
-**Signature Definition**: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -307,9 +308,9 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 <a name='rev'/>
 ### rev : [x] -> [x]
 ------
-**Description**: Array returned by reversing the order of each element.
+**Description**: Array of Variables returned by reversing the order of each element.
 
-**Signature Definition**: Give arg 1 an Array or a String; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -320,11 +321,11 @@ lists.rev([[2],[3]]) /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
-### intersperse : x -> [x] -> arr|str
+### intersperse : x -> [x] -> [x]|str
 ------
-**Description**: Array or String returned by interspersing a given separator between elements of a given Array.
+**Description**: Array of Variables or String returned by interspersing a given separator between elements of a given Array.
 
-**Signature Definition**: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Variable; Give arg 2 an Array of Variables; Get an Array of Variables or String.
 
 **Example Usage**:
 
@@ -338,9 +339,9 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 <a name='intercalate'/>
 ### intercalate : [x] -> [[x]] -> [x]
 ------
-**Description**: Array returned by flattening the result of interspersing an Array of varaibles into an Array of Arrays.
+**Description**: Array of Variables returned by flattening the result of interspersing an Array of Variables into an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of variables; Give arg 2 an Array of Arrays of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables; Give arg 2 an Array of an Array of Variables; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -353,9 +354,9 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 <a name='transpose'/>
 ### transpose : [[x]] -> [[x]]
 ------
-**Description**: Array returned by transposing rows and columns of given arguments.
+**Description**: Array of an Array of Variables returned by transposing rows and columns of given arguments.
 
-**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of Arrays of variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -367,9 +368,9 @@ lists.transpose([["a","b","c"],["a","b","c"]]) /* [["a","a"],["b","b"],["c","c"]
 <a name='subsequences'/>
 ### subsequences : [x] -> [[x]]
 ------
-**Description**: Array of Arrays of all subsequences of a given arguement.
+**Description**: Array of an Array of Variables of all subsequences of a given arguement.
 
-**Signature Definition**: Give arg 1 an Array of variables; Get an Array of Arrays of variables.
+**Signature Definition**: Give arg 1 an Array of Variables; Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -381,9 +382,9 @@ lists.subsequences([1,2,3]) /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 <a name='permutations'/>
 ### permutations : [x]|str -> [[x]]|[str]
 ------
-**Description**: Array of Arrays or Array of Strings returned by getting all permutations of a given arguement.
+**Description**: Array of an Array of Variables or Array of Strings returned by getting all permutations of a given arguement.
 
-**Signature Definition**: Give arg 1 an Array of variables or a String; Get an Array of Arrays of variables or an Array of Strings respectively.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Get an Array of an Array of Variables or an Array of Strings respectively.
 
 **Example Usage**:
 
@@ -395,9 +396,9 @@ lists.permutations([1,2,3]) /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 <a name='foldl'/>
 ### foldl : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
+**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of Variables or String  
 
-**Signature Definition**: Give arg 1 a starting variable (usually a left identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.
+**Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator); Give arg 2 an Array of Variables or a String; Give arg 3 a function (binary operator); Get a Variable.
 
 **Example Usage**:
 
@@ -410,9 +411,9 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }) /* [1,2,3,4]
 <a name='foldl1'/>
 ### foldl1 : [x]|str -> f -> x
 ------
-**Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
+**Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.
 
-**Signature Definition**:  Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.
+**Signature Definition**:  Give arg 1 an Array of Variables or a String; Give arg 2 a function (binary operator); Get a Variable.
 
 **Example Usage**:
 
@@ -424,9 +425,9 @@ lists.foldl1([1,2,3],function(x,y){ return x+y }) /* 6 */
 <a name='foldr'/>
 ### foldr : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  
+**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String  
 
-**Signature Definition**: Give arg 1 a starting variable (usually a right identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.
+**Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get a Variable.
 
 **Example Usage**:
 
@@ -440,9 +441,9 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 <a name='foldr1'/>
 ### foldr1 : [x]|str -> f -> x
 ------
-**Description**: Variant of foldr without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
+**Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
 
-**Signature Definition**: Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function (binary operator); Get a Variable.
 
 **Example Usage**:
 
@@ -454,9 +455,9 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}) /* "bbcc
 <a name='flatten'/>
 ### flatten || concat : [[x]]|[str] -> [x]|str
 ------
-**Description**: Flatten an Array of Arrays or an Array of String into an Array of variables or String respectively.
+**Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or String respectively.
 
-**Signature Definition**: Give arg 1 an Array of Arrays of variables or a String; Get an Array of variables or a String
+**Signature Definition**: Give arg 1 an Array of an Array of Variables or an Array of Strings; Get an Array of Variables or a String.
 
 **Example Usage**:
 
@@ -468,9 +469,9 @@ lists.flatten([[1,2],[3,4]]) /* [1,2,3,4] */
 <a name='concatMap'/>
 ### concatMap : [x]|str -> f -> [x]|str
 ------
-**Description**: Array of variables or String returned by mapping a function over an Array of variables or String and flattening the result
+**Description**: Array of Variables or String returned by mapping a Function over an Array of variables or String and flattening the result
 
-**Signature Definition**: Give arg 1 an Array of variables or a String; Give arg 2 a function that produces an Array of variables or String; Get an Array of variables or a String
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function that produces an Array of Variables or String; Get an Array of Variables or a String
 
 **Example Usage**:
 
@@ -514,9 +515,9 @@ lists.or([5<1,5<2,5<3]) /* false */
 <a name='any'/>
 ### any : [x]|str -> f -> boolean
 ------
-**Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.
+**Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if at least one f(x) is true. False if all f(x) are false.
 
-**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a predicate Function to be applied to each element of arg 1; Get a boolean.
 
 **Example Usage**:
 
@@ -528,9 +529,9 @@ lists.any('abc',function(x) { return x == 'b'}) /* true */
 <a name='all'/>
 ### all : [x]|str -> f -> boolean
 ------
-**Description**: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.
+**Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or String. True if all f(x) are true. False if any f(x) are false.
 
-**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a predicate Function to be applied to each element of arg 1; Get a boolean.
 
 **Example Usage**:
 
@@ -545,7 +546,7 @@ lists.all([2,4], function(x) { return x%2==0 }) /* true */
 ------
 **Description**: Number returned by summing the numbers of an Array together.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
 
 **Example Usage**:
 
@@ -559,7 +560,7 @@ lists.sum([.2,.4,.6]) /* 1.2000000000000002 */
 ------
 **Description**: Number returned by computing the product of the numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
 
 **Example Usage**:
 
@@ -571,9 +572,9 @@ lists.product([.2,.4,.6]) /* 0.04800000000000001 */
 <a name='maximum'/>
 ### maximum : [num] -> num
 ------
-**Description**: Maximum number returned from numbers of an Array.
+**Description**: Maximum Number returned from numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
 
 **Example Usage**:
 
@@ -585,9 +586,9 @@ lists.maximum([.2,.4,.6]) /* .6 */
 <a name='minimum'/>
 ### minimum : [num] -> num
 ------
-**Description**: Minimum number returned from numbers of an Array.
+**Description**: Minimum Number returned from numbers of an Array.
 
-**Signature Definition**: Give arg 1 an Array of Numbers; Get a number.
+**Signature Definition**: Give arg 1 an Array of Numbers; Get a Number.
 
 **Example Usage**:
 
@@ -599,9 +600,9 @@ lists.minimum([.2,.4,.6]) /* .2 */
 <a name='maxList'/>
 ### maxList : [[x]] -> [x]
 ------
-**Description**: Array of variables with the maximum length returned from an Array of Arrays of variables.
+**Description**: Array of Variables with the maximum length returned from an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -613,9 +614,9 @@ lists.maxList([[1,2],[3]]) /* [1,2] */
 <a name='minList'/>
 ### minList : [[x]] -> [x]
 ------
-**Description**: Array of variables with the minimum length returned from an Array of Arrays of variables.
+**Description**: Array of Variables with the minimum length returned from an Array of an Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of Arrays of variables; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of an Array of Variables; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -627,9 +628,9 @@ lists.minList([[1,2],[3]]) /* [3] */
 <a name='scanl'/>
 ### scanl : x -> [x]|str -> f -> [x]
 ------
-**Description**: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+**Description**: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String 
 
-**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+**Signature Definition**: Give arg 1 a starting Variable; Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get an Array of Variables.
 
 **Example Usage**:
 
@@ -641,9 +642,9 @@ lists.scanl(0,[1,2,3],function(x,y){return x + y}) /* [0,1,3,6] */
 <a name='scanr'/>
 ### scanr : x -> [x]|str -> f -> [x]
 ------
-**Description**: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String 
+**Description**: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String 
 
-**Signature Definition**: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.
+**Signature Definition**: Give arg 1 a starting Variable; Give arg 2 an Array of Variables or a String; Give arg 3 a Function (binary operator); Get an Array of Variables.
 
 **Example Usage**:
 
@@ -655,9 +656,9 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}) /* [6,5,3,0] */
 <a name='mapAccumL'/>
 ### mapAccumL : x -> [x]|str -> f -> [x, [x]]
 ------
-**Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.
+**Description**: Builds an Array containing a accumulator (x) and the result of applying F to the supplied accumulator and each element of the supplied Array from left to right.
 
-**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
+**Signature Definition**: Give arg 1 a starting Variable (accumulator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function; Get an Array of Variable followed by Array of Variables.
 
 **Example Usage**:
 
@@ -672,7 +673,7 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ------
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
 
-**Signature Definition**: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.
+**Signature Definition**: Give arg 1 a starting Variable (accumulator); Give arg 2 an Array of Variables or a String; Give arg 3 a Function; Get an Array of Variable followed by Array of Variables.
 
 **Example Usage**:
 
@@ -687,7 +688,7 @@ lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}) /* [5, [5,5,5]] */
 ------
 **Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 a variable; Give arg 2 a number; Give arg 3 a function; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Variable; Give arg 2 a Number; Give arg 3 a Function; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -702,7 +703,7 @@ lists.iterate(2,4,function(x){ return x*x }) /* [2,4,16,256] */
 ------
 **Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 a variable; Give arg 2 a number; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Variable; Give arg 2 a Number; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -717,7 +718,7 @@ lists.replicate({a:1},2) /* [{a:1},{a:2}] */
 ------
 **Description**: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.
 
-**Signature Definition**: Give arg 1 an Array of variables; Give arg 2 a number; Get an Array of variables.
+**Signature Definition**: Give arg 1 an Array of Variables; Give arg 2 a Number; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -729,9 +730,9 @@ lists.cycle([1,2],2) /* [1,2,1,2] */
 <a name='unfold'/>
 ### unfold : f -> f -> f -> x -> [x]|str
 ------
-**Description**: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
+**Description**: Builds an Array from a seed value. Arg 1 is the predicate Function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
 
-**Signature Definition**: Give arg 1 an function (predicate); Give arg 2 a function; Give arg 3 a function; Give arg 4 a variable (seed).
+**Signature Definition**: Give arg 1 an Function (predicate); Give arg 2 a Function; Give arg 3 a Function; Give arg 4 a Variable (seed).
 
 **Example Usage**:
 
@@ -754,9 +755,9 @@ unfoldMap([1,2],function(x){ return x * 2 }) /* [2,4] */
 <a name='take'/>
 ### take : num -> [x]|str -> [x]
 ------
-**Description**: Array of variables returned by taking the first n (num) elements from [x] or String.
+**Description**: Array of Variables returned by taking the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -768,9 +769,9 @@ lists.take(2,'abc') /* ["a","b"] */
 <a name='drop'/>
 ### drop : num -> [x]|str -> [x]
 ------
-**Description**: Array of variables returned by dropping the first n (num) elements from [x] or String.
+**Description**: Array of Variables returned by dropping the first n (num) elements from [x] or String.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -782,9 +783,9 @@ lists.drop(2,'abc') /* ["c"] */
 <a name='splitAt'/>
 ### splitAt : num -> [x]|str -> [[x],[x]]
 ------
-**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables or String. The second contains the rest.
+**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or String. The second contains the rest.
 
-**Signature Definition**: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of two Arrays of variables.
+**Signature Definition**: Give arg 1 a Number; Give arg 2 an Array of Variables or a String; Get an Array of two Arrays of Variables.
 
 **Example Usage**:
 
@@ -796,9 +797,9 @@ lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 <a name='takeWhile'/>
 ### takeWhile : f -> [x]|str -> [x]
 ------
-**Description**: Array of variables returned by taking elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
+**Description**: Array of Variables returned by taking elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
-**Signature Definition**: Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.
+**Signature Definition**: Give arg 1 a Function; Give arg 2 an Array of Variables or a String; Get an Array of Variables.
 
 **Example Usage**:
 
@@ -811,9 +812,9 @@ lists.takeWhile('aabc', function(x){ return x =='a' }) /* ["a","a"] */
 <a name='dropWhile'/>
 ### dropWhile : f -> [x]|str -> [x]
 ------
-**Description**: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.
+**Description**: Array of Variables returned by dropping elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
-**Signature Definition**: <span class='sig-def'>Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.</span>
+**Signature Definition**: <span class='sig-def'>Give arg 1 a Function; Give arg 2 an Array of Variables or a String; Get an Array of Variables.</span>
 
 **Example Usage**:
 
@@ -826,9 +827,9 @@ lists.dropWhile('aabc', function(x){ return x =='a' }) /* ["b","c"] */
 <a name='span'/>
 ### span : arr|str -> f -> [[x], [x]|str]
 ------
-**Description**: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that satisfy a predicate function f. The second element is the rest of the list.
+**Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
 
-**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).
+**Signature Definition**: Give arg 1 an Array of Variables or String; Give arg 2 a Function; Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
 
 **Example Usage**:
 
@@ -841,9 +842,9 @@ lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[{a:2},{a:2}],[{
 <a name='break'/>
 ### break : arr|str -> f -> [[x], [x]|str]
 ------
-**Description**: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that do not satisfy a predicate function f. The second element is the rest of the list.
+**Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.
 
-**Signature Definition**: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).
+**Signature Definition**: Give arg 1 an Array of Variables or a String; Give arg 2 a Function; Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
 
 **Example Usage**:
 
@@ -914,9 +915,9 @@ lists.tails([{a:2},{b:3}]) /* [[{a:2},{b:3}],[{a:2}],[]] */
 <a name='isPrefixOf'/>
 ### isPrefixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the prefix of an Array of Numbers or String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -929,9 +930,9 @@ lists.isPrefixOf("ab","abcd") /* true */
 <a name='isSuffixOf'/>
 ### isSuffixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the suffix of an Array of Numbers or String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -944,9 +945,9 @@ lists.isSuffixOf("d","abcd") /* true */
 <a name='isInfixOf'/>
 ### isInfixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the infix of an Array of Numbers or String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or a String is the infix of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -959,9 +960,9 @@ lists.isInfixOf("a","abcd") /* true */
 <a name='isSubsequenceOf'/>
 ### isInfixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -974,9 +975,9 @@ lists.isSubsequenceOf("Lol","Laugh out loud") /* true */
 <a name='elem'/>
 ### elem : num|str -> [num]|str -> boolean
 ------
-**Description**: Test if the Number or String is in the Array of Numbers or String.
+**Description**: Test if the Number or String is in the Array of Numbers or a String.
 
-**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -988,9 +989,9 @@ lists.elem("2","123 abc") /* true */
 <a name='notElem'/>
 ### notElem : num|str -> [num]|str -> boolean
 ------
-**Description**: Test if the Number or String is not in the Array of Numbers or String.
+**Description**: Test if the Number or String is not in the Array of Numbers or a String.
 
-**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
