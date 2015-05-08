@@ -113,18 +113,18 @@ map : [x] -> f -> [x]
 
 **Predicates**
 
-* isPrefixOf : Eq a => [a] -> [a] -> Bool
-* isSuffixOf : Eq a => [a] -> [a] -> Bool
-* isInfixOf : Eq a => [a] -> [a] -> Bool
-* isSubsequenceOf : Eq a => [a] -> [a] -> Bool
+* [`isPrefixOf`](#isPrefixOf) : [num]|str -> [num]|str -> boolean
+* [`isSuffixOf`](#isSuffixOf) : [num]|str -> [num]|str -> boolean
+* [`isInfixOf`](#isInfixOf) : [num]|str -> [num]|str -> boolean
+* [`isSubsequenceOf`](#isSubsequenceOf) : [num]|str -> [num]|str -> boolean
 
 -----
 
 **Searching Lists**
 
-* elem : Eq a => a -> [a] -> Bool
-* notElem : Eq a => a -> [a] -> Bool
-* lookup : Eq a => a -> [(a, b)] -> Maybe b
+* [`elem`](#elem) : num|str -> [num]|str -> boolean
+* [`notElem`](#notElem) : num|str -> [num]|str -> boolean
+* [`lookup`](#lookup) : num|str -> [[num|str,x]] -> boolean
 * find : (a -> Bool) -> [a] -> Maybe a
 * filter : (a -> Bool) -> [a] -> [a]
 * partition : (a -> Bool) -> [a] -> ([a], [a])
@@ -909,5 +909,108 @@ lists.inits([{a:2},{b:3}]) /* [[],[{a:2}],[{a:2},{b:3}]] */
 lists.tails([1,2,3]) /* [[1,2,3],[1,2],[1],[]] */
 lists.tails("abc") /* [["a","b","c"],["a","b"],["a"],[]] */
 lists.tails([{a:2},{b:3}]) /* [[{a:2},{b:3}],[{a:2}],[]] */
+```
+------
+<a name='isPrefixOf'/>
+### isPrefixOf : [num]|str -> [num]|str -> boolean
+------
+**Description**: Test if an Array of Numbers or String is the prefix of an Array of Numbers or String. The arguments must be of the same type.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.isPrefixOf([1,2],[1,2,3]) /* true */
+lists.isPrefixOf("abc","acd") /* false */
+lists.isPrefixOf("ab","abcd") /* true */
+```
+------
+<a name='isSuffixOf'/>
+### isSuffixOf : [num]|str -> [num]|str -> boolean
+------
+**Description**: Test if an Array of Numbers or String is the suffix of an Array of Numbers or String. The arguments must be of the same type.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.isSuffixOf([1,2],[1,2,3]) /* false */
+lists.isSuffixOf("cd","acd") /* true */
+lists.isSuffixOf("d","abcd") /* true */
+```
+------
+<a name='isInfixOf'/>
+### isInfixOf : [num]|str -> [num]|str -> boolean
+------
+**Description**: Test if an Array of Numbers or String is the infix of an Array of Numbers or String. The arguments must be of the same type.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.isInfixOf([1,2],[1,3,2]) /* false */
+lists.isInfixOf("cd","acde") /* true */
+lists.isInfixOf("a","abcd") /* true */
+```
+------
+<a name='isSubsequenceOf'/>
+### isInfixOf : [num]|str -> [num]|str -> boolean
+------
+**Description**: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or String. The arguments must be of the same type.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.isSubsequenceOf([1,2],[1,3,2]) /* true */
+lists.isSubsequenceOf("abc","123 abc") /* true */
+lists.isSubsequenceOf("Lol","Laugh out loud") /* true */
+```
+------
+<a name='elem'/>
+### elem : num|str -> [num]|str -> boolean
+------
+**Description**: Test if the Number or String is in the Array of Numbers or String.
+
+**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.elem(2,[1,3,2]) /* true */
+lists.elem("2","123 abc") /* true */
+```
+------
+<a name='notElem'/>
+### notElem : num|str -> [num]|str -> boolean
+------
+**Description**: Test if the Number or String is not in the Array of Numbers or String.
+
+**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or String. Get a boolean.
+
+**Example Usage**:
+
+```js
+lists.notElem(0,[1,3,2]) /* true */
+lists.notElem("a","abc") /* false */
+```
+------
+<a name='lookup'/>
+### lookup : num|str -> [[num|str,x]] -> boolean
+------
+**Description**: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).
+
+**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of an Array containing a Number or String as the key and a Variable as the value. Get a Variable (value).
+
+**Example Usage**:
+
+```js
+lists.lookup("a",[["a",2],["b",3]]) /* 2 */
+lists.lookup("ab",[["ab",2],["b",3]]) /* 2 */
+lists.lookup(1,[[1,{a:2}],["b",3]]) /* {a:2} */
 ```
 ------
