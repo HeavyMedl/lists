@@ -282,6 +282,13 @@
 		: l.isPrefixOf(xs,ys) ? true
 			: l.isInfixOf(xs,l.tail(ys))
 	}
+	l.isSubsequenceOf = function(xs, ys) {
+		return l.nil(xs) ? true
+		: l.nil(ys) ? false
+			: l.head(xs).toString() == l.head(ys).toString()
+				? l.isSubsequenceOf(l.tail(xs), l.tail(ys))
+				: l.isSubsequenceOf(xs, l.tail(ys))
+	}
 	//Data.List searching by equality
 	l.elem = function(x, xs) {
 		return l.nil(xs) ? false
