@@ -116,6 +116,7 @@ map : [x] -> f -> [x]
 * isPrefixOf : Eq a => [a] -> [a] -> Bool
 * isSuffixOf : Eq a => [a] -> [a] -> Bool
 * isInfixOf : Eq a => [a] -> [a] -> Bool
+* isSubsequenceOf : Eq a => [a] -> [a] -> Bool
 
 -----
 
