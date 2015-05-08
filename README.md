@@ -1155,7 +1155,7 @@ lists.zip([[1,'l'],[3,'o'],[5,'l']]); /* [[1,3,5],["l","o","l"]] */
 ------
 **Description**: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.
 
-**Signature Definition**: Give arg 1 an Array of an Array of Variables. Give arg 2 a binary Function. Get an Array of Variables
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Give arg 2 a binary Function. Get an Array of Variables.
 
 **Example Usage**:
 
