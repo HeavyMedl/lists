@@ -71,7 +71,9 @@
 <li>
 <strong>f</strong> : Function</li>
 <li>
-<strong>x</strong> : variable</li>
+<strong>x</strong> : Variable</li>
+<li>
+<strong>boolean</strong> : boolean</li>
 </ul>
 
 <p>A{ <strong>1.</strong> } Function number</p>
@@ -83,13 +85,13 @@
 <p>tail : arr|str -&gt; [x] </p>
 
 <ul>
-<li>Takes an Array of variables or String and produces an array of variables ([x]).</li>
+<li>Takes an Array of Variables or String and produces an Array of Variables ([x]).</li>
 </ul>
 
 <p>map : [x] -&gt; f -&gt; [x]</p>
 
 <ul>
-<li>Takes an Array of variables and a function and produces an array of variables.</li>
+<li>Takes an Array of Variables and a Function and produces an Array of Variables.</li>
 </ul>
 
 <hr>
@@ -98,17 +100,17 @@
 
 <ul>
 <li>
-<a href="#append"><code>append</code></a> : arr|str -&gt; arr|str|num -&gt; [x]|str</li>
+<a href="#append"><code>append</code></a> : [x]|str -&gt; [x]|str|num -&gt; [x]|str</li>
 <li>
-<a href="#head"><code>head</code></a> : arr|str -&gt; x</li>
+<a href="#head"><code>head</code></a> : [x]|str -&gt; x</li>
 <li>
-<a href="#last"><code>last</code></a> : arr|str -&gt; x</li>
+<a href="#last"><code>last</code></a> : [x]|str -&gt; x</li>
 <li>
-<a href="#init"><code>init</code></a> : arr|str -&gt; [x]</li>
+<a href="#init"><code>init</code></a> : [x]|str -&gt; [x]</li>
 <li>
-<a href="#tail"><code>tail</code></a> : arr|str -&gt; [x]</li>
+<a href="#tail"><code>tail</code></a> : [x]|str -&gt; [x]</li>
 <li>
-<a href="#nil"><code>nil</code></a> : arr|str -&gt; boolean</li>
+<a href="#nil"><code>nil</code></a> : [x]|str -&gt; boolean</li>
 </ul>
 
 <hr>
@@ -121,7 +123,7 @@
 <li>
 <a href="#rev"><code>rev</code></a> : [x] -&gt; [x]</li>
 <li>
-<a href="#intersperse"><code>intersperse</code></a> : x -&gt; [x] -&gt; arr|str</li>
+<a href="#intersperse"><code>intersperse</code></a> : x -&gt; [x] -&gt; [x]|str</li>
 <li>
 <a href="#intercalate"><code>intercalate</code></a> : [x] -&gt; [[x]] -&gt; [x]</li>
 <li>
@@ -215,41 +217,77 @@
 <a href="#break"><code>break</code></a> : arr|str -&gt; f -&gt; [[x], [x]|str]</li>
 <li>
 <a href="#stripPrefix"><code>stripPrefix</code></a> : [num]|str -&gt; [num]|str -&gt; [num]|[str]</li>
-<li>group : Eq a =&gt; [a] -&gt; [[a]]</li>
-<li>inits : [a] -&gt; [[a]]</li>
-<li>tails : [a] -&gt; [[a]]</li>
-<li>isPrefixOf : Eq a =&gt; [a] -&gt; [a] -&gt; Bool</li>
-<li>isSuffixOf : Eq a =&gt; [a] -&gt; [a] -&gt; Bool</li>
-<li>isInfixOf : Eq a =&gt; [a] -&gt; [a] -&gt; Bool</li>
+<li>
+<a href="#group"><code>group</code></a> : [num]|str -&gt; [[num]]|[[str]]</li>
+<li>
+<a href="#inits"><code>inits</code></a> : [x] -&gt; [[x]]</li>
+<li>
+<a href="#tails"><code>tails</code></a> : [x] -&gt; [[x]]</li>
 </ul>
+
+<hr>
+
+<p><strong>Predicates</strong></p>
+
+<ul>
+<li>
+<a href="#isPrefixOf"><code>isPrefixOf</code></a> : [num]|str -&gt; [num]|str -&gt; boolean</li>
+<li>
+<a href="#isSuffixOf"><code>isSuffixOf</code></a> : [num]|str -&gt; [num]|str -&gt; boolean</li>
+<li>
+<a href="#isInfixOf"><code>isInfixOf</code></a> : [num]|str -&gt; [num]|str -&gt; boolean</li>
+<li>
+<a href="#isSubsequenceOf"><code>isSubsequenceOf</code></a> : [num]|str -&gt; [num]|str -&gt; boolean</li>
+</ul>
+
+<hr>
 
 <p><strong>Searching Lists</strong></p>
 
 <ul>
-<li>elem : Eq a =&gt; a -&gt; [a] -&gt; Bool</li>
-<li>notElem : Eq a =&gt; a -&gt; [a] -&gt; Bool</li>
-<li>lookup : Eq a =&gt; a -&gt; [(a, b)] -&gt; Maybe b</li>
-<li>find : (a -&gt; Bool) -&gt; [a] -&gt; Maybe a</li>
-<li>filter : (a -&gt; Bool) -&gt; [a] -&gt; [a]</li>
-<li>partition : (a -&gt; Bool) -&gt; [a] -&gt; ([a], [a])</li>
+<li>
+<a href="#elem"><code>elem</code></a> : num|str -&gt; [num]|str -&gt; boolean</li>
+<li>
+<a href="#notElem"><code>notElem</code></a> : num|str -&gt; [num]|str -&gt; boolean</li>
+<li>
+<a href="#lookup"><code>lookup</code></a> : num|str -&gt; [[num|str,x]] -&gt; boolean</li>
+<li>
+<a href="#find"><code>find</code></a> : [x] -&gt; f -&gt; x</li>
+<li>
+<a href="#filter"><code>filter</code></a> : [x] -&gt; f -&gt; [x]</li>
+<li>
+<a href="#partition"><code>partition</code></a> : [x] -&gt; f -&gt; [[x],[x]]</li>
 </ul>
+
+<hr>
 
 <p><strong>Indexing Lists</strong></p>
 
 <ul>
-<li>bang : [a] -&gt; Int -&gt; a</li>
-<li>elemIndex : Eq a =&gt; a -&gt; [a] -&gt; Maybe Int</li>
-<li>elemIndices : Eq a =&gt; a -&gt; [a] -&gt; [Int]</li>
-<li>findIndex : (a -&gt; Bool) -&gt; [a] -&gt; Maybe Int</li>
-<li>findIndices : (a -&gt; Bool) -&gt; [a] -&gt; [Int]</li>
+<li>
+<a href="#bang"><code>bang</code></a> : num -&gt; [x] -&gt; x</li>
+<li>
+<a href="#elemIndex"><code>elemIndex</code></a> || <a href="#elemIndex"><code>indexOf</code></a> : num|str -&gt; [num]|str -&gt; num</li>
+<li>
+<a href="#elemIndices"><code>elemIndices</code></a> : num|str -&gt; [num]|str -&gt; [num]</li>
+<li>
+<a href="#findIndex"><code>findIndex</code></a> : [x] -&gt; f -&gt; num</li>
+<li>
+<a href="#findIndices"><code>findIndices</code></a> : [x] -&gt; f -&gt; [num]</li>
 </ul>
+
+<hr>
 
 <p><strong>Zipping and Unzipping Lists</strong></p>
 
 <ul>
-<li>zip || unzip : [[a],[b],..,[n]] -&gt; [[a,b,..,n]]</li>
-<li>zipWith : (a -&gt; b -&gt; c) -&gt; [[a],[b],..,[n]] -&gt; [c,..,n]</li>
+<li>
+<a href="#zip"><code>zip</code></a> || <a href="#zip"><code>unzip</code></a> : [[a,b,..,n],[c,d,..,n],..,n] -&gt; [[a,c,..,n],[b,d,..,n],..,n]</li>
+<li>
+<a href="#zipWith"><code>zipWith</code></a> : [[a,b,..,n],[c,d,..,n],..,n] -&gt; f -&gt; [x]</li>
 </ul>
+
+<hr>
 
 <p><strong>Special Lists</strong></p>
 
@@ -267,6 +305,8 @@
 <li>insert : Ord a =&gt; a -&gt; [a] -&gt; [a]</li>
 </ul>
 
+<hr>
+
 <p><strong>Generalized Functions</strong></p>
 
 <ul>
@@ -281,6 +321,8 @@
 <li>maximumBy : (a -&gt; a -&gt; Ordering) -&gt; [a] -&gt; a</li>
 <li>minimumBy : (a -&gt; a -&gt; Ordering) -&gt; [a] -&gt; a</li>
 </ul>
+
+<hr>
 
 <p><strong>Extra Functional Utilities</strong></p>
 
@@ -304,13 +346,13 @@
 <p><a name="append"></a></p>
 
 <h3>
-<a id="append--arrstr---arrstrnum---xstr" class="anchor" href="#append--arrstr---arrstrnum---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>append : arr|str -&gt; arr|str|num -&gt; [x]|str</h3>
+<a id="append--xstr---xstrnum---xstr" class="anchor" href="#append--xstr---xstrnum---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>append : [x]|str -&gt; [x]|str|num -&gt; [x]|str</h3>
 
 <hr>
 
 <p><strong>Description</strong>: A prefix-style Array.prototype.concat wrapper.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Give arg 2 an Array or a String or a Number; Get an Array of variables or String.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String or a Number. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -323,13 +365,13 @@ lists.append(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pd
 <p><a name="head"></a></p>
 
 <h3>
-<a id="head--arrstr---x" class="anchor" href="#head--arrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>head : arr|str -&gt; x</h3>
+<a id="head--xstr---x" class="anchor" href="#head--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>head : [x]|str -&gt; x</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Retreive the first element of an Array or a String.</p>
+<p><strong>Description</strong>: Retreive the first element of an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get a variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -342,13 +384,13 @@ lists.head(<span class="pl-s"><span class="pl-pds">'</span>ab<span class="pl-pds
 <p><a name="last"></a></p>
 
 <h3>
-<a id="last--arrstr---x" class="anchor" href="#last--arrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>last : arr|str -&gt; x</h3>
+<a id="last--xstr---x" class="anchor" href="#last--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>last : [x]|str -&gt; x</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Retreive the last element of an Array or a String.</p>
+<p><strong>Description</strong>: Retreive the last element of an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get a variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -361,13 +403,13 @@ lists.last(<span class="pl-s"><span class="pl-pds">'</span>ab<span class="pl-pds
 <p><a name="init"></a></p>
 
 <h3>
-<a id="init--arrstr---x" class="anchor" href="#init--arrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>init : arr|str -&gt; [x]</h3>
+<a id="init--xstr---x" class="anchor" href="#init--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>init : [x]|str -&gt; [x]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Retreive all elements except the last of an Array or a String.</p>
+<p><strong>Description</strong>: Retreive all elements except the last of an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -380,13 +422,13 @@ lists.init(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pd
 <p><a name="tail"></a></p>
 
 <h3>
-<a id="tail--arrstr---x" class="anchor" href="#tail--arrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>tail : arr|str -&gt; [x]</h3>
+<a id="tail--xstr---x" class="anchor" href="#tail--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>tail : [x]|str -&gt; [x]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Retreive all elements except the first of an Array or a String.</p>
+<p><strong>Description</strong>: Retreive all elements except the first of an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -399,13 +441,13 @@ lists.tail(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pd
 <p><a name="nil"></a></p>
 
 <h3>
-<a id="nil--arrstr---boolean" class="anchor" href="#nil--arrstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>nil : arr|str -&gt; boolean</h3>
+<a id="nil--xstr---boolean" class="anchor" href="#nil--xstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>nil : [x]|str -&gt; boolean</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Test if an Array or String is empty.</p>
+<p><strong>Description</strong>: Test if an Array of Variables or String is empty.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String; Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -424,9 +466,9 @@ lists.nil([<span class="pl-c1">1</span>]); <span class="pl-c">/* false */</span>
 
 <hr>
 
-<p><strong>Description</strong>: Array returned by applying f to each element of [x]</p>
+<p><strong>Description</strong>: Array of Variables returned by applying f to each element of [x].</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Give arg 2 a Function; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -445,28 +487,28 @@ lists.map([{<span class="pl-s"><span class="pl-pds">'</span>S<span class="pl-pds
 
 <hr>
 
-<p><strong>Description</strong>: Array returned by reversing the order of each element.</p>
+<p><strong>Description</strong>: Array of Variables returned by reversing the order of each element.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array or a String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
 <div class="highlight highlight-js"><pre>lists.<span class="pl-c1">rev</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [3,2,1] */</span>
 lists.<span class="pl-c1">rev</span>(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>); <span class="pl-c">/* ['c','b','a'] */</span>
-lists.<span class="pl-c1">rev</span>([[<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]) <span class="pl-c">/* [[3],[2]] */</span></pre></div>
+lists.<span class="pl-c1">rev</span>([[<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]); <span class="pl-c">/* [[3],[2]] */</span></pre></div>
 
 <hr>
 
 <p><a name="intersperse"></a></p>
 
 <h3>
-<a id="intersperse--x---x---arrstr" class="anchor" href="#intersperse--x---x---arrstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersperse : x -&gt; [x] -&gt; arr|str</h3>
+<a id="intersperse--x---x---xstr" class="anchor" href="#intersperse--x---x---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersperse : x -&gt; [x] -&gt; [x]|str</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Array or String returned by interspersing a given separator between elements of a given Array.</p>
+<p><strong>Description</strong>: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a variable; Give arg 2 an Array of variables; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -484,14 +526,14 @@ lists.intersperse({b<span class="pl-k">:</span><span class="pl-c1">2</span>},[{a
 
 <hr>
 
-<p><strong>Description</strong>: Array returned by flattening the result of interspersing an Array of varaibles into an Array of Arrays.</p>
+<p><strong>Description</strong>: Array of Variables returned by flattening the result of interspersing an Array of Variables into an Array of an Array of Variables.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables; Give arg 2 an Array of Arrays of variables; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 an Array of an Array of Variables. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
 <div class="highlight highlight-js"><pre>lists.intercalate([<span class="pl-c1">1</span>],[[<span class="pl-c1">5</span>],[<span class="pl-c1">5</span>],[<span class="pl-c1">5</span>]]); <span class="pl-c">/* = lists.flatten(lists.intersperse([1],[[5],[5],[5]])) // [5,1,5,1,5] */</span>
-lists.intercalate([<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>],[[<span class="pl-s"><span class="pl-pds">"</span>efg<span class="pl-pds">"</span></span>],[<span class="pl-s"><span class="pl-pds">"</span>qrs<span class="pl-pds">"</span></span>]]) <span class="pl-c">/* ["efg", "abc", "qrs"] */</span>
+lists.intercalate([<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>],[[<span class="pl-s"><span class="pl-pds">"</span>efg<span class="pl-pds">"</span></span>],[<span class="pl-s"><span class="pl-pds">"</span>qrs<span class="pl-pds">"</span></span>]]); <span class="pl-c">/* ["efg", "abc", "qrs"] */</span>
 lists.intercalate([{a<span class="pl-k">:</span><span class="pl-c1">1</span>}],[[{b<span class="pl-k">:</span><span class="pl-c1">1</span>}],[{c<span class="pl-k">:</span><span class="pl-c1">2</span>}]]); <span class="pl-c">/* [{b:1},{a:1},{c:2}] */</span></pre></div>
 
 <hr>
@@ -503,14 +545,14 @@ lists.intercalate([{a<span class="pl-k">:</span><span class="pl-c1">1</span>}],[
 
 <hr>
 
-<p><strong>Description</strong>: Array returned by transposing rows and columns of given arguments.</p>
+<p><strong>Description</strong>: Array of an Array of Variables returned by transposing rows and columns of given arguments.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Arrays of variables; Get an Array of Arrays of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Get an Array of an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.transpose([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>]]) <span class="pl-c">/* [[1,3],[2,4],[4,4]] */</span>
-lists.transpose([[<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>],[<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>]]) <span class="pl-c">/* [["a","a"],["b","b"],["c","c"]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.transpose([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>]]); <span class="pl-c">/* [[1,3],[2,4],[4,4]] */</span>
+lists.transpose([[<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>],[<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>]]); <span class="pl-c">/* [["a","a"],["b","b"],["c","c"]] */</span></pre></div>
 
 <hr>
 
@@ -521,14 +563,14 @@ lists.transpose([[<span class="pl-s"><span class="pl-pds">"</span>a<span class="
 
 <hr>
 
-<p><strong>Description</strong>: Array of Arrays of all subsequences of a given arguement.</p>
+<p><strong>Description</strong>: Array of an Array of Variables of all subsequences of a given arguement.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables; Get an Array of Arrays of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.subsequences(<span class="pl-s"><span class="pl-pds">'</span>ab<span class="pl-pds">'</span></span>) <span class="pl-c">/* [[],['a'],['b'],['ab']] */</span>
-lists.subsequences([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]) <span class="pl-c">/* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.subsequences(<span class="pl-s"><span class="pl-pds">'</span>ab<span class="pl-pds">'</span></span>); <span class="pl-c">/* [[],['a'],['b'],['ab']] */</span>
+lists.subsequences([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */</span></pre></div>
 
 <hr>
 
@@ -539,14 +581,14 @@ lists.subsequences([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<s
 
 <hr>
 
-<p><strong>Description</strong>: Array of Arrays or Array of Strings returned by getting all permutations of a given arguement.</p>
+<p><strong>Description</strong>: Array of an Array of Variables or Array of Strings returned by getting all permutations of a given arguement.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or a String; Get an Array of Arrays of variables or an Array of Strings respectively.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables or an Array of Strings respectively.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.permutations(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>) <span class="pl-c">/* ["abc","acb","bac","bca","cab","cba"] */</span>
-lists.permutations([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]) <span class="pl-c">/* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.permutations(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["abc","acb","bac","bca","cab","cba"] */</span>
+lists.permutations([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */</span></pre></div>
 
 <hr>
 
@@ -557,15 +599,15 @@ lists.permutations([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<s
 
 <hr>
 
-<p><strong>Description</strong>: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  </p>
+<p><strong>Description</strong>: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  </p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable (usually a left identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
 <div class="highlight highlight-js"><pre>reverse <span class="pl-k">=</span> lists.foldl(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> y.<span class="pl-c1">concat</span>(x); }); <span class="pl-c">/* "cba" */</span>
 sum <span class="pl-k">=</span> lists.foldl(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">+</span>y; }); <span class="pl-c">/* 6 */</span>
-lists.foldl([], [[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) {<span class="pl-k">return</span> x.<span class="pl-c1">concat</span>(y) }) <span class="pl-c">/* [1,2,3,4] */</span></pre></div>
+lists.foldl([], [[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) {<span class="pl-k">return</span> x.<span class="pl-c1">concat</span>(y) }); <span class="pl-c">/* [1,2,3,4] */</span></pre></div>
 
 <hr>
 
@@ -576,14 +618,14 @@ lists.foldl([], [[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<s
 
 <hr>
 
-<p><strong>Description</strong>: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.</p>
+<p><strong>Description</strong>: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.</p>
 
-<p><strong>Signature Definition</strong>:  Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.</p>
+<p><strong>Signature Definition</strong>:  Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.foldl1(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x.<span class="pl-c1">concat</span>(y).<span class="pl-c1">toUpperCase</span>() }) <span class="pl-c">/* "ABC" */</span>
-lists.foldl1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">+</span>y }) <span class="pl-c">/* 6 */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.foldl1(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x.<span class="pl-c1">concat</span>(y).<span class="pl-c1">toUpperCase</span>() }); <span class="pl-c">/* "ABC" */</span>
+lists.foldl1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">+</span>y }); <span class="pl-c">/* 6 */</span></pre></div>
 
 <hr>
 
@@ -594,13 +636,13 @@ lists.foldl1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span cl
 
 <hr>
 
-<p><strong>Description</strong>: Variable returned reducing right to left by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of variables or String  </p>
+<p><strong>Description</strong>: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  </p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable (usually a right identity of the binary operator); Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get a variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.foldr(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">-</span>y; }) <span class="pl-c">/* -2 */</span>
+<div class="highlight highlight-js"><pre>lists.foldr(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">-</span>y; }); <span class="pl-c">/* -2 */</span>
 lists.foldr([],[[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">5</span>,<span class="pl-c1">6</span>]],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ 
   <span class="pl-k">return</span> lists.<span class="pl-c1">rev</span>(x).<span class="pl-c1">concat</span>(y); 
 }); <span class="pl-c">/* [4,3,1,2,5,6] */</span></pre></div>
@@ -614,14 +656,14 @@ lists.foldr([],[[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<sp
 
 <hr>
 
-<p><strong>Description</strong>: Variant of foldr without a starting variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.</p>
+<p><strong>Description</strong>: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or a String; Give arg 2 a function (binary operator); Get a variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.foldr1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x <span class="pl-k">-</span> y }) <span class="pl-c">/* 3 */</span>
-lists.foldr1(<span class="pl-s"><span class="pl-pds">'</span>aabbcc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span><span class="pl-k">?</span> x<span class="pl-k">=</span>y <span class="pl-k">:</span> x.<span class="pl-c1">concat</span>(y)}) <span class="pl-c">/* "bbcc" */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.foldr1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x <span class="pl-k">-</span> y }); <span class="pl-c">/* 3 */</span>
+lists.foldr1(<span class="pl-s"><span class="pl-pds">'</span>aabbcc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span><span class="pl-k">?</span> x<span class="pl-k">=</span>y <span class="pl-k">:</span> x.<span class="pl-c1">concat</span>(y)}); <span class="pl-c">/* "bbcc" */</span></pre></div>
 
 <hr>
 
@@ -632,14 +674,14 @@ lists.foldr1(<span class="pl-s"><span class="pl-pds">'</span>aabbcc<span class="
 
 <hr>
 
-<p><strong>Description</strong>: Flatten an Array of Arrays or an Array of String into an Array of variables or String respectively.</p>
+<p><strong>Description</strong>: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or String respectively.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Arrays of variables or a String; Get an Array of variables or a String</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables or an Array of Strings. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
 <div class="highlight highlight-js"><pre>lists.flatten([<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>]); <span class="pl-c">/* 'abc' */</span>
-lists.flatten([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]]) <span class="pl-c">/* [1,2,3,4] */</span></pre></div>
+lists.flatten([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]]); <span class="pl-c">/* [1,2,3,4] */</span></pre></div>
 
 <hr>
 
@@ -650,14 +692,14 @@ lists.flatten([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<spa
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables or String returned by mapping a function over an Array of variables or String and flattening the result</p>
+<p><strong>Description</strong>: Array of Variables or String returned by mapping a Function over an Array of Variables or String and flattening the result.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or a String; Give arg 2 a function that produces an Array of variables or String; Get an Array of variables or a String</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or String. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.concatMap([<span class="pl-s"><span class="pl-pds">'</span>bang<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>bang<span class="pl-pds">'</span></span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span>!<span class="pl-pds">'</span></span>}) <span class="pl-c">/* "bang!bang!" */</span>
-lists.concatMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> [[x<span class="pl-k">*</span><span class="pl-c1">2</span>,x/<span class="pl-c1">2</span>]] }) <span class="pl-c">/* [[2,0.5],[4,1],[6,1.5]] */</span>
+<div class="highlight highlight-js"><pre>lists.concatMap([<span class="pl-s"><span class="pl-pds">'</span>bang<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>bang<span class="pl-pds">'</span></span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span>!<span class="pl-pds">'</span></span>}); <span class="pl-c">/* "bang!bang!" */</span>
+lists.concatMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> [[x<span class="pl-k">*</span><span class="pl-c1">2</span>,x/<span class="pl-c1">2</span>]] }); <span class="pl-c">/* [[2,0.5],[4,1],[6,1.5]] */</span>
 lists.concatMap([{a<span class="pl-k">:</span><span class="pl-c1">1</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){
   x.prop <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>hi<span class="pl-pds">'</span></span>;  
   <span class="pl-k">return</span> [x]
@@ -678,8 +720,8 @@ lists.concatMap([{a<span class="pl-k">:</span><span class="pl-c1">1</span>},{b<s
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.and([<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]) <span class="pl-c">/* true */</span>
-lists.and([<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">1</span>,<span class="pl-c1">false</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]) <span class="pl-c">/* false */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.and([<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]); <span class="pl-c">/* true */</span>
+lists.and([<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">1</span>,<span class="pl-c1">false</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]); <span class="pl-c">/* false */</span></pre></div>
 
 <hr>
 
@@ -696,8 +738,8 @@ lists.and([<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.or([<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]) <span class="pl-c">/* true */</span>
-lists.or([<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">3</span>]) <span class="pl-c">/* false */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.or([<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&gt;</span><span class="pl-c1">3</span>]); <span class="pl-c">/* true */</span>
+lists.or([<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">1</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class="pl-c1">3</span>]); <span class="pl-c">/* false */</span></pre></div>
 
 <hr>
 
@@ -708,14 +750,14 @@ lists.or([<span class="pl-c1">5</span><span class="pl-k">&lt;</span><span class=
 
 <hr>
 
-<p><strong>Description</strong>: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if at least one f(x) is true. False if all f(x) are false.</p>
+<p><strong>Description</strong>: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if at least one f(x) is true. False if all f(x) are false.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.any([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> .<span class="pl-c1">5</span>}) <span class="pl-c">/* false */</span>
-lists.any(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>}) <span class="pl-c">/* true */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.any([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> .<span class="pl-c1">5</span>}); <span class="pl-c">/* false */</span>
+lists.any(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>}); <span class="pl-c">/* true */</span></pre></div>
 
 <hr>
 
@@ -726,15 +768,15 @@ lists.any(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds
 
 <hr>
 
-<p><strong>Description</strong>: Boolean returned by applying a predicate function to each element in an Array of variables or String. True if all f(x) are true. False if any f(x) are false.</p>
+<p><strong>Description</strong>: Boolean returned by applying a predicate Function to each element in an Array of Variables or String. True if all f(x) are true. False if any f(x) are false.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or String; Give arg 2 a predicate function to be applied to each element of arg 1; Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">all</span>(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">==</span>x.<span class="pl-c1">toUpperCase</span>() }) <span class="pl-c">/* false */</span>
-lists.<span class="pl-c1">all</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">&gt;</span> <span class="pl-c1">3</span> }) <span class="pl-c">/* false */</span>
-lists.<span class="pl-c1">all</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x<span class="pl-k">%</span><span class="pl-c1">2</span><span class="pl-k">==</span><span class="pl-c1">0</span> }) <span class="pl-c">/* true */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">all</span>(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">==</span>x.<span class="pl-c1">toUpperCase</span>() }); <span class="pl-c">/* false */</span>
+lists.<span class="pl-c1">all</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">&gt;</span> <span class="pl-c1">3</span> }); <span class="pl-c">/* false */</span>
+lists.<span class="pl-c1">all</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x<span class="pl-k">%</span><span class="pl-c1">2</span><span class="pl-k">==</span><span class="pl-c1">0</span> }); <span class="pl-c">/* true */</span></pre></div>
 
 <hr>
 
@@ -747,12 +789,12 @@ lists.<span class="pl-c1">all</span>([<span class="pl-c1">2</span>,<span class="
 
 <p><strong>Description</strong>: Number returned by summing the numbers of an Array together.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers; Get a number.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get a Number.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.sum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]) <span class="pl-c">/* 12 */</span>
-lists.sum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]) <span class="pl-c">/* 1.2000000000000002 */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.sum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]); <span class="pl-c">/* 12 */</span>
+lists.sum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]); <span class="pl-c">/* 1.2000000000000002 */</span></pre></div>
 
 <hr>
 
@@ -765,12 +807,12 @@ lists.sum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span cl
 
 <p><strong>Description</strong>: Number returned by computing the product of the numbers of an Array.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers; Get a number.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get a Number.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">product</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]) <span class="pl-c">/* 48 */</span>
-lists.<span class="pl-c1">product</span>([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]) <span class="pl-c">/* 0.04800000000000001 */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">product</span>([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]); <span class="pl-c">/* 48 */</span>
+lists.<span class="pl-c1">product</span>([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]); <span class="pl-c">/* 0.04800000000000001 */</span></pre></div>
 
 <hr>
 
@@ -781,14 +823,14 @@ lists.<span class="pl-c1">product</span>([.<span class="pl-c1">2</span>,.<span c
 
 <hr>
 
-<p><strong>Description</strong>: Maximum number returned from numbers of an Array.</p>
+<p><strong>Description</strong>: Maximum Number returned from numbers of an Array.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers; Get a number.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get a Number.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.maximum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]) <span class="pl-c">/* 6 */</span>
-lists.maximum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]) <span class="pl-c">/* .6 */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.maximum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]); <span class="pl-c">/* 6 */</span>
+lists.maximum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]); <span class="pl-c">/* .6 */</span></pre></div>
 
 <hr>
 
@@ -799,14 +841,14 @@ lists.maximum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<spa
 
 <hr>
 
-<p><strong>Description</strong>: Minimum number returned from numbers of an Array.</p>
+<p><strong>Description</strong>: Minimum Number returned from numbers of an Array.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers; Get a number.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get a Number.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.minimum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]) <span class="pl-c">/* 2 */</span>
-lists.minimum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]) <span class="pl-c">/* .2 */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.minimum([<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>]); <span class="pl-c">/* 2 */</span>
+lists.minimum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<span class="pl-c1">6</span>]); <span class="pl-c">/* .2 */</span></pre></div>
 
 <hr>
 
@@ -817,14 +859,14 @@ lists.minimum([.<span class="pl-c1">2</span>,.<span class="pl-c1">4</span>,.<spa
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables with the maximum length returned from an Array of Arrays of variables.</p>
+<p><strong>Description</strong>: Array of Variables with the maximum length returned from an Array of an Array of Variables.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Arrays of variables; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.maxList([[<span class="pl-c1">1</span>],[<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]]) <span class="pl-c">/* [2,3] */</span>
-lists.maxList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]) <span class="pl-c">/* [1,2] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.maxList([[<span class="pl-c1">1</span>],[<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]]); <span class="pl-c">/* [2,3] */</span>
+lists.maxList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]); <span class="pl-c">/* [1,2] */</span></pre></div>
 
 <hr>
 
@@ -835,14 +877,14 @@ lists.maxList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<spa
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables with the minimum length returned from an Array of Arrays of variables.</p>
+<p><strong>Description</strong>: Array of Variables with the minimum length returned from an Array of an Array of Variables.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Arrays of variables; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.minList([[],[<span class="pl-c1">1</span>]]) <span class="pl-c">/* [] */</span>
-lists.minList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]) <span class="pl-c">/* [3] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.minList([[],[<span class="pl-c1">1</span>]]); <span class="pl-c">/* [] */</span>
+lists.minList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>]]); <span class="pl-c">/* [3] */</span></pre></div>
 
 <hr>
 
@@ -853,14 +895,14 @@ lists.minList([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<spa
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned building left to right, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String </p>
+<p><strong>Description</strong>: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. </p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.scanl(<span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}) <span class="pl-c">/* [".",".a",".ab",".abc"] */</span>
-lists.scanl(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}) <span class="pl-c">/* [0,1,3,6] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.scanl(<span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}); <span class="pl-c">/* [".",".a",".ab",".abc"] */</span>
+lists.scanl(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}); <span class="pl-c">/* [0,1,3,6] */</span></pre></div>
 
 <hr>
 
@@ -871,14 +913,14 @@ lists.scanl(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span cla
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned building right to left, starting with the accumulator (x) by applying a binary operator function (f) on a starting variable (x) and an Array of variables or String </p>
+<p><strong>Description</strong>: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. </p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable; Give arg 2 an Array of variables or a String; Give arg 3 a function (binary operator); Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.scanr(<span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}) <span class="pl-c">/* ["abc.","bc.","c.","."] */</span>
-lists.scanr(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}) <span class="pl-c">/* [6,5,3,0] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.scanr(<span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}); <span class="pl-c">/* ["abc.","bc.","c.","."] */</span>
+lists.scanr(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){<span class="pl-k">return</span> x <span class="pl-k">+</span> y}); <span class="pl-c">/* [6,5,3,0] */</span></pre></div>
 
 <hr>
 
@@ -889,15 +931,15 @@ lists.scanr(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span cla
 
 <hr>
 
-<p><strong>Description</strong>: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from left to right.</p>
+<p><strong>Description</strong>: Builds an Array containing a accumulator (x) and the result of applying F to the supplied accumulator and each element of the supplied Array from left to right.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x<span class="pl-k">+</span>y,x<span class="pl-k">*</span>y]}) <span class="pl-c">/* [19, [10,28,88]]*/</span>
-lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [y,y]}) <span class="pl-c">/* [8, [2,4,8]] */</span>
-lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<span class="pl-c1">5</span>,<span class="pl-c1">5</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x,x]}) <span class="pl-c">/* [5, [5,5,5]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x<span class="pl-k">+</span>y,x<span class="pl-k">*</span>y]}); <span class="pl-c">/* [19, [10,28,88]]*/</span>
+lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [y,y]}); <span class="pl-c">/* [8, [2,4,8]] */</span>
+lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<span class="pl-c1">5</span>,<span class="pl-c1">5</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x,x]}); <span class="pl-c">/* [5, [5,5,5]] */</span></pre></div>
 
 <hr>
 
@@ -910,13 +952,13 @@ lists.mapAccumL(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<spa
 
 <p><strong>Description</strong>: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a starting variable (accumulator); Give arg 2 an Array of variables or a String; Give arg 3 a function; Get an Array of variable followed by Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x<span class="pl-k">+</span>y,x<span class="pl-k">*</span>y]}) <span class="pl-c">/* [19, [34,52,40]]*/</span>
-lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [y,y]}) <span class="pl-c">/* [2, [2,4,8]] */</span>
-lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<span class="pl-c1">5</span>,<span class="pl-c1">5</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x,x]}) <span class="pl-c">/* [5, [5,5,5]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x<span class="pl-k">+</span>y,x<span class="pl-k">*</span>y]}); <span class="pl-c">/* [19, [34,52,40]]*/</span>
+lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">8</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [y,y]}); <span class="pl-c">/* [2, [2,4,8]] */</span>
+lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<span class="pl-c1">5</span>,<span class="pl-c1">5</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> [x,x]}); <span class="pl-c">/* [5, [5,5,5]] */</span></pre></div>
 
 <hr>
 
@@ -929,13 +971,13 @@ lists.mapAccumR(<span class="pl-c1">5</span>, [<span class="pl-c1">5</span>,<spa
 
 <p><strong>Description</strong>: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a variable; Give arg 2 a number; Give arg 3 a function; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 a Number. Give arg 3 a Function. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.iterate(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>,<span class="pl-c1">3</span>,<span class="pl-k">function</span>(<span class="pl-smi">ch</span>){<span class="pl-k">return</span> ch<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>}) <span class="pl-c">/* ["a","ab","abb"] */</span>
-lists.iterate([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">3</span>,<span class="pl-k">function</span>(<span class="pl-smi">xs</span>){<span class="pl-k">return</span> lists.intersperse(<span class="pl-c1">6</span>,xs)}) <span class="pl-c">/* [[1,2],[1,6,2],[1,6,6,6,2]] */</span>
-lists.iterate(<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">*</span>x }) <span class="pl-c">/* [2,4,16,256] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.iterate(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>,<span class="pl-c1">3</span>,<span class="pl-k">function</span>(<span class="pl-smi">ch</span>){<span class="pl-k">return</span> ch<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>}); <span class="pl-c">/* ["a","ab","abb"] */</span>
+lists.iterate([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">3</span>,<span class="pl-k">function</span>(<span class="pl-smi">xs</span>){<span class="pl-k">return</span> lists.intersperse(<span class="pl-c1">6</span>,xs)}); <span class="pl-c">/* [[1,2],[1,6,2],[1,6,6,6,2]] */</span>
+lists.iterate(<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x<span class="pl-k">*</span>x }); <span class="pl-c">/* [2,4,16,256] */</span></pre></div>
 
 <hr>
 
@@ -948,13 +990,13 @@ lists.iterate(<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span cl
 
 <p><strong>Description</strong>: Builds an Array containing replications of x until the stop (num) reaches 0.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a variable; Give arg 2 a number; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 a Number. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.replicate(<span class="pl-c1">5</span>,<span class="pl-c1">5</span>) <span class="pl-c">/* [5,5,5,5,5] */</span>
-lists.replicate([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">2</span>) <span class="pl-c">/* [[1,2],[1,2]] */</span>
-lists.replicate({a<span class="pl-k">:</span><span class="pl-c1">1</span>},<span class="pl-c1">2</span>) <span class="pl-c">/* [{a:1},{a:2}] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.replicate(<span class="pl-c1">5</span>,<span class="pl-c1">5</span>); <span class="pl-c">/* [5,5,5,5,5] */</span>
+lists.replicate([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">2</span>); <span class="pl-c">/* [[1,2],[1,2]] */</span>
+lists.replicate({a<span class="pl-k">:</span><span class="pl-c1">1</span>},<span class="pl-c1">2</span>); <span class="pl-c">/* [{a:1},{a:2}] */</span></pre></div>
 
 <hr>
 
@@ -967,12 +1009,12 @@ lists.replicate({a<span class="pl-k">:</span><span class="pl-c1">1</span>},<span
 
 <p><strong>Description</strong>: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables; Give arg 2 a number; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Number. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.cycle(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-c1">3</span>) <span class="pl-c">/* "abcabcabc" */</span>
-lists.cycle([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">2</span>) <span class="pl-c">/* [1,2,1,2] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.cycle(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>,<span class="pl-c1">3</span>); <span class="pl-c">/* "abcabcabc" */</span>
+lists.cycle([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">2</span>); <span class="pl-c">/* [1,2,1,2] */</span></pre></div>
 
 <hr>
 
@@ -983,16 +1025,16 @@ lists.cycle([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span cl
 
 <hr>
 
-<p><strong>Description</strong>: Builds an Array from a seed value. Arg 1 is the predicate function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.</p>
+<p><strong>Description</strong>: Builds an Array from a seed value. Arg 1 is the predicate Function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an function (predicate); Give arg 2 a function; Give arg 3 a function; Give arg 4 a variable (seed).</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Function (predicate). Give arg 2 a Function. Give arg 3 a Function. Give arg 4 a Variable (seed).</p>
 
 <p><strong>Example Usage</strong>:</p>
 
 <div class="highlight highlight-js"><pre><span class="pl-k">function</span> <span class="pl-en">chop8</span>(<span class="pl-smi">xs</span>){ 
   <span class="pl-k">return</span> l.unfold(l.nil,l.part(l.take,<span class="pl-c1">8</span>,_),l.part(l.drop,<span class="pl-c1">8</span>,_),xs) 
 }
-chop8([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>]) <span class="pl-c">/* [[1,2,3,4,5,6,7,8],[9]] */</span>
+chop8([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>]); <span class="pl-c">/* [[1,2,3,4,5,6,7,8],[9]] */</span>
 
 <span class="pl-k">function</span> <span class="pl-en">unfoldMap</span>(<span class="pl-smi">xs</span>,<span class="pl-smi">f</span>) { 
   <span class="pl-k">return</span> lists.unfold(
@@ -1001,7 +1043,7 @@ chop8([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl
     lists.part(lists.tail,_), 
     xs)
 }
-unfoldMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">*</span> <span class="pl-c1">2</span> }) <span class="pl-c">/* [2,4] */</span></pre></div>
+unfoldMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">*</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* [2,4] */</span></pre></div>
 
 <hr>
 
@@ -1012,14 +1054,14 @@ unfoldMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span clas
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned by taking the first n (num) elements from [x] or String.</p>
+<p><strong>Description</strong>: Array of Variables returned by taking the first n (num) elements from [x] or String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.take(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]) <span class="pl-c">/* [1,2] */</span>
-lists.take(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>) <span class="pl-c">/* ["a","b"] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.take(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [1,2] */</span>
+lists.take(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["a","b"] */</span></pre></div>
 
 <hr>
 
@@ -1030,14 +1072,14 @@ lists.take(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned by dropping the first n (num) elements from [x] or String.</p>
+<p><strong>Description</strong>: Array of Variables returned by dropping the first n (num) elements from [x] or String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.drop(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]) <span class="pl-c">/* [3] */</span>
-lists.drop(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>) <span class="pl-c">/* ["c"] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.drop(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [3] */</span>
+lists.drop(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["c"] */</span></pre></div>
 
 <hr>
 
@@ -1048,9 +1090,9 @@ lists.drop(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">
 
 <hr>
 
-<p><strong>Description</strong>: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of variables or String. The second contains the rest.</p>
+<p><strong>Description</strong>: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or String. The second contains the rest.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a number; Give arg 2 an Array of variables or String; Get an Array of two Arrays of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of two Arrays of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1066,15 +1108,15 @@ lists.splitAt(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span c
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned by taking elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.</p>
+<p><strong>Description</strong>: Array of Variables returned by taking elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.takeWhile([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> }) <span class="pl-c">/* [1,2] */</span>
-lists.takeWhile([<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">2</span> }) <span class="pl-c">/* [1] */</span>
-lists.takeWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span> }) <span class="pl-c">/* ["a","a"] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.takeWhile([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> }); <span class="pl-c">/* [1,2] */</span>
+lists.takeWhile([<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* [1] */</span>
+lists.takeWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span> }); <span class="pl-c">/* ["a","a"] */</span></pre></div>
 
 <hr>
 
@@ -1085,15 +1127,15 @@ lists.takeWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class=
 
 <hr>
 
-<p><strong>Description</strong>: Array of variables returned by dropping elements from [x]|String that satisfy a supplied predicate function until that predicate function is unsatisfied.</p>
+<p><strong>Description</strong>: Array of Variables returned by dropping elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a function; Give arg 2 an Array of variables or String; Get an Array of variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.dropWhile([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> }) <span class="pl-c">/* [3,4] */</span>
-lists.dropWhile([<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">2</span> }) <span class="pl-c">/* [2] */</span>
-lists.dropWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span> }) <span class="pl-c">/* ["b","c"] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.dropWhile([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> }); <span class="pl-c">/* [3,4] */</span>
+lists.dropWhile([<span class="pl-c1">1</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* [2] */</span>
+lists.dropWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){ <span class="pl-k">return</span> x <span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span> }); <span class="pl-c">/* ["b","c"] */</span></pre></div>
 
 <hr>
 
@@ -1104,15 +1146,15 @@ lists.dropWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class=
 
 <hr>
 
-<p><strong>Description</strong>: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that satisfy a predicate function f. The second element is the rest of the list.</p>
+<p><strong>Description</strong>: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.span([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span>}) <span class="pl-c">/* [[1,2],[3,4]] */</span>
-lists.span(<span class="pl-s"><span class="pl-pds">"</span>abcde<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>}) <span class="pl-c">/* [["a"],["b","c","d","e"]] */</span>
-lists.span([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x.a<span class="pl-k">==</span><span class="pl-c1">2</span>}) <span class="pl-c">/* [[{a:2},{a:2}],[{b:2}]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.span([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span>}); <span class="pl-c">/* [[1,2],[3,4]] */</span>
+lists.span(<span class="pl-s"><span class="pl-pds">"</span>abcde<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>}); <span class="pl-c">/* [["a"],["b","c","d","e"]] */</span>
+lists.span([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x.a<span class="pl-k">==</span><span class="pl-c1">2</span>}); <span class="pl-c">/* [[{a:2},{a:2}],[{b:2}]] */</span></pre></div>
 
 <hr>
 
@@ -1123,15 +1165,15 @@ lists.span([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span c
 
 <hr>
 
-<p><strong>Description</strong>: An Array of Array of variables and Array of variables or String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of variables or String that do not satisfy a predicate function f. The second element is the rest of the list.</p>
+<p><strong>Description</strong>: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of variables or String; Give arg 2 a function; Get an Array of Array of variables and Array of variables or String (psuedo-tuple).</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.break([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span>}) <span class="pl-c">/* [[],[1,2,3,4]] */</span>
-lists.break(<span class="pl-s"><span class="pl-pds">"</span>abcde<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>}) <span class="pl-c">/* [[],"abcde"] */</span>
-lists.break([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x.a<span class="pl-k">==</span><span class="pl-c1">2</span>}) <span class="pl-c">/* [[],[{a:2},{a:2},{b:2}]] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.break([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">3</span>}); <span class="pl-c">/* [[],[1,2,3,4]] */</span>
+lists.break(<span class="pl-s"><span class="pl-pds">"</span>abcde<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>}); <span class="pl-c">/* [[],"abcde"] */</span>
+lists.break([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x.a<span class="pl-k">==</span><span class="pl-c1">2</span>}); <span class="pl-c">/* [[],[{a:2},{a:2},{b:2}]] */</span></pre></div>
 
 <hr>
 
@@ -1144,12 +1186,396 @@ lists.break([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span 
 
 <p><strong>Description</strong>: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String; Give arg 2 an Array of Numbers or String; Get an Array of Numbers or an Array of Strings.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get an Array of Numbers or an Array of Strings.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.stripPrefix(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abcabce<span class="pl-pds">"</span></span>) <span class="pl-c">/* ["a","b","c","e"] */</span>
-lists.stripPrefix([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]) <span class="pl-c">/* [3,4] */</span></pre></div>
+<div class="highlight highlight-js"><pre>lists.stripPrefix(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abcabce<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["a","b","c","e"] */</span>
+lists.stripPrefix([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]); <span class="pl-c">/* [3,4] */</span></pre></div>
+
+<hr>
+
+<p><a name="group"></a></p>
+
+<h3>
+<a id="group--numstr---numstr" class="anchor" href="#group--numstr---numstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>group : [num]|str -&gt; [[num]]|[[str]]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An Array of an Array of Numbers or Strings returned where each nested Array contains only equal elements.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Get an Array of an Array of Numbers or Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.group([<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [[1,1],[2],[3,3]] */</span>
+lists.group(<span class="pl-s"><span class="pl-pds">"</span>mississippi<span class="pl-pds">"</span></span>); <span class="pl-c">/* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p","p"],["i"]] */</span></pre></div>
+
+<hr>
+
+<p><a name="inits"></a></p>
+
+<h3>
+<a id="inits--x---x" class="anchor" href="#inits--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>inits : [x] -&gt; [[x]]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.inits([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [[],[1],[1,2],[1,2,3]] */</span>
+lists.inits(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* [[],["a"],["a","b"],["a","b","c"]] */</span>
+lists.inits([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">3</span>}]); <span class="pl-c">/* [[],[{a:2}],[{a:2},{b:3}]] */</span></pre></div>
+
+<hr>
+
+<p><a name="tails"></a></p>
+
+<h3>
+<a id="tails--x---x" class="anchor" href="#tails--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>tails : [x] -&gt; [[x]]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.tails([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [[1,2,3],[1,2],[1],[]] */</span>
+lists.tails(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* [["a","b","c"],["a","b"],["a"],[]] */</span>
+lists.tails([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">3</span>}]); <span class="pl-c">/* [[{a:2},{b:3}],[{a:2}],[]] */</span></pre></div>
+
+<hr>
+
+<p><a name="isPrefixOf"></a></p>
+
+<h3>
+<a id="isprefixof--numstr---numstr---boolean" class="anchor" href="#isprefixof--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>isPrefixOf : [num]|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if an Array of Numbers or String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.isPrefixOf([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* true */</span>
+lists.isPrefixOf(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>acd<span class="pl-pds">"</span></span>); <span class="pl-c">/* false */</span>
+lists.isPrefixOf(<span class="pl-s"><span class="pl-pds">"</span>ab<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abcd<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="isSuffixOf"></a></p>
+
+<h3>
+<a id="issuffixof--numstr---numstr---boolean" class="anchor" href="#issuffixof--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>isSuffixOf : [num]|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if an Array of Numbers or String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.isSuffixOf([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* false */</span>
+lists.isSuffixOf(<span class="pl-s"><span class="pl-pds">"</span>cd<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>acd<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span>
+lists.isSuffixOf(<span class="pl-s"><span class="pl-pds">"</span>d<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abcd<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="isInfixOf"></a></p>
+
+<h3>
+<a id="isinfixof--numstr---numstr---boolean" class="anchor" href="#isinfixof--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>isInfixOf : [num]|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if an Array of Numbers or a String is the infix of an Array of Numbers or a String. The arguments must be of the same type.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.isInfixOf([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* false */</span>
+lists.isInfixOf(<span class="pl-s"><span class="pl-pds">"</span>cd<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>acde<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span>
+lists.isInfixOf(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abcd<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="isSubsequenceOf"></a></p>
+
+<h3>
+<a id="issubsequenceof--numstr---numstr---boolean" class="anchor" href="#issubsequenceof--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>isSubsequenceOf : [num]|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.isSubsequenceOf([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* true */</span>
+lists.isSubsequenceOf(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>123 abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span>
+lists.isSubsequenceOf(<span class="pl-s"><span class="pl-pds">"</span>Lol<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Laugh out loud<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="elem"></a></p>
+
+<h3>
+<a id="elem--numstr---numstr---boolean" class="anchor" href="#elem--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>elem : num|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if the Number or String is in the Array of Numbers or a String.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.elem(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* true */</span>
+lists.elem(<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>123 abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="notElem"></a></p>
+
+<h3>
+<a id="notelem--numstr---numstr---boolean" class="anchor" href="#notelem--numstr---numstr---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>notElem : num|str -&gt; [num]|str -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Test if the Number or String is not in the Array of Numbers or a String.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.notElem(<span class="pl-c1">0</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* true */</span>
+lists.notElem(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* false */</span></pre></div>
+
+<hr>
+
+<p><a name="lookup"></a></p>
+
+<h3>
+<a id="lookup--numstr---numstrx---boolean" class="anchor" href="#lookup--numstr---numstrx---boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>lookup : num|str -&gt; [[num|str,x]] -&gt; boolean</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of an Array containing a Number or String as the key and a Variable as the value. Get a Variable (value).</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.lookup(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,[[<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-c1">2</span>],[<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-c1">3</span>]]); <span class="pl-c">/* 2 */</span>
+lists.lookup(<span class="pl-s"><span class="pl-pds">"</span>ab<span class="pl-pds">"</span></span>,[[<span class="pl-s"><span class="pl-pds">"</span>ab<span class="pl-pds">"</span></span>,<span class="pl-c1">2</span>],[<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-c1">3</span>]]); <span class="pl-c">/* 2 */</span>
+lists.lookup(<span class="pl-c1">1</span>,[[<span class="pl-c1">1</span>,{a<span class="pl-k">:</span><span class="pl-c1">2</span>}],[<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-c1">3</span>]]); <span class="pl-c">/* {a:2} */</span></pre></div>
+
+<hr>
+
+<p><a name="find"></a></p>
+
+<h3>
+<a id="find--x---f---x" class="anchor" href="#find--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>find : [x] -&gt; f -&gt; x</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Retreive a Variable by applying a predicate Function to an Array of Variables. Returns "Nothing" if there is no match.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Variable.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">find</span>([{a<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x.a <span class="pl-k">==</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* {a:2} */</span>
+lists.<span class="pl-c1">find</span>([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x[<span class="pl-c1">0</span>] <span class="pl-k">==</span> <span class="pl-c1">1</span>}); <span class="pl-c">/* [1,2] */</span>
+lists.<span class="pl-c1">find</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* "Nothing" */</span></pre></div>
+
+<hr>
+
+<p><a name="filter"></a></p>
+
+<h3>
+<a id="filter--x---f---x" class="anchor" href="#filter--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>filter : [x] -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An Array of Variables returned by applying a predicate Function to an Array of Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.filter([{a<span class="pl-k">:</span><span class="pl-c1">1</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">obj</span>) { <span class="pl-k">return</span> <span class="pl-c1">Object</span>.keys(obj).<span class="pl-c1">length</span> <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* [{a:1},{b:2}] */</span>
+lists.filter(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">char</span>) { <span class="pl-k">return</span> char <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span> }); <span class="pl-c">/* ["a"] */</span>
+lists.filter([[<span class="pl-c1">1</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]], <span class="pl-k">function</span>(<span class="pl-smi">arr</span>) { <span class="pl-k">return</span> arr.<span class="pl-c1">length</span> <span class="pl-k">&gt;</span> <span class="pl-c1">1</span> }); <span class="pl-c">/* [[1,2]] */</span></pre></div>
+
+<hr>
+
+<p><a name="partition"></a></p>
+
+<h3>
+<a id="partition--x---f---xx" class="anchor" href="#partition--x---f---xx" aria-hidden="true"><span class="octicon octicon-link"></span></a>partition : [x] -&gt; f -&gt; [[x],[x]]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of two Arrays of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.partition(<span class="pl-s"><span class="pl-pds">"</span>Abc<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">char</span>) { <span class="pl-k">return</span> char.startsWith(<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>) }); <span class="pl-c">/* [["b"],["A","c"]] */</span>
+lists.partition([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">num</span>) { <span class="pl-k">return</span> num <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* [[2,4],[1,3]] */</span>
+lists.partition([{a<span class="pl-k">:</span><span class="pl-c1">1</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>,a<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">obj</span>) { <span class="pl-k">return</span> obj.a <span class="pl-k">==</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* [[{b:2,a:2}],[{a:1}]] */</span></pre></div>
+
+<hr>
+
+<p><a name="bang"></a></p>
+
+<h3>
+<a id="bang--num---x---x" class="anchor" href="#bang--num---x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>bang : num -&gt; [x] -&gt; x</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Variable returned by fetching the Variable at the given index (Number).</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables. Get a Variable.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.bang(<span class="pl-c1">1</span>,[<span class="pl-c1">0</span>,{a<span class="pl-k">:</span><span class="pl-c1">2</span>},<span class="pl-c1">1</span>]); <span class="pl-c">/* {a:2} */</span>
+lists.bang(<span class="pl-c1">0</span>,[[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span class="pl-c1">4</span>]); <span class="pl-c">/* [1,2] */</span>
+lists.bang(<span class="pl-c1">3</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* -1 */</span></pre></div>
+
+<hr>
+
+<p><a name="elemIndex"></a></p>
+
+<h3>
+<a id="elemindex--indexof--numstr---numstr---num" class="anchor" href="#elemindex--indexof--numstr---numstr---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>elemIndex || indexOf : num|str -&gt; [num]|str -&gt; num</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns the index Number of the first occurance of a Number or a String from an Array of Numbers or a String.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a Number.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.elemIndex(<span class="pl-c1">1</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* 0 */</span>
+lists.elemIndex(<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* 1 */</span>
+lists.elemIndex(<span class="pl-c1">2</span>,[<span class="pl-c1">0</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* -1 */</span></pre></div>
+
+<hr>
+
+<p><a name="elemIndices"></a></p>
+
+<h3>
+<a id="elemindices--numstr---numstr---num" class="anchor" href="#elemindices--numstr---numstr---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>elemIndices : num|str -&gt; [num]|str -&gt; [num]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns an Array of Numbers representing the indices of the Number or a String from an Array of Numbers or a String. </p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.elemIndices(<span class="pl-c1">1</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* 0 */</span>
+lists.elemIndices(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>aba<span class="pl-pds">"</span></span>); <span class="pl-c">/* 1 */</span>
+lists.elemIndices(<span class="pl-c1">2</span>,[<span class="pl-c1">0</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [] */</span></pre></div>
+
+<hr>
+
+<p><a name="findIndex"></a></p>
+
+<h3>
+<a id="findindex--x---f---num" class="anchor" href="#findindex--x---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndex : [x] -&gt; f -&gt; num</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Number.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.findIndex([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>], <span class="pl-k">function</span>(<span class="pl-smi">num</span>){ <span class="pl-k">return</span> num <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* 1 */</span>
+lists.findIndex([{a<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">obj</span>){ <span class="pl-k">return</span> obj.a <span class="pl-k">==</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* 0 */</span>
+lists.findIndex(<span class="pl-s"><span class="pl-pds">"</span>ab%c<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">char</span>){ <span class="pl-k">return</span> char <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>%<span class="pl-pds">"</span></span> }); <span class="pl-c">/* 2 */</span></pre></div>
+
+<hr>
+
+<p><a name="findIndices"></a></p>
+
+<h3>
+<a id="findindices--x---f---num" class="anchor" href="#findindices--x---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndices : [x] -&gt; f -&gt; [num]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Numbers.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.findIndices([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], <span class="pl-k">function</span>(<span class="pl-smi">num</span>) { <span class="pl-k">return</span> num <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* [1,3] */</span>
+lists.findIndices([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">3</span>},{a<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">obj</span>) { <span class="pl-k">return</span> obj.a <span class="pl-k">==</span> <span class="pl-c1">2</span> }); <span class="pl-c">/* [0,2] */</span>
+lists.findIndices(<span class="pl-s"><span class="pl-pds">"</span>AbAbA<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">char</span>) { <span class="pl-k">return</span> char <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span> }); <span class="pl-c">/* [0,2,4] */</span></pre></div>
+
+<hr>
+
+<p><a name="zip"></a></p>
+
+<h3>
+<a id="zip--unzip--abncdnn---acnbdnn" class="anchor" href="#zip--unzip--abncdnn---acnbdnn" aria-hidden="true"><span class="octicon octicon-link"></span></a>zip || unzip : [[a,b,..,n],[c,d,..,n],..,n] -&gt; [[a,c,..,n],[b,d,..,n],..,n]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Takes an Array of an Array of Variables and returns an Array of an Array of Variables with corresponding Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.zip([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">5</span>,<span class="pl-c1">6</span>]]); <span class="pl-c">/* [[1,3,5],[2,4,6]] */</span>
+lists.zip(lists.zip([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">5</span>,<span class="pl-c1">6</span>]])); <span class="pl-c">/* unzip example [[1,2],[3,4],[5,6]] */</span>
+lists.zip([[<span class="pl-c1">1</span>,<span class="pl-s"><span class="pl-pds">'</span>l<span class="pl-pds">'</span></span>],[<span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">'</span>o<span class="pl-pds">'</span></span>],[<span class="pl-c1">5</span>,<span class="pl-s"><span class="pl-pds">'</span>l<span class="pl-pds">'</span></span>]]); <span class="pl-c">/* [[1,3,5],["l","o","l"]] */</span></pre></div>
+
+<hr>
+
+<p><a name="zipWith"></a></p>
+
+<h3>
+<a id="zipwith--abncdnn---f---x" class="anchor" href="#zipwith--abncdnn---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>zipWith : [[a,b,..,n],[c,d,..,n],..,n] -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Give arg 2 a binary Function. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.zipWith([[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]],lists.sum); <span class="pl-c">/* [2,5] */</span>
+
+<span class="pl-k">function</span> <span class="pl-en">addThenMultiply</span>(<span class="pl-smi">arr</span>) {
+  <span class="pl-k">var</span> res <span class="pl-k">=</span> <span class="pl-c1">0</span>; 
+  lists.each(arr, <span class="pl-k">function</span>(<span class="pl-smi">num</span>, <span class="pl-smi">i</span>) {  
+    i <span class="pl-k">!=</span> <span class="pl-c1">2</span> <span class="pl-k">?</span> res <span class="pl-k">+=</span> num <span class="pl-k">:</span> res <span class="pl-k">*=</span> num
+  });
+  <span class="pl-k">return</span> res;
+}
+lists.zipWith([[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">4</span>,<span class="pl-c1">5</span>]],addThenMultiply); <span class="pl-c">/* [8, 25] */</span></pre></div>
 
 <hr>
       </section>
