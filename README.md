@@ -32,10 +32,10 @@ B{ **tail** } Function name
 C{ **arr|str -> [x]** } Pseudo type signature
 
 tail : arr|str -> [x] 
-- Takes an Array of variables or String and produces an array of variables ([x]).
+- Takes an Array of Variables or String and produces an Array of Variables ([x]).
 
 map : [x] -> f -> [x]
-- Takes an Array of variables and a function and produces an array of variables.
+- Takes an Array of Variables and a Function and produces an Array of Variables.
 
 -----
 
@@ -126,9 +126,9 @@ map : [x] -> f -> [x]
 * [`elem`](#elem) : num|str -> [num]|str -> boolean
 * [`notElem`](#notElem) : num|str -> [num]|str -> boolean
 * [`lookup`](#lookup) : num|str -> [[num|str,x]] -> boolean
-* find : (a -> Bool) -> [a] -> Maybe a
-* filter : (a -> Bool) -> [a] -> [a]
-* partition : (a -> Bool) -> [a] -> ([a], [a])
+* [`find`](#find) : [x] -> f -> x
+* [`filter`](#filter) : [x] -> f -> [x]
+* [`partition`](#partition) : [x] -> f -> [[x],[x]]
 
 -----
 
@@ -396,9 +396,9 @@ lists.permutations([1,2,3]); /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]
 <a name='foldl'/>
 ### foldl : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing left to right by applying a binary operator function (f) on a starting variable (x), known as the accumulator, and an Array of Variables or String.  
+**Description**: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
 
-**Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a function (binary operator). Get a Variable.
+**Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
 
 **Example Usage**:
 
@@ -411,9 +411,9 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }); /* [1,2,3,4
 <a name='foldl1'/>
 ### foldl1 : [x]|str -> f -> x
 ------
-**Description**: Variant of foldl without a starting variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.
+**Description**: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.
 
-**Signature Definition**:  Give arg 1 an Array of Variables or a String. Give arg 2 a function (binary operator). Get a Variable.
+**Signature Definition**:  Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
 
 **Example Usage**:
 
@@ -425,7 +425,7 @@ lists.foldl1([1,2,3],function(x,y){ return x+y }); /* 6 */
 <a name='foldr'/>
 ### foldr : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing right to left by applying a binary operator function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
+**Description**: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
 
 **Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
 
@@ -469,7 +469,7 @@ lists.flatten([[1,2],[3,4]]); /* [1,2,3,4] */
 <a name='concatMap'/>
 ### concatMap : [x]|str -> f -> [x]|str
 ------
-**Description**: Array of Variables or String returned by mapping a Function over an Array of variables or String and flattening the result.
+**Description**: Array of Variables or String returned by mapping a Function over an Array of Variables or String and flattening the result.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or String. Get an Array of Variables or a String.
 
@@ -1013,5 +1013,50 @@ lists.notElem("a","abc"); /* false */
 lists.lookup("a",[["a",2],["b",3]]); /* 2 */
 lists.lookup("ab",[["ab",2],["b",3]]); /* 2 */
 lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
+```
+------
+<a name='find'/>
+### find : [x] -> f -> x
+------
+**Description**: Retreive a Variable by applying a predicate Function to an Array of Variables. Returns "Nothing" if there is no match.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Variable.
+
+**Example Usage**:
+
+```js
+lists.find([{a:2}], function(x) { return x.a == 2 }); /* {a:2} */
+lists.find([[1,2]], function(x) { return x[0] == 1}); /* [1,2] */
+lists.find([1,2,3], function(x) { return x == 0 }); /* "Nothing" */
+```
+------
+<a name='filter'/>
+### filter : [x] -> f -> [x]
+------
+**Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.filter([{a:1},{b:2}], function(obj) { return Object.keys(obj).length > 0 }); /* [{a:1},{b:2}] */
+lists.filter("abc", function(char) { return char == "a" }); /* ["a"] */
+lists.filter([[1],[1,2]], function(arr) { return arr.length > 1 }); /* [[1,2]] */
+```
+------
+<a name='partition'/>
+### partition : [x] -> f -> [[x],[x]]
+------
+**Description**: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of two Arrays of Variables.
+
+**Example Usage**:
+
+```js
+lists.partition("Abc", function(char) { return char.startsWith("b") }); /* [["b"],["A","c"]] */
+lists.partition([1,2,3,4], function(num) { return num % 2 == 0 }); /* [[2,4],[1,3]] */
+lists.partition([{a:1},{b:2,a:2}], function(obj) { return obj.a == 2 }); /* [[{b:2,a:2}],[{a:1}]] */
 ```
 ------
