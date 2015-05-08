@@ -135,17 +135,17 @@ map : [x] -> f -> [x]
 **Indexing Lists**
 
 * [`bang`](#bang) : num -> [x] -> x
-* elemIndex : Eq a => a -> [a] -> Maybe Int
-* elemIndices : Eq a => a -> [a] -> [Int]
-* findIndex : (a -> Bool) -> [a] -> Maybe Int
-* findIndices : (a -> Bool) -> [a] -> [Int]
+* [`elemIndex`](#elemIndex) || [`indexOf`](#elemIndex) : num|str -> [num]|str -> num
+* [`elemIndices`](#elemIndices) : num|str -> [num]|str -> [num]
+* [`findIndex`](#findIndex) : [x] -> f -> num
+* [`findIndices`](#findIndices) : [x] -> f -> [num]
 
 -----
 
 **Zipping and Unzipping Lists**
 
-* zip || unzip : [[a],[b],..,[n]] -> [[a,b,..,n]]
-* zipWith : (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
+* [`zip`](#zip) || [`unzip`](#zip) : [[a,b,..,n],[c,d,..,n],..,n] -> [[a,c,..,n],[b,d,..,n],..,n]
+* [`zipWith`](#zipWith) : [[a,b,..,n],[c,d,..,n],..,n] -> f -> [x]
 
 -----
 
@@ -1072,6 +1072,102 @@ lists.partition([{a:1},{b:2,a:2}], function(obj) { return obj.a == 2 }); /* [[{b
 ```js
 lists.bang(1,[0,{a:2},1]); /* {a:2} */
 lists.bang(0,[[1,2],4]); /* [1,2] */
-lists.bang(3,[1,2]) /* -1 */
+lists.bang(3,[1,2]); /* -1 */
+```
+------
+<a name='elemIndex'/>
+### elemIndex || indexOf : num|str -> [num]|str -> num
+------
+**Description**: Returns the index Number of the first occurance of a Number or a String from an Array of Numbers or a String.
+
+**Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a Number.
+
+**Example Usage**:
+
+```js
+lists.elemIndex(1,[1,2,1]); /* 0 */
+lists.elemIndex("b","abc"); /* 1 */
+lists.elemIndex(2,[0,1]); /* -1 */
+```
+------
+<a name='elemIndices'/>
+### elemIndices : num|str -> [num]|str -> [num]
+------
+**Description**: Returns an Array of Numbers representing the indices of the Number or a String from an Array of Numbers or a String. 
+
+**Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers.
+
+**Example Usage**:
+
+```js
+lists.elemIndices(1,[1,2,1]); /* 0 */
+lists.elemIndices("a","aba"); /* 1 */
+lists.elemIndices(2,[0,1]); /* [] */
+```
+------
+<a name='findIndex'/>
+### findIndex : [x] -> f -> num
+------
+**Description**: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Number.
+
+**Example Usage**:
+
+```js
+lists.findIndex([1,2,3], function(num){ return num % 2 == 0 }); /* 1 */
+lists.findIndex([{a:2}], function(obj){ return obj.a == 2 }); /* 0 */
+lists.findIndex("ab%c", function(char){ return char == "%" }); /* 2 */
+```
+------
+<a name='findIndices'/>
+### findIndices : [x] -> f -> [num]
+------
+**Description**: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Numbers.
+
+**Example Usage**:
+
+```js
+lists.findIndices([1,2,3,4], function(num) { return num % 2 == 0 }); /* [1,3] */
+lists.findIndices([{a:2},{b:3},{a:2}], function(obj) { return obj.a == 2 }); /* [0,2] */
+lists.findIndices("AbAbA", function(char) { return char == "A" }); /* [0,2,4] */
+```
+------
+<a name='zip'/>
+### zip || unzip : [[a,b,..,n],[c,d,..,n],..,n] -> [[a,c,..,n],[b,d,..,n],..,n]
+------
+**Description**: Takes an Array of an Array of Variables and returns an Array of an Array of Variables with corresponding Variables.
+
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.zip([[1,2],[3,4],[5,6]]); /* [[1,3,5],[2,4,6]] */
+lists.zip(lists.zip([[1,2],[3,4],[5,6]])); /* unzip example [[1,2],[3,4],[5,6]] */
+lists.zip([[1,'l'],[3,'o'],[5,'l']]); /* [[1,3,5],["l","o","l"]] */
+```
+------
+<a name='zipWith'/>
+### zipWith : [[a,b,..,n],[c,d,..,n],..,n] -> f -> [x]
+------
+**Description**: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.
+
+**Signature Definition**: Give arg 1 an Array of an Array of Variables. Give arg 2 a binary Function. Get an Array of Variables
+
+**Example Usage**:
+
+```js
+function addThenMultiply(arr) {
+  var res = 0; 
+  lists.each(arr, function(num, i) {  
+    i != 3 ? res += num : res *= num
+  });
+  return res;
+}
+
+lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply);
 ```
 ------
