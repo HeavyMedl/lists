@@ -105,12 +105,19 @@ map : [x] -> f -> [x]
 * [`span`](#span) : arr|str -> f -> [[x], [x]|str]
 * [`break`](#break) : arr|str -> f -> [[x], [x]|str]
 * [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
-* group : Eq a => [a] -> [[a]]
-* inits : [a] -> [[a]]
-* tails : [a] -> [[a]]
+* [`group`](#group) : [num]|str -> [[num]]|[[str]]
+* [`inits`](#inits) : [x] -> [[x]]
+* [`tails`](#tails) : [x] -> [[x]]
+
+-----
+
+**Predicates**
+
 * isPrefixOf : Eq a => [a] -> [a] -> Bool
 * isSuffixOf : Eq a => [a] -> [a] -> Bool
 * isInfixOf : Eq a => [a] -> [a] -> Bool
+
+-----
 
 **Searching Lists**
 
@@ -121,6 +128,8 @@ map : [x] -> f -> [x]
 * filter : (a -> Bool) -> [a] -> [a]
 * partition : (a -> Bool) -> [a] -> ([a], [a])
 
+-----
+
 **Indexing Lists**
 
 * bang : [a] -> Int -> a
@@ -129,10 +138,14 @@ map : [x] -> f -> [x]
 * findIndex : (a -> Bool) -> [a] -> Maybe Int
 * findIndices : (a -> Bool) -> [a] -> [Int]
 
+-----
+
 **Zipping and Unzipping Lists**
 
 * zip || unzip : [[a],[b],..,[n]] -> [[a,b,..,n]]
 * zipWith : (a -> b -> c) -> [[a],[b],..,[n]] -> [c,..,n]
+
+-----
 
 **Special Lists**
 
@@ -148,6 +161,8 @@ map : [x] -> f -> [x]
 * sort : Ord a => [a] -> [a]
 * insert : Ord a => a -> [a] -> [a]
 
+-----
+
 **Generalized Functions**
 
 * nubBy : (a -> a -> Bool) -> [a] -> [a]
@@ -160,6 +175,8 @@ map : [x] -> f -> [x]
 * insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
 * maximumBy : (a -> a -> Ordering) -> [a] -> a
 * minimumBy : (a -> a -> Ordering) -> [a] -> a
+
+-----
 
 **Extra Functional Utilities**
 
@@ -847,5 +864,49 @@ lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}) /* [[],[{a:2},{a:2}
 ```js
 lists.stripPrefix("abc","abcabce") /* ["a","b","c","e"] */
 lists.stripPrefix([1,2],[1,2,3,4]) /* [3,4] */
+```
+------
+<a name='group'/>
+### group : [num]|str -> [[num]]|[[str]]
+------
+**Description**: An Array of an Array of Numbers or Strings returned where each nested Array contains only equal elements.
+
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Get an Array of an Array of Numbers or Strings.
+
+**Example Usage**:
+
+```js
+lists.group([1,1,2,3,3]) /* [[1,1],[2],[3,3]] */
+lists.group("mississippi") /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p","p"],["i"]] */
+```
+------
+<a name='inits'/>
+### inits : [x] -> [[x]]
+------
+**Description**: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.inits([1,2,3]) /* [[],[1],[1,2],[1,2,3]] */
+lists.inits("abc") /* [[],["a"],["a","b"],["a","b","c"]] */
+lists.inits([{a:2},{b:3}]) /* [[],[{a:2}],[{a:2},{b:3}]] */
+```
+------
+<a name='tails'/>
+### inits : [x] -> [[x]]
+------
+**Description**: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.tails([1,2,3]) /* [[1,2,3],[1,2],[1],[]] */
+lists.tails("abc") /* [["a","b","c"],["a","b"],["a"],[]] */
+lists.tails([{a:2},{b:3}]) /* [[{a:2},{b:3}],[{a:2}],[]] */
 ```
 ------
