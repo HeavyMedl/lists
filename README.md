@@ -958,7 +958,7 @@ lists.isInfixOf("a","abcd"); /* true */
 ```
 ------
 <a name='isSubsequenceOf'/>
-### isInfixOf : [num]|str -> [num]|str -> boolean
+### isSubsequenceOf : [num]|str -> [num]|str -> boolean
 ------
 **Description**: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
 
