@@ -1160,14 +1160,15 @@ lists.zip([[1,'l'],[3,'o'],[5,'l']]); /* [[1,3,5],["l","o","l"]] */
 **Example Usage**:
 
 ```js
+lists.zipWith([[1,3],[1,2]],lists.sum); /* [2,5] */
+
 function addThenMultiply(arr) {
   var res = 0; 
   lists.each(arr, function(num, i) {  
-    i != 3 ? res += num : res *= num
+    i != 2 ? res += num : res *= num
   });
   return res;
 }
-
-lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply);
+lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply); /* [8, 25] */
 ```
 ------
