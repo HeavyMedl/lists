@@ -896,7 +896,7 @@ lists.inits([{a:2},{b:3}]) /* [[],[{a:2}],[{a:2},{b:3}]] */
 ```
 ------
 <a name='tails'/>
-### inits : [x] -> [[x]]
+### tails : [x] -> [[x]]
 ------
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.
 
