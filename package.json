@@ -1,6 +1,6 @@
 {
   "name": "lists",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A library of higher-order functions modeled after Haskell's Data.List module",
   "main": "lists.js",
   "repository": {
