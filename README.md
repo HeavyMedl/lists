@@ -29,9 +29,9 @@ A{ **1.** } Function number
 
 B{ **tail** } Function name
 
-C{ **arr|str -> [x]** } Pseudo type signature
+C{ **[x]|str -> [x]** } Pseudo type signature
 
-tail : arr|str -> [x] 
+tail : [x]|str -> [x] 
 - Takes an Array of Variables or String and produces an Array of Variables ([x]).
 
 map : [x] -> f -> [x]
@@ -103,8 +103,8 @@ map : [x] -> f -> [x]
 * [`splitAt`](#splitAt) : num -> [x]|str -> [[x],[x]]
 * [`takeWhile`](#takeWhile) : f -> [x]|str -> [x]
 * [`dropWhile`](#dropWhile) : f -> [x]|str -> [x]
-* [`span`](#span) : arr|str -> f -> [[x], [x]|str]
-* [`break`](#break) : arr|str -> f -> [[x], [x]|str]
+* [`span`](#span) : [x]|str -> f -> [[x], [x]|str]
+* [`break`](#break) : [x]|str -> f -> [[x], [x]|str]
 * [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
 * [`group`](#group) : [num]|str -> [[num]]|[[str]]
 * [`inits`](#inits) : [x] -> [[x]]
@@ -825,7 +825,7 @@ lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ```
 ------
 <a name='span'/>
-### span : arr|str -> f -> [[x], [x]|str]
+### span : [x]|str -> f -> [[x], [x]|str]
 ------
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
 
@@ -840,7 +840,7 @@ lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[{a:2},{a:2}],[
 ```
 ------
 <a name='break'/>
-### break : arr|str -> f -> [[x], [x]|str]
+### break : [x]|str -> f -> [[x], [x]|str]
 ------
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.
 
