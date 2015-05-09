@@ -32,7 +32,7 @@ B{ **tail** } Function name
 C{ **[x]|str -> [x]** } Pseudo type signature
 
 tail : [x]|str -> [x] 
-- Takes an Array of Variables or String and produces an Array of Variables ([x]).
+- Takes an Array of Variables or a String and produces an Array of Variables ([x]).
 
 map : [x] -> f -> [x]
 - Takes an Array of Variables and a Function and produces an Array of Variables.
@@ -274,7 +274,7 @@ lists.tail('abc'); /* ['b','c'] */
 <a name='nil'/>
 ### nil : [x]|str -> boolean
 ------
-**Description**: Test if an Array of Variables or String is empty.
+**Description**: Test if an Array of Variables or a String is empty.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String; Get a boolean.
 
@@ -396,7 +396,7 @@ lists.permutations([1,2,3]); /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]
 <a name='foldl'/>
 ### foldl : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
+**Description**: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
 
 **Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
 
@@ -411,7 +411,7 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }); /* [1,2,3,4
 <a name='foldl1'/>
 ### foldl1 : [x]|str -> f -> x
 ------
-**Description**: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.
+**Description**: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or a String). Use with non-empty Arrays or Strings.
 
 **Signature Definition**:  Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
 
@@ -425,7 +425,7 @@ lists.foldl1([1,2,3],function(x,y){ return x+y }); /* 6 */
 <a name='foldr'/>
 ### foldr : x -> [x]|str -> f -> x
 ------
-**Description**: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  
+**Description**: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
 
 **Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
 
@@ -441,7 +441,7 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 <a name='foldr1'/>
 ### foldr1 : [x]|str -> f -> x
 ------
-**Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.
+**Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or a String). Use with non-empty Arrays or Strings.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
 
@@ -455,7 +455,7 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}); /* "bbc
 <a name='flatten'/>
 ### flatten || concat : [[x]]|[str] -> [x]|str
 ------
-**Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or String respectively.
+**Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or a String respectively.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables or an Array of Strings. Get an Array of Variables or a String.
 
@@ -469,9 +469,9 @@ lists.flatten([[1,2],[3,4]]); /* [1,2,3,4] */
 <a name='concatMap'/>
 ### concatMap : [x]|str -> f -> [x]|str
 ------
-**Description**: Array of Variables or String returned by mapping a Function over an Array of Variables or String and flattening the result.
+**Description**: Array of Variables or a String returned by mapping a Function over an Array of Variables or a String and flattening the result.
 
-**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or String. Get an Array of Variables or a String.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or a String. Get an Array of Variables or a String.
 
 **Example Usage**:
 
@@ -529,7 +529,7 @@ lists.any('abc',function(x) { return x == 'b'}); /* true */
 <a name='all'/>
 ### all : [x]|str -> f -> boolean
 ------
-**Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or String. True if all f(x) are true. False if any f(x) are false.
+**Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if all f(x) are true. False if any f(x) are false.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.
 
@@ -755,7 +755,7 @@ unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
 <a name='take'/>
 ### take : num -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by taking the first n (num) elements from [x] or String.
+**Description**: Array of Variables returned by taking the first n (num) elements from [x] or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
@@ -769,7 +769,7 @@ lists.take(2,'abc'); /* ["a","b"] */
 <a name='drop'/>
 ### drop : num -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by dropping the first n (num) elements from [x] or String.
+**Description**: Array of Variables returned by dropping the first n (num) elements from [x] or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
@@ -783,7 +783,7 @@ lists.drop(2,'abc'); /* ["c"] */
 <a name='splitAt'/>
 ### splitAt : num -> [x]|str -> [[x],[x]]
 ------
-**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or String. The second contains the rest.
+**Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or a String. The second contains the rest.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of two Arrays of Variables.
 
@@ -829,7 +829,7 @@ lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ------
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
 
-**Signature Definition**: Give arg 1 an Array of Variables or String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
 
 **Example Usage**:
 
@@ -859,7 +859,7 @@ lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[],[{a:2},{a:2
 ------
 **Description**: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get an Array of Numbers or an Array of Strings.
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers or an Array of Strings.
 
 **Example Usage**:
 
@@ -915,9 +915,9 @@ lists.tails([{a:2},{b:3}]); /* [[{a:2},{b:3}],[{a:2}],[]] */
 <a name='isPrefixOf'/>
 ### isPrefixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or a String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -930,9 +930,9 @@ lists.isPrefixOf("ab","abcd"); /* true */
 <a name='isSuffixOf'/>
 ### isSuffixOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or a String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -960,9 +960,9 @@ lists.isInfixOf("a","abcd"); /* true */
 <a name='isSubsequenceOf'/>
 ### isSubsequenceOf : [num]|str -> [num]|str -> boolean
 ------
-**Description**: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
+**Description**: Test if an Array of Numbers or a String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
 
-**Signature Definition**: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
+**Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -975,9 +975,9 @@ lists.isSubsequenceOf("Lol","Laugh out loud"); /* true */
 <a name='elem'/>
 ### elem : num|str -> [num]|str -> boolean
 ------
-**Description**: Test if the Number or String is in the Array of Numbers or a String.
+**Description**: Test if the Number or a String is in the Array of Numbers or a String.
 
-**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
+**Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -989,9 +989,9 @@ lists.elem("2","123 abc"); /* true */
 <a name='notElem'/>
 ### notElem : num|str -> [num]|str -> boolean
 ------
-**Description**: Test if the Number or String is not in the Array of Numbers or a String.
+**Description**: Test if the Number or a String is not in the Array of Numbers or a String.
 
-**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.
+**Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
 
 **Example Usage**:
 
@@ -1005,7 +1005,7 @@ lists.notElem("a","abc"); /* false */
 ------
 **Description**: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).
 
-**Signature Definition**: Give arg 1 a Number or String. Give arg 2 an Array of an Array containing a Number or String as the key and a Variable as the value. Get a Variable (value).
+**Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of an Array containing a Number or a String as the key and a Variable as the value. Get a Variable (value).
 
 **Example Usage**:
 
