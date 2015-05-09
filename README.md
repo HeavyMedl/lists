@@ -151,10 +151,10 @@ map : [x] -> f -> [x]
 
 **Special Lists**
 
-* lines : String -> [String]
-* words : String -> [String]
-* unlines : [String] -> String
-* unwords : [String] -> String
+* [`lines`](#lines) : str -> [str]
+* [`words`](#words) : str -> [str]
+* [`unlines`](#unlines) : [str] -> str
+* [`unwords`](#unwords) : [str] -> str
 * nub : Eq a => [a] -> [a]
 * delete : Eq a => a -> [a] -> [a]
 * difference || diff : Eq a => [a] -> [a] -> [a]
@@ -1170,5 +1170,58 @@ function addThenMultiply(arr) {
   return res;
 }
 lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply); /* [8, 25] */
+```
+------
+<a name='lines'/>
+### lines : str -> [str]
+------
+**Description**: Returns an Array of Strings as the result of breaking a String at each new line character (\u000A). The resultant Array does not contain any new line characters.
+
+**Signature Definition**: Give arg 1 a String. Get an Array of Strings.
+
+**Example Usage**:
+
+```js
+lists.lines("l\no\nl"); /* ["l","o","l"] */
+lists.lines("Hey\nthere"); /* ["Hey","there"] */
+```
+------
+<a name='words'/>
+### words : str -> [str]
+------
+**Description**: Returns an Array of Strings as the result of breaking a String at each space character (\u0020). The resultant Array does not contain any space characters.
+
+**Signature Definition**: Give arg 1 a String. Get an Array of Strings.
+
+**Example Usage**:
+
+```js
+lists.words("break it up"); /* ["break","it","up"] */
+```
+------
+<a name='unlines'/>
+### unlines : [str] -> str
+------
+**Description**: Returns a String with a new line character appended to each String of the Array that it joins.
+
+**Signature Definition**: Give arg 1 an Array of Strings. Get a String.
+
+**Example Usage**:
+
+```js
+lists.unlines(["break","it","up"]); /* "break\nit\nup" */
+```
+------
+<a name='unwords'/>
+### unwords : [str] -> str
+------
+**Description**: Returns a String with a space character appended to each String of the Array that it joins.
+
+**Signature Definition**: Give arg 1 an Array of Strings. Get a String.
+
+**Example Usage**:
+
+```js
+lists.unwords(["break","it","up"]); /* "break it up " */
 ```
 ------
