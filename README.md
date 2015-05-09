@@ -1209,7 +1209,7 @@ lists.words("break it up"); /* ["break","it","up"] */
 **Example Usage**:
 
 ```js
-lists.unlines(["break","it","up"]); /* "break\nit\nup" */
+lists.unlines(["break","it","up"]); /* "break\nit\nup\n" */
 ```
 ------
 <a name='unwords'/>
