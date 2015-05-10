@@ -52,12 +52,12 @@ map : [x] -> f -> [x]
 
 **List Transformations**
 
-* [`map`](#map) : [x] -> f -> [x]
-* [`rev`](#rev) : [x] -> [x]
-* [`intersperse`](#intersperse) : x -> [x] -> [x]|str
+* [`map`](#map) : [x]|str -> f -> [x]
+* [`rev`](#rev) : [x]|str -> [x]
+* [`intersperse`](#intersperse) : x -> [x]|str -> [x]|str
 * [`intercalate`](#intercalate) : [x] -> [[x]] -> [x]
 * [`transpose`](#transpose) : [[x]] -> [[x]]
-* [`subsequences`](#subsequences) : [x] -> [[x]]
+* [`subsequences`](#subsequences) : [x]|str -> [[x]]
 * [`permutations`](#permutations) : [x]|str -> [[x]]|[str]
 
 -----
@@ -107,8 +107,8 @@ map : [x] -> f -> [x]
 * [`break`](#break) : [x]|str -> f -> [[x], [x]|str]
 * [`stripPrefix`](#stripPrefix) : [num]|str -> [num]|str -> [num]|[str]
 * [`group`](#group) : [num]|str -> [[num]]|[[str]]
-* [`inits`](#inits) : [x] -> [[x]]
-* [`tails`](#tails) : [x] -> [[x]]
+* [`inits`](#inits) : [x]|str -> [[x]]
+* [`tails`](#tails) : [x]|str -> [[x]]
 
 -----
 
@@ -126,9 +126,9 @@ map : [x] -> f -> [x]
 * [`elem`](#elem) : num|str -> [num]|str -> boolean
 * [`notElem`](#notElem) : num|str -> [num]|str -> boolean
 * [`lookup`](#lookup) : num|str -> [[num|str,x]] -> boolean
-* [`find`](#find) : [x] -> f -> x
-* [`filter`](#filter) : [x] -> f -> [x]
-* [`partition`](#partition) : [x] -> f -> [[x],[x]]
+* [`find`](#find) : [x]|str -> f -> x
+* [`filter`](#filter) : [x]|str -> f -> [x]
+* [`partition`](#partition) : [x]|str -> f -> [[x],[x]]
 
 -----
 
@@ -137,8 +137,8 @@ map : [x] -> f -> [x]
 * [`bang`](#bang) : num -> [x] -> x
 * [`elemIndex`](#elemIndex) || [`indexOf`](#elemIndex) : num|str -> [num]|str -> num
 * [`elemIndices`](#elemIndices) : num|str -> [num]|str -> [num]
-* [`findIndex`](#findIndex) : [x] -> f -> num
-* [`findIndices`](#findIndices) : [x] -> f -> [num]
+* [`findIndex`](#findIndex) : [x]|str -> f -> num
+* [`findIndices`](#findIndices) : [x]|str -> f -> [num]
 
 -----
 
@@ -289,7 +289,7 @@ lists.nil([1]); /* false */
 ```
 ------
 <a name='map'/>
-### map : [x] -> f -> [x]
+### map : [x]|str -> f -> [x]
 ------
 **Description**: Array of Variables returned by applying f to each element of [x].
 
@@ -306,7 +306,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ```
 ------
 <a name='rev'/>
-### rev : [x] -> [x]
+### rev : [x]|str -> [x]
 ------
 **Description**: Array of Variables returned by reversing the order of each element.
 
@@ -321,11 +321,11 @@ lists.rev([[2],[3]]); /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
-### intersperse : x -> [x] -> [x]|str
+### intersperse : x -> [x]|str -> [x]|str
 ------
 **Description**: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.
 
-**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables or a String.
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables or a String.
 
 **Example Usage**:
 
@@ -366,11 +366,11 @@ lists.transpose([["a","b","c"],["a","b","c"]]); /* [["a","a"],["b","b"],["c","c"
 ```
 ------
 <a name='subsequences'/>
-### subsequences : [x] -> [[x]]
+### subsequences : [x]|str -> [[x]]
 ------
 **Description**: Array of an Array of Variables of all subsequences of a given arguement.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -883,11 +883,11 @@ lists.group("mississippi"); /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p"
 ```
 ------
 <a name='inits'/>
-### inits : [x] -> [[x]]
+### inits : [x]|str -> [[x]]
 ------
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -898,11 +898,11 @@ lists.inits([{a:2},{b:3}]); /* [[],[{a:2}],[{a:2},{b:3}]] */
 ```
 ------
 <a name='tails'/>
-### tails : [x] -> [[x]]
+### tails : [x]|str -> [[x]]
 ------
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -1016,7 +1016,7 @@ lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
 ```
 ------
 <a name='find'/>
-### find : [x] -> f -> x
+### find : [x]|str -> f -> x
 ------
 **Description**: Retreive a Variable by applying a predicate Function to an Array of Variables. Returns "Nothing" if there is no match.
 
@@ -1031,7 +1031,7 @@ lists.find([1,2,3], function(x) { return x == 0 }); /* "Nothing" */
 ```
 ------
 <a name='filter'/>
-### filter : [x] -> f -> [x]
+### filter : [x]|str -> f -> [x]
 ------
 **Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables.
 
@@ -1046,11 +1046,11 @@ lists.filter([[1],[1,2]], function(arr) { return arr.length > 1 }); /* [[1,2]] *
 ```
 ------
 <a name='partition'/>
-### partition : [x] -> f -> [[x],[x]]
+### partition : [x]|str -> f -> [[x],[x]]
 ------
 **Description**: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of two Arrays of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of two Arrays of Variables.
 
 **Example Usage**:
 
@@ -1106,11 +1106,11 @@ lists.elemIndices(2,[0,1]); /* [] */
 ```
 ------
 <a name='findIndex'/>
-### findIndex : [x] -> f -> num
+### findIndex : [x]|str -> f -> num
 ------
-**Description**: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables.
+**Description**: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Number.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Number.
 
 **Example Usage**:
 
@@ -1121,11 +1121,11 @@ lists.findIndex("ab%c", function(char){ return char == "%" }); /* 2 */
 ```
 ------
 <a name='findIndices'/>
-### findIndices : [x] -> f -> [num]
+### findIndices : [x]|str -> f -> [num]
 ------
-**Description**: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables.
+**Description**: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Numbers.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Numbers.
 
 **Example Usage**:
 
