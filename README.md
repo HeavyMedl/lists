@@ -1357,7 +1357,7 @@ lists.nubBy(["query=string, another=string","query=string, hey=man"], function(x
   return x.split(',')[0] == y.split(',')[0]; // define equality on query=string 
 }); /* ["query=string, another=string"] */
 lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) { 
-  return obj1.b == obj2.b // define equality on b property of objects
+  return obj1.b == obj2.b; // define equality on the b property
 }); /* [{a:1},{a:1, b:2}] */
 ```
 ------
