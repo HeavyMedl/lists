@@ -384,7 +384,7 @@
 		return includeChar('\u0020', str)
 	}
 	// Data.List Set Operations
-	l.nub = function(xs) {
+	l.nub = l.uniq = l.unique = function(xs) {
 		return l.nubBy(xs, function(x,y){ return x==y })	
 	}
 	l.delete = function(x,xs) {

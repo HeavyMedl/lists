@@ -1,6 +1,6 @@
 {
   "name": "lists",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A library of higher-order functions modeled after Haskell's Data.List module",
   "main": "lists.js",
   "repository": {
@@ -21,7 +21,8 @@
     "array",
     "collection",
     "underscore",
-    "prelude"
+    "prelude",
+    "lodash"
   ],
   "author": "Kurt Medley <kurtdmedley@gmail.com>",
   "license": "MIT",
