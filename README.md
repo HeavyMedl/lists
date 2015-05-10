@@ -160,20 +160,20 @@ map : [x] -> f -> [x]
 * [`difference`](#difference) || [`diff`](#difference) : [num|str]|str -> [num|str]|str -> [x]
 * [`union`](#union) : [num|str]|str -> [num|str]|str -> [x]|str
 * [`intersect`](#intersect) : [num|str]|str -> [num|str]|str -> [x]
-* [`sort`](#sort) : [x] -> [x]
+* [`sort`](#sort) : [x]|str -> [x]
 * [`insert`](#insert) : x -> [x] -> [x]
 
 -----
 
 **Generalized Functions**
 
-* [`nubBy`](#nubBy) : [x] -> f -> [x]
-* [`deleteBy`](#deleteBy) : x -> [x] -> f -> [x]
-* [`deleteFirstsBy`](#deleteFirstsBy) : [x] -> [x] -> f -> [x]
+* [`nubBy`](#nubBy) : [x]|str -> f -> [x]
+* [`deleteBy`](#deleteBy) : x -> [x]|str -> f -> [x]
+* [`deleteFirstsBy`](#deleteFirstsBy) : [x]|str -> [x]|str -> f -> [x]
 * [`unionBy`](#unionBy) : [x] -> [x] -> f -> [x]
-* [`intersectBy`](#intersectBy) : [x] -> [x] -> f -> [x]
-* [`groupBy`](#groupBy) : [x] -> f -> [[x]]
-* [`sortBy`](#sortBy) : [x] -> f -> [x]
+* [`intersectBy`](#intersectBy) : [x]|str -> [x]|str -> f -> [x]
+* [`groupBy`](#groupBy) : [x]|str -> f -> [[x]]
+* [`sortBy`](#sortBy) : [x]|str -> f -> [x]
 * insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
 * maximumBy : (a -> a -> Ordering) -> [a] -> a
 * minimumBy : (a -> a -> Ordering) -> [a] -> a
@@ -1314,7 +1314,7 @@ lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
 ```
 ------
 <a name='sort'/>
-### sort : [x] -> [x]
+### sort : [x]|str -> [x]
 ------
 **Description**: Return an Array of Variables that are sorted by the Ordering Function lists.compare.
 
@@ -1343,11 +1343,11 @@ lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
 ```
 ------
 <a name='nubBy'/>
-### nubBy : [x] -> f -> [x]
+### nubBy : [x]|str -> f -> [x]
 ------
-**Description**: Remove duplicates from an Array of Variables based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
+**Description**: Remove duplicates from an Array of Variables or a String based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1362,9 +1362,9 @@ lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) {
 ```
 ------
 <a name='deleteBy'/>
-### deleteBy : x -> [x] -> f -> [x]
+### deleteBy : x -> [x]|str -> f -> [x]
 ------
-**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable that matches a user supplied Function definition of equality from an Array of Variables.
+**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable or a String that matches a user supplied Function definition of equality from an Array of Variables.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
 
@@ -1376,11 +1376,11 @@ lists.deleteBy(2, [{a:2},{b:2,e:2},{c:2}], function(arg1, obj) { return lists.ke
 ```
 ------
 <a name='deleteFirstsBy'/>
-### deleteFirstsBy : [x] -> [x] -> f -> [x]
+### deleteFirstsBy : [x]|str -> [x]|str -> f -> [x]
 ------
-**Description**: Return the first Array of Variables passed with the first occurence of each element from the second Array of Variables removed based on a user supplied Function definition of equality.
+**Description**: Return the first Array of Variables or String passed with the first occurence of each element from the second Array of Variables or String removed based on a user supplied Function definition of equality.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1407,11 +1407,11 @@ lists.unionBy(["a","b","c"], ["d","e","f"], function(x,y) {
 ```
 ------
 <a name='intersectBy'/>
-### intersectBy : [x] -> [x] -> f -> [x]
+### intersectBy : [x]|str -> [x]|str -> f -> [x]
 ------
 **Description**: Return an Array of Variables as the intersection between Argument 1, Argument 2, and the user supplied Function definition of equality.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1420,11 +1420,11 @@ lists.intersectBy([1,2,3,4],[4,8,12,16,20], function(x,y) { return x * x == y })
 ```
 ------
 <a name='groupBy'/>
-### groupBy : [x] -> f -> [[x]]
+### groupBy : [x]|str -> f -> [[x]]
 ------
 **Description**: Return an Array of Variables where each nested Array is a group of equal elements. Equality is defined by the user supplied Function.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Fucntion. Get an Array of an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Fucntion. Get an Array of an Array of Variables.
 
 **Example Usage**:
 
@@ -1434,11 +1434,11 @@ lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return x + 1 == y}); /* [[1,2]
 ```
 ------
 <a name='sortBy'/>
-### sortBy : [x] -> f -> [x]
+### sortBy : [x]|str -> f -> [x]
 ------
 **Description**: Return an Array of Variables that are sorted based on the user supplied Ordering Function.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Fucntion. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
