@@ -169,11 +169,11 @@ map : [x] -> f -> [x]
 
 * [`nubBy`](#nubBy) : [x] -> f -> [x]
 * [`deleteBy`](#deleteBy) : x -> [x] -> f -> [x]
-* deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-* unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-* intersectBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
-* groupBy : (a -> a -> Bool) -> [a] -> [[a]]
-* sortBy : (a -> a -> Ordering) -> [a] -> [a]
+* [`deleteFirstsBy`](#deleteFirstsBy) : [x] -> [x] -> f -> [x]
+* [`unionBy`](#unionBy) : [x] -> [x] -> f -> [x]
+* [`intersectBy`](#intersectBy) : [x] -> [x] -> f -> [x]
+* [`groupBy`](#groupBy) : [x] -> f -> [[x]]
+* [`sortBy`](#sortBy) : [x] -> f -> [x]
 * insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
 * maximumBy : (a -> a -> Ordering) -> [a] -> a
 * minimumBy : (a -> a -> Ordering) -> [a] -> a
@@ -1373,5 +1373,79 @@ lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) {
 ```js
 lists.deleteBy(4, [6,8,10,12], function(arg1,y) { return y % arg1 == 0 }); /* [6,10,12] */
 lists.deleteBy(2, [{a:2},{b:2,e:2},{c:2}], function(arg1, obj) { return lists.keys(obj).length == arg1 }); /* [{a:2},{c:2}] */
+```
+------
+<a name='deleteFirstsBy'/>
+### deleteFirstsBy : [x] -> [x] -> f -> [x]
+------
+**Description**: Return the first Array of Variables passed with the first occurence of each element from the second Array of Variables removed based on a user supplied Function definition of equality.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.deleteFirstsBy([1,2,3,4,3],[3], function(x,y) { return x==y }); /* [1,2,4,3] */
+lists.deleteFirstsBy("baba","a", function(x,y) { return x==y }); /* ["b","b","a"] */
+```
+------
+<a name='unionBy'/>
+### unionBy : [x] -> [x] -> f -> [x]
+------
+**Description**: Return an Array of Variables as the union between Argument 1, Argument 2, and the user supplied Function definition of equality.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.unionBy([1,2,3,4],[4,6,9,10], function(x,y) { return x * 3 == y }); /* [1,2,3,4,4,10] */
+lists.unionBy(["a","b","c"], ["d","e","f"], function(x,y) { 
+	var same = y == 'd' ? 'a' : y; 
+	return x == same; // "d" is the same as "a"
+}); /* ["a","b","c","e","f"] */
+```
+------
+<a name='intersectBy'/>
+### intersectBy : [x] -> [x] -> f -> [x]
+------
+**Description**: Return an Array of Variables as the intersection between Argument 1, Argument 2, and the user supplied Function definition of equality.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.intersectBy([1,2,3,4],[4,8,12,16,20], function(x,y) { return x * x == y }); /* [2,4] */
+```
+------
+<a name='groupBy'/>
+### groupBy : [x] -> f -> [[x]]
+------
+**Description**: Return an Array of Variables where each nested Array is a group of equal elements. Equality is defined by the user supplied Function.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Fucntion. Get an Array of an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return ((x*y) % 3) == 0}); /* [[1],[2,3],[4],[5,6],[7],[8,9]] */
+lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return x + 1 == y}); /* [[1,2],[3,4],[5,6],[7,8],[9]] */
+```
+------
+<a name='sortBy'/>
+### sortBy : [x] -> f -> [x]
+------
+**Description**: Return an Array of Variables that are sorted based on the user supplied Ordering Function.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Fucntion. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+function oddsFirst(x,y) { 
+	return x % 2 == 1 ? 'LT' : 'GT'
+}
+lists.sortBy([1,2,3,4,5,6,7], oddsFirst); /* [1,3,5,7,6,4,2] */
 ```
 ------

@@ -388,36 +388,36 @@
 		return l.nubBy(xs, function(x,y){ return x==y })	
 	}
 	l.delete = function(x,xs) {
-		return l.deleteBy(xs, x, function(z,y) { return z.toString()==y.toString() })
+		return l.deleteBy(x, xs, function(z,y) { return z.toString()==y.toString() })
 	}
 	l.diff = l.difference = function(xs,ys) {
 		return l.nil(ys) ? xs
 		: l.nil(xs) ? xs
 			: l.filter(xs, function(x) {
 				return l.notElem(x,ys)
-			  })
+			  });
 	}
 	l.union = function(xs,ys) {
-		return l.unionBy(xs,ys,function(x,y) { return x==y; })
+		return l.unionBy(xs,ys,function(x,y) { return x==y; });
 	}
 	l.intersect = function(xs,ys) {
-		return l.intersectBy(xs,ys,function(x,y) { return x==y; })
+		return l.intersectBy(xs,ys,function(x,y) { return x==y; });
 	}
 	// Ordered lists
 	l.sort = function(xs) {
-		return l.sortBy(xs,l.compare)
+		return l.sortBy(xs,l.compare);
 	}
 	l.insert = function(e, ls) {
-		return l.insertBy(e,ls,l.compare)
+		return l.insertBy(e,ls,l.compare);
 	}
 	// Data.List Generalized Functions
 	l.unionBy = function(xs, ys, eq) {
-		return xs.concat(l.foldl(l.nubBy(ys,eq),xs,l.part(l.deleteBy,_,_,eq)))
+		return xs.concat(l.foldl(l.nubBy(ys,eq),xs,l.flip(l.part(l.deleteBy,_,_,eq))));
 	}
 	l.intersectBy = function(xs,ys,eq) {
 		return l.nil(xs) ? []
 		: l.nil(ys) ? []
-			: l.any(ys, l.part(eq,_,l.head(xs))) ? [l.head(xs)].concat(l.intersectBy(l.tail(xs),ys,eq))
+			: l.any(ys, l.part(eq,l.head(xs),_)) ? [l.head(xs)].concat(l.intersectBy(l.tail(xs),ys,eq))
 				: l.intersectBy(l.tail(xs),ys,eq) 
 	} 
 	l.groupBy = function(xs, p) {
@@ -429,7 +429,7 @@
 		}
 	}
 	l.deleteFirstsBy = function(xs,ys,eq) {
-		return l.foldl(xs,ys,l.part(l.deleteBy,_,_,eq))
+		return l.foldl(xs,ys,l.flip(l.part(l.deleteBy,_,_,eq)))
 	}
 	l.nubBy = function(ls, eq) {
 		return nubBye(ls,[])
@@ -439,10 +439,10 @@
 				: [l.head(ys)].concat(nubBye(l.tail(ys),[l.head(ys)].concat(xs)))
 		}
 	}
-	l.deleteBy = function(xs, x, eq) {
+	l.deleteBy = function(x, xs, eq) {
 		return l.nil(xs) ? []
 		: eq(x,l.head(xs)) ? l.tail(xs)
-			: [l.head(xs)].concat(l.deleteBy(l.tail(xs), x, eq))
+			: [l.head(xs)].concat(l.deleteBy(x, l.tail(xs), eq))
 	}
 	// Data.List User-supplied comparison
 	l.sortBy = function(xs, cmp) {
