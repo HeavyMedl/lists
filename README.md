@@ -168,7 +168,7 @@ map : [x] -> f -> [x]
 **Generalized Functions**
 
 * [`nubBy`](#nubBy) : [x] -> f -> [x]
-* deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
+* [`deleteBy`](#deleteBy) : x -> [x] -> f -> [x]
 * deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
 * unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
 * intersectBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
@@ -1347,7 +1347,7 @@ lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
 ------
 **Description**: Remove duplicates from an Array of Variables based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
 
-**Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1359,5 +1359,19 @@ lists.nubBy(["query=string, another=string","query=string, hey=man"], function(x
 lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) { 
   return obj1.b == obj2.b; // define equality on the b property
 }); /* [{a:1},{a:1, b:2}] */
+```
+------
+<a name='deleteBy'/>
+### deleteBy : x -> [x] -> f -> [x]
+------
+**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable that matches a user supplied Function definition of equality from an Array of Variables.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.deleteBy(4, [6,8,10,12], function(arg1,y) { return y % arg1 == 0 }); /* [6,10,12] */
+lists.deleteBy(2, [{a:2},{b:2,e:2},{c:2}], function(arg1, obj) { return lists.keys(obj).length == arg1 }); /* [{a:2},{c:2}] */
 ```
 ------
