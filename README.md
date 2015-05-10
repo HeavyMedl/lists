@@ -155,19 +155,19 @@ map : [x] -> f -> [x]
 * [`words`](#words) : str -> [str]
 * [`unlines`](#unlines) : [str] -> str
 * [`unwords`](#unwords) : [str] -> str
-* nub : Eq a => [a] -> [a]
-* delete : Eq a => a -> [a] -> [a]
-* difference || diff : Eq a => [a] -> [a] -> [a]
-* union : Eq a => [a] -> [a] -> [a]
-* intersect : Eq a => [a] -> [a] -> [a]
-* sort : Ord a => [a] -> [a]
-* insert : Ord a => a -> [a] -> [a]
+* [`nub`](#nub) || [`uniq`](#nub) || [`unique`](#nub) : [num|str]|str -> [num|str]
+* [`delete`](#delete) : x -> [x] -> [x]
+* [`difference`](#difference) || [`diff`](#difference) : [num|str]|str -> [num|str]|str -> [x]
+* [`union`](#union) : [num|str]|str -> [num|str]|str -> [x]|str
+* [`intersect`](#intersect) : [num|str]|str -> [num|str]|str -> [x]
+* [`sort`](#sort) : [x] -> [x]
+* [`insert`](#insert) : x -> [x] -> [x]
 
 -----
 
 **Generalized Functions**
 
-* nubBy : (a -> a -> Bool) -> [a] -> [a]
+* [`nubBy`](#nubBy) : f -> [x] -> [x]
 * deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
 * deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
 * unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
@@ -1223,5 +1223,141 @@ lists.unlines(["break","it","up"]); /* "break\nit\nup\n" */
 
 ```js
 lists.unwords(["break","it","up"]); /* "break it up " */
+```
+------
+<a name='nub'/>
+### nub || uniq || unique : [num|str]|str -> [num|str]
+------
+**Description**: Remove duplicates from a String or an Array of Numbers and/or Strings. Keep the first occurence of each element.
+
+**Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Get an Array of Numbers and/or Strings.
+
+**Example Usage**:
+
+```js
+lists.nub("abbc"); /* ["a","b","c"] */
+lists.nub([1,2,"a","b","a",1]); /* [1,2,"a","b"] */
+lists.nub([1,2,2,3]); /* [1,2,3] */ 
+```
+------
+<a name='delete'/>
+### delete : x -> [x] -> [x]
+------
+**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables. Does not work with Objects.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.delete('a','bab'); /* ["b","b"] */
+lists.delete([1],[[1,2],[1]]); /* [[1,2]] */
+lists.delete(1,[2,1,2,1]); /* [2,2,1] */ 
+```
+------
+<a name='delete'/>
+### delete : x -> [x] -> [x]
+------
+**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables. Does not work with Objects.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.delete('a','bab'); /* ["b","b"] */
+lists.delete([1],[[1,2],[1]]); /* [[1,2]] */
+lists.delete(1,[2,1,2,1]); /* [2,2,1] */ 
+```
+------
+<a name='difference'/>
+### difference || diff : [num|str]|str -> [num|str]|str -> [x]
+------
+**Description**: Return an Array of Variables whose elements are the difference between Argument 1 and Argument 2.
+
+**Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.difference(['acd',1],['acd']); /* [1] */
+lists.difference('acd','ab'); /* ["c","d"] */
+lists.difference([1,2],[1,2]); /* [] */ 
+```
+------
+<a name='union'/>
+### union : [num|str]|str -> [num|str]|str -> [x]|str
+------
+**Description**: Return an Array of Variables whose elements are the union between Argument 1 and Argument 2.
+
+**Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables or a String.
+
+**Example Usage**:
+
+```js
+lists.union("a","b"); /* "ab" */
+lists.union([1,4,'a'],[1,3,'b']); /* [1,4,"a",3,"b"] */
+```
+------
+<a name='intersect'/>
+### intersect : [num|str]|str -> [num|str]|str -> [x]
+------
+**Description**: Return an Array of Variables whose elements are the intersection between Argument 1 and Argument 2.
+
+**Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.intersect('a','ba'); /* ["a"] */
+lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
+```
+------
+<a name='sort'/>
+### sort : [x] -> [x]
+------
+**Description**: Return an Array of Variables that are sorted by the Ordering Function lists.compare.
+
+**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.sort('acb'); /* ["a","b","c"] */
+lists.sort([[3,4],[1,2]]); /* [[1,2],[3,4]] */
+lists.sort([2,1,-1,1]); /* [-1,1,1,2] */
+```
+------
+<a name='insert'/>
+### insert : x -> [x] -> [x]
+------
+**Description**: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by lists.compare) to the Variable from the Array it is being compared to. 
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.insert(1,[2,1,2]); /* [1,2,1,2] */
+lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
+```
+------
+<a name='nubBy'/>
+### nubBy : f -> [x] -> [x]
+------
+**Description**: Remove duplicates from an Array of Variables based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
+
+**Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.nubBy([8,7,5,3,2], function(x,y) { return x + y == 10 }); /* [8,7,5] */
+lists.nubBy(["query=string, another=string","query=string, hey=man"], function(x,y) { 
+  return x.split(',')[0] == y.split(',')[0]; // define equality on query=string 
+}); /* ["query=string, another=string"] */
+lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) { 
+  return obj1.b == obj2.b // define equality on b property of objects
+}); /* [{a:1},{a:1, b:2}] */
 ```
 ------
