@@ -167,7 +167,7 @@ map : [x] -> f -> [x]
 
 **Generalized Functions**
 
-* [`nubBy`](#nubBy) : f -> [x] -> [x]
+* [`nubBy`](#nubBy) : [x] -> f -> [x]
 * deleteBy : (a -> a -> Bool) -> a -> [a] -> [a]
 * deleteFirstsBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
 * unionBy : (a -> a -> Bool) -> [a] -> [a] -> [a]
@@ -1343,7 +1343,7 @@ lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
 ```
 ------
 <a name='nubBy'/>
-### nubBy : f -> [x] -> [x]
+### nubBy : [x] -> f -> [x]
 ------
 **Description**: Remove duplicates from an Array of Variables based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
 
