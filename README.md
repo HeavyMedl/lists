@@ -156,7 +156,7 @@ map : [x] -> f -> [x]
 * [`unlines`](#unlines) : [str] -> str
 * [`unwords`](#unwords) : [str] -> str
 * [`nub`](#nub) || [`uniq`](#nub) || [`unique`](#nub) : [num|str]|str -> [num|str]
-* [`delete`](#delete) : x -> [x] -> [x]
+* [`delete`](#delete) : x -> [x]|str -> [x]
 * [`difference`](#difference) || [`diff`](#difference) : [num|str]|str -> [num|str]|str -> [x]
 * [`union`](#union) : [num|str]|str -> [num|str]|str -> [x]|str
 * [`intersect`](#intersect) : [num|str]|str -> [num|str]|str -> [x]
@@ -1241,26 +1241,11 @@ lists.nub([1,2,2,3]); /* [1,2,3] */
 ```
 ------
 <a name='delete'/>
-### delete : x -> [x] -> [x]
+### delete : x -> [x]|str -> [x]
 ------
-**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables. Does not work with Objects.
+**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables or a String. Does not work with Objects.
 
-**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
-
-**Example Usage**:
-
-```js
-lists.delete('a','bab'); /* ["b","b"] */
-lists.delete([1],[[1,2],[1]]); /* [[1,2]] */
-lists.delete(1,[2,1,2,1]); /* [2,2,1] */ 
-```
-------
-<a name='delete'/>
-### delete : x -> [x] -> [x]
-------
-**Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables. Does not work with Objects.
-
-**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
