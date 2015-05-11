@@ -7,7 +7,6 @@ Lists is a library of JavaScript higher-order functions for working with arrays 
 Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming.
 
 **Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity. This library provides an alternative toolbox by which to solve problems. This library should be sufficient for most projects but remember to monitor your heap memory space in the case of excessive function calls.
-
 -----
 ## Install
 
