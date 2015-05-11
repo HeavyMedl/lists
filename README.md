@@ -12,8 +12,50 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 ## Install
 
 -----
-## Components
+## Practical Example Usage
 
+Lets complete an easy task from [/r/dailyprogrammer](http://www.reddit.com/dailyprogrammer). [Here](http://www.reddit.com/r/dailyprogrammer/comments/29i9jw/6302014_challenge_169_easy_90_degree_2d_array/) is the task:
+
+**Given a NxN size 2D array of numbers. Develop a way to rotate the data as if you rotated the data by 90 degrees clockwise.**
+
+The challenge input is a 10x10 matrix that looks like this:
+
+```js
+var matrix = 
+[[1,2,3,4,5,6,7,8,9,0],
+ [0,9,8,7,6,5,4,3,2,1],
+ [1,3,5,7,9,2,4,6,8,0],
+ [0,8,6,4,2,9,7,5,3,1],
+ [0,1,2,3,4,5,4,3,2,1],
+ [9,8,7,6,5,6,7,8,9,0],
+ [1,1,1,1,1,1,1,1,1,1],
+ [2,2,2,2,2,2,2,2,2,2],
+ [9,8,7,6,7,8,9,8,7,6],
+ [0,0,0,0,0,0,0,0,0,0]];
+```
+
+Using **lists**, we can reverse and then transpose this matrix to achieve the desired output:
+
+```js
+l.transpose(l.rev(matrix));
+
+// or using pipe (composing left)
+var rotate90 = lists.pipe(lists.transpose, lists.rev)
+rotate90(matrix);
+
+/* both of these functions yield
+[[0,9,2,1,9,0,0,1,0,1], 
+ [0,8,2,1,8,1,8,3,9,2], 
+ [0,7,2,1,7,2,6,5,8,3], 
+ [0,6,2,1,6,3,4,7,7,4], 
+ [0,7,2,1,5,4,2,9,6,5], 
+ [0,8,2,1,6,5,9,2,5,6],
+ [0,9,2,1,7,4,7,4,4,7], 
+ [0,8,2,1,8,3,5,6,3,8],
+ [0,7,2,1,9,2,3,8,2,9], 
+ [0,6,2,1,0,1,1,0,1,0]];
+/*
+```
 -----
 ## Type Signature Legend
 
