@@ -7,10 +7,9 @@ Lists is a library of JavaScript higher-order functions for working with arrays 
 Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming.
 
 **Disclaimer**: Almost all of these functions are naive recursive definitions. The idea behind this library is to maximize problem-solving expressivity. This library provides an alternative toolbox by which to solve problems. This library should be sufficient for most projects but remember to monitor your heap memory space in the case of excessive function calls.
------
+
 ## Install
 
------
 ## Practical Example Usage
 
 Lets complete an easy task from [/r/dailyprogrammer](http://www.reddit.com/dailyprogrammer). [Here](http://www.reddit.com/r/dailyprogrammer/comments/29i9jw/6302014_challenge_169_easy_90_degree_2d_array/) is the task:
@@ -55,7 +54,7 @@ rotate90(matrix);
  [0,6,2,1,0,1,1,0,1,0]];
 /*
 ```
------
+
 ## Type Signature Legend
 
 * **arr | []** : Array 
