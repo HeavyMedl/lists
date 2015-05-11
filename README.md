@@ -174,7 +174,7 @@ map : [x] -> f -> [x]
 * [`intersectBy`](#intersectBy) : [x]|str -> [x]|str -> f -> [x]
 * [`groupBy`](#groupBy) : [x]|str -> f -> [[x]]
 * [`sortBy`](#sortBy) : [x]|str -> f -> [x]
-* insertBy : (a -> a -> Ordering) -> a -> [a] -> [a]
+* [`insertBy`](#insertBy) : x -> [x]|str -> f -> [x]
 * maximumBy : (a -> a -> Ordering) -> [a] -> a
 * minimumBy : (a -> a -> Ordering) -> [a] -> a
 
@@ -190,8 +190,7 @@ map : [x] -> f -> [x]
 * composeR || sequence : 
 * partial || part : 
 * flip : 
-* compare : 
-* GT,LT,EQ : 
+* GT,LT,EQ,compare : 
 * bubbleSort : 
 * mergeSort : 
 
@@ -1432,5 +1431,21 @@ function oddsFirst(x,y) {
 	return x % 2 == 1 ? 'LT' : 'GT'
 }
 lists.sortBy([1,2,3,4,5,6,7], oddsFirst); /* [1,3,5,7,6,4,2] */
+```
+------
+<a name='insertBy'/>
+### insertBy : x -> [x]|str -> f -> [x]
+------
+**Description**: Inserts an element into the first position of the Array of Variables based on the user supplied Ordering Function.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+function fn(x,y) { 
+	return (x+y) < (x*y) ? 'LT' : 'GT'
+}
+lists.insertBy(4, [0,1,3,5,7,9], fn); /* [0,1,4,3,5,7,9] */
 ```
 ------
