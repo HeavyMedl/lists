@@ -291,7 +291,7 @@ lists.nil([1]); /* false */
 <a name='map'/>
 ### map : [x]|str -> f -> [x]
 ------
-**Description**: Array of Variables returned by applying f to each element of [x].
+**Description**: Array of Variables returned by applying f to each element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
 
@@ -308,7 +308,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 <a name='rev'/>
 ### rev : [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by reversing the order of each element.
+**Description**: Array of Variables returned by reversing the order of each element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
@@ -716,7 +716,7 @@ lists.replicate({a:1},2); /* [{a:1},{a:2}] */
 <a name='cycle'/>
 ### cycle : [x]|str -> num -> [x]|str
 ------
-**Description**: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.
+**Description**: Builds an Array containing replications of a flattened Array of Variables or a String until the stop (num) reaches 0.
 
 **Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Number. Get an Array of Variables.
 
@@ -755,7 +755,7 @@ unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
 <a name='take'/>
 ### take : num -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by taking the first n (num) elements from [x] or a String.
+**Description**: Array of Variables returned by taking the first n (num) elements from an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
@@ -769,7 +769,7 @@ lists.take(2,'abc'); /* ["a","b"] */
 <a name='drop'/>
 ### drop : num -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by dropping the first n (num) elements from [x] or a String.
+**Description**: Array of Variables returned by dropping the first n (num) elements from an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
@@ -797,7 +797,7 @@ lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 <a name='takeWhile'/>
 ### takeWhile : f -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by taking elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
+**Description**: Array of Variables returned by taking elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
 **Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
@@ -812,9 +812,9 @@ lists.takeWhile('aabc', function(x){ return x =='a' }); /* ["a","a"] */
 <a name='dropWhile'/>
 ### dropWhile : f -> [x]|str -> [x]
 ------
-**Description**: Array of Variables returned by dropping elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
+**Description**: Array of Variables returned by dropping elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
-**Signature Definition**: <span class='sig-def'>Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</span>
+**Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1018,9 +1018,9 @@ lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
 <a name='find'/>
 ### find : [x]|str -> f -> x
 ------
-**Description**: Retreive a Variable by applying a predicate Function to an Array of Variables. Returns "Nothing" if there is no match.
+**Description**: Retreive a Variable by applying a predicate Function to an Array of Variables or a String. Returns "Nothing" if there is no match.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Variable.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Variable.
 
 **Example Usage**:
 
@@ -1033,9 +1033,9 @@ lists.find([1,2,3], function(x) { return x == 0 }); /* "Nothing" */
 <a name='filter'/>
 ### filter : [x]|str -> f -> [x]
 ------
-**Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables.
+**Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables or a String.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
 
 **Example Usage**:
 
@@ -1100,8 +1100,8 @@ lists.elemIndex(2,[0,1]); /* -1 */
 **Example Usage**:
 
 ```js
-lists.elemIndices(1,[1,2,1]); /* 0 */
-lists.elemIndices("a","aba"); /* 1 */
+lists.elemIndices(1,[1,2,1]); /* [0,2] */
+lists.elemIndices("a","aba"); /* [0,2] */
 lists.elemIndices(2,[0,1]); /* [] */
 ```
 ------
@@ -1303,7 +1303,7 @@ lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
 ------
 **Description**: Return an Array of Variables that are sorted by the Ordering Function lists.compare.
 
-**Signature Definition**: Give arg 1 an Array of Variables. Get an Array of Variables.
+**Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
 **Example Usage**:
 
