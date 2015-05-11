@@ -80,12 +80,12 @@
 
 <p>B{ <strong>tail</strong> } Function name</p>
 
-<p>C{ <strong>arr|str -&gt; [x]</strong> } Pseudo type signature</p>
+<p>C{ <strong>[x]|str -&gt; [x]</strong> } Pseudo type signature</p>
 
-<p>tail : arr|str -&gt; [x] </p>
+<p>tail : [x]|str -&gt; [x] </p>
 
 <ul>
-<li>Takes an Array of Variables or String and produces an Array of Variables ([x]).</li>
+<li>Takes an Array of Variables or a String and produces an Array of Variables ([x]).</li>
 </ul>
 
 <p>map : [x] -&gt; f -&gt; [x]</p>
@@ -119,17 +119,17 @@
 
 <ul>
 <li>
-<a href="#map"><code>map</code></a> : [x] -&gt; f -&gt; [x]</li>
+<a href="#map"><code>map</code></a> : [x]|str -&gt; f -&gt; [x]</li>
 <li>
-<a href="#rev"><code>rev</code></a> : [x] -&gt; [x]</li>
+<a href="#rev"><code>rev</code></a> : [x]|str -&gt; [x]</li>
 <li>
-<a href="#intersperse"><code>intersperse</code></a> : x -&gt; [x] -&gt; [x]|str</li>
+<a href="#intersperse"><code>intersperse</code></a> : x -&gt; [x]|str -&gt; [x]|str</li>
 <li>
 <a href="#intercalate"><code>intercalate</code></a> : [x] -&gt; [[x]] -&gt; [x]</li>
 <li>
 <a href="#transpose"><code>transpose</code></a> : [[x]] -&gt; [[x]]</li>
 <li>
-<a href="#subsequences"><code>subsequences</code></a> : [x] -&gt; [[x]]</li>
+<a href="#subsequences"><code>subsequences</code></a> : [x]|str -&gt; [[x]]</li>
 <li>
 <a href="#permutations"><code>permutations</code></a> : [x]|str -&gt; [[x]]|[str]</li>
 </ul>
@@ -212,17 +212,17 @@
 <li>
 <a href="#dropWhile"><code>dropWhile</code></a> : f -&gt; [x]|str -&gt; [x]</li>
 <li>
-<a href="#span"><code>span</code></a> : arr|str -&gt; f -&gt; [[x], [x]|str]</li>
+<a href="#span"><code>span</code></a> : [x]|str -&gt; f -&gt; [[x], [x]|str]</li>
 <li>
-<a href="#break"><code>break</code></a> : arr|str -&gt; f -&gt; [[x], [x]|str]</li>
+<a href="#break"><code>break</code></a> : [x]|str -&gt; f -&gt; [[x], [x]|str]</li>
 <li>
 <a href="#stripPrefix"><code>stripPrefix</code></a> : [num]|str -&gt; [num]|str -&gt; [num]|[str]</li>
 <li>
 <a href="#group"><code>group</code></a> : [num]|str -&gt; [[num]]|[[str]]</li>
 <li>
-<a href="#inits"><code>inits</code></a> : [x] -&gt; [[x]]</li>
+<a href="#inits"><code>inits</code></a> : [x]|str -&gt; [[x]]</li>
 <li>
-<a href="#tails"><code>tails</code></a> : [x] -&gt; [[x]]</li>
+<a href="#tails"><code>tails</code></a> : [x]|str -&gt; [[x]]</li>
 </ul>
 
 <hr>
@@ -252,11 +252,11 @@
 <li>
 <a href="#lookup"><code>lookup</code></a> : num|str -&gt; [[num|str,x]] -&gt; boolean</li>
 <li>
-<a href="#find"><code>find</code></a> : [x] -&gt; f -&gt; x</li>
+<a href="#find"><code>find</code></a> : [x]|str -&gt; f -&gt; x</li>
 <li>
-<a href="#filter"><code>filter</code></a> : [x] -&gt; f -&gt; [x]</li>
+<a href="#filter"><code>filter</code></a> : [x]|str -&gt; f -&gt; [x]</li>
 <li>
-<a href="#partition"><code>partition</code></a> : [x] -&gt; f -&gt; [[x],[x]]</li>
+<a href="#partition"><code>partition</code></a> : [x]|str -&gt; f -&gt; [[x],[x]]</li>
 </ul>
 
 <hr>
@@ -271,9 +271,9 @@
 <li>
 <a href="#elemIndices"><code>elemIndices</code></a> : num|str -&gt; [num]|str -&gt; [num]</li>
 <li>
-<a href="#findIndex"><code>findIndex</code></a> : [x] -&gt; f -&gt; num</li>
+<a href="#findIndex"><code>findIndex</code></a> : [x]|str -&gt; f -&gt; num</li>
 <li>
-<a href="#findIndices"><code>findIndices</code></a> : [x] -&gt; f -&gt; [num]</li>
+<a href="#findIndices"><code>findIndices</code></a> : [x]|str -&gt; f -&gt; [num]</li>
 </ul>
 
 <hr>
@@ -292,17 +292,28 @@
 <p><strong>Special Lists</strong></p>
 
 <ul>
-<li>lines : String -&gt; [String]</li>
-<li>words : String -&gt; [String]</li>
-<li>unlines : [String] -&gt; String</li>
-<li>unwords : [String] -&gt; String</li>
-<li>nub : Eq a =&gt; [a] -&gt; [a]</li>
-<li>delete : Eq a =&gt; a -&gt; [a] -&gt; [a]</li>
-<li>difference || diff : Eq a =&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>union : Eq a =&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>intersect : Eq a =&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>sort : Ord a =&gt; [a] -&gt; [a]</li>
-<li>insert : Ord a =&gt; a -&gt; [a] -&gt; [a]</li>
+<li>
+<a href="#lines"><code>lines</code></a> : str -&gt; [str]</li>
+<li>
+<a href="#words"><code>words</code></a> : str -&gt; [str]</li>
+<li>
+<a href="#unlines"><code>unlines</code></a> : [str] -&gt; str</li>
+<li>
+<a href="#unwords"><code>unwords</code></a> : [str] -&gt; str</li>
+<li>
+<a href="#nub"><code>nub</code></a> || <a href="#nub"><code>uniq</code></a> || <a href="#nub"><code>unique</code></a> : [num|str]|str -&gt; [num|str]</li>
+<li>
+<a href="#delete"><code>delete</code></a> : x -&gt; [x]|str -&gt; [x]</li>
+<li>
+<a href="#difference"><code>difference</code></a> || <a href="#difference"><code>diff</code></a> : [num|str]|str -&gt; [num|str]|str -&gt; [x]</li>
+<li>
+<a href="#union"><code>union</code></a> : [num|str]|str -&gt; [num|str]|str -&gt; [x]|str</li>
+<li>
+<a href="#intersect"><code>intersect</code></a> : [num|str]|str -&gt; [num|str]|str -&gt; [x]</li>
+<li>
+<a href="#sort"><code>sort</code></a> : [x]|str -&gt; [x]</li>
+<li>
+<a href="#insert"><code>insert</code></a> : x -&gt; [x] -&gt; [x]</li>
 </ul>
 
 <hr>
@@ -310,14 +321,22 @@
 <p><strong>Generalized Functions</strong></p>
 
 <ul>
-<li>nubBy : (a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [a]</li>
-<li>deleteBy : (a -&gt; a -&gt; Bool) -&gt; a -&gt; [a] -&gt; [a]</li>
-<li>deleteFirstsBy : (a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>unionBy : (a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>intersectBy : (a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [a] -&gt; [a]</li>
-<li>groupBy : (a -&gt; a -&gt; Bool) -&gt; [a] -&gt; [[a]]</li>
-<li>sortBy : (a -&gt; a -&gt; Ordering) -&gt; [a] -&gt; [a]</li>
-<li>insertBy : (a -&gt; a -&gt; Ordering) -&gt; a -&gt; [a] -&gt; [a]</li>
+<li>
+<a href="#nubBy"><code>nubBy</code></a> : [x]|str -&gt; f -&gt; [x]</li>
+<li>
+<a href="#deleteBy"><code>deleteBy</code></a> : x -&gt; [x]|str -&gt; f -&gt; [x]</li>
+<li>
+<a href="#deleteFirstsBy"><code>deleteFirstsBy</code></a> : [x]|str -&gt; [x]|str -&gt; f -&gt; [x]</li>
+<li>
+<a href="#unionBy"><code>unionBy</code></a> : [x] -&gt; [x] -&gt; f -&gt; [x]</li>
+<li>
+<a href="#intersectBy"><code>intersectBy</code></a> : [x]|str -&gt; [x]|str -&gt; f -&gt; [x]</li>
+<li>
+<a href="#groupBy"><code>groupBy</code></a> : [x]|str -&gt; f -&gt; [[x]]</li>
+<li>
+<a href="#sortBy"><code>sortBy</code></a> : [x]|str -&gt; f -&gt; [x]</li>
+<li>
+<a href="#insertBy"><code>insertBy</code></a> : x -&gt; [x]|str -&gt; f -&gt; [x]</li>
 <li>maximumBy : (a -&gt; a -&gt; Ordering) -&gt; [a] -&gt; a</li>
 <li>minimumBy : (a -&gt; a -&gt; Ordering) -&gt; [a] -&gt; a</li>
 </ul>
@@ -335,8 +354,7 @@
 <li>composeR || sequence : </li>
 <li>partial || part : </li>
 <li>flip : </li>
-<li>compare : </li>
-<li>GT,LT,EQ : </li>
+<li>GT,LT,EQ,compare : </li>
 <li>bubbleSort : </li>
 <li>mergeSort : </li>
 </ul>
@@ -445,7 +463,7 @@ lists.tail(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pd
 
 <hr>
 
-<p><strong>Description</strong>: Test if an Array of Variables or String is empty.</p>
+<p><strong>Description</strong>: Test if an Array of Variables or a String is empty.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String; Get a boolean.</p>
 
@@ -462,11 +480,11 @@ lists.nil([<span class="pl-c1">1</span>]); <span class="pl-c">/* false */</span>
 <p><a name="map"></a></p>
 
 <h3>
-<a id="map--x---f---x" class="anchor" href="#map--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>map : [x] -&gt; f -&gt; [x]</h3>
+<a id="map--xstr---f---x" class="anchor" href="#map--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>map : [x]|str -&gt; f -&gt; [x]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by applying f to each element of [x].</p>
+<p><strong>Description</strong>: Array of Variables returned by applying f to each element of an Array of Variables or a String.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.</p>
 
@@ -483,11 +501,11 @@ lists.map([{<span class="pl-s"><span class="pl-pds">'</span>S<span class="pl-pds
 <p><a name="rev"></a></p>
 
 <h3>
-<a id="rev--x---x" class="anchor" href="#rev--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>rev : [x] -&gt; [x]</h3>
+<a id="rev--xstr---x" class="anchor" href="#rev--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>rev : [x]|str -&gt; [x]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by reversing the order of each element.</p>
+<p><strong>Description</strong>: Array of Variables returned by reversing the order of each element of an Array of Variables or a String.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -502,13 +520,13 @@ lists.<span class="pl-c1">rev</span>([[<span class="pl-c1">2</span>],[<span clas
 <p><a name="intersperse"></a></p>
 
 <h3>
-<a id="intersperse--x---x---xstr" class="anchor" href="#intersperse--x---x---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersperse : x -&gt; [x] -&gt; [x]|str</h3>
+<a id="intersperse--x---xstr---xstr" class="anchor" href="#intersperse--x---xstr---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersperse : x -&gt; [x]|str -&gt; [x]|str</h3>
 
 <hr>
 
 <p><strong>Description</strong>: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables or a String.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -559,13 +577,13 @@ lists.transpose([[<span class="pl-s"><span class="pl-pds">"</span>a<span class="
 <p><a name="subsequences"></a></p>
 
 <h3>
-<a id="subsequences--x---x" class="anchor" href="#subsequences--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>subsequences : [x] -&gt; [[x]]</h3>
+<a id="subsequences--xstr---x" class="anchor" href="#subsequences--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>subsequences : [x]|str -&gt; [[x]]</h3>
 
 <hr>
 
 <p><strong>Description</strong>: Array of an Array of Variables of all subsequences of a given arguement.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -599,7 +617,7 @@ lists.permutations([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<s
 
 <hr>
 
-<p><strong>Description</strong>: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  </p>
+<p><strong>Description</strong>: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  </p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.</p>
 
@@ -618,7 +636,7 @@ lists.foldl([], [[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<s
 
 <hr>
 
-<p><strong>Description</strong>: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or String). Use with non-empty Arrays or Strings.</p>
+<p><strong>Description</strong>: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or a String). Use with non-empty Arrays or Strings.</p>
 
 <p><strong>Signature Definition</strong>:  Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.</p>
 
@@ -636,7 +654,7 @@ lists.foldl1([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span cl
 
 <hr>
 
-<p><strong>Description</strong>: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or String.  </p>
+<p><strong>Description</strong>: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  </p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.</p>
 
@@ -656,7 +674,7 @@ lists.foldr([],[[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<sp
 
 <hr>
 
-<p><strong>Description</strong>: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or String). Use with non-empty Arrays or Strings.</p>
+<p><strong>Description</strong>: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or a String). Use with non-empty Arrays or Strings.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.</p>
 
@@ -674,7 +692,7 @@ lists.foldr1(<span class="pl-s"><span class="pl-pds">'</span>aabbcc<span class="
 
 <hr>
 
-<p><strong>Description</strong>: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or String respectively.</p>
+<p><strong>Description</strong>: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or a String respectively.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables or an Array of Strings. Get an Array of Variables or a String.</p>
 
@@ -692,9 +710,9 @@ lists.flatten([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<spa
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables or String returned by mapping a Function over an Array of Variables or String and flattening the result.</p>
+<p><strong>Description</strong>: Array of Variables or a String returned by mapping a Function over an Array of Variables or a String and flattening the result.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or String. Get an Array of Variables or a String.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or a String. Get an Array of Variables or a String.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -768,7 +786,7 @@ lists.any(<span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds
 
 <hr>
 
-<p><strong>Description</strong>: Boolean returned by applying a predicate Function to each element in an Array of Variables or String. True if all f(x) are true. False if any f(x) are false.</p>
+<p><strong>Description</strong>: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if all f(x) are true. False if any f(x) are false.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.</p>
 
@@ -1007,7 +1025,7 @@ lists.replicate({a<span class="pl-k">:</span><span class="pl-c1">1</span>},<span
 
 <hr>
 
-<p><strong>Description</strong>: Builds an Array containing replications of flattened [x]|String until the stop (num) reaches 0.</p>
+<p><strong>Description</strong>: Builds an Array containing replications of a flattened Array of Variables or a String until the stop (num) reaches 0.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Number. Get an Array of Variables.</p>
 
@@ -1054,7 +1072,7 @@ unfoldMap([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],<span clas
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by taking the first n (num) elements from [x] or String.</p>
+<p><strong>Description</strong>: Array of Variables returned by taking the first n (num) elements from an Array of Variables or a String.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -1072,7 +1090,7 @@ lists.take(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by dropping the first n (num) elements from [x] or String.</p>
+<p><strong>Description</strong>: Array of Variables returned by dropping the first n (num) elements from an Array of Variables or a String.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -1090,7 +1108,7 @@ lists.drop(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">
 
 <hr>
 
-<p><strong>Description</strong>: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or String. The second contains the rest.</p>
+<p><strong>Description</strong>: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or a String. The second contains the rest.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of two Arrays of Variables.</p>
 
@@ -1108,7 +1126,7 @@ lists.splitAt(<span class="pl-c1">2</span>,[<span class="pl-c1">1</span>,<span c
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by taking elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
+<p><strong>Description</strong>: Array of Variables returned by taking elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -1127,7 +1145,7 @@ lists.takeWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class=
 
 <hr>
 
-<p><strong>Description</strong>: Array of Variables returned by dropping elements from [x]|String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
+<p><strong>Description</strong>: Array of Variables returned by dropping elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -1142,13 +1160,13 @@ lists.dropWhile(<span class="pl-s"><span class="pl-pds">'</span>aabc<span class=
 <p><a name="span"></a></p>
 
 <h3>
-<a id="span--arrstr---f---x-xstr" class="anchor" href="#span--arrstr---f---x-xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>span : arr|str -&gt; f -&gt; [[x], [x]|str]</h3>
+<a id="span--xstr---f---x-xstr" class="anchor" href="#span--xstr---f---x-xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>span : [x]|str -&gt; f -&gt; [[x], [x]|str]</h3>
 
 <hr>
 
 <p><strong>Description</strong>: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1161,7 +1179,7 @@ lists.span([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span c
 <p><a name="break"></a></p>
 
 <h3>
-<a id="break--arrstr---f---x-xstr" class="anchor" href="#break--arrstr---f---x-xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>break : arr|str -&gt; f -&gt; [[x], [x]|str]</h3>
+<a id="break--xstr---f---x-xstr" class="anchor" href="#break--xstr---f---x-xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>break : [x]|str -&gt; f -&gt; [[x], [x]|str]</h3>
 
 <hr>
 
@@ -1186,7 +1204,7 @@ lists.break([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{a<span 
 
 <p><strong>Description</strong>: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or String. Get an Array of Numbers or an Array of Strings.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers or an Array of Strings.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1216,13 +1234,13 @@ lists.group(<span class="pl-s"><span class="pl-pds">"</span>mississippi<span cla
 <p><a name="inits"></a></p>
 
 <h3>
-<a id="inits--x---x" class="anchor" href="#inits--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>inits : [x] -&gt; [[x]]</h3>
+<a id="inits--xstr---x" class="anchor" href="#inits--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>inits : [x]|str -&gt; [[x]]</h3>
 
 <hr>
 
 <p><strong>Description</strong>: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1235,13 +1253,13 @@ lists.inits([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span 
 <p><a name="tails"></a></p>
 
 <h3>
-<a id="tails--x---x" class="anchor" href="#tails--x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>tails : [x] -&gt; [[x]]</h3>
+<a id="tails--xstr---x" class="anchor" href="#tails--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>tails : [x]|str -&gt; [[x]]</h3>
 
 <hr>
 
 <p><strong>Description</strong>: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Get an Array of an Array of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1258,9 +1276,9 @@ lists.tails([{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span 
 
 <hr>
 
-<p><strong>Description</strong>: Test if an Array of Numbers or String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.</p>
+<p><strong>Description</strong>: Test if an Array of Numbers or a String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1277,9 +1295,9 @@ lists.isPrefixOf(<span class="pl-s"><span class="pl-pds">"</span>ab<span class="
 
 <hr>
 
-<p><strong>Description</strong>: Test if an Array of Numbers or String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.</p>
+<p><strong>Description</strong>: Test if an Array of Numbers or a String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1315,9 +1333,9 @@ lists.isInfixOf(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl
 
 <hr>
 
-<p><strong>Description</strong>: Test if an Array of Numbers or String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.</p>
+<p><strong>Description</strong>: Test if an Array of Numbers or a String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1334,9 +1352,9 @@ lists.isSubsequenceOf(<span class="pl-s"><span class="pl-pds">"</span>Lol<span c
 
 <hr>
 
-<p><strong>Description</strong>: Test if the Number or String is in the Array of Numbers or a String.</p>
+<p><strong>Description</strong>: Test if the Number or a String is in the Array of Numbers or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1352,9 +1370,9 @@ lists.elem(<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds"
 
 <hr>
 
-<p><strong>Description</strong>: Test if the Number or String is not in the Array of Numbers or a String.</p>
+<p><strong>Description</strong>: Test if the Number or a String is not in the Array of Numbers or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1372,7 +1390,7 @@ lists.notElem(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-p
 
 <p><strong>Description</strong>: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 a Number or String. Give arg 2 an Array of an Array containing a Number or String as the key and a Variable as the value. Get a Variable (value).</p>
+<p><strong>Signature Definition</strong>: Give arg 1 a Number or a String. Give arg 2 an Array of an Array containing a Number or a String as the key and a Variable as the value. Get a Variable (value).</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1385,13 +1403,13 @@ lists.lookup(<span class="pl-c1">1</span>,[[<span class="pl-c1">1</span>,{a<span
 <p><a name="find"></a></p>
 
 <h3>
-<a id="find--x---f---x" class="anchor" href="#find--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>find : [x] -&gt; f -&gt; x</h3>
+<a id="find--xstr---f---x" class="anchor" href="#find--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>find : [x]|str -&gt; f -&gt; x</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Retreive a Variable by applying a predicate Function to an Array of Variables. Returns "Nothing" if there is no match.</p>
+<p><strong>Description</strong>: Retreive a Variable by applying a predicate Function to an Array of Variables or a String. Returns "Nothing" if there is no match.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Variable.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Variable.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1404,13 +1422,13 @@ lists.<span class="pl-c1">find</span>([<span class="pl-c1">1</span>,<span class=
 <p><a name="filter"></a></p>
 
 <h3>
-<a id="filter--x---f---x" class="anchor" href="#filter--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>filter : [x] -&gt; f -&gt; [x]</h3>
+<a id="filter--xstr---f---x" class="anchor" href="#filter--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>filter : [x]|str -&gt; f -&gt; [x]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: An Array of Variables returned by applying a predicate Function to an Array of Variables.</p>
+<p><strong>Description</strong>: An Array of Variables returned by applying a predicate Function to an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1423,13 +1441,13 @@ lists.filter([[<span class="pl-c1">1</span>],[<span class="pl-c1">1</span>,<span
 <p><a name="partition"></a></p>
 
 <h3>
-<a id="partition--x---f---xx" class="anchor" href="#partition--x---f---xx" aria-hidden="true"><span class="octicon octicon-link"></span></a>partition : [x] -&gt; f -&gt; [[x],[x]]</h3>
+<a id="partition--xstr---f---xx" class="anchor" href="#partition--xstr---f---xx" aria-hidden="true"><span class="octicon octicon-link"></span></a>partition : [x]|str -&gt; f -&gt; [[x],[x]]</h3>
 
 <hr>
 
 <p><strong>Description</strong>: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of two Arrays of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of two Arrays of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1490,8 +1508,8 @@ lists.elemIndex(<span class="pl-c1">2</span>,[<span class="pl-c1">0</span>,<span
 
 <p><strong>Example Usage</strong>:</p>
 
-<div class="highlight highlight-js"><pre>lists.elemIndices(<span class="pl-c1">1</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* 0 */</span>
-lists.elemIndices(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>aba<span class="pl-pds">"</span></span>); <span class="pl-c">/* 1 */</span>
+<div class="highlight highlight-js"><pre>lists.elemIndices(<span class="pl-c1">1</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [0,2] */</span>
+lists.elemIndices(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>aba<span class="pl-pds">"</span></span>); <span class="pl-c">/* [0,2] */</span>
 lists.elemIndices(<span class="pl-c1">2</span>,[<span class="pl-c1">0</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [] */</span></pre></div>
 
 <hr>
@@ -1499,13 +1517,13 @@ lists.elemIndices(<span class="pl-c1">2</span>,[<span class="pl-c1">0</span>,<sp
 <p><a name="findIndex"></a></p>
 
 <h3>
-<a id="findindex--x---f---num" class="anchor" href="#findindex--x---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndex : [x] -&gt; f -&gt; num</h3>
+<a id="findindex--xstr---f---num" class="anchor" href="#findindex--xstr---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndex : [x]|str -&gt; f -&gt; num</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables.</p>
+<p><strong>Description</strong>: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get a Number.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Number.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1518,13 +1536,13 @@ lists.findIndex(<span class="pl-s"><span class="pl-pds">"</span>ab%c<span class=
 <p><a name="findIndices"></a></p>
 
 <h3>
-<a id="findindices--x---f---num" class="anchor" href="#findindices--x---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndices : [x] -&gt; f -&gt; [num]</h3>
+<a id="findindices--xstr---f---num" class="anchor" href="#findindices--xstr---f---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>findIndices : [x]|str -&gt; f -&gt; [num]</h3>
 
 <hr>
 
-<p><strong>Description</strong>: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables.</p>
+<p><strong>Description</strong>: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables or a String.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 a Function. Get an Array of Numbers.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Numbers.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1562,7 +1580,7 @@ lists.zip([[<span class="pl-c1">1</span>,<span class="pl-s"><span class="pl-pds"
 
 <p><strong>Description</strong>: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.</p>
 
-<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Give arg 2 a binary Function. Get an Array of Variables.</p>
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of an Array of Variables. Give arg 2 a Function. Get an Array of Variables.</p>
 
 <p><strong>Example Usage</strong>:</p>
 
@@ -1576,6 +1594,360 @@ lists.zip([[<span class="pl-c1">1</span>,<span class="pl-s"><span class="pl-pds"
   <span class="pl-k">return</span> res;
 }
 lists.zipWith([[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">4</span>,<span class="pl-c1">5</span>]],addThenMultiply); <span class="pl-c">/* [8, 25] */</span></pre></div>
+
+<hr>
+
+<p><a name="lines"></a></p>
+
+<h3>
+<a id="lines--str---str" class="anchor" href="#lines--str---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>lines : str -&gt; [str]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns an Array of Strings as the result of breaking a String at each new line character (\u000A). The resultant Array does not contain any new line characters.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String. Get an Array of Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.lines(<span class="pl-s"><span class="pl-pds">"</span>l<span class="pl-cce">\n</span>o<span class="pl-cce">\n</span>l<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["l","o","l"] */</span>
+lists.lines(<span class="pl-s"><span class="pl-pds">"</span>Hey<span class="pl-cce">\n</span>there<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["Hey","there"] */</span></pre></div>
+
+<hr>
+
+<p><a name="words"></a></p>
+
+<h3>
+<a id="words--str---str" class="anchor" href="#words--str---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>words : str -&gt; [str]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns an Array of Strings as the result of breaking a String at each space character (\u0020). The resultant Array does not contain any space characters.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String. Get an Array of Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.words(<span class="pl-s"><span class="pl-pds">"</span>break it up<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["break","it","up"] */</span></pre></div>
+
+<hr>
+
+<p><a name="unlines"></a></p>
+
+<h3>
+<a id="unlines--str---str" class="anchor" href="#unlines--str---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>unlines : [str] -&gt; str</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns a String with a new line character appended to each String of the Array that it joins.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Strings. Get a String.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.unlines([<span class="pl-s"><span class="pl-pds">"</span>break<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>it<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>up<span class="pl-pds">"</span></span>]); <span class="pl-c">/* "break\nit\nup\n" */</span></pre></div>
+
+<hr>
+
+<p><a name="unwords"></a></p>
+
+<h3>
+<a id="unwords--str---str" class="anchor" href="#unwords--str---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>unwords : [str] -&gt; str</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Returns a String with a space character appended to each String of the Array that it joins.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Strings. Get a String.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.unwords([<span class="pl-s"><span class="pl-pds">"</span>break<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>it<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>up<span class="pl-pds">"</span></span>]); <span class="pl-c">/* "break it up " */</span></pre></div>
+
+<hr>
+
+<p><a name="nub"></a></p>
+
+<h3>
+<a id="nub--uniq--unique--numstrstr---numstr" class="anchor" href="#nub--uniq--unique--numstrstr---numstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>nub || uniq || unique : [num|str]|str -&gt; [num|str]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Remove duplicates from a String or an Array of Numbers and/or Strings. Keep the first occurence of each element.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String or an Array of Numbers and/or Strings. Get an Array of Numbers and/or Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.nub(<span class="pl-s"><span class="pl-pds">"</span>abbc<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["a","b","c"] */</span>
+lists.nub([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [1,2,"a","b"] */</span>
+lists.nub([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">/* [1,2,3] */</span> </pre></div>
+
+<hr>
+
+<p><a name="delete"></a></p>
+
+<h3>
+<a id="delete--x---xstr---x" class="anchor" href="#delete--x---xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>delete : x -&gt; [x]|str -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables or a String. Does not work with Objects.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.delete(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>bab<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["b","b"] */</span>
+lists.delete([<span class="pl-c1">1</span>],[[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>]]); <span class="pl-c">/* [[1,2]] */</span>
+lists.delete(<span class="pl-c1">1</span>,[<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [2,2,1] */</span> </pre></div>
+
+<hr>
+
+<p><a name="difference"></a></p>
+
+<h3>
+<a id="difference--diff--numstrstr---numstrstr---x" class="anchor" href="#difference--diff--numstrstr---numstrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>difference || diff : [num|str]|str -&gt; [num|str]|str -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables whose elements are the difference between Argument 1 and Argument 2.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.difference([<span class="pl-s"><span class="pl-pds">'</span>acd<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>],[<span class="pl-s"><span class="pl-pds">'</span>acd<span class="pl-pds">'</span></span>]); <span class="pl-c">/* [1] */</span>
+lists.difference(<span class="pl-s"><span class="pl-pds">'</span>acd<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>ab<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["c","d"] */</span>
+lists.difference([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* [] */</span> </pre></div>
+
+<hr>
+
+<p><a name="union"></a></p>
+
+<h3>
+<a id="union--numstrstr---numstrstr---xstr" class="anchor" href="#union--numstrstr---numstrstr---xstr" aria-hidden="true"><span class="octicon octicon-link"></span></a>union : [num|str]|str -&gt; [num|str]|str -&gt; [x]|str</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables whose elements are the union between Argument 1 and Argument 2.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables or a String.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.union(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>); <span class="pl-c">/* "ab" */</span>
+lists.union([<span class="pl-c1">1</span>,<span class="pl-c1">4</span>,<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>],[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>]); <span class="pl-c">/* [1,4,"a",3,"b"] */</span></pre></div>
+
+<hr>
+
+<p><a name="intersect"></a></p>
+
+<h3>
+<a id="intersect--numstrstr---numstrstr---x" class="anchor" href="#intersect--numstrstr---numstrstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersect : [num|str]|str -&gt; [num|str]|str -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables whose elements are the intersection between Argument 1 and Argument 2.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.intersect(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>ba<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["a"] */</span>
+lists.intersect([<span class="pl-c1">1</span>,<span class="pl-c1">4</span>,<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>],[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>]); <span class="pl-c">/* [1] */</span></pre></div>
+
+<hr>
+
+<p><a name="sort"></a></p>
+
+<h3>
+<a id="sort--xstr---x" class="anchor" href="#sort--xstr---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>sort : [x]|str -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables that are sorted by the Ordering Function lists.compare.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.<span class="pl-c1">sort</span>(<span class="pl-s"><span class="pl-pds">'</span>acb<span class="pl-pds">'</span></span>); <span class="pl-c">/* ["a","b","c"] */</span>
+lists.<span class="pl-c1">sort</span>([[<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]]); <span class="pl-c">/* [[1,2],[3,4]] */</span>
+lists.<span class="pl-c1">sort</span>([<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-k">-</span><span class="pl-c1">1</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [-1,1,1,2] */</span></pre></div>
+
+<hr>
+
+<p><a name="insert"></a></p>
+
+<h3>
+<a id="insert--x---x---x" class="anchor" href="#insert--x---x---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>insert : x -&gt; [x] -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by lists.compare) to the Variable from the Array it is being compared to. </p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.insert(<span class="pl-c1">1</span>,[<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* [1,2,1,2] */</span>
+lists.insert(<span class="pl-c1">4</span>,[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">5</span>,<span class="pl-c1">7</span>,<span class="pl-c1">9</span>]); <span class="pl-c">/* [1,3,4,5,7,9] */</span></pre></div>
+
+<hr>
+
+<p><a name="nubBy"></a></p>
+
+<h3>
+<a id="nubby--xstr---f---x" class="anchor" href="#nubby--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>nubBy : [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Remove duplicates from an Array of Variables or a String based on a user supplied Function defintion of equality. Keep the first occurence of each element. </p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.nubBy([<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> x <span class="pl-k">+</span> y <span class="pl-k">==</span> <span class="pl-c1">10</span> }); <span class="pl-c">/* [8,7,5] */</span>
+lists.nubBy([<span class="pl-s"><span class="pl-pds">"</span>query=string, another=string<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>query=string, hey=man<span class="pl-pds">"</span></span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { 
+  <span class="pl-k">return</span> x.<span class="pl-c1">split</span>(<span class="pl-s"><span class="pl-pds">'</span>,<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>] <span class="pl-k">==</span> y.<span class="pl-c1">split</span>(<span class="pl-s"><span class="pl-pds">'</span>,<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>]; <span class="pl-c">// define equality on query=string </span>
+}); <span class="pl-c">/* ["query=string, another=string"] */</span>
+lists.nubBy([{a<span class="pl-k">:</span><span class="pl-c1">1</span>},{a<span class="pl-k">:</span><span class="pl-c1">1</span>, b<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">obj1</span>, <span class="pl-smi">obj2</span>) { 
+  <span class="pl-k">return</span> obj1.b <span class="pl-k">==</span> obj2.b; <span class="pl-c">// define equality on the b property</span>
+}); <span class="pl-c">/* [{a:1},{a:1, b:2}] */</span></pre></div>
+
+<hr>
+
+<p><a name="deleteBy"></a></p>
+
+<h3>
+<a id="deleteby--x---xstr---f---x" class="anchor" href="#deleteby--x---xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>deleteBy : x -&gt; [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables from the result of removing the first occurence of a Variable or a String that matches a user supplied Function definition of equality from an Array of Variables.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.deleteBy(<span class="pl-c1">4</span>, [<span class="pl-c1">6</span>,<span class="pl-c1">8</span>,<span class="pl-c1">10</span>,<span class="pl-c1">12</span>], <span class="pl-k">function</span>(<span class="pl-smi">arg1</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> y <span class="pl-k">%</span> arg1 <span class="pl-k">==</span> <span class="pl-c1">0</span> }); <span class="pl-c">/* [6,10,12] */</span>
+lists.deleteBy(<span class="pl-c1">2</span>, [{a<span class="pl-k">:</span><span class="pl-c1">2</span>},{b<span class="pl-k">:</span><span class="pl-c1">2</span>,e<span class="pl-k">:</span><span class="pl-c1">2</span>},{c<span class="pl-k">:</span><span class="pl-c1">2</span>}], <span class="pl-k">function</span>(<span class="pl-smi">arg1</span>, <span class="pl-smi">obj</span>) { <span class="pl-k">return</span> lists.keys(obj).<span class="pl-c1">length</span> <span class="pl-k">==</span> arg1 }); <span class="pl-c">/* [{a:2},{c:2}] */</span></pre></div>
+
+<hr>
+
+<p><a name="deleteFirstsBy"></a></p>
+
+<h3>
+<a id="deletefirstsby--xstr---xstr---f---x" class="anchor" href="#deletefirstsby--xstr---xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>deleteFirstsBy : [x]|str -&gt; [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return the first Array of Variables or String passed with the first occurence of each element from the second Array of Variables or String removed based on a user supplied Function definition of equality.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.deleteFirstsBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>],[<span class="pl-c1">3</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> x<span class="pl-k">==</span>y }); <span class="pl-c">/* [1,2,4,3] */</span>
+lists.deleteFirstsBy(<span class="pl-s"><span class="pl-pds">"</span>baba<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> x<span class="pl-k">==</span>y }); <span class="pl-c">/* ["b","b","a"] */</span></pre></div>
+
+<hr>
+
+<p><a name="unionBy"></a></p>
+
+<h3>
+<a id="unionby--x---x---f---x" class="anchor" href="#unionby--x---x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>unionBy : [x] -&gt; [x] -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables as the union between Argument 1, Argument 2, and the user supplied Function definition of equality.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.unionBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">4</span>,<span class="pl-c1">6</span>,<span class="pl-c1">9</span>,<span class="pl-c1">10</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> x <span class="pl-k">*</span> <span class="pl-c1">3</span> <span class="pl-k">==</span> y }); <span class="pl-c">/* [1,2,3,4,4,10] */</span>
+lists.unionBy([<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>], [<span class="pl-s"><span class="pl-pds">"</span>d<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>e<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>f<span class="pl-pds">"</span></span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { 
+    <span class="pl-k">var</span> same <span class="pl-k">=</span> y <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>d<span class="pl-pds">'</span></span> <span class="pl-k">?</span> <span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span> <span class="pl-k">:</span> y; 
+    <span class="pl-k">return</span> x <span class="pl-k">==</span> same; <span class="pl-c">// "d" is the same as "a"</span>
+}); <span class="pl-c">/* ["a","b","c","e","f"] */</span></pre></div>
+
+<hr>
+
+<p><a name="intersectBy"></a></p>
+
+<h3>
+<a id="intersectby--xstr---xstr---f---x" class="anchor" href="#intersectby--xstr---xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>intersectBy : [x]|str -&gt; [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables as the intersection between Argument 1, Argument 2, and the user supplied Function definition of equality.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.intersectBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],[<span class="pl-c1">4</span>,<span class="pl-c1">8</span>,<span class="pl-c1">12</span>,<span class="pl-c1">16</span>,<span class="pl-c1">20</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { <span class="pl-k">return</span> x <span class="pl-k">*</span> x <span class="pl-k">==</span> y }); <span class="pl-c">/* [2,4] */</span></pre></div>
+
+<hr>
+
+<p><a name="groupBy"></a></p>
+
+<h3>
+<a id="groupby--xstr---f---x" class="anchor" href="#groupby--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>groupBy : [x]|str -&gt; f -&gt; [[x]]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables where each nested Array is a group of equal elements. Equality is defined by the user supplied Function.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Fucntion. Get an Array of an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.groupBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> ((x<span class="pl-k">*</span>y) <span class="pl-k">%</span> <span class="pl-c1">3</span>) <span class="pl-k">==</span> <span class="pl-c1">0</span>}); <span class="pl-c">/* [[1],[2,3],[4],[5,6],[7],[8,9]] */</span>
+lists.groupBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>], <span class="pl-k">function</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>){ <span class="pl-k">return</span> x <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">==</span> y}); <span class="pl-c">/* [[1,2],[3,4],[5,6],[7,8],[9]] */</span></pre></div>
+
+<hr>
+
+<p><a name="sortBy"></a></p>
+
+<h3>
+<a id="sortby--xstr---f---x" class="anchor" href="#sortby--xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>sortBy : [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an Array of Variables that are sorted based on the user supplied Ordering Function.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">function</span> <span class="pl-en">oddsFirst</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { 
+    <span class="pl-k">return</span> x <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">1</span> <span class="pl-k">?</span> <span class="pl-s"><span class="pl-pds">'</span>LT<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GT<span class="pl-pds">'</span></span>
+}
+lists.sortBy([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>], oddsFirst); <span class="pl-c">/* [1,3,5,7,6,4,2] */</span></pre></div>
+
+<hr>
+
+<p><a name="insertBy"></a></p>
+
+<h3>
+<a id="insertby--x---xstr---f---x" class="anchor" href="#insertby--x---xstr---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>insertBy : x -&gt; [x]|str -&gt; f -&gt; [x]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Inserts an element into the first position of the Array of Variables based on the user supplied Ordering Function.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">function</span> <span class="pl-en">fn</span>(<span class="pl-smi">x</span>,<span class="pl-smi">y</span>) { 
+    <span class="pl-k">return</span> (x<span class="pl-k">+</span>y) <span class="pl-k">&lt;</span> (x<span class="pl-k">*</span>y) <span class="pl-k">?</span> <span class="pl-s"><span class="pl-pds">'</span>LT<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GT<span class="pl-pds">'</span></span>
+}
+lists.insertBy(<span class="pl-c1">4</span>, [<span class="pl-c1">0</span>,<span class="pl-c1">1</span>,<span class="pl-c1">3</span>,<span class="pl-c1">5</span>,<span class="pl-c1">7</span>,<span class="pl-c1">9</span>], fn); <span class="pl-c">/* [0,1,4,3,5,7,9] */</span></pre></div>
 
 <hr>
       </section>
