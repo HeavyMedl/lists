@@ -175,8 +175,8 @@ map : [x] -> f -> [x]
 * [`groupBy`](#groupBy) : [x]|str -> f -> [[x]]
 * [`sortBy`](#sortBy) : [x]|str -> f -> [x]
 * [`insertBy`](#insertBy) : x -> [x]|str -> f -> [x]
-* maximumBy : (a -> a -> Ordering) -> [a] -> a
-* minimumBy : (a -> a -> Ordering) -> [a] -> a
+* [`maximumBy`](#maximumBy) : [x]|str -> f -> x
+* [`minimumBy`](#minimumBy) : [x]|str -> f -> x
 
 -----
 
@@ -1447,5 +1447,39 @@ function fn(x,y) {
 	return (x+y) < (x*y) ? 'LT' : 'GT'
 }
 lists.insertBy(4, [0,1,3,5,7,9], fn); /* [0,1,4,3,5,7,9] */
+```
+------
+<a name='maximumBy'/>
+### maximumBy : [x]|str -> f -> x
+------
+**Description**: The largest element of a non-empty Array of Variables or a String where the definition of "largest" comes from the user supplied Ordering function.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.maximumBy([[1,3],[2]], lists.compare); /* [2] */
+function compareLength(x,y) { 
+	return  x.length > y.length ? 'GT' : 'LT'
+}
+lists.maximumBy([[1,3],[2]], compareLength); /* [1,3] */
+```
+------
+<a name='minimumBy'/>
+### minimumBy : [x]|str -> f -> x
+------
+**Description**: The least element of a non-empty Array of Variables or a String where the definition of "least" comes from the user supplied Ordering function.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
+
+**Example Usage**:
+
+```js
+lists.minimumBy([[1,3],[2]], lists.compare); /* [1,3] */
+function compareLength(x,y) { 
+	return  x.length > y.length ? 'GT' : 'LT'
+}
+lists.minimumBy([[1,3],[2],[]], compareLength); /* [] */
 ```
 ------
