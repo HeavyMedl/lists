@@ -10,6 +10,10 @@ Pass functions to functions to functions to solve complex problems. Most of the 
 
 ## Install
 
+To import the entire library:
+
+`npm install --save lists`
+
 ## Practical Example Usage
 
 Lets complete an easy task from [/r/dailyprogrammer](http://www.reddit.com/dailyprogrammer). [Here](http://www.reddit.com/r/dailyprogrammer/comments/29i9jw/6302014_challenge_169_easy_90_degree_2d_array/) is the task:
@@ -77,7 +81,7 @@ tail : [x]|str -> [x]
 map : [x] -> f -> [x]
 - Takes an Array of Variables and a Function and produces an Array of Variables.
 
------
+## Contents
 
 **Basic Functions**
 
