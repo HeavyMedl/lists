@@ -1,6 +1,6 @@
 (function() {
 	var _version = '1.0.0', _style='Naive Recursion',
-		root = this, lists = {}, l = lists; _ = l._={},
+		root = this, lists = {}, l = lists, _ = l._=undefined,
 	// Private helpers
 	b = bounce = function(f) {
 		while (f && typeof f === "function") {

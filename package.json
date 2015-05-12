@@ -1,8 +1,8 @@
 {
   "name": "lists",
-  "version": "0.1.98",
+  "version": "0.2.0",
   "description": "A library of higher-order functions modeled after Haskell's Data.List module",
-  "main": "lists.js",
+  "main": "lists.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/kurtlocker/lists.git"

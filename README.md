@@ -2,7 +2,7 @@
 
 **Full Version** | **[Homepage](http://kurtlocker.github.io/lists)**
 
-Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](www.google.com) implementation.
+Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at [The University of Glasgow](http://www.gla.ac.uk/). You can view the original source [here](https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html). You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and [this](https://raw.githubusercontent.com/kurtlocker/lists/master/lists.js) implementation.
 
 Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming.
 
@@ -36,13 +36,13 @@ var matrix =
  [0,0,0,0,0,0,0,0,0,0]];
 ```
 
-Using **lists**, we can reverse and then transpose this matrix to achieve the desired output:
+Using **Lists**, we can reverse and then transpose this matrix to achieve the desired output:
 
 ```js
 l.transpose(l.rev(matrix));
 
 // or using pipe (composing left)
-var rotate90 = lists.pipe(lists.transpose, lists.rev)
+var rotate90 = l.pipe(l.transpose, l.rev)
 rotate90(matrix);
 
 /* both of these functions yield
@@ -226,17 +226,17 @@ map : [x] -> f -> [x]
 
 **Extra Functional Utilities**
 
-* genericExcludeChar : 
-* forEach || each :
-* keys :
-* enumeration || enum : 
-* composeL || pipe : 
-* composeR || sequence : 
-* partial || part : 
-* flip : 
-* GT,LT,EQ,compare : 
-* bubbleSort : 
-* mergeSort : 
+* [`genericExcludeChar`](#genericExcludeChar) : str -> str -> [str]
+* [`forEach`](#each) || [`each`](#each) : x -> f -> x
+* [`keys`](#keys) : obj -> [str]
+* [`enumeration`](#enum) || [`enum`](#enum) : num -> num -> [num] 
+* [`composeL`](#pipe) || [`pipe`](#pipe) : f[,..,f] -> f
+* [`composeR`](#sequence) || [`sequence`](#sequence) : f[,..,f] -> f
+* [`partial`](#partial) || [`part`](#partial) : f -> x[,..,x] -> f
+* [`flip`](#flip) : f -> f
+* [`compare`](#compare) : x -> x -> str
+* [`bubbleSort`](#bubbleSort) : [num] -> [num]
+* [`mergeSort`](#mergeSort) : [num] -> [num] 
 
 ------
 <a name='append'/>
@@ -1344,7 +1344,7 @@ lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
 <a name='sort'/>
 ### sort : [x]|str -> [x]
 ------
-**Description**: Return an Array of Variables that are sorted by the Ordering Function lists.compare.
+**Description**: Return an Array of Variables that are sorted by the Ordering Function `lists.compare`.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
 
@@ -1359,7 +1359,7 @@ lists.sort([2,1,-1,1]); /* [-1,1,1,2] */
 <a name='insert'/>
 ### insert : x -> [x] -> [x]
 ------
-**Description**: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by lists.compare) to the Variable from the Array it is being compared to. 
+**Description**: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by `lists.compare`) to the Variable from the Array it is being compared to. 
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
 
@@ -1525,5 +1525,179 @@ function compareLength(x,y) {
 	return  x.length > y.length ? 'GT' : 'LT'
 }
 lists.minimumBy([[1,3],[2],[]], compareLength); /* [] */
+```
+------
+<a name='genericExcludeChar'/>
+### genericExcludeChar : str -> str -> [str]
+------
+**Description**: Strips an arbitrary character (String) from a String. This function is the primary work horse of `lists.lines` and `lists.words`.
+
+**Signature Definition**: Give arg 1 a String. Give arg 2 a String. Get a an Array of Strings.
+
+**Example Usage**:
+
+```js
+lists.genericExcludeChar("a","abc"); /* ["bc"] */
+
+function myLines(str) { return lists.genericExcludeChar('\u000A', str); };
+myLines("abc\nd"); /* ["abc","d"] */
+```
+------
+<a name='each'/>
+### forEach || each : x -> f -> x
+------
+**Description**: An enhanced polyfill of Array.prototype.forEach. Works for properties of Objects. This function is meant to alter mutable state.
+
+each's arguments are:
+
+Argument 1: Iterable Variable.
+Argument 2: Function.
+Argument 3: (optional) Caller (or context).
+
+When called, each applies the Function to each iterable Variable with its optional caller. 
+
+The Function's arguments are: 
+
+Argument 1: The Variable of the iteration at the specific index.
+Argument 2: The index at that specific iteration.
+Argumnet 3: The original iterable Variable.
+
+The original (unchanged) iterable Variable is returned.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 a Function. (optionally) Give arg 3 a Caller (this, self, etc.). Get a Variable.
+
+**Example Usage**:
+
+```js
+var arr = [];
+lists.forEach([1,2,3], function(num, index, array123) {
+	arr.push(num * 2);
+}); /* [1,2,3] */
+
+console.log(arr); /* [2,4,6] */
+```
+------
+<a name='keys'/>
+### keys : obj -> [str]
+------
+**Description**: A polyfill of `Object.keys`. Returns an Array of Strings representing the iterable properties of the Object not from its inherited chained properties.
+
+**Signature Definition**: Give arg 1 an Object. Get an Array of Strings.
+
+**Example Usage**:
+
+```js
+lists.keys({a:2, b:1}); /* ["a","b"] */
+```
+------
+<a name='enum'/>
+### enumeration || enum : num -> num -> [num]
+------
+**Description**: Create an enumeration in the form of an Array of Numbers where Argument 1 is the start Number and Argument 2 is the stop Number.
+
+**Signature Definition**: Give arg 1 a Number. Give arg 2 a Number. Get an Array of Numbers.
+
+**Example Usage**:
+
+```js
+lists.enum(0,5); /* [0,1,2,3,4,5] */
+```
+------
+<a name='pipe'/>
+### composeL || pipe : f[,..,f] -> f
+------
+**Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from rightmost to leftmost to the returned Function's Argument.
+
+**Signature Definition**: Give arg 1 N number of Functions. Get a Function.
+
+**Example Usage**:
+
+```js
+var sumThenSqrt = lists.pipe(Math.sqrt, lists.sum);
+sumThenSqrt([4,4,4,4]); /* 4 */
+```
+------
+<a name='sequence'/>
+### composeR || sequence : f[,..,f] -> f
+------
+**Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from leftmost to rightmost to the returned Function's Argument.
+
+**Signature Definition**: Give arg 1 N number of Functions. Get a Function.
+
+**Example Usage**:
+
+```js
+var sumThenSqrt = lists.sequence(lists.sum, Math.sqrt);
+sumThenSqrt([4,4,4,4]); /* 4 */
+```
+------
+<a name='partial'/>
+### partial || part : f -> x[,..,x] -> f
+------
+**Description**: Return a partially applied Function where any number of a Function's arguments may be left undefined using `undefined` as a filler variable to be filled when the Function is called.
+
+**Signature Definition**: Give arg 1 a Function. Give arg 2,..,n a filled or unfilled Variable. Get a Function.
+
+**Example Usage**:
+
+```js
+var myAny = lists.part(lists.any, undefined, function(x) { return x == 1 });
+myAny([1,2]); /* true */
+myAny([2]); /* false */
+```
+------
+<a name='flip'/>
+### flip : f -> f
+------
+**Description**: Return an equivalent Function whose arguments are 'flipped' or reversed.
+
+**Signature Definition**: Give arg 1 a Function. Get a Function.
+
+**Example Usage**:
+
+```js
+var flippedAny = lists.flip(lists.any);
+flippedAny(function(x){return x == 1}, [1,2]); /* true */
+```
+------
+<a name='compare'/>
+### compare : x -> x -> str
+------
+**Description**: The only Ordering Function provided in Lists. Returns a String that is the representation of comparing both Arguments with the native JavaScript comparator operators. Ordering Functions are used to redefine how Variables are ordered.
+
+**Signature Definition**: Give arg 1 a Variable. Give arg 2 a Variable. Get a String.
+
+**Example Usage**:
+
+```js
+lists.compare(1,2); /* "LT" */
+lists.compare(2,1); /* "GT" */
+lists.compare("b","b"); /* "EQ" */
+```
+------
+<a name='bubbleSort'/>
+### bubbleSort : [num] -> [num]
+------
+**Description**: A generic bubblesort algorithm for sorting an Array of Numbers.
+
+**Signature Definition**: Give arg 1 an Array of Numbers. Get an Array of Numbers.
+
+**Example Usage**:
+
+```js
+lists.bubbleSort([3,2,5,1]); /* [1,2,3,5] */
+```
+------
+<a name='mergeSort'/>
+### mergeSort : [num] -> [num]
+------
+**Description**: A generic mergesort algorithm for sorting an Array of Numbers.
+
+**Signature Definition**: Give arg 1 an Array of Numbers. Get an Array of Numbers.
+
+**Example Usage**:
+
+```js
+lists.mergeSort([3,2,5,1]); /* [1,2,3,5] */
 ```
 ------
