@@ -14,6 +14,23 @@ To import the entire library:
 
 `npm install --save lists`
 
+Using in your Node.js project:
+
+```js
+var lists = require('lists');
+```
+
+Using in your browser: 
+
+Download the script source file `lists.min.js` and include it in your HTML. Lists is exported as a global object attached to `window`. Access functions by calling `lists` or `window.lists`.
+
+```html
+<script src='lists.min.js'></script>
+<script>
+	lists.head(["Hey!"]); // "Hey!"
+</script>
+```
+
 ## Practical Example Usage
 
 Lets complete an easy task from [/r/dailyprogrammer](http://www.reddit.com/dailyprogrammer). [Here](http://www.reddit.com/r/dailyprogrammer/comments/29i9jw/6302014_challenge_169_easy_90_degree_2d_array/) is the task:
