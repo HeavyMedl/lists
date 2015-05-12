@@ -38,7 +38,7 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-        <p>Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at <a href="http://www.gla.ac.uk/">The University of Glasgow</a>. You can view the original source <a href="https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html">here</a>. You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and <a href="www.google.com">this</a> implementation.</p>
+        <p>Lists is a library of JavaScript higher-order functions for working with arrays and strings. The library was inspired  by Haskell's Data.List module by the powerful people over at <a href="http://www.gla.ac.uk/">The University of Glasgow</a>. You can view the original source <a href="https://hackage.haskell.org/package/base-4.7.0.0/docs/src/Data-List.html">here</a>. You could then scroll through each function closely and see a purposefully similar correlation between the Haskell implementation and <a href="https://raw.githubusercontent.com/kurtlocker/lists/master/lists.js">this</a> implementation.</p>
 
 <p>Pass functions to functions to functions to solve complex problems. Most of the functions featured in Lists produce new arrays, to reinforce the paradigm of stateless programming.</p>
 
@@ -72,12 +72,12 @@
  [<span class="pl-c1">9</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">6</span>],
  [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]];</pre></div>
 
-<p>Using <strong>lists</strong>, we can reverse and then transpose this matrix to achieve the desired output:</p>
+<p>Using <strong>Lists</strong>, we can reverse and then transpose this matrix to achieve the desired output:</p>
 
 <div class="highlight highlight-js"><pre>l.transpose(l.<span class="pl-c1">rev</span>(matrix));
 
 <span class="pl-c">// or using pipe (composing left)</span>
-<span class="pl-k">var</span> rotate90 <span class="pl-k">=</span> lists.pipe(lists.transpose, lists.<span class="pl-c1">rev</span>)
+<span class="pl-k">var</span> rotate90 <span class="pl-k">=</span> l.pipe(l.transpose, l.<span class="pl-c1">rev</span>)
 rotate90(matrix);
 
 <span class="pl-c">/* both of these functions yield</span>
@@ -386,17 +386,28 @@ rotate90(matrix);
 <p><strong>Extra Functional Utilities</strong></p>
 
 <ul>
-<li>genericExcludeChar : </li>
-<li>forEach || each :</li>
-<li>keys :</li>
-<li>enumeration || enum : </li>
-<li>composeL || pipe : </li>
-<li>composeR || sequence : </li>
-<li>partial || part : </li>
-<li>flip : </li>
-<li>GT,LT,EQ,compare : </li>
-<li>bubbleSort : </li>
-<li>mergeSort : </li>
+<li>
+<a href="#genericExcludeChar"><code>genericExcludeChar</code></a> : str -&gt; str -&gt; [str]</li>
+<li>
+<a href="#each"><code>forEach</code></a> || <a href="#each"><code>each</code></a> : x -&gt; f -&gt; x</li>
+<li>
+<a href="#keys"><code>keys</code></a> : obj -&gt; [str]</li>
+<li>
+<a href="#enum"><code>enumeration</code></a> || <a href="#enum"><code>enum</code></a> : num -&gt; num -&gt; [num] </li>
+<li>
+<a href="#pipe"><code>composeL</code></a> || <a href="#pipe"><code>pipe</code></a> : f[,..,f] -&gt; f</li>
+<li>
+<a href="#sequence"><code>composeR</code></a> || <a href="#sequence"><code>sequence</code></a> : f[,..,f] -&gt; f</li>
+<li>
+<a href="#partial"><code>partial</code></a> || <a href="#partial"><code>part</code></a> : f -&gt; x[,..,x] -&gt; f</li>
+<li>
+<a href="#flip"><code>flip</code></a> : f -&gt; f</li>
+<li>
+<a href="#compare"><code>compare</code></a> : x -&gt; x -&gt; str</li>
+<li>
+<a href="#bubbleSort"><code>bubbleSort</code></a> : [num] -&gt; [num]</li>
+<li>
+<a href="#mergeSort"><code>mergeSort</code></a> : [num] -&gt; [num] </li>
 </ul>
 
 <hr>
@@ -1806,7 +1817,7 @@ lists.intersect([<span class="pl-c1">1</span>,<span class="pl-c1">4</span>,<span
 
 <hr>
 
-<p><strong>Description</strong>: Return an Array of Variables that are sorted by the Ordering Function lists.compare.</p>
+<p><strong>Description</strong>: Return an Array of Variables that are sorted by the Ordering Function <code>lists.compare</code>.</p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 an Array of Variables or a String. Get an Array of Variables.</p>
 
@@ -1825,7 +1836,7 @@ lists.<span class="pl-c1">sort</span>([<span class="pl-c1">2</span>,<span class=
 
 <hr>
 
-<p><strong>Description</strong>: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by lists.compare) to the Variable from the Array it is being compared to. </p>
+<p><strong>Description</strong>: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by <code>lists.compare</code>) to the Variable from the Array it is being compared to. </p>
 
 <p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.</p>
 
@@ -2030,6 +2041,224 @@ lists.maximumBy([[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>],[<s
     <span class="pl-k">return</span>  x.<span class="pl-c1">length</span> <span class="pl-k">&gt;</span> y.<span class="pl-c1">length</span> <span class="pl-k">?</span> <span class="pl-s"><span class="pl-pds">'</span>GT<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>LT<span class="pl-pds">'</span></span>
 }
 lists.minimumBy([[<span class="pl-c1">1</span>,<span class="pl-c1">3</span>],[<span class="pl-c1">2</span>],[]], compareLength); <span class="pl-c">/* [] */</span></pre></div>
+
+<hr>
+
+<p><a name="genericExcludeChar"></a></p>
+
+<h3>
+<a id="genericexcludechar--str---str---str" class="anchor" href="#genericexcludechar--str---str---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>genericExcludeChar : str -&gt; str -&gt; [str]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Strips an arbitrary character (String) from a String. This function is the primary work horse of <code>lists.lines</code> and <code>lists.words</code>.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a String. Give arg 2 a String. Get a an Array of Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.genericExcludeChar(<span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["bc"] */</span>
+
+<span class="pl-k">function</span> <span class="pl-en">myLines</span>(<span class="pl-smi">str</span>) { <span class="pl-k">return</span> lists.genericExcludeChar(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\u</span>000A<span class="pl-pds">'</span></span>, str); };
+myLines(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-cce">\n</span>d<span class="pl-pds">"</span></span>); <span class="pl-c">/* ["abc","d"] */</span></pre></div>
+
+<hr>
+
+<p><a name="each"></a></p>
+
+<h3>
+<a id="foreach--each--x---f---x" class="anchor" href="#foreach--each--x---f---x" aria-hidden="true"><span class="octicon octicon-link"></span></a>forEach || each : x -&gt; f -&gt; x</h3>
+
+<hr>
+
+<p><strong>Description</strong>: An enhanced polyfill of Array.prototype.forEach. Works for properties of Objects. This function is meant to alter mutable state.</p>
+
+<p>each's arguments are:</p>
+
+<p>Argument 1: Iterable Variable.
+Argument 2: Function.
+Argument 3: (optional) Caller (or context).</p>
+
+<p>When called, each applies the Function to each iterable Variable with its optional caller. </p>
+
+<p>The Function's arguments are: </p>
+
+<p>Argument 1: The Variable of the iteration at the specific index.
+Argument 2: The index at that specific iteration.
+Argumnet 3: The original iterable Variable.</p>
+
+<p>The original (unchanged) iterable Variable is returned.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 a Function. (optionally) Give arg 3 a Caller (this, self, etc.). Get a Variable.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> arr <span class="pl-k">=</span> [];
+lists.forEach([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>], <span class="pl-k">function</span>(<span class="pl-smi">num</span>, <span class="pl-smi">index</span>, <span class="pl-smi">array123</span>) {
+    arr.<span class="pl-c1">push</span>(num <span class="pl-k">*</span> <span class="pl-c1">2</span>);
+}); <span class="pl-c">/* [1,2,3] */</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(arr); <span class="pl-c">/* [2,4,6] */</span></pre></div>
+
+<hr>
+
+<p><a name="keys"></a></p>
+
+<h3>
+<a id="keys--obj---str" class="anchor" href="#keys--obj---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>keys : obj -&gt; [str]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: A polyfill of <code>Object.keys</code>. Returns an Array of Strings representing the iterable properties of the Object not from its inherited chained properties.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Object. Get an Array of Strings.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.keys({a<span class="pl-k">:</span><span class="pl-c1">2</span>, b<span class="pl-k">:</span><span class="pl-c1">1</span>}); <span class="pl-c">/* ["a","b"] */</span></pre></div>
+
+<hr>
+
+<p><a name="enum"></a></p>
+
+<h3>
+<a id="enumeration--enum--num---num---num" class="anchor" href="#enumeration--enum--num---num---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>enumeration || enum : num -&gt; num -&gt; [num]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Create an enumeration in the form of an Array of Numbers where Argument 1 is the start Number and Argument 2 is the stop Number.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Number. Give arg 2 a Number. Get an Array of Numbers.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.enum(<span class="pl-c1">0</span>,<span class="pl-c1">5</span>); <span class="pl-c">/* [0,1,2,3,4,5] */</span></pre></div>
+
+<hr>
+
+<p><a name="pipe"></a></p>
+
+<h3>
+<a id="composel--pipe--ff---f" class="anchor" href="#composel--pipe--ff---f" aria-hidden="true"><span class="octicon octicon-link"></span></a>composeL || pipe : f[,..,f] -&gt; f</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from rightmost to leftmost to the returned Function's Argument.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 N number of Functions. Get a Function.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> sumThenSqrt <span class="pl-k">=</span> lists.pipe(<span class="pl-c1">Math</span>.sqrt, lists.sum);
+sumThenSqrt([<span class="pl-c1">4</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>]); <span class="pl-c">/* 4 */</span></pre></div>
+
+<hr>
+
+<p><a name="sequence"></a></p>
+
+<h3>
+<a id="composer--sequence--ff---f" class="anchor" href="#composer--sequence--ff---f" aria-hidden="true"><span class="octicon octicon-link"></span></a>composeR || sequence : f[,..,f] -&gt; f</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from leftmost to rightmost to the returned Function's Argument.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 N number of Functions. Get a Function.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> sumThenSqrt <span class="pl-k">=</span> lists.sequence(lists.sum, <span class="pl-c1">Math</span>.sqrt);
+sumThenSqrt([<span class="pl-c1">4</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>,<span class="pl-c1">4</span>]); <span class="pl-c">/* 4 */</span></pre></div>
+
+<hr>
+
+<p><a name="partial"></a></p>
+
+<h3>
+<a id="partial--part--f---xx---f" class="anchor" href="#partial--part--f---xx---f" aria-hidden="true"><span class="octicon octicon-link"></span></a>partial || part : f -&gt; x[,..,x] -&gt; f</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return a partially applied Function where any number of a Function's arguments may be left undefined using <code>undefined</code> as a filler variable to be filled when the Function is called.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Function. Give arg 2,..,n a filled or unfilled Variable. Get a Function.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> myAny <span class="pl-k">=</span> lists.part(lists.any, <span class="pl-c1">undefined</span>, <span class="pl-k">function</span>(<span class="pl-smi">x</span>) { <span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-c1">1</span> });
+myAny([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* true */</span>
+myAny([<span class="pl-c1">2</span>]); <span class="pl-c">/* false */</span></pre></div>
+
+<hr>
+
+<p><a name="flip"></a></p>
+
+<h3>
+<a id="flip--f---f" class="anchor" href="#flip--f---f" aria-hidden="true"><span class="octicon octicon-link"></span></a>flip : f -&gt; f</h3>
+
+<hr>
+
+<p><strong>Description</strong>: Return an equivalent Function whose arguments are 'flipped' or reversed.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Function. Get a Function.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> flippedAny <span class="pl-k">=</span> lists.flip(lists.any);
+flippedAny(<span class="pl-k">function</span>(<span class="pl-smi">x</span>){<span class="pl-k">return</span> x <span class="pl-k">==</span> <span class="pl-c1">1</span>}, [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]); <span class="pl-c">/* true */</span></pre></div>
+
+<hr>
+
+<p><a name="compare"></a></p>
+
+<h3>
+<a id="compare--x---x---str" class="anchor" href="#compare--x---x---str" aria-hidden="true"><span class="octicon octicon-link"></span></a>compare : x -&gt; x -&gt; str</h3>
+
+<hr>
+
+<p><strong>Description</strong>: The only Ordering Function provided in Lists. Returns a String that is the representation of comparing both Arguments with the native JavaScript comparator operators. Ordering Functions are used to redefine how Variables are ordered.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 a Variable. Give arg 2 a Variable. Get a String.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.compare(<span class="pl-c1">1</span>,<span class="pl-c1">2</span>); <span class="pl-c">/* "LT" */</span>
+lists.compare(<span class="pl-c1">2</span>,<span class="pl-c1">1</span>); <span class="pl-c">/* "GT" */</span>
+lists.compare(<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>); <span class="pl-c">/* "EQ" */</span></pre></div>
+
+<hr>
+
+<p><a name="bubbleSort"></a></p>
+
+<h3>
+<a id="bubblesort--num---num" class="anchor" href="#bubblesort--num---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>bubbleSort : [num] -&gt; [num]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: A generic bubblesort algorithm for sorting an Array of Numbers.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get an Array of Numbers.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.bubbleSort([<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">5</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [1,2,3,5] */</span></pre></div>
+
+<hr>
+
+<p><a name="mergeSort"></a></p>
+
+<h3>
+<a id="mergesort--num---num" class="anchor" href="#mergesort--num---num" aria-hidden="true"><span class="octicon octicon-link"></span></a>mergeSort : [num] -&gt; [num]</h3>
+
+<hr>
+
+<p><strong>Description</strong>: A generic mergesort algorithm for sorting an Array of Numbers.</p>
+
+<p><strong>Signature Definition</strong>: Give arg 1 an Array of Numbers. Get an Array of Numbers.</p>
+
+<p><strong>Example Usage</strong>:</p>
+
+<div class="highlight highlight-js"><pre>lists.mergeSort([<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">5</span>,<span class="pl-c1">1</span>]); <span class="pl-c">/* [1,2,3,5] */</span></pre></div>
 
 <hr>
       </section>
