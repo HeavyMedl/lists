@@ -56,10 +56,11 @@ var matrix =
 Using **Lists**, we can reverse and then transpose this matrix to achieve the desired output:
 
 ```js
+var l = require('lists');
 l.transpose(l.rev(matrix));
 
 // or using pipe (composing left)
-var rotate90 = l.pipe(l.transpose, l.rev)
+var rotate90 = l.pipe(l.transpose, l.rev);
 rotate90(matrix);
 
 /* both of these functions yield
