@@ -87,10 +87,11 @@
 
 <p>Using <strong>Lists</strong>, we can reverse and then transpose this matrix to achieve the desired output:</p>
 
-<div class="highlight highlight-js"><pre>l.transpose(l.<span class="pl-c1">rev</span>(matrix));
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> l <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>lists<span class="pl-pds">'</span></span>);
+l.transpose(l.<span class="pl-c1">rev</span>(matrix));
 
 <span class="pl-c">// or using pipe (composing left)</span>
-<span class="pl-k">var</span> rotate90 <span class="pl-k">=</span> l.pipe(l.transpose, l.<span class="pl-c1">rev</span>)
+<span class="pl-k">var</span> rotate90 <span class="pl-k">=</span> l.pipe(l.transpose, l.<span class="pl-c1">rev</span>);
 rotate90(matrix);
 
 <span class="pl-c">/* both of these functions yield</span>
