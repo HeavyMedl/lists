@@ -799,15 +799,15 @@ lists.cycle([1,2],2); /* [1,2,1,2] */
 
 ```js
 function chop8(xs){ 
-  return l.unfold(l.nil,l.part(l.take,8,undefined),l.part(l.drop,8,undefined),xs) 
+  return lists.unfold(lists.nil,lists.part(lists.take,8,undefined),lists.part(lists.drop,8,undefined),xs) 
 }
 chop8([1,2,3,4,5,6,7,8,9]); /* [[1,2,3,4,5,6,7,8],[9]] */
 
 function unfoldMap(xs,f) { 
   return lists.unfold(
     lists.nil, 
-    lists.part(lists.pipe(f,lists.head),_), 
-    lists.part(lists.tail,_), 
+    lists.part(lists.pipe(f,lists.head),undefined), 
+    lists.part(lists.tail,undefined), 
     xs)
 }
 unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
