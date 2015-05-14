@@ -32,7 +32,7 @@
 		});
 		return t	
 	},
-	elemBy = function(xs, eq, y) {
+	elemBy = function(xs, eq, y) { // needs optimization
 		return l.nil(xs) ? false
 		: eq(y,l.head(xs)) || elemBy(l.tail(xs),eq,y)		
 	};
@@ -53,29 +53,43 @@
 		return notIt(xs, 0);
 	}
 	l.nil = function(xs) {
-		return typeof xs === 'undefined' || xs === null || xs.length === 0 ? true
-		: false
+		return typeof xs === 'undefined' || xs === null || xs.length === 0 
+			? true : false
 	}
 	// List transformations
 	l.map = function(xs, f) {
-		return l.nil(xs) ? xs
-		: [f(l.head(xs))].concat(l.map(l.tail(xs), f));
+		function _map(xs, f, acc) {
+			return l.nil(xs) ? acc
+			: _map.bind(null, l.tail(xs), f, acc.concat([f(l.head(xs))]));
+		}
+		return b(_map.bind(null, xs, f, []));
 	}
 	l.rev = function(xs) {
-		return l.nil(xs) ? xs
-		: l.rev(l.tail(xs)).concat([l.head(xs)]);
+		function _rev(xs, acc) {
+			return l.nil(xs) ? acc
+			: _rev.bind(null, l.tail(xs), [l.head(xs)].concat(acc));
+		}
+		return b(_rev.bind(null, xs, []));
 	}
 	l.intersperse = function(sep, xs) {
-		return l.nil(xs) || xs.length===1 ? xs
-		: Array.isArray(xs) ? [l.head(xs)].concat([sep]).concat(l.intersperse(sep, l.tail(xs)))
-			: l.head(xs).concat(sep).concat(l.intersperse(sep, xs.substring(1)))
+		function _intersperse(sep, xs, acc) {
+			return l.nil(xs) 
+				? Array.isArray(acc) ? l.init(acc) : acc.substr(0, acc.length-1)
+				: Array.isArray(xs) 
+					? _intersperse.bind(null, sep, l.tail(xs), acc.concat([l.head(xs)]).concat([sep]))
+					: _intersperse.bind(null, sep, xs.substring(1), acc.concat(l.head(xs)).concat(sep)); 
+		}
+		return b(_intersperse.bind(null, sep, xs, Array.isArray(xs)?[]:""));
 	}
-	l.intercalate = function(xs, xss) {
+	l.intercalate = function(xs, xss) { 
 		return l.flatten(l.intersperse(xs, xss))
 	}
-	l.transpose = function(xs) { // matrix transposition
-		return l.nil(l.head(xs)) ? []
-		: [l.map(xs,l.head)].concat(l.transpose(l.map(xs,l.tail)))
+	l.transpose = function(xs) { 
+		function _transpose(xs, acc) {
+			return l.nil(l.head(xs)) ? acc
+			: _transpose.bind(null, l.map(xs,l.tail), acc.concat([l.map(xs,l.head)]));
+		}
+		return b(_transpose.bind(null, xs, []));
 	}
 	l.subsequences = function(xs) {
 		return [[]].concat(nonEmptySubsequences(xs))
@@ -320,43 +334,43 @@
 		} 
 	}
 	// Data.List Indexing Lists
-	l.bang = function(i, xs) {
+	l.bang = function(i, xs) { // tail recursive with trampoline
 		return i < 0 ? -1
 		: l.nil(xs) ? -1
 			: i === 0 ? l.head(xs)
-				: l.bang(i-1, l.tail(xs))
+				: b(l.bang.bind(null, i-1, l.tail(xs)));
 	}
-	l.elemIndex = l.indexOf = function(x, xs) { // tail recursive
-		function tailrec(x,xs,acc) {
+	l.elemIndex = l.indexOf = function(x, xs) { // tail recursive with trampoline
+		function _elemIndex(x,xs,acc) {
 			return l.nil(xs) ? -1
 			: x===l.head(xs) ? acc
-				: tailrec(x,l.tail(xs),acc+1)
+				: _elemIndex.bind(null,x,l.tail(xs),acc+1)
 		}
-		return tailrec(x,xs,0)
+		return b(_elemIndex.bind(null,x,xs,0))
 	}
-	l.elemIndices = function(x, xs) { // tail recursive
-		function tailrec(x,xs,acc,arr) {
+	l.elemIndices = function(x, xs) { // tail recursive with trampoline
+		function _elemIndices(x,xs,acc,arr) {
 			return l.nil(xs) ? arr
-			: x==l.head(xs) ? tailrec(x,l.tail(xs),acc+1,arr.concat(acc))
-				: tailrec(x,l.tail(xs),acc+1,arr)
+			: x==l.head(xs) ? _elemIndices.bind(null,x,l.tail(xs),acc+1,arr.concat(acc))
+				: _elemIndices.bind(null,x,l.tail(xs),acc+1,arr)
 		}
-		return tailrec(x,xs,0,[])
+		return b(_elemIndices.bind(null,x,xs,0,[]))
 	}
-	l.findIndex= function(xs,p) { // tail recursive
-		function tailrec(xs,p,acc) {
+	l.findIndex = function(xs,p) { // tail recursive with trampoline
+		function _findIndex(xs,p,acc) {
 			return l.nil(xs) ? -1
 			: p(l.head(xs)) ? acc
-				: tailrec.bind(null,l.tail(xs),p,acc+1)
+				: _findIndex.bind(null,l.tail(xs),p,acc+1)
 		}
-		return b(tailrec.bind(null,xs,p,0))
+		return b(_findIndex.bind(null,xs,p,0))
 	}
-	l.findIndices = function(xs,p) { // tail recursive
-		function tailrec(xs,p,acc,arr) { 
+	l.findIndices = function(xs,p) { // tail recursive with trampoline
+		function _findIndices(xs,p,acc,arr) { 
 			return l.nil(xs) ? arr
-			: p(l.head(xs)) ? tailrec.bind(null,l.tail(xs), p, acc+1, arr.concat(acc))
-				: tailrec.bind(null,l.tail(xs),p,acc+1, arr)
+			: p(l.head(xs)) ? _findIndices.bind(null,l.tail(xs), p, acc+1, arr.concat(acc))
+				: _findIndices.bind(null,l.tail(xs),p,acc+1, arr)
 		}
-		return b(tailrec.bind(null,xs,p,0,[]))
+		return b(_findIndices.bind(null,xs,p,0,[]))
 	}
 	l.zip = l.unzip = function(xss) { 
 		var arr = new Array(l.maxList(xss).length);
