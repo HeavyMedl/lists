@@ -121,8 +121,11 @@
 	}
 	// Data.list Reducing l(folds/catamorphism)
 	l.foldl = l.reduce = function(acc, xs, f) {
-		return l.nil(xs) ? acc
-		: l.foldl((f(acc, l.head(xs))), l.tail(xs), f)
+		function _foldl(acc, xs, f) {
+			return l.nil(xs) ? acc
+			: _foldl.bind(null, f(acc, l.head(xs)), l.tail(xs), f);
+		}
+		return b(_foldl.bind(null, acc, xs, f))
 	}
 	l.foldl1 = function(xs, f) {
 		return l.nil(xs) ? "lists.foldl1: empty list"

@@ -799,7 +799,7 @@ lists.cycle([1,2],2); /* [1,2,1,2] */
 
 ```js
 function chop8(xs){ 
-  return l.unfold(l.nil,l.part(l.take,8,_),l.part(l.drop,8,_),xs) 
+  return l.unfold(l.nil,l.part(l.take,8,undefined),l.part(l.drop,8,undefined),xs) 
 }
 chop8([1,2,3,4,5,6,7,8,9]); /* [[1,2,3,4,5,6,7,8],[9]] */
 
