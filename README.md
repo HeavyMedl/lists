@@ -257,7 +257,7 @@ map : [x] -> f -> [x]
 * [`mergeSort`](#mergeSort) : [num] -> [num] 
 
 ------
-<a name='append'/>
+<a name='append'></a>
 ## append : [x]|str -> [x]|str|num -> [x]|str
 
 **Description**: A prefix-style Array.prototype.concat wrapper.
@@ -272,7 +272,7 @@ lists.append([1],2); /* [1,2] */
 lists.append('a','b'); /* 'ab' */
 ```
 ------
-<a name='head'/>
+<a name='head'></a>
 ## head : [x]|str -> x
 
 **Description**: Retreive the first element of an Array of Variables or a String.
@@ -287,7 +287,7 @@ lists.head([[1,2],[3,4]]); /* [1,2]  */
 lists.head('ab'); /* 'a' */
 ```
 ------
-<a name='last'/>
+<a name='last'></a>
 ## last : [x]|str -> x
 
 **Description**: Retreive the last element of an Array of Variables or a String.
@@ -302,7 +302,7 @@ lists.last([[1,2],[3,4]]); /* [3,4] */
 lists.last('ab'); /* 'b' */
 ```
 ------
-<a name='init'/>
+<a name='init'></a>
 ## init : [x]|str -> [x]
 
 **Description**: Retreive all elements except the last of an Array of Variables or a String.
@@ -317,7 +317,7 @@ lists.init([[1,2],[3,4],[5,6]]); /* [[1,2],[3,4]]  */
 lists.init('abc'); /* ['a','b'] */
 ```
 ------
-<a name='tail'/>
+<a name='tail'></a>
 ## tail : [x]|str -> [x]
 
 **Description**: Retreive all elements except the first of an Array of Variables or a String.
@@ -332,7 +332,7 @@ lists.tail([[1,2],[3,4],[5,6]]); /* [[3,4],[5,6]]  */
 lists.tail('abc'); /* ['b','c'] */
 ```
 ------
-<a name='nil'/>
+<a name='nil'></a>
 ## nil : [x]|str -> boolean
 
 **Description**: Test if an Array of Variables or a String is empty.
@@ -349,7 +349,7 @@ lists.nil('a'); /* false */
 lists.nil([1]); /* false */
 ```
 ------
-<a name='map'/>
+<a name='map'></a>
 ## map : [x]|str -> f -> [x]
 
 **Description**: Array of Variables returned by applying f to each element of an Array of Variables or a String.
@@ -366,7 +366,7 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 }); /* ["S", "u", "p"] */
 ```
 ------
-<a name='rev'/>
+<a name='rev'></a>
 ## rev : [x]|str -> [x]
 
 **Description**: Array of Variables returned by reversing the order of each element of an Array of Variables or a String.
@@ -381,7 +381,7 @@ lists.rev('abc'); /* ['c','b','a'] */
 lists.rev([[2],[3]]); /* [[3],[2]] */
 ```
 ------
-<a name='intersperse'/>
+<a name='intersperse'></a>
 ## intersperse : x -> [x]|str -> [x]|str
 
 **Description**: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.
@@ -397,7 +397,7 @@ lists.intersperse('b','ac'); /* 'abc' */
 lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ```
 ------
-<a name='intercalate'/>
+<a name='intercalate'></a>
 ## intercalate : [x] -> [[x]] -> [x]
 
 **Description**: Array of Variables returned by flattening the result of interspersing an Array of Variables into an Array of an Array of Variables.
@@ -412,7 +412,7 @@ lists.intercalate(["abc"],[["efg"],["qrs"]]); /* ["efg", "abc", "qrs"] */
 lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```
 ------
-<a name='transpose'/>
+<a name='transpose'></a>
 ## transpose : [[x]] -> [[x]]
 
 **Description**: Array of an Array of Variables returned by transposing rows and columns of given arguments.
@@ -426,7 +426,7 @@ lists.transpose([[1,2,4],[3,4,4]]); /* [[1,3],[2,4],[4,4]] */
 lists.transpose([["a","b","c"],["a","b","c"]]); /* [["a","a"],["b","b"],["c","c"]] */
 ```
 ------
-<a name='subsequences'/>
+<a name='subsequences'></a>
 ## subsequences : [x]|str -> [[x]]
 
 **Description**: Array of an Array of Variables of all subsequences of a given arguement.
@@ -440,7 +440,7 @@ lists.subsequences('ab'); /* [[],['a'],['b'],['ab']] */
 lists.subsequences([1,2,3]); /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```
 ------
-<a name='permutations'/>
+<a name='permutations'></a>
 ## permutations : [x]|str -> [[x]]|[str]
 
 **Description**: Array of an Array of Variables or Array of Strings returned by getting all permutations of a given arguement.
@@ -454,7 +454,7 @@ lists.permutations('abc'); /* ["abc","acb","bac","bca","cab","cba"] */
 lists.permutations([1,2,3]); /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] */
 ```
 ------
-<a name='foldl'/>
+<a name='foldl'></a>
 ## foldl : x -> [x]|str -> f -> x
 
 **Description**: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
@@ -469,7 +469,7 @@ sum = lists.foldl(0,[1,2,3],function(x,y){ return x+y; }); /* 6 */
 lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }); /* [1,2,3,4] */
 ```
 ------
-<a name='foldl1'/>
+<a name='foldl1'></a>
 ## foldl1 : [x]|str -> f -> x
 
 **Description**: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or a String). Use with non-empty Arrays or Strings.
@@ -483,7 +483,7 @@ lists.foldl1('abc',function(x,y){ return x.concat(y).toUpperCase() }); /* "ABC" 
 lists.foldl1([1,2,3],function(x,y){ return x+y }); /* 6 */
 ```
 ------
-<a name='foldr'/>
+<a name='foldr'></a>
 ## foldr : x -> [x]|str -> f -> x
 
 **Description**: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
@@ -499,7 +499,7 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 }); /* [4,3,1,2,5,6] */
 ```
 ------
-<a name='foldr1'/>
+<a name='foldr1'></a>
 ## foldr1 : [x]|str -> f -> x
 
 **Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or a String). Use with non-empty Arrays or Strings.
@@ -513,7 +513,7 @@ lists.foldr1([1,2,3],function(x,y){ return x - y }); /* 3 */
 lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}); /* "bbcc" */
 ```
 ------
-<a name='flatten'/>
+<a name='flatten'></a>
 ## flatten || concat : [[x]]|[str] -> [x]|str
 
 **Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or a String respectively.
@@ -527,7 +527,7 @@ lists.flatten(['abc']); /* 'abc' */
 lists.flatten([[1,2],[3,4]]); /* [1,2,3,4] */
 ```
 ------
-<a name='concatMap'/>
+<a name='concatMap'></a>
 ## concatMap : [x]|str -> f -> [x]|str
 
 **Description**: Array of Variables or a String returned by mapping a Function over an Array of Variables or a String and flattening the result.
@@ -545,7 +545,7 @@ lists.concatMap([{a:1},{b:2}], function(x){
 }); /* [{a:1,prop:"hi"},{b:2,prop:"hi"}]*/
 ```
 ------
-<a name='and'/>
+<a name='and'></a>
 ## and : [boolean] -> boolean
 
 **Description**: Boolean returned by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
@@ -559,7 +559,7 @@ lists.and([5>1,5>2,5>3]); /* true */
 lists.and([5>1,false,5>3]); /* false */
 ```
 ------
-<a name='or'/>
+<a name='or'></a>
 ## or : [boolean] -> boolean
 
 **Description**: Boolean returned by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
@@ -573,7 +573,7 @@ lists.or([5<1,5<2,5>3]); /* true */
 lists.or([5<1,5<2,5<3]); /* false */
 ```
 ------
-<a name='any'/>
+<a name='any'></a>
 ## any : [x]|str -> f -> boolean
 
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if at least one f(x) is true. False if all f(x) are false.
@@ -587,7 +587,7 @@ lists.any([1,2,3],function(x) { return x < .5}); /* false */
 lists.any('abc',function(x) { return x == 'b'}); /* true */
 ```
 ------
-<a name='all'/>
+<a name='all'></a>
 ## all : [x]|str -> f -> boolean
 
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if all f(x) are true. False if any f(x) are false.
@@ -602,7 +602,7 @@ lists.all([2,4], function(x) { return x > 3 }); /* false */
 lists.all([2,4], function(x) { return x%2==0 }); /* true */
 ```
 ------
-<a name='sum'/>
+<a name='sum'></a>
 ## sum : [num] -> num
 
 **Description**: Number returned by summing the numbers of an Array together.
@@ -616,7 +616,7 @@ lists.sum([2,4,6]); /* 12 */
 lists.sum([.2,.4,.6]); /* 1.2000000000000002 */
 ```
 ------
-<a name='product'/>
+<a name='product'></a>
 ## product : [num] -> num
 
 **Description**: Number returned by computing the product of the numbers of an Array.
@@ -630,7 +630,7 @@ lists.product([2,4,6]); /* 48 */
 lists.product([.2,.4,.6]); /* 0.04800000000000001 */
 ```
 ------
-<a name='maximum'/>
+<a name='maximum'></a>
 ## maximum : [num] -> num
 
 **Description**: Maximum Number returned from numbers of an Array.
@@ -644,7 +644,7 @@ lists.maximum([2,4,6]); /* 6 */
 lists.maximum([.2,.4,.6]); /* .6 */
 ```
 ------
-<a name='minimum'/>
+<a name='minimum'></a>
 ## minimum : [num] -> num
 
 **Description**: Minimum Number returned from numbers of an Array.
@@ -658,7 +658,7 @@ lists.minimum([2,4,6]); /* 2 */
 lists.minimum([.2,.4,.6]); /* .2 */
 ```
 ------
-<a name='maxList'/>
+<a name='maxList'></a>
 ## maxList : [[x]] -> [x]
 
 **Description**: Array of Variables with the maximum length returned from an Array of an Array of Variables.
@@ -672,7 +672,7 @@ lists.maxList([[1],[2,3]]); /* [2,3] */
 lists.maxList([[1,2],[3]]); /* [1,2] */
 ```
 ------
-<a name='minList'/>
+<a name='minList'></a>
 ## minList : [[x]] -> [x]
 
 **Description**: Array of Variables with the minimum length returned from an Array of an Array of Variables.
@@ -686,7 +686,7 @@ lists.minList([[],[1]]); /* [] */
 lists.minList([[1,2],[3]]); /* [3] */
 ```
 ------
-<a name='scanl'/>
+<a name='scanl'></a>
 ## scanl : x -> [x]|str -> f -> [x]
 
 **Description**: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
@@ -700,7 +700,7 @@ lists.scanl('.','abc',function(x,y){return x + y}); /* [".",".a",".ab",".abc"] *
 lists.scanl(0,[1,2,3],function(x,y){return x + y}); /* [0,1,3,6] */
 ```
 ------
-<a name='scanr'/>
+<a name='scanr'></a>
 ## scanr : x -> [x]|str -> f -> [x]
 
 **Description**: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
@@ -714,7 +714,7 @@ lists.scanr('.','abc',function(x,y){return x + y}); /* ["abc.","bc.","c.","."] *
 lists.scanr(0,[1,2,3],function(x,y){return x + y}); /* [6,5,3,0] */
 ```
 ------
-<a name='mapAccumL'/>
+<a name='mapAccumL'></a>
 ## mapAccumL : x -> [x]|str -> f -> [x, [x]]
 
 **Description**: Builds an Array containing a accumulator (x) and the result of applying F to the supplied accumulator and each element of the supplied Array from left to right.
@@ -729,7 +729,7 @@ lists.mapAccumL(5, [2,4,8], function(x,y){ return [y,y]}); /* [8, [2,4,8]] */
 lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
-<a name='mapAccumR'/>
+<a name='mapAccumR'></a>
 ## mapAccumR : x -> [x]|str -> f -> [x, [x]]
 
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
@@ -744,7 +744,7 @@ lists.mapAccumR(5, [2,4,8], function(x,y){ return [y,y]}); /* [2, [2,4,8]] */
 lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
-<a name='iterate'/>
+<a name='iterate'></a>
 ## iterate : x -> num -> f -> [x]
 
 **Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
@@ -759,7 +759,7 @@ lists.iterate([1,2],3,function(xs){return lists.intersperse(6,xs)}); /* [[1,2],[
 lists.iterate(2,4,function(x){ return x*x }); /* [2,4,16,256] */
 ```
 ------
-<a name='replicate'/>
+<a name='replicate'></a>
 ## replicate : x -> num -> [x]
 
 **Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
@@ -774,7 +774,7 @@ lists.replicate([1,2],2); /* [[1,2],[1,2]] */
 lists.replicate({a:1},2); /* [{a:1},{a:2}] */
 ```
 ------
-<a name='cycle'/>
+<a name='cycle'></a>
 ## cycle : [x]|str -> num -> [x]|str
 
 **Description**: Builds an Array containing replications of a flattened Array of Variables or a String until the stop (num) reaches 0.
@@ -788,7 +788,7 @@ lists.cycle('abc',3); /* "abcabcabc" */
 lists.cycle([1,2],2); /* [1,2,1,2] */
 ```
 ------
-<a name='unfold'/>
+<a name='unfold'></a>
 ## unfold : f -> f -> f -> x -> [x]|str
 
 **Description**: Builds an Array from a seed value. Arg 1 is the predicate Function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
@@ -813,7 +813,7 @@ function unfoldMap(xs,f) {
 unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
 ```
 ------
-<a name='take'/>
+<a name='take'></a>
 ## take : num -> [x]|str -> [x]
 
 **Description**: Array of Variables returned by taking the first n (num) elements from an Array of Variables or a String.
@@ -827,7 +827,7 @@ lists.take(2,[1,2,3]); /* [1,2] */
 lists.take(2,'abc'); /* ["a","b"] */
 ```
 ------
-<a name='drop'/>
+<a name='drop'></a>
 ## drop : num -> [x]|str -> [x]
 
 **Description**: Array of Variables returned by dropping the first n (num) elements from an Array of Variables or a String.
@@ -841,7 +841,7 @@ lists.drop(2,[1,2,3]); /* [3] */
 lists.drop(2,'abc'); /* ["c"] */
 ```
 ------
-<a name='splitAt'/>
+<a name='splitAt'></a>
 ## splitAt : num -> [x]|str -> [[x],[x]]
 
 **Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or a String. The second contains the rest.
@@ -855,7 +855,7 @@ lists.splitAt(2,'abc') /* [['a','b'],['c']] */
 lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 ```
 ------
-<a name='takeWhile'/>
+<a name='takeWhile'></a>
 ## takeWhile : f -> [x]|str -> [x]
 
 **Description**: Array of Variables returned by taking elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
@@ -870,7 +870,7 @@ lists.takeWhile([1], function(x){ return x < 2 }); /* [1] */
 lists.takeWhile('aabc', function(x){ return x =='a' }); /* ["a","a"] */
 ```
 ------
-<a name='dropWhile'/>
+<a name='dropWhile'></a>
 ## dropWhile : f -> [x]|str -> [x]
 
 **Description**: Array of Variables returned by dropping elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
@@ -885,7 +885,7 @@ lists.dropWhile([1], function(x){ return x < 2 }); /* [2] */
 lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ```
 ------
-<a name='span'/>
+<a name='span'></a>
 ## span : [x]|str -> f -> [[x], [x]|str]
 
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
@@ -900,7 +900,7 @@ lists.span("abcde", function(x){return x == "a"}); /* [["a"],["b","c","d","e"]] 
 lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[{a:2},{a:2}],[{b:2}]] */
 ```
 ------
-<a name='break'/>
+<a name='break'></a>
 ## break : [x]|str -> f -> [[x], [x]|str]
 
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.
@@ -915,7 +915,7 @@ lists.break("abcde", function(x){return x == "a"}); /* [[],"abcde"] */
 lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[],[{a:2},{a:2},{b:2}]] */
 ```
 ------
-<a name='stripPrefix'/>
+<a name='stripPrefix'></a>
 ## stripPrefix : [num]|str -> [num]|str -> [num]|[str]
 
 **Description**: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.
@@ -929,7 +929,7 @@ lists.stripPrefix("abc","abcabce"); /* ["a","b","c","e"] */
 lists.stripPrefix([1,2],[1,2,3,4]); /* [3,4] */
 ```
 ------
-<a name='group'/>
+<a name='group'></a>
 ## group : [num]|str -> [[num]]|[[str]]
 
 **Description**: An Array of an Array of Numbers or Strings returned where each nested Array contains only equal elements.
@@ -943,7 +943,7 @@ lists.group([1,1,2,3,3]); /* [[1,1],[2],[3,3]] */
 lists.group("mississippi"); /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p","p"],["i"]] */
 ```
 ------
-<a name='inits'/>
+<a name='inits'></a>
 ## inits : [x]|str -> [[x]]
 
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.
@@ -958,7 +958,7 @@ lists.inits("abc"); /* [[],["a"],["a","b"],["a","b","c"]] */
 lists.inits([{a:2},{b:3}]); /* [[],[{a:2}],[{a:2},{b:3}]] */
 ```
 ------
-<a name='tails'/>
+<a name='tails'></a>
 ## tails : [x]|str -> [[x]]
 
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.
@@ -973,7 +973,7 @@ lists.tails("abc"); /* [["a","b","c"],["a","b"],["a"],[]] */
 lists.tails([{a:2},{b:3}]); /* [[{a:2},{b:3}],[{a:2}],[]] */
 ```
 ------
-<a name='isPrefixOf'/>
+<a name='isPrefixOf'></a>
 ## isPrefixOf : [num]|str -> [num]|str -> boolean
 
 **Description**: Test if an Array of Numbers or a String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.
@@ -988,7 +988,7 @@ lists.isPrefixOf("abc","acd"); /* false */
 lists.isPrefixOf("ab","abcd"); /* true */
 ```
 ------
-<a name='isSuffixOf'/>
+<a name='isSuffixOf'></a>
 ## isSuffixOf : [num]|str -> [num]|str -> boolean
 
 **Description**: Test if an Array of Numbers or a String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.
@@ -1003,7 +1003,7 @@ lists.isSuffixOf("cd","acd"); /* true */
 lists.isSuffixOf("d","abcd"); /* true */
 ```
 ------
-<a name='isInfixOf'/>
+<a name='isInfixOf'></a>
 ## isInfixOf : [num]|str -> [num]|str -> boolean
 
 **Description**: Test if an Array of Numbers or a String is the infix of an Array of Numbers or a String. The arguments must be of the same type.
@@ -1018,7 +1018,7 @@ lists.isInfixOf("cd","acde"); /* true */
 lists.isInfixOf("a","abcd"); /* true */
 ```
 ------
-<a name='isSubsequenceOf'/>
+<a name='isSubsequenceOf'></a>
 ## isSubsequenceOf : [num]|str -> [num]|str -> boolean
 
 **Description**: Test if an Array of Numbers or a String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
@@ -1033,7 +1033,7 @@ lists.isSubsequenceOf("abc","123 abc"); /* true */
 lists.isSubsequenceOf("Lol","Laugh out loud"); /* true */
 ```
 ------
-<a name='elem'/>
+<a name='elem'></a>
 ## elem : num|str -> [num]|str -> boolean
 
 **Description**: Test if the Number or a String is in the Array of Numbers or a String.
@@ -1047,7 +1047,7 @@ lists.elem(2,[1,3,2]); /* true */
 lists.elem("2","123 abc"); /* true */
 ```
 ------
-<a name='notElem'/>
+<a name='notElem'></a>
 ## notElem : num|str -> [num]|str -> boolean
 
 **Description**: Test if the Number or a String is not in the Array of Numbers or a String.
@@ -1061,7 +1061,7 @@ lists.notElem(0,[1,3,2]); /* true */
 lists.notElem("a","abc"); /* false */
 ```
 ------
-<a name='lookup'/>
+<a name='lookup'></a>
 ## lookup : num|str -> [[num|str,x]] -> boolean
 
 **Description**: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).
@@ -1076,7 +1076,7 @@ lists.lookup("ab",[["ab",2],["b",3]]); /* 2 */
 lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
 ```
 ------
-<a name='find'/>
+<a name='find'></a>
 ## find : [x]|str -> f -> x
 
 **Description**: Retreive a Variable by applying a predicate Function to an Array of Variables or a String. Returns "Nothing" if there is no match.
@@ -1091,7 +1091,7 @@ lists.find([[1,2]], function(x) { return x[0] == 1}); /* [1,2] */
 lists.find([1,2,3], function(x) { return x == 0 }); /* "Nothing" */
 ```
 ------
-<a name='filter'/>
+<a name='filter'></a>
 ## filter : [x]|str -> f -> [x]
 
 **Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables or a String.
@@ -1106,7 +1106,7 @@ lists.filter("abc", function(char) { return char == "a" }); /* ["a"] */
 lists.filter([[1],[1,2]], function(arr) { return arr.length > 1 }); /* [[1,2]] */
 ```
 ------
-<a name='partition'/>
+<a name='partition'></a>
 ## partition : [x]|str -> f -> [[x],[x]]
 
 **Description**: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.
@@ -1121,7 +1121,7 @@ lists.partition([1,2,3,4], function(num) { return num % 2 == 0 }); /* [[2,4],[1,
 lists.partition([{a:1},{b:2,a:2}], function(obj) { return obj.a == 2 }); /* [[{b:2,a:2}],[{a:1}]] */
 ```
 ------
-<a name='bang'/>
+<a name='bang'></a>
 ## bang : num -> [x] -> x
 
 **Description**: Variable returned by fetching the Variable at the given index (Number).
@@ -1136,7 +1136,7 @@ lists.bang(0,[[1,2],4]); /* [1,2] */
 lists.bang(3,[1,2]); /* -1 */
 ```
 ------
-<a name='elemIndex'/>
+<a name='elemIndex'></a>
 ## elemIndex || indexOf : num|str -> [num]|str -> num
 
 **Description**: Returns the index Number of the first occurance of a Number or a String from an Array of Numbers or a String.
@@ -1151,7 +1151,7 @@ lists.elemIndex("b","abc"); /* 1 */
 lists.elemIndex(2,[0,1]); /* -1 */
 ```
 ------
-<a name='elemIndices'/>
+<a name='elemIndices'></a>
 ## elemIndices : num|str -> [num]|str -> [num]
 
 **Description**: Returns an Array of Numbers representing the indices of the Number or a String from an Array of Numbers or a String. 
@@ -1166,7 +1166,7 @@ lists.elemIndices("a","aba"); /* [0,2] */
 lists.elemIndices(2,[0,1]); /* [] */
 ```
 ------
-<a name='findIndex'/>
+<a name='findIndex'></a>
 ## findIndex : [x]|str -> f -> num
 
 **Description**: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables or a String.
@@ -1181,7 +1181,7 @@ lists.findIndex([{a:2}], function(obj){ return obj.a == 2 }); /* 0 */
 lists.findIndex("ab%c", function(char){ return char == "%" }); /* 2 */
 ```
 ------
-<a name='findIndices'/>
+<a name='findIndices'></a>
 ## findIndices : [x]|str -> f -> [num]
 
 **Description**: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables or a String.
@@ -1196,7 +1196,7 @@ lists.findIndices([{a:2},{b:3},{a:2}], function(obj) { return obj.a == 2 }); /* 
 lists.findIndices("AbAbA", function(char) { return char == "A" }); /* [0,2,4] */
 ```
 ------
-<a name='zip'/>
+<a name='zip'></a>
 ## zip || unzip : [[a,b,..,n],[c,d,..,n],..,n] -> [[a,c,..,n],[b,d,..,n],..,n]
 
 **Description**: Takes an Array of an Array of Variables and returns an Array of an Array of Variables with corresponding Variables.
@@ -1211,7 +1211,7 @@ lists.zip(lists.zip([[1,2],[3,4],[5,6]])); /* unzip example [[1,2],[3,4],[5,6]] 
 lists.zip([[1,'l'],[3,'o'],[5,'l']]); /* [[1,3,5],["l","o","l"]] */
 ```
 ------
-<a name='zipWith'/>
+<a name='zipWith'></a>
 ## zipWith : [[a,b,..,n],[c,d,..,n],..,n] -> f -> [x]
 
 **Description**: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.
@@ -1233,7 +1233,7 @@ function addThenMultiply(arr) {
 lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply); /* [8, 25] */
 ```
 ------
-<a name='lines'/>
+<a name='lines'></a>
 ## lines : str -> [str]
 
 **Description**: Returns an Array of Strings as the result of breaking a String at each new line character (\u000A). The resultant Array does not contain any new line characters.
@@ -1247,7 +1247,7 @@ lists.lines("l\no\nl"); /* ["l","o","l"] */
 lists.lines("Hey\nthere"); /* ["Hey","there"] */
 ```
 ------
-<a name='words'/>
+<a name='words'></a>
 ## words : str -> [str]
 
 **Description**: Returns an Array of Strings as the result of breaking a String at each space character (\u0020). The resultant Array does not contain any space characters.
@@ -1260,7 +1260,7 @@ lists.lines("Hey\nthere"); /* ["Hey","there"] */
 lists.words("break it up"); /* ["break","it","up"] */
 ```
 ------
-<a name='unlines'/>
+<a name='unlines'></a>
 ## unlines : [str] -> str
 
 **Description**: Returns a String with a new line character appended to each String of the Array that it joins.
@@ -1273,7 +1273,7 @@ lists.words("break it up"); /* ["break","it","up"] */
 lists.unlines(["break","it","up"]); /* "break\nit\nup\n" */
 ```
 ------
-<a name='unwords'/>
+<a name='unwords'></a>
 ## unwords : [str] -> str
 
 **Description**: Returns a String with a space character appended to each String of the Array that it joins.
@@ -1286,7 +1286,7 @@ lists.unlines(["break","it","up"]); /* "break\nit\nup\n" */
 lists.unwords(["break","it","up"]); /* "break it up " */
 ```
 ------
-<a name='nub'/>
+<a name='nub'></a>
 ## nub || uniq || unique : [num|str]|str -> [num|str]
 
 **Description**: Remove duplicates from a String or an Array of Numbers and/or Strings. Keep the first occurence of each element.
@@ -1301,7 +1301,7 @@ lists.nub([1,2,"a","b","a",1]); /* [1,2,"a","b"] */
 lists.nub([1,2,2,3]); /* [1,2,3] */ 
 ```
 ------
-<a name='delete'/>
+<a name='delete'></a>
 ## delete : x -> [x]|str -> [x]
 
 **Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables or a String. Does not work with Objects.
@@ -1316,7 +1316,7 @@ lists.delete([1],[[1,2],[1]]); /* [[1,2]] */
 lists.delete(1,[2,1,2,1]); /* [2,2,1] */ 
 ```
 ------
-<a name='difference'/>
+<a name='difference'></a>
 ## difference || diff : [num|str]|str -> [num|str]|str -> [x]
 
 **Description**: Return an Array of Variables whose elements are the difference between Argument 1 and Argument 2.
@@ -1331,7 +1331,7 @@ lists.difference('acd','ab'); /* ["c","d"] */
 lists.difference([1,2],[1,2]); /* [] */ 
 ```
 ------
-<a name='union'/>
+<a name='union'></a>
 ## union : [num|str]|str -> [num|str]|str -> [x]|str
 
 **Description**: Return an Array of Variables whose elements are the union between Argument 1 and Argument 2.
@@ -1345,7 +1345,7 @@ lists.union("a","b"); /* "ab" */
 lists.union([1,4,'a'],[1,3,'b']); /* [1,4,"a",3,"b"] */
 ```
 ------
-<a name='intersect'/>
+<a name='intersect'></a>
 ## intersect : [num|str]|str -> [num|str]|str -> [x]
 
 **Description**: Return an Array of Variables whose elements are the intersection between Argument 1 and Argument 2.
@@ -1359,7 +1359,7 @@ lists.intersect('a','ba'); /* ["a"] */
 lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
 ```
 ------
-<a name='sort'/>
+<a name='sort'></a>
 ## sort : [x]|str -> [x]
 
 **Description**: Return an Array of Variables that are sorted by the Ordering Function `lists.compare`.
@@ -1374,7 +1374,7 @@ lists.sort([[3,4],[1,2]]); /* [[1,2],[3,4]] */
 lists.sort([2,1,-1,1]); /* [-1,1,1,2] */
 ```
 ------
-<a name='insert'/>
+<a name='insert'></a>
 ## insert : x -> [x] -> [x]
 
 **Description**: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by `lists.compare`) to the Variable from the Array it is being compared to. 
@@ -1388,7 +1388,7 @@ lists.insert(1,[2,1,2]); /* [1,2,1,2] */
 lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
 ```
 ------
-<a name='nubBy'/>
+<a name='nubBy'></a>
 ## nubBy : [x]|str -> f -> [x]
 
 **Description**: Remove duplicates from an Array of Variables or a String based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
@@ -1407,7 +1407,7 @@ lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) {
 }); /* [{a:1},{a:1, b:2}] */
 ```
 ------
-<a name='deleteBy'/>
+<a name='deleteBy'></a>
 ## deleteBy : x -> [x]|str -> f -> [x]
 
 **Description**: Return an Array of Variables from the result of removing the first occurence of a Variable or a String that matches a user supplied Function definition of equality from an Array of Variables.
@@ -1421,7 +1421,7 @@ lists.deleteBy(4, [6,8,10,12], function(arg1,y) { return y % arg1 == 0 }); /* [6
 lists.deleteBy(2, [{a:2},{b:2,e:2},{c:2}], function(arg1, obj) { return lists.keys(obj).length == arg1 }); /* [{a:2},{c:2}] */
 ```
 ------
-<a name='deleteFirstsBy'/>
+<a name='deleteFirstsBy'></a>
 ## deleteFirstsBy : [x]|str -> [x]|str -> f -> [x]
 
 **Description**: Return the first Array of Variables or String passed with the first occurence of each element from the second Array of Variables or String removed based on a user supplied Function definition of equality.
@@ -1435,7 +1435,7 @@ lists.deleteFirstsBy([1,2,3,4,3],[3], function(x,y) { return x==y }); /* [1,2,4,
 lists.deleteFirstsBy("baba","a", function(x,y) { return x==y }); /* ["b","b","a"] */
 ```
 ------
-<a name='unionBy'/>
+<a name='unionBy'></a>
 ## unionBy : [x] -> [x] -> f -> [x]
 
 **Description**: Return an Array of Variables as the union between Argument 1, Argument 2, and the user supplied Function definition of equality.
@@ -1452,7 +1452,7 @@ lists.unionBy(["a","b","c"], ["d","e","f"], function(x,y) {
 }); /* ["a","b","c","e","f"] */
 ```
 ------
-<a name='intersectBy'/>
+<a name='intersectBy'></a>
 ## intersectBy : [x]|str -> [x]|str -> f -> [x]
 
 **Description**: Return an Array of Variables as the intersection between Argument 1, Argument 2, and the user supplied Function definition of equality.
@@ -1465,7 +1465,7 @@ lists.unionBy(["a","b","c"], ["d","e","f"], function(x,y) {
 lists.intersectBy([1,2,3,4],[4,8,12,16,20], function(x,y) { return x * x == y }); /* [2,4] */
 ```
 ------
-<a name='groupBy'/>
+<a name='groupBy'></a>
 ## groupBy : [x]|str -> f -> [[x]]
 
 **Description**: Return an Array of Variables where each nested Array is a group of equal elements. Equality is defined by the user supplied Function.
@@ -1479,7 +1479,7 @@ lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return ((x*y) % 3) == 0}); /* 
 lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return x + 1 == y}); /* [[1,2],[3,4],[5,6],[7,8],[9]] */
 ```
 ------
-<a name='sortBy'/>
+<a name='sortBy'></a>
 ## sortBy : [x]|str -> f -> [x]
 
 **Description**: Return an Array of Variables that are sorted based on the user supplied Ordering Function.
@@ -1495,7 +1495,7 @@ function oddsFirst(x,y) {
 lists.sortBy([1,2,3,4,5,6,7], oddsFirst); /* [1,3,5,7,6,4,2] */
 ```
 ------
-<a name='insertBy'/>
+<a name='insertBy'></a>
 ## insertBy : x -> [x]|str -> f -> [x]
 
 **Description**: Inserts an element into the first position of the Array of Variables based on the user supplied Ordering Function.
@@ -1511,7 +1511,7 @@ function fn(x,y) {
 lists.insertBy(4, [0,1,3,5,7,9], fn); /* [0,1,4,3,5,7,9] */
 ```
 ------
-<a name='maximumBy'/>
+<a name='maximumBy'></a>
 ## maximumBy : [x]|str -> f -> x
 
 **Description**: The largest element of a non-empty Array of Variables or a String where the definition of "largest" comes from the user supplied Ordering function.
@@ -1528,7 +1528,7 @@ function compareLength(x,y) {
 lists.maximumBy([[1,3],[2]], compareLength); /* [1,3] */
 ```
 ------
-<a name='minimumBy'/>
+<a name='minimumBy'></a>
 ## minimumBy : [x]|str -> f -> x
 
 **Description**: The least element of a non-empty Array of Variables or a String where the definition of "least" comes from the user supplied Ordering function.
@@ -1545,7 +1545,7 @@ function compareLength(x,y) {
 lists.minimumBy([[1,3],[2],[]], compareLength); /* [] */
 ```
 ------
-<a name='genericExcludeChar'/>
+<a name='genericExcludeChar'></a>
 ## genericExcludeChar : str -> str -> [str]
 
 **Description**: Strips an arbitrary character (String) from a String. This function is the primary work horse of `lists.lines` and `lists.words`.
@@ -1561,7 +1561,7 @@ function myLines(str) { return lists.genericExcludeChar('\u000A', str); };
 myLines("abc\nd"); /* ["abc","d"] */
 ```
 ------
-<a name='each'/>
+<a name='each'></a>
 ## forEach || each : x -> f -> x
 
 **Description**: An enhanced polyfill of Array.prototype.forEach. Works for properties of Objects. This function is meant to alter mutable state.
@@ -1595,7 +1595,7 @@ lists.forEach([1,2,3], function(num, index, array123) {
 console.log(arr); /* [2,4,6] */
 ```
 ------
-<a name='keys'/>
+<a name='keys'></a>
 ## keys : obj -> [str]
 
 **Description**: A polyfill of `Object.keys`. Returns an Array of Strings representing the iterable properties of the Object not from its inherited chained properties.
@@ -1608,7 +1608,7 @@ console.log(arr); /* [2,4,6] */
 lists.keys({a:2, b:1}); /* ["a","b"] */
 ```
 ------
-<a name='enum'/>
+<a name='enum'></a>
 ## enumeration || enum : num -> num -> [num]
 
 **Description**: Create an enumeration in the form of an Array of Numbers where Argument 1 is the start Number and Argument 2 is the stop Number.
@@ -1621,7 +1621,7 @@ lists.keys({a:2, b:1}); /* ["a","b"] */
 lists.enum(0,5); /* [0,1,2,3,4,5] */
 ```
 ------
-<a name='pipe'/>
+<a name='pipe'></a>
 ## composeL || pipe : f[,..,f] -> f
 
 **Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from rightmost to leftmost to the returned Function's Argument.
@@ -1635,7 +1635,7 @@ var sumThenSqrt = lists.pipe(Math.sqrt, lists.sum);
 sumThenSqrt([4,4,4,4]); /* 4 */
 ```
 ------
-<a name='sequence'/>
+<a name='sequence'></a>
 ## composeR || sequence : f[,..,f] -> f
 
 **Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from leftmost to rightmost to the returned Function's Argument.
@@ -1649,7 +1649,7 @@ var sumThenSqrt = lists.sequence(lists.sum, Math.sqrt);
 sumThenSqrt([4,4,4,4]); /* 4 */
 ```
 ------
-<a name='partial'/>
+<a name='partial'></a>
 ## partial || part : f -> x[,..,x] -> f
 
 **Description**: Return a partially applied Function where any number of a Function's arguments may be left undefined using `undefined` as a filler variable to be filled when the Function is called.
@@ -1664,7 +1664,7 @@ myAny([1,2]); /* true */
 myAny([2]); /* false */
 ```
 ------
-<a name='flip'/>
+<a name='flip'></a>
 ## flip : f -> f
 
 **Description**: Return an equivalent Function whose arguments are 'flipped' or reversed.
@@ -1678,7 +1678,7 @@ var flippedAny = lists.flip(lists.any);
 flippedAny(function(x){return x == 1}, [1,2]); /* true */
 ```
 ------
-<a name='compare'/>
+<a name='compare'></a>
 ## compare : x -> x -> str
 
 **Description**: The only Ordering Function provided in Lists. Returns a String that is the representation of comparing both Arguments with the native JavaScript comparator operators. Ordering Functions are used to redefine how Variables are ordered.
@@ -1693,7 +1693,7 @@ lists.compare(2,1); /* "GT" */
 lists.compare("b","b"); /* "EQ" */
 ```
 ------
-<a name='bubbleSort'/>
+<a name='bubbleSort'></a>
 ## bubbleSort : [num] -> [num]
 
 **Description**: A generic bubblesort algorithm for sorting an Array of Numbers.
@@ -1706,7 +1706,7 @@ lists.compare("b","b"); /* "EQ" */
 lists.bubbleSort([3,2,5,1]); /* [1,2,3,5] */
 ```
 ------
-<a name='mergeSort'/>
+<a name='mergeSort'></a>
 ## mergeSort : [num] -> [num]
 
 **Description**: A generic mergesort algorithm for sorting an Array of Numbers.
