@@ -258,8 +258,8 @@ map : [x] -> f -> [x]
 
 ------
 <a name='append'/>
-### append : [x]|str -> [x]|str|num -> [x]|str
-------
+## append : [x]|str -> [x]|str|num -> [x]|str
+
 **Description**: A prefix-style Array.prototype.concat wrapper.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String or a Number. Get an Array of Variables or a String.
@@ -273,8 +273,8 @@ lists.append('a','b'); /* 'ab' */
 ```
 ------
 <a name='head'/>
-### head : [x]|str -> x
-------
+## head : [x]|str -> x
+
 **Description**: Retreive the first element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get a Variable.
@@ -288,8 +288,8 @@ lists.head('ab'); /* 'a' */
 ```
 ------
 <a name='last'/>
-### last : [x]|str -> x
-------
+## last : [x]|str -> x
+
 **Description**: Retreive the last element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get a Variable.
@@ -303,8 +303,8 @@ lists.last('ab'); /* 'b' */
 ```
 ------
 <a name='init'/>
-### init : [x]|str -> [x]
-------
+## init : [x]|str -> [x]
+
 **Description**: Retreive all elements except the last of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
@@ -318,8 +318,8 @@ lists.init('abc'); /* ['a','b'] */
 ```
 ------
 <a name='tail'/>
-### tail : [x]|str -> [x]
-------
+## tail : [x]|str -> [x]
+
 **Description**: Retreive all elements except the first of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
@@ -333,8 +333,8 @@ lists.tail('abc'); /* ['b','c'] */
 ```
 ------
 <a name='nil'/>
-### nil : [x]|str -> boolean
-------
+## nil : [x]|str -> boolean
+
 **Description**: Test if an Array of Variables or a String is empty.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String; Get a boolean.
@@ -350,8 +350,8 @@ lists.nil([1]); /* false */
 ```
 ------
 <a name='map'/>
-### map : [x]|str -> f -> [x]
-------
+## map : [x]|str -> f -> [x]
+
 **Description**: Array of Variables returned by applying f to each element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
@@ -367,8 +367,8 @@ lists.map([{'S': 1}, {'u': 2}, {'p': 3}], function(obj) {
 ```
 ------
 <a name='rev'/>
-### rev : [x]|str -> [x]
-------
+## rev : [x]|str -> [x]
+
 **Description**: Array of Variables returned by reversing the order of each element of an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
@@ -382,8 +382,8 @@ lists.rev([[2],[3]]); /* [[3],[2]] */
 ```
 ------
 <a name='intersperse'/>
-### intersperse : x -> [x]|str -> [x]|str
-------
+## intersperse : x -> [x]|str -> [x]|str
+
 **Description**: Array of Variables or a String returned by interspersing a given separator between elements of a given Array.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables or a String.
@@ -398,8 +398,8 @@ lists.intersperse({b:2},[{a:1},{b:3}]); /* [{a:1},{b:2},{c:3}] */
 ```
 ------
 <a name='intercalate'/>
-### intercalate : [x] -> [[x]] -> [x]
-------
+## intercalate : [x] -> [[x]] -> [x]
+
 **Description**: Array of Variables returned by flattening the result of interspersing an Array of Variables into an Array of an Array of Variables.
 
 **Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of an Array of Variables. Get an Array of Variables.
@@ -413,8 +413,8 @@ lists.intercalate([{a:1}],[[{b:1}],[{c:2}]]); /* [{b:1},{a:1},{c:2}] */
 ```
 ------
 <a name='transpose'/>
-### transpose : [[x]] -> [[x]]
-------
+## transpose : [[x]] -> [[x]]
+
 **Description**: Array of an Array of Variables returned by transposing rows and columns of given arguments.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of an Array of Variables.
@@ -427,8 +427,8 @@ lists.transpose([["a","b","c"],["a","b","c"]]); /* [["a","a"],["b","b"],["c","c"
 ```
 ------
 <a name='subsequences'/>
-### subsequences : [x]|str -> [[x]]
-------
+## subsequences : [x]|str -> [[x]]
+
 **Description**: Array of an Array of Variables of all subsequences of a given arguement.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
@@ -441,8 +441,8 @@ lists.subsequences([1,2,3]); /* [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] */
 ```
 ------
 <a name='permutations'/>
-### permutations : [x]|str -> [[x]]|[str]
-------
+## permutations : [x]|str -> [[x]]|[str]
+
 **Description**: Array of an Array of Variables or Array of Strings returned by getting all permutations of a given arguement.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables or an Array of Strings respectively.
@@ -455,8 +455,8 @@ lists.permutations([1,2,3]); /* [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]
 ```
 ------
 <a name='foldl'/>
-### foldl : x -> [x]|str -> f -> x
-------
+## foldl : x -> [x]|str -> f -> x
+
 **Description**: Variable returned reducing left to right by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
 
 **Signature Definition**: Give arg 1 a starting Variable (usually a left identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
@@ -470,8 +470,8 @@ lists.foldl([], [[1,2],[3,4]], function(x,y) {return x.concat(y) }); /* [1,2,3,4
 ```
 ------
 <a name='foldl1'/>
-### foldl1 : [x]|str -> f -> x
-------
+## foldl1 : [x]|str -> f -> x
+
 **Description**: Variant of foldl without a starting Variable (The accumulator begins with the 0th index of the passed Array of Variables or a String). Use with non-empty Arrays or Strings.
 
 **Signature Definition**:  Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
@@ -484,8 +484,8 @@ lists.foldl1([1,2,3],function(x,y){ return x+y }); /* 6 */
 ```
 ------
 <a name='foldr'/>
-### foldr : x -> [x]|str -> f -> x
-------
+## foldr : x -> [x]|str -> f -> x
+
 **Description**: Variable returned reducing right to left by applying a binary operator Function (f) on a starting Variable (x), known as the accumulator, and an Array of Variables or a String.  
 
 **Signature Definition**: Give arg 1 a starting Variable (usually a right identity of the binary operator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get a Variable.
@@ -500,8 +500,8 @@ lists.foldr([],[[1,2],[3,4],[5,6]],function(x,y){
 ```
 ------
 <a name='foldr1'/>
-### foldr1 : [x]|str -> f -> x
-------
+## foldr1 : [x]|str -> f -> x
+
 **Description**: Variant of foldr without a starting Variable (The accumulator begins with the 0th index of the passed Array or a String). Use with non-empty Arrays or Strings.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function (binary operator). Get a Variable.
@@ -514,8 +514,8 @@ lists.foldr1('aabbcc',function(x,y){ return x=='a'? x=y : x.concat(y)}); /* "bbc
 ```
 ------
 <a name='flatten'/>
-### flatten || concat : [[x]]|[str] -> [x]|str
-------
+## flatten || concat : [[x]]|[str] -> [x]|str
+
 **Description**: Flatten an Array of an Array of Variables or an Array of Strings into an Array of Variables or a String respectively.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables or an Array of Strings. Get an Array of Variables or a String.
@@ -528,8 +528,8 @@ lists.flatten([[1,2],[3,4]]); /* [1,2,3,4] */
 ```
 ------
 <a name='concatMap'/>
-### concatMap : [x]|str -> f -> [x]|str
-------
+## concatMap : [x]|str -> f -> [x]|str
+
 **Description**: Array of Variables or a String returned by mapping a Function over an Array of Variables or a String and flattening the result.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function that produces an Array of Variables or a String. Get an Array of Variables or a String.
@@ -546,8 +546,8 @@ lists.concatMap([{a:1},{b:2}], function(x){
 ```
 ------
 <a name='and'/>
-### and : [boolean] -> boolean
-------
+## and : [boolean] -> boolean
+
 **Description**: Boolean returned by the conjunction of an Array of booleans. True if all booleans are true. False if one or more booleans is false.
 
 **Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
@@ -560,8 +560,8 @@ lists.and([5>1,false,5>3]); /* false */
 ```
 ------
 <a name='or'/>
-### or : [boolean] -> boolean
-------
+## or : [boolean] -> boolean
+
 **Description**: Boolean returned by the disjunction of an Array of booleans. True if at least one boolean is true. False if all booleans are false.
 
 **Signature Definition**: Give arg 1 an Array of booleans. Get a boolean.
@@ -574,8 +574,8 @@ lists.or([5<1,5<2,5<3]); /* false */
 ```
 ------
 <a name='any'/>
-### any : [x]|str -> f -> boolean
-------
+## any : [x]|str -> f -> boolean
+
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if at least one f(x) is true. False if all f(x) are false.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.
@@ -588,8 +588,8 @@ lists.any('abc',function(x) { return x == 'b'}); /* true */
 ```
 ------
 <a name='all'/>
-### all : [x]|str -> f -> boolean
-------
+## all : [x]|str -> f -> boolean
+
 **Description**: Boolean returned by applying a predicate Function to each element in an Array of Variables or a String. True if all f(x) are true. False if any f(x) are false.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a predicate Function to be applied to each element of arg 1. Get a boolean.
@@ -603,8 +603,8 @@ lists.all([2,4], function(x) { return x%2==0 }); /* true */
 ```
 ------
 <a name='sum'/>
-### sum : [num] -> num
-------
+## sum : [num] -> num
+
 **Description**: Number returned by summing the numbers of an Array together.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
@@ -617,8 +617,8 @@ lists.sum([.2,.4,.6]); /* 1.2000000000000002 */
 ```
 ------
 <a name='product'/>
-### product : [num] -> num
-------
+## product : [num] -> num
+
 **Description**: Number returned by computing the product of the numbers of an Array.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
@@ -631,8 +631,8 @@ lists.product([.2,.4,.6]); /* 0.04800000000000001 */
 ```
 ------
 <a name='maximum'/>
-### maximum : [num] -> num
-------
+## maximum : [num] -> num
+
 **Description**: Maximum Number returned from numbers of an Array.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
@@ -645,8 +645,8 @@ lists.maximum([.2,.4,.6]); /* .6 */
 ```
 ------
 <a name='minimum'/>
-### minimum : [num] -> num
-------
+## minimum : [num] -> num
+
 **Description**: Minimum Number returned from numbers of an Array.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get a Number.
@@ -659,8 +659,8 @@ lists.minimum([.2,.4,.6]); /* .2 */
 ```
 ------
 <a name='maxList'/>
-### maxList : [[x]] -> [x]
-------
+## maxList : [[x]] -> [x]
+
 **Description**: Array of Variables with the maximum length returned from an Array of an Array of Variables.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
@@ -673,8 +673,8 @@ lists.maxList([[1,2],[3]]); /* [1,2] */
 ```
 ------
 <a name='minList'/>
-### minList : [[x]] -> [x]
-------
+## minList : [[x]] -> [x]
+
 **Description**: Array of Variables with the minimum length returned from an Array of an Array of Variables.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
@@ -687,8 +687,8 @@ lists.minList([[1,2],[3]]); /* [3] */
 ```
 ------
 <a name='scanl'/>
-### scanl : x -> [x]|str -> f -> [x]
-------
+## scanl : x -> [x]|str -> f -> [x]
+
 **Description**: Array of Variables returned building left to right, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
 
 **Signature Definition**: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.
@@ -701,8 +701,8 @@ lists.scanl(0,[1,2,3],function(x,y){return x + y}); /* [0,1,3,6] */
 ```
 ------
 <a name='scanr'/>
-### scanr : x -> [x]|str -> f -> [x]
-------
+## scanr : x -> [x]|str -> f -> [x]
+
 **Description**: Array of Variables returned building right to left, starting with the accumulator (x) by applying a binary operator Function (f) on a starting Variable (x) and an Array of Variables or a String. 
 
 **Signature Definition**: Give arg 1 a starting Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function (binary operator). Get an Array of Variables.
@@ -715,8 +715,8 @@ lists.scanr(0,[1,2,3],function(x,y){return x + y}); /* [6,5,3,0] */
 ```
 ------
 <a name='mapAccumL'/>
-### mapAccumL : x -> [x]|str -> f -> [x, [x]]
-------
+## mapAccumL : x -> [x]|str -> f -> [x, [x]]
+
 **Description**: Builds an Array containing a accumulator (x) and the result of applying F to the supplied accumulator and each element of the supplied Array from left to right.
 
 **Signature Definition**: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.
@@ -730,8 +730,8 @@ lists.mapAccumL(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
 <a name='mapAccumR'/>
-### mapAccumR : x -> [x]|str -> f -> [x, [x]]
-------
+## mapAccumR : x -> [x]|str -> f -> [x, [x]]
+
 **Description**: Builds an Array containing a accumulator (x) and the result of applying f to the supplied accumulator and each element of the supplied Array from right to left.
 
 **Signature Definition**: Give arg 1 a starting Variable (accumulator). Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variable followed by Array of Variables.
@@ -745,8 +745,8 @@ lists.mapAccumR(5, [5,5,5], function(x,y){ return [x,x]}); /* [5, [5,5,5]] */
 ```
 ------
 <a name='iterate'/>
-### iterate : x -> num -> f -> [x]
-------
+## iterate : x -> num -> f -> [x]
+
 **Description**: Builds an Array containing the successive application of f to the previous result of f(x) until the stop (num) reaches 0.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 a Number. Give arg 3 a Function. Get an Array of Variables.
@@ -760,8 +760,8 @@ lists.iterate(2,4,function(x){ return x*x }); /* [2,4,16,256] */
 ```
 ------
 <a name='replicate'/>
-### replicate : x -> num -> [x]
-------
+## replicate : x -> num -> [x]
+
 **Description**: Builds an Array containing replications of x until the stop (num) reaches 0.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 a Number. Get an Array of Variables.
@@ -775,8 +775,8 @@ lists.replicate({a:1},2); /* [{a:1},{a:2}] */
 ```
 ------
 <a name='cycle'/>
-### cycle : [x]|str -> num -> [x]|str
-------
+## cycle : [x]|str -> num -> [x]|str
+
 **Description**: Builds an Array containing replications of a flattened Array of Variables or a String until the stop (num) reaches 0.
 
 **Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 a Number. Get an Array of Variables.
@@ -789,8 +789,8 @@ lists.cycle([1,2],2); /* [1,2,1,2] */
 ```
 ------
 <a name='unfold'/>
-### unfold : f -> f -> f -> x -> [x]|str
-------
+## unfold : f -> f -> f -> x -> [x]|str
+
 **Description**: Builds an Array from a seed value. Arg 1 is the predicate Function. If the predicate fails, return an empty Array, otherwise concatenate the result of Arg 2 (f) applied to Arg 4 (x) to the recursive call of unfold calling Arg 3 (f) to Arg 4 (x). This is a corecursive anamorphism.
 
 **Signature Definition**: Give arg 1 an Function (predicate). Give arg 2 a Function. Give arg 3 a Function. Give arg 4 a Variable (seed).
@@ -814,8 +814,8 @@ unfoldMap([1,2],function(x){ return x * 2 }); /* [2,4] */
 ```
 ------
 <a name='take'/>
-### take : num -> [x]|str -> [x]
-------
+## take : num -> [x]|str -> [x]
+
 **Description**: Array of Variables returned by taking the first n (num) elements from an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
@@ -828,8 +828,8 @@ lists.take(2,'abc'); /* ["a","b"] */
 ```
 ------
 <a name='drop'/>
-### drop : num -> [x]|str -> [x]
-------
+## drop : num -> [x]|str -> [x]
+
 **Description**: Array of Variables returned by dropping the first n (num) elements from an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
@@ -842,8 +842,8 @@ lists.drop(2,'abc'); /* ["c"] */
 ```
 ------
 <a name='splitAt'/>
-### splitAt : num -> [x]|str -> [[x],[x]]
-------
+## splitAt : num -> [x]|str -> [[x],[x]]
+
 **Description**: Array of two Arrays returned. The first Array contains the first n elements of the supplied Array of Variables or a String. The second contains the rest.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables or a String. Get an Array of two Arrays of Variables.
@@ -856,8 +856,8 @@ lists.splitAt(2,[1,2,3]) /* [[1,2],[3]] */
 ```
 ------
 <a name='takeWhile'/>
-### takeWhile : f -> [x]|str -> [x]
-------
+## takeWhile : f -> [x]|str -> [x]
+
 **Description**: Array of Variables returned by taking elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
 **Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
@@ -871,8 +871,8 @@ lists.takeWhile('aabc', function(x){ return x =='a' }); /* ["a","a"] */
 ```
 ------
 <a name='dropWhile'/>
-### dropWhile : f -> [x]|str -> [x]
-------
+## dropWhile : f -> [x]|str -> [x]
+
 **Description**: Array of Variables returned by dropping elements from an Array of Variables or a String that satisfy a supplied predicate Function until that predicate Function is unsatisfied.
 
 **Signature Definition**: Give arg 1 a Function. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
@@ -886,8 +886,8 @@ lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ```
 ------
 <a name='span'/>
-### span : [x]|str -> f -> [[x], [x]|str]
-------
+## span : [x]|str -> f -> [[x], [x]|str]
+
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that satisfy a predicate Function f. The second element is the rest of the list.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
@@ -901,8 +901,8 @@ lists.span([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[{a:2},{a:2}],[
 ```
 ------
 <a name='break'/>
-### break : [x]|str -> f -> [[x], [x]|str]
-------
+## break : [x]|str -> f -> [[x], [x]|str]
+
 **Description**: An Array of an Array of Variables and Array of Variables or a String (psuedo-tuple) is returned. The first element is the longest prefix of an Array of Variables or a String that do not satisfy a predicate Function f. The second element is the rest of the list.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of an Array of Variables and Array of Variables or a String (psuedo-tuple).
@@ -916,8 +916,8 @@ lists.break([{a:2},{a:2},{b:2}], function(x){return x.a==2}); /* [[],[{a:2},{a:2
 ```
 ------
 <a name='stripPrefix'/>
-### stripPrefix : [num]|str -> [num]|str -> [num]|[str]
-------
+## stripPrefix : [num]|str -> [num]|str -> [num]|[str]
+
 **Description**: Argument 1 is the prefix. Argument 2 is the target. The arguments must be of the same type. This function drops the prefix from the target and returns the representation as an Array of Numbers or an Array of Strings.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers or an Array of Strings.
@@ -930,8 +930,8 @@ lists.stripPrefix([1,2],[1,2,3,4]); /* [3,4] */
 ```
 ------
 <a name='group'/>
-### group : [num]|str -> [[num]]|[[str]]
-------
+## group : [num]|str -> [[num]]|[[str]]
+
 **Description**: An Array of an Array of Numbers or Strings returned where each nested Array contains only equal elements.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Get an Array of an Array of Numbers or Strings.
@@ -944,8 +944,8 @@ lists.group("mississippi"); /* [["m"],["i"],["s","s"],["i"],["s","s"],["i"],["p"
 ```
 ------
 <a name='inits'/>
-### inits : [x]|str -> [[x]]
-------
+## inits : [x]|str -> [[x]]
+
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, shortest first.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
@@ -959,8 +959,8 @@ lists.inits([{a:2},{b:3}]); /* [[],[{a:2}],[{a:2},{b:3}]] */
 ```
 ------
 <a name='tails'/>
-### tails : [x]|str -> [[x]]
-------
+## tails : [x]|str -> [[x]]
+
 **Description**: An Array of an Array of Variables returned with all the initial segments of the argument, longest first.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of an Array of Variables.
@@ -974,8 +974,8 @@ lists.tails([{a:2},{b:3}]); /* [[{a:2},{b:3}],[{a:2}],[]] */
 ```
 ------
 <a name='isPrefixOf'/>
-### isPrefixOf : [num]|str -> [num]|str -> boolean
-------
+## isPrefixOf : [num]|str -> [num]|str -> boolean
+
 **Description**: Test if an Array of Numbers or a String is the prefix of an Array of Numbers or a String. The arguments must be of the same type.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -989,8 +989,8 @@ lists.isPrefixOf("ab","abcd"); /* true */
 ```
 ------
 <a name='isSuffixOf'/>
-### isSuffixOf : [num]|str -> [num]|str -> boolean
-------
+## isSuffixOf : [num]|str -> [num]|str -> boolean
+
 **Description**: Test if an Array of Numbers or a String is the suffix of an Array of Numbers or a String. The arguments must be of the same type.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -1004,8 +1004,8 @@ lists.isSuffixOf("d","abcd"); /* true */
 ```
 ------
 <a name='isInfixOf'/>
-### isInfixOf : [num]|str -> [num]|str -> boolean
-------
+## isInfixOf : [num]|str -> [num]|str -> boolean
+
 **Description**: Test if an Array of Numbers or a String is the infix of an Array of Numbers or a String. The arguments must be of the same type.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -1019,8 +1019,8 @@ lists.isInfixOf("a","abcd"); /* true */
 ```
 ------
 <a name='isSubsequenceOf'/>
-### isSubsequenceOf : [num]|str -> [num]|str -> boolean
-------
+## isSubsequenceOf : [num]|str -> [num]|str -> boolean
+
 **Description**: Test if an Array of Numbers or a String is the subsequence of an Array of Numbers or a String. The arguments must be of the same type.
 
 **Signature Definition**: Give arg 1 an Array of Numbers or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -1034,8 +1034,8 @@ lists.isSubsequenceOf("Lol","Laugh out loud"); /* true */
 ```
 ------
 <a name='elem'/>
-### elem : num|str -> [num]|str -> boolean
-------
+## elem : num|str -> [num]|str -> boolean
+
 **Description**: Test if the Number or a String is in the Array of Numbers or a String.
 
 **Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -1048,8 +1048,8 @@ lists.elem("2","123 abc"); /* true */
 ```
 ------
 <a name='notElem'/>
-### notElem : num|str -> [num]|str -> boolean
-------
+## notElem : num|str -> [num]|str -> boolean
+
 **Description**: Test if the Number or a String is not in the Array of Numbers or a String.
 
 **Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a boolean.
@@ -1062,8 +1062,8 @@ lists.notElem("a","abc"); /* false */
 ```
 ------
 <a name='lookup'/>
-### lookup : num|str -> [[num|str,x]] -> boolean
-------
+## lookup : num|str -> [[num|str,x]] -> boolean
+
 **Description**: Retreive the value of a key in an Array of an Array of Variables where position 0 is the key and position 1 is the value (associative array).
 
 **Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of an Array containing a Number or a String as the key and a Variable as the value. Get a Variable (value).
@@ -1077,8 +1077,8 @@ lists.lookup(1,[[1,{a:2}],["b",3]]); /* {a:2} */
 ```
 ------
 <a name='find'/>
-### find : [x]|str -> f -> x
-------
+## find : [x]|str -> f -> x
+
 **Description**: Retreive a Variable by applying a predicate Function to an Array of Variables or a String. Returns "Nothing" if there is no match.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Variable.
@@ -1092,8 +1092,8 @@ lists.find([1,2,3], function(x) { return x == 0 }); /* "Nothing" */
 ```
 ------
 <a name='filter'/>
-### filter : [x]|str -> f -> [x]
-------
+## filter : [x]|str -> f -> [x]
+
 **Description**: An Array of Variables returned by applying a predicate Function to an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
@@ -1107,8 +1107,8 @@ lists.filter([[1],[1,2]], function(arr) { return arr.length > 1 }); /* [[1,2]] *
 ```
 ------
 <a name='partition'/>
-### partition : [x]|str -> f -> [[x],[x]]
-------
+## partition : [x]|str -> f -> [[x],[x]]
+
 **Description**: An Array of two Arrays of Variables returned by applying a predicate Function to an Array of Variables. The Array of Variables at position 0 are the Variables that satisfy the predicate Function. The Array of Variables at position 1 are the Variables that do not satisfy the predicate Function.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of two Arrays of Variables.
@@ -1122,8 +1122,8 @@ lists.partition([{a:1},{b:2,a:2}], function(obj) { return obj.a == 2 }); /* [[{b
 ```
 ------
 <a name='bang'/>
-### bang : num -> [x] -> x
-------
+## bang : num -> [x] -> x
+
 **Description**: Variable returned by fetching the Variable at the given index (Number).
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 an Array of Variables. Get a Variable.
@@ -1137,8 +1137,8 @@ lists.bang(3,[1,2]); /* -1 */
 ```
 ------
 <a name='elemIndex'/>
-### elemIndex || indexOf : num|str -> [num]|str -> num
-------
+## elemIndex || indexOf : num|str -> [num]|str -> num
+
 **Description**: Returns the index Number of the first occurance of a Number or a String from an Array of Numbers or a String.
 
 **Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get a Number.
@@ -1152,8 +1152,8 @@ lists.elemIndex(2,[0,1]); /* -1 */
 ```
 ------
 <a name='elemIndices'/>
-### elemIndices : num|str -> [num]|str -> [num]
-------
+## elemIndices : num|str -> [num]|str -> [num]
+
 **Description**: Returns an Array of Numbers representing the indices of the Number or a String from an Array of Numbers or a String. 
 
 **Signature Definition**: Give arg 1 a Number or a String. Give arg 2 an Array of Numbers or a String. Get an Array of Numbers.
@@ -1167,8 +1167,8 @@ lists.elemIndices(2,[0,1]); /* [] */
 ```
 ------
 <a name='findIndex'/>
-### findIndex : [x]|str -> f -> num
-------
+## findIndex : [x]|str -> f -> num
+
 **Description**: Returns the index Number of the first occurance of the result of applying a predicate Function to an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get a Number.
@@ -1182,8 +1182,8 @@ lists.findIndex("ab%c", function(char){ return char == "%" }); /* 2 */
 ```
 ------
 <a name='findIndices'/>
-### findIndices : [x]|str -> f -> [num]
-------
+## findIndices : [x]|str -> f -> [num]
+
 **Description**: Returns an Array of Numbers representing the indices of the result of applying a predicate Function to an Array of Variables or a String.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Numbers.
@@ -1197,8 +1197,8 @@ lists.findIndices("AbAbA", function(char) { return char == "A" }); /* [0,2,4] */
 ```
 ------
 <a name='zip'/>
-### zip || unzip : [[a,b,..,n],[c,d,..,n],..,n] -> [[a,c,..,n],[b,d,..,n],..,n]
-------
+## zip || unzip : [[a,b,..,n],[c,d,..,n],..,n] -> [[a,c,..,n],[b,d,..,n],..,n]
+
 **Description**: Takes an Array of an Array of Variables and returns an Array of an Array of Variables with corresponding Variables.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables. Get an Array of Variables.
@@ -1212,8 +1212,8 @@ lists.zip([[1,'l'],[3,'o'],[5,'l']]); /* [[1,3,5],["l","o","l"]] */
 ```
 ------
 <a name='zipWith'/>
-### zipWith : [[a,b,..,n],[c,d,..,n],..,n] -> f -> [x]
-------
+## zipWith : [[a,b,..,n],[c,d,..,n],..,n] -> f -> [x]
+
 **Description**: Takes an Array of an Array of Variables and a Function and returns an Array of Variables with the results being the Function applied to the corresponding zipped Array of Variables.
 
 **Signature Definition**: Give arg 1 an Array of an Array of Variables. Give arg 2 a Function. Get an Array of Variables.
@@ -1234,8 +1234,8 @@ lists.zipWith([[1,3],[1,2],[4,5]],addThenMultiply); /* [8, 25] */
 ```
 ------
 <a name='lines'/>
-### lines : str -> [str]
-------
+## lines : str -> [str]
+
 **Description**: Returns an Array of Strings as the result of breaking a String at each new line character (\u000A). The resultant Array does not contain any new line characters.
 
 **Signature Definition**: Give arg 1 a String. Get an Array of Strings.
@@ -1248,8 +1248,8 @@ lists.lines("Hey\nthere"); /* ["Hey","there"] */
 ```
 ------
 <a name='words'/>
-### words : str -> [str]
-------
+## words : str -> [str]
+
 **Description**: Returns an Array of Strings as the result of breaking a String at each space character (\u0020). The resultant Array does not contain any space characters.
 
 **Signature Definition**: Give arg 1 a String. Get an Array of Strings.
@@ -1261,8 +1261,8 @@ lists.words("break it up"); /* ["break","it","up"] */
 ```
 ------
 <a name='unlines'/>
-### unlines : [str] -> str
-------
+## unlines : [str] -> str
+
 **Description**: Returns a String with a new line character appended to each String of the Array that it joins.
 
 **Signature Definition**: Give arg 1 an Array of Strings. Get a String.
@@ -1274,8 +1274,8 @@ lists.unlines(["break","it","up"]); /* "break\nit\nup\n" */
 ```
 ------
 <a name='unwords'/>
-### unwords : [str] -> str
-------
+## unwords : [str] -> str
+
 **Description**: Returns a String with a space character appended to each String of the Array that it joins.
 
 **Signature Definition**: Give arg 1 an Array of Strings. Get a String.
@@ -1287,8 +1287,8 @@ lists.unwords(["break","it","up"]); /* "break it up " */
 ```
 ------
 <a name='nub'/>
-### nub || uniq || unique : [num|str]|str -> [num|str]
-------
+## nub || uniq || unique : [num|str]|str -> [num|str]
+
 **Description**: Remove duplicates from a String or an Array of Numbers and/or Strings. Keep the first occurence of each element.
 
 **Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Get an Array of Numbers and/or Strings.
@@ -1302,8 +1302,8 @@ lists.nub([1,2,2,3]); /* [1,2,3] */
 ```
 ------
 <a name='delete'/>
-### delete : x -> [x]|str -> [x]
-------
+## delete : x -> [x]|str -> [x]
+
 **Description**: Return an Array of Variables from the result of removing the first occurence of a Variable from an Array of Variables or a String. Does not work with Objects.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Get an Array of Variables.
@@ -1317,8 +1317,8 @@ lists.delete(1,[2,1,2,1]); /* [2,2,1] */
 ```
 ------
 <a name='difference'/>
-### difference || diff : [num|str]|str -> [num|str]|str -> [x]
-------
+## difference || diff : [num|str]|str -> [num|str]|str -> [x]
+
 **Description**: Return an Array of Variables whose elements are the difference between Argument 1 and Argument 2.
 
 **Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.
@@ -1332,8 +1332,8 @@ lists.difference([1,2],[1,2]); /* [] */
 ```
 ------
 <a name='union'/>
-### union : [num|str]|str -> [num|str]|str -> [x]|str
-------
+## union : [num|str]|str -> [num|str]|str -> [x]|str
+
 **Description**: Return an Array of Variables whose elements are the union between Argument 1 and Argument 2.
 
 **Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables or a String.
@@ -1346,8 +1346,8 @@ lists.union([1,4,'a'],[1,3,'b']); /* [1,4,"a",3,"b"] */
 ```
 ------
 <a name='intersect'/>
-### intersect : [num|str]|str -> [num|str]|str -> [x]
-------
+## intersect : [num|str]|str -> [num|str]|str -> [x]
+
 **Description**: Return an Array of Variables whose elements are the intersection between Argument 1 and Argument 2.
 
 **Signature Definition**: Give arg 1 a String or an Array of Numbers and/or Strings. Give arg 2 a String or an Array of Numbers and/or Strings. Get an Array of Variables.
@@ -1360,8 +1360,8 @@ lists.intersect([1,4,'a'],[1,3,'b']); /* [1] */
 ```
 ------
 <a name='sort'/>
-### sort : [x]|str -> [x]
-------
+## sort : [x]|str -> [x]
+
 **Description**: Return an Array of Variables that are sorted by the Ordering Function `lists.compare`.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Get an Array of Variables.
@@ -1375,8 +1375,8 @@ lists.sort([2,1,-1,1]); /* [-1,1,1,2] */
 ```
 ------
 <a name='insert'/>
-### insert : x -> [x] -> [x]
-------
+## insert : x -> [x] -> [x]
+
 **Description**: Inserts an element into the first position of the Array of Variables where the element is less than or equal (defined by `lists.compare`) to the Variable from the Array it is being compared to. 
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Get an Array of Variables.
@@ -1389,8 +1389,8 @@ lists.insert(4,[1,3,5,7,9]); /* [1,3,4,5,7,9] */
 ```
 ------
 <a name='nubBy'/>
-### nubBy : [x]|str -> f -> [x]
-------
+## nubBy : [x]|str -> f -> [x]
+
 **Description**: Remove duplicates from an Array of Variables or a String based on a user supplied Function defintion of equality. Keep the first occurence of each element. 
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
@@ -1408,8 +1408,8 @@ lists.nubBy([{a:1},{a:1, b:2},{b:2}], function(obj1, obj2) {
 ```
 ------
 <a name='deleteBy'/>
-### deleteBy : x -> [x]|str -> f -> [x]
-------
+## deleteBy : x -> [x]|str -> f -> [x]
+
 **Description**: Return an Array of Variables from the result of removing the first occurence of a Variable or a String that matches a user supplied Function definition of equality from an Array of Variables.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
@@ -1422,8 +1422,8 @@ lists.deleteBy(2, [{a:2},{b:2,e:2},{c:2}], function(arg1, obj) { return lists.ke
 ```
 ------
 <a name='deleteFirstsBy'/>
-### deleteFirstsBy : [x]|str -> [x]|str -> f -> [x]
-------
+## deleteFirstsBy : [x]|str -> [x]|str -> f -> [x]
+
 **Description**: Return the first Array of Variables or String passed with the first occurence of each element from the second Array of Variables or String removed based on a user supplied Function definition of equality.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.
@@ -1436,8 +1436,8 @@ lists.deleteFirstsBy("baba","a", function(x,y) { return x==y }); /* ["b","b","a"
 ```
 ------
 <a name='unionBy'/>
-### unionBy : [x] -> [x] -> f -> [x]
-------
+## unionBy : [x] -> [x] -> f -> [x]
+
 **Description**: Return an Array of Variables as the union between Argument 1, Argument 2, and the user supplied Function definition of equality.
 
 **Signature Definition**: Give arg 1 an Array of Variables. Give arg 2 an Array of Variables. Give arg 3 a Fucntion. Get an Array of Variables.
@@ -1453,8 +1453,8 @@ lists.unionBy(["a","b","c"], ["d","e","f"], function(x,y) {
 ```
 ------
 <a name='intersectBy'/>
-### intersectBy : [x]|str -> [x]|str -> f -> [x]
-------
+## intersectBy : [x]|str -> [x]|str -> f -> [x]
+
 **Description**: Return an Array of Variables as the intersection between Argument 1, Argument 2, and the user supplied Function definition of equality.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 an Array of Variables or a String. Give arg 3 a Fucntion. Get an Array of Variables.
@@ -1466,8 +1466,8 @@ lists.intersectBy([1,2,3,4],[4,8,12,16,20], function(x,y) { return x * x == y })
 ```
 ------
 <a name='groupBy'/>
-### groupBy : [x]|str -> f -> [[x]]
-------
+## groupBy : [x]|str -> f -> [[x]]
+
 **Description**: Return an Array of Variables where each nested Array is a group of equal elements. Equality is defined by the user supplied Function.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Fucntion. Get an Array of an Array of Variables.
@@ -1480,8 +1480,8 @@ lists.groupBy([1,2,3,4,5,6,7,8,9], function(x,y){ return x + 1 == y}); /* [[1,2]
 ```
 ------
 <a name='sortBy'/>
-### sortBy : [x]|str -> f -> [x]
-------
+## sortBy : [x]|str -> f -> [x]
+
 **Description**: Return an Array of Variables that are sorted based on the user supplied Ordering Function.
 
 **Signature Definition**: Give arg 1 an Array of Variables or a String. Give arg 2 a Function. Get an Array of Variables.
@@ -1496,8 +1496,8 @@ lists.sortBy([1,2,3,4,5,6,7], oddsFirst); /* [1,3,5,7,6,4,2] */
 ```
 ------
 <a name='insertBy'/>
-### insertBy : x -> [x]|str -> f -> [x]
-------
+## insertBy : x -> [x]|str -> f -> [x]
+
 **Description**: Inserts an element into the first position of the Array of Variables based on the user supplied Ordering Function.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
@@ -1512,8 +1512,8 @@ lists.insertBy(4, [0,1,3,5,7,9], fn); /* [0,1,4,3,5,7,9] */
 ```
 ------
 <a name='maximumBy'/>
-### maximumBy : [x]|str -> f -> x
-------
+## maximumBy : [x]|str -> f -> x
+
 **Description**: The largest element of a non-empty Array of Variables or a String where the definition of "largest" comes from the user supplied Ordering function.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
@@ -1529,8 +1529,8 @@ lists.maximumBy([[1,3],[2]], compareLength); /* [1,3] */
 ```
 ------
 <a name='minimumBy'/>
-### minimumBy : [x]|str -> f -> x
-------
+## minimumBy : [x]|str -> f -> x
+
 **Description**: The least element of a non-empty Array of Variables or a String where the definition of "least" comes from the user supplied Ordering function.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 an Array of Variables or a String. Give arg 3 a Function. Get an Array of Variables.
@@ -1546,8 +1546,8 @@ lists.minimumBy([[1,3],[2],[]], compareLength); /* [] */
 ```
 ------
 <a name='genericExcludeChar'/>
-### genericExcludeChar : str -> str -> [str]
-------
+## genericExcludeChar : str -> str -> [str]
+
 **Description**: Strips an arbitrary character (String) from a String. This function is the primary work horse of `lists.lines` and `lists.words`.
 
 **Signature Definition**: Give arg 1 a String. Give arg 2 a String. Get a an Array of Strings.
@@ -1562,8 +1562,8 @@ myLines("abc\nd"); /* ["abc","d"] */
 ```
 ------
 <a name='each'/>
-### forEach || each : x -> f -> x
-------
+## forEach || each : x -> f -> x
+
 **Description**: An enhanced polyfill of Array.prototype.forEach. Works for properties of Objects. This function is meant to alter mutable state.
 
 each's arguments are:
@@ -1596,8 +1596,8 @@ console.log(arr); /* [2,4,6] */
 ```
 ------
 <a name='keys'/>
-### keys : obj -> [str]
-------
+## keys : obj -> [str]
+
 **Description**: A polyfill of `Object.keys`. Returns an Array of Strings representing the iterable properties of the Object not from its inherited chained properties.
 
 **Signature Definition**: Give arg 1 an Object. Get an Array of Strings.
@@ -1609,8 +1609,8 @@ lists.keys({a:2, b:1}); /* ["a","b"] */
 ```
 ------
 <a name='enum'/>
-### enumeration || enum : num -> num -> [num]
-------
+## enumeration || enum : num -> num -> [num]
+
 **Description**: Create an enumeration in the form of an Array of Numbers where Argument 1 is the start Number and Argument 2 is the stop Number.
 
 **Signature Definition**: Give arg 1 a Number. Give arg 2 a Number. Get an Array of Numbers.
@@ -1622,8 +1622,8 @@ lists.enum(0,5); /* [0,1,2,3,4,5] */
 ```
 ------
 <a name='pipe'/>
-### composeL || pipe : f[,..,f] -> f
-------
+## composeL || pipe : f[,..,f] -> f
+
 **Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from rightmost to leftmost to the returned Function's Argument.
 
 **Signature Definition**: Give arg 1 N number of Functions. Get a Function.
@@ -1636,8 +1636,8 @@ sumThenSqrt([4,4,4,4]); /* 4 */
 ```
 ------
 <a name='sequence'/>
-### composeR || sequence : f[,..,f] -> f
-------
+## composeR || sequence : f[,..,f] -> f
+
 **Description**: Return a Function that represents the composition of Functions passed as Arguments. These Functions will be applied from leftmost to rightmost to the returned Function's Argument.
 
 **Signature Definition**: Give arg 1 N number of Functions. Get a Function.
@@ -1650,8 +1650,8 @@ sumThenSqrt([4,4,4,4]); /* 4 */
 ```
 ------
 <a name='partial'/>
-### partial || part : f -> x[,..,x] -> f
-------
+## partial || part : f -> x[,..,x] -> f
+
 **Description**: Return a partially applied Function where any number of a Function's arguments may be left undefined using `undefined` as a filler variable to be filled when the Function is called.
 
 **Signature Definition**: Give arg 1 a Function. Give arg 2,..,n a filled or unfilled Variable. Get a Function.
@@ -1665,8 +1665,8 @@ myAny([2]); /* false */
 ```
 ------
 <a name='flip'/>
-### flip : f -> f
-------
+## flip : f -> f
+
 **Description**: Return an equivalent Function whose arguments are 'flipped' or reversed.
 
 **Signature Definition**: Give arg 1 a Function. Get a Function.
@@ -1679,8 +1679,8 @@ flippedAny(function(x){return x == 1}, [1,2]); /* true */
 ```
 ------
 <a name='compare'/>
-### compare : x -> x -> str
-------
+## compare : x -> x -> str
+
 **Description**: The only Ordering Function provided in Lists. Returns a String that is the representation of comparing both Arguments with the native JavaScript comparator operators. Ordering Functions are used to redefine how Variables are ordered.
 
 **Signature Definition**: Give arg 1 a Variable. Give arg 2 a Variable. Get a String.
@@ -1694,8 +1694,8 @@ lists.compare("b","b"); /* "EQ" */
 ```
 ------
 <a name='bubbleSort'/>
-### bubbleSort : [num] -> [num]
-------
+## bubbleSort : [num] -> [num]
+
 **Description**: A generic bubblesort algorithm for sorting an Array of Numbers.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get an Array of Numbers.
@@ -1707,8 +1707,8 @@ lists.bubbleSort([3,2,5,1]); /* [1,2,3,5] */
 ```
 ------
 <a name='mergeSort'/>
-### mergeSort : [num] -> [num]
-------
+## mergeSort : [num] -> [num]
+
 **Description**: A generic mergesort algorithm for sorting an Array of Numbers.
 
 **Signature Definition**: Give arg 1 an Array of Numbers. Get an Array of Numbers.
