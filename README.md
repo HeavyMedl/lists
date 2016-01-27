@@ -881,7 +881,7 @@ lists.takeWhile('aabc', function(x){ return x =='a' }); /* ["a","a"] */
 
 ```js
 lists.dropWhile([1,2,3,4], function(x){ return x < 3 }); /* [3,4] */
-lists.dropWhile([1], function(x){ return x < 2 }); /* [2] */
+lists.dropWhile([1], function(x){ return x < 2 }); /* [] */
 lists.dropWhile('aabc', function(x){ return x =='a' }); /* ["b","c"] */
 ```
 ------
